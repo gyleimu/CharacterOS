@@ -1,0 +1,4706 @@
+{
+  "adjustment-route-1781969073641": [
+    {
+      "id": "adjustment_history_ec2a15e7",
+      "characterId": "adjustment-route-1781969073641",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T15:24:33.675Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_465b3420",
+      "characterId": "adjustment-route-1781969073641",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T15:24:33.690Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-override-route-1781969073724": [
+    {
+      "id": "adjustment_history_c15c2ff",
+      "characterId": "adjustment-override-route-1781969073724",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T15:24:33.744Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_a3c7781",
+      "characterId": "adjustment-override-route-1781969073724",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaab",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T15:24:33.765Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_86390e2",
+      "characterId": "adjustment-override-route-1781969073724",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaaa",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T15:24:33.842Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-route-1781969112581": [
+    {
+      "id": "adjustment_history_ce6f0a6b",
+      "characterId": "adjustment-route-1781969112581",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T15:25:12.605Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_26985eee",
+      "characterId": "adjustment-route-1781969112581",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T15:25:12.620Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-override-route-1781969112627": [
+    {
+      "id": "adjustment_history_168f4506",
+      "characterId": "adjustment-override-route-1781969112627",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T15:25:12.664Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_14b65ee3",
+      "characterId": "adjustment-override-route-1781969112627",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaab",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T15:25:12.745Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_12dd13c2",
+      "characterId": "adjustment-override-route-1781969112627",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaaa",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T15:25:12.769Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_c8e88b0b",
+      "characterId": "adjustment-override-route-1781969112627",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa9",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T15:25:12.867Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "export-adjustment-route-1781974909140": [
+    {
+      "id": "adjustment_history_9ca54d50",
+      "characterId": "export-adjustment-route-1781974909140",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:01:49.183Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-route-1781974909247": [
+    {
+      "id": "adjustment_history_2db0bda2",
+      "characterId": "adjustment-route-1781974909247",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:01:49.270Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_ead89dd9",
+      "characterId": "adjustment-route-1781974909247",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:01:49.310Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-override-route-1781974909317": [
+    {
+      "id": "adjustment_history_811b64f6",
+      "characterId": "adjustment-override-route-1781974909317",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:01:49.334Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_7f422420",
+      "characterId": "adjustment-override-route-1781974909317",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaab",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:01:49.380Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_7d69495f",
+      "characterId": "adjustment-override-route-1781974909317",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaaa",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:01:49.492Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_3374b1c3",
+      "characterId": "adjustment-override-route-1781974909317",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa9",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:01:49.551Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "export-adjustment-route-1781975004950": [
+    {
+      "id": "adjustment_history_9beced75",
+      "characterId": "export-adjustment-route-1781975004950",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:03:24.963Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-route-1781975004954": [
+    {
+      "id": "adjustment_history_885ec6ca",
+      "characterId": "adjustment-route-1781975004954",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:03:25.005Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_c5350d89",
+      "characterId": "adjustment-route-1781975004954",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:03:25.019Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-override-route-1781975005026": [
+    {
+      "id": "adjustment_history_10efd5f5",
+      "characterId": "adjustment-override-route-1781975005026",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:03:25.044Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_f168e76",
+      "characterId": "adjustment-override-route-1781975005026",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaab",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:03:25.077Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_d3e0971",
+      "characterId": "adjustment-override-route-1781975005026",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaaa",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:03:25.204Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_c349143a",
+      "characterId": "adjustment-override-route-1781975005026",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa9",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:03:25.225Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "export-adjustment-route-1781975135637": [
+    {
+      "id": "adjustment_history_aff5e809",
+      "characterId": "export-adjustment-route-1781975135637",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:05:35.706Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-route-1781975135873": [
+    {
+      "id": "adjustment_history_7cecb292",
+      "characterId": "adjustment-route-1781975135873",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:05:35.894Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_77fd3d80",
+      "characterId": "adjustment-route-1781975135873",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:05:35.908Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-override-route-1781975135918": [
+    {
+      "id": "adjustment_history_bf09695f",
+      "characterId": "adjustment-override-route-1781975135918",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:05:35.935Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_bd301da3",
+      "characterId": "adjustment-override-route-1781975135918",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaab",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:05:35.954Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_bb56d662",
+      "characterId": "adjustment-override-route-1781975135918",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaaa",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:05:35.989Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_73128373",
+      "characterId": "adjustment-override-route-1781975135918",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa9",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:05:36.022Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "adjustment-route-1781975160630": [
+    {
+      "id": "adjustment_history_feebf3cc",
+      "characterId": "adjustment-route-1781975160630",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:06:00.665Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_75aabe3b",
+      "characterId": "adjustment-route-1781975160630",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:06:00.682Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-override-route-1781975160689": [
+    {
+      "id": "adjustment_history_c7e751c2",
+      "characterId": "adjustment-override-route-1781975160689",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:06:00.716Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_c60e094b",
+      "characterId": "adjustment-override-route-1781975160689",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaab",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:06:00.741Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_c434be68",
+      "characterId": "adjustment-override-route-1781975160689",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaaa",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:06:00.767Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_7a401eaf",
+      "characterId": "adjustment-override-route-1781975160689",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa9",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:06:00.801Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "adjustment-route-1781975204075": [
+    {
+      "id": "adjustment_history_8d7fe383",
+      "characterId": "adjustment-route-1781975204075",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:06:44.097Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_578cb8e7",
+      "characterId": "adjustment-route-1781975204075",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:06:44.114Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-override-route-1781975204136": [
+    {
+      "id": "adjustment_history_2c78b577",
+      "characterId": "adjustment-override-route-1781975204136",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:06:44.159Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_2a9f715c",
+      "characterId": "adjustment-override-route-1781975204136",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaab",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:06:44.199Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_28c6777c",
+      "characterId": "adjustment-override-route-1781975204136",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaaa",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:06:44.222Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_ded18245",
+      "characterId": "adjustment-override-route-1781975204136",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa9",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:06:44.243Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "adjustment-route-1781975278155": [
+    {
+      "id": "adjustment_history_bfb6bede",
+      "characterId": "adjustment-route-1781975278155",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:07:58.193Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_23912d48",
+      "characterId": "adjustment-route-1781975278155",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:07:58.216Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "export-adjustment-route-1781975278207-657299dbf5087": [
+    {
+      "id": "adjustment_history_ba2978d7",
+      "characterId": "export-adjustment-route-1781975278207-657299dbf5087",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:07:58.237Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-override-route-1781975278229": [
+    {
+      "id": "adjustment_history_2b30938f",
+      "characterId": "adjustment-override-route-1781975278229",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:07:58.256Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_2957a54f",
+      "characterId": "adjustment-override-route-1781975278229",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaab",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:07:58.312Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_277e6153",
+      "characterId": "adjustment-override-route-1781975278229",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaaa",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:07:58.353Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_dd896fbe",
+      "characterId": "adjustment-override-route-1781975278229",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa9",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:07:58.383Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "adjustment-route-1781975316824": [
+    {
+      "id": "adjustment_history_2f72decd",
+      "characterId": "adjustment-route-1781975316824",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:08:36.856Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_9db20671",
+      "characterId": "adjustment-route-1781975316824",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:08:36.883Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "export-adjustment-route-1781975316932-d1c9c95cb328": [
+    {
+      "id": "adjustment_history_bc38c0c6",
+      "characterId": "export-adjustment-route-1781975316932-d1c9c95cb328",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:08:36.976Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-override-route-1781975316912": [
+    {
+      "id": "adjustment_history_ebc13eed",
+      "characterId": "adjustment-override-route-1781975316912",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:08:36.956Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_eb98a195",
+      "characterId": "adjustment-override-route-1781975316912",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaab",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:08:37.024Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_e9bf5d99",
+      "characterId": "adjustment-override-route-1781975316912",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaaa",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:08:37.065Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_9fcac9be",
+      "characterId": "adjustment-override-route-1781975316912",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa9",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:08:37.134Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "export-adjustment-route-1781975604032-dcbafef77effc8": [
+    {
+      "id": "adjustment_history_a21bd26b",
+      "characterId": "export-adjustment-route-1781975604032-dcbafef77effc8",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:13:24.099Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-route-1781975604105": [
+    {
+      "id": "adjustment_history_d34de95",
+      "characterId": "adjustment-route-1781975604105",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:13:24.145Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_700ccfc7",
+      "characterId": "adjustment-route-1781975604105",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:13:24.189Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-override-route-1781975604199": [
+    {
+      "id": "adjustment_history_a1f3cd74",
+      "characterId": "adjustment-override-route-1781975604199",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:13:24.218Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_a01a987c",
+      "characterId": "adjustment-override-route-1781975604199",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaab",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:13:24.299Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_9e41a25d",
+      "characterId": "adjustment-override-route-1781975604199",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaaa",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:13:24.332Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_544cb505",
+      "characterId": "adjustment-override-route-1781975604199",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa9",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:13:24.376Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "export-adjustment-route-1781975761877-c26163ed11f68": [
+    {
+      "id": "adjustment_history_fc6d09d8",
+      "characterId": "export-adjustment-route-1781975761877-c26163ed11f68",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:16:01.935Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-route-1781975761892": [
+    {
+      "id": "adjustment_history_4feee5f3",
+      "characterId": "adjustment-route-1781975761892",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:16:02.059Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_fb02a910",
+      "characterId": "adjustment-route-1781975761892",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:16:02.087Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-override-route-1781975762100": [
+    {
+      "id": "adjustment_history_8a2cae90",
+      "characterId": "adjustment-override-route-1781975762100",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:16:02.218Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_88536d5d",
+      "characterId": "adjustment-override-route-1781975762100",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaab",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:16:02.261Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_867a263b",
+      "characterId": "adjustment-override-route-1781975762100",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaaa",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:16:02.297Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_3c858e80",
+      "characterId": "adjustment-override-route-1781975762100",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa9",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:16:02.355Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "adjustment-route-1781975966096": [
+    {
+      "id": "adjustment_history_50c4b184",
+      "characterId": "adjustment-route-1781975966096",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:19:26.142Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-override-route-1781975966190": [
+    {
+      "id": "adjustment_history_af797640",
+      "characterId": "adjustment-override-route-1781975966190",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:19:26.207Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_ada031e7",
+      "characterId": "adjustment-override-route-1781975966190",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaab",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:19:26.245Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_abc6e98f",
+      "characterId": "adjustment-override-route-1781975966190",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaaa",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:19:26.271Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_61d2472c",
+      "characterId": "adjustment-override-route-1781975966190",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa9",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:19:26.304Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "export-adjustment-route-1781975966137-478f0bc0fab3": [
+    {
+      "id": "adjustment_history_f200c8a3",
+      "characterId": "export-adjustment-route-1781975966137-478f0bc0fab3",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:19:26.217Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-route-1781976009939-80f12c8b3c5f2": [
+    {
+      "id": "adjustment_history_262501d0",
+      "characterId": "adjustment-route-1781976009939-80f12c8b3c5f2",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:20:09.957Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_da27e203",
+      "characterId": "adjustment-route-1781976009939-80f12c8b3c5f2",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:20:09.969Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-override-route-1781976009976-deb867ad55bfb8": [
+    {
+      "id": "adjustment_history_1d521364",
+      "characterId": "adjustment-override-route-1781976009976-deb867ad55bfb8",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:20:09.988Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_1b78c425",
+      "characterId": "adjustment-override-route-1781976009976-deb867ad55bfb8",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaab",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:20:09.999Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_3f25d951",
+      "characterId": "adjustment-override-route-1781976009976-deb867ad55bfb8",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaaa",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:20:10.019Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_f530e322",
+      "characterId": "adjustment-override-route-1781976009976-deb867ad55bfb8",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa9",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:20:10.032Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "export-adjustment-route-1781976020253-4afc62de8713": [
+    {
+      "id": "adjustment_history_537457be",
+      "characterId": "export-adjustment-route-1781976020253-4afc62de8713",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:20:20.279Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-override-route-1781976020261-299f2c9ca8a34": [
+    {
+      "id": "adjustment_history_6fff7ea0",
+      "characterId": "adjustment-override-route-1781976020261-299f2c9ca8a34",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:20:20.302Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_6e263e84",
+      "characterId": "adjustment-override-route-1781976020261-299f2c9ca8a34",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaab",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:20:20.354Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_6c4cfa88",
+      "characterId": "adjustment-override-route-1781976020261-299f2c9ca8a34",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaaa",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:20:20.395Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_22585b0d",
+      "characterId": "adjustment-override-route-1781976020261-299f2c9ca8a34",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa9",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:20:20.431Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "adjustment-route-1781976066182-a1bbac295fa1d8": [
+    {
+      "id": "adjustment_history_a18d5216",
+      "characterId": "adjustment-route-1781976066182-a1bbac295fa1d8",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:21:06.252Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_a10eaf97",
+      "characterId": "adjustment-route-1781976066182-a1bbac295fa1d8",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:21:06.424Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "export-adjustment-route-1781976066288-75b0d783d7577": [
+    {
+      "id": "adjustment_history_d53a6637",
+      "characterId": "export-adjustment-route-1781976066288-75b0d783d7577",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:21:06.361Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-override-route-1781976066599-5063e90f02e288": [
+    {
+      "id": "adjustment_history_6dda0d94",
+      "characterId": "adjustment-override-route-1781976066599-5063e90f02e288",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:21:06.634Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_6c00c8fd",
+      "characterId": "adjustment-override-route-1781976066599-5063e90f02e288",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaab",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:21:06.670Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_6a27d3f5",
+      "characterId": "adjustment-override-route-1781976066599-5063e90f02e288",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaaa",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:21:06.712Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_2032ea3f",
+      "characterId": "adjustment-override-route-1781976066599-5063e90f02e288",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa9",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:21:06.765Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "adjustment-route-1781976410167-803cb9d1c1a878": [
+    {
+      "id": "adjustment_history_d8eccb23",
+      "characterId": "adjustment-route-1781976410167-803cb9d1c1a878",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:26:50.288Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_dc2ed948",
+      "characterId": "adjustment-route-1781976410167-803cb9d1c1a878",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:26:50.445Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "export-adjustment-route-1781976410248-660de6711a3a18": [
+    {
+      "id": "adjustment_history_ac76234c",
+      "characterId": "export-adjustment-route-1781976410248-660de6711a3a18",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:26:50.400Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-override-route-1781976410459-98536dcc44484": [
+    {
+      "id": "adjustment_history_af628f9a",
+      "characterId": "adjustment-override-route-1781976410459-98536dcc44484",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:26:50.500Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_ad894c77",
+      "characterId": "adjustment-override-route-1781976410459-98536dcc44484",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaab",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:26:50.548Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_abb00bc0",
+      "characterId": "adjustment-override-route-1781976410459-98536dcc44484",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaaa",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:26:50.595Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_61bb70a1",
+      "characterId": "adjustment-override-route-1781976410459-98536dcc44484",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa9",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:26:50.646Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "adjustment-route-1781976797821-ddbc2ea759cae": [
+    {
+      "id": "adjustment_history_7da7dd3a",
+      "characterId": "adjustment-route-1781976797821-ddbc2ea759cae",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:33:18.179Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_c177a769",
+      "characterId": "adjustment-route-1781976797821-ddbc2ea759cae",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:33:18.309Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "import-apply-target-1781976798087-671ae2079836c8": [],
+  "export-adjustment-route-1781976798268-c6541a27a7391": [
+    {
+      "id": "adjustment_history_9a81cd16",
+      "characterId": "export-adjustment-route-1781976798268-c6541a27a7391",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:33:18.393Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-override-route-1781976798335-258a1307e2ed18": [
+    {
+      "id": "adjustment_history_b9f98c7e",
+      "characterId": "adjustment-override-route-1781976798335-258a1307e2ed18",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaac",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:33:18.451Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_b8209e9b",
+      "characterId": "adjustment-override-route-1781976798335-258a1307e2ed18",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaab",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:33:18.510Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_b6476319",
+      "characterId": "adjustment-override-route-1781976798335-258a1307e2ed18",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaaa",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:33:18.579Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_6c52d2a2",
+      "characterId": "adjustment-override-route-1781976798335-258a1307e2ed18",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa9",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:33:18.655Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "adjustment-route-1781977029443-6c2f6360feba08": [
+    {
+      "id": "adjustment_history_65892728",
+      "characterId": "adjustment-route-1781977029443-6c2f6360feba08",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:37:09.718Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_ff6ff9b6",
+      "characterId": "adjustment-route-1781977029443-6c2f6360feba08",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:37:09.785Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-override-route-1781977029803-78b0c78e919f88": [
+    {
+      "id": "adjustment_history_ed142403",
+      "characterId": "adjustment-override-route-1781977029803-78b0c78e919f88",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:37:09.861Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_10c1d6d9",
+      "characterId": "adjustment-override-route-1781977029803-78b0c78e919f88",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa5",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:37:10.091Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_6ca1b006",
+      "characterId": "adjustment-override-route-1781977029803-78b0c78e919f88",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_d964170c",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:37:10.278Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_3b870bd9",
+      "characterId": "adjustment-override-route-1781977029803-78b0c78e919f88",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531eca8e",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:37:10.351Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "export-adjustment-route-1781977029678-265c6f2467f07": [
+    {
+      "id": "adjustment_history_75d1628e",
+      "characterId": "export-adjustment-route-1781977029678-265c6f2467f07",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:37:10.001Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "import-apply-target-1781977030050-9d92c699f46768": [],
+  "adjustment-route-1781977186910-471b6155f171c8": [
+    {
+      "id": "adjustment_history_c879daf9",
+      "characterId": "adjustment-route-1781977186910-471b6155f171c8",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:39:47.117Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_4667675c",
+      "characterId": "adjustment-route-1781977186910-471b6155f171c8",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:39:47.466Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "import-apply-target-1781977187279-b6a92796b872e": [],
+  "adjustment-override-route-1781977187558-087979995e0e7": [
+    {
+      "id": "adjustment_history_3879a599",
+      "characterId": "adjustment-override-route-1781977187558-087979995e0e7",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:39:47.635Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_36a0ca5c",
+      "characterId": "adjustment-override-route-1781977187558-087979995e0e7",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa5",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:39:47.743Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_92802a33",
+      "characterId": "adjustment-override-route-1781977187558-087979995e0e7",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_d964170c",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:39:47.810Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_61653541",
+      "characterId": "adjustment-override-route-1781977187558-087979995e0e7",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531eca8e",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:39:47.888Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "export-adjustment-route-1781977187142-4af01138da79e": [
+    {
+      "id": "adjustment_history_875ea3c8",
+      "characterId": "export-adjustment-route-1781977187142-4af01138da79e",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:39:47.664Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-route-1781977317178-f2975adcb4b78": [
+    {
+      "id": "adjustment_history_fb189af1",
+      "characterId": "adjustment-route-1781977317178-f2975adcb4b78",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:41:57.363Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_6dfe6e17",
+      "characterId": "adjustment-route-1781977317178-f2975adcb4b78",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:41:57.613Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "export-adjustment-route-1781977317422-dfd4697fdb6868": [
+    {
+      "id": "adjustment_history_4df73fa6",
+      "characterId": "export-adjustment-route-1781977317422-dfd4697fdb6868",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:41:57.693Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-override-route-1781977317711-85172c961e6128": [
+    {
+      "id": "adjustment_history_5d122948",
+      "characterId": "adjustment-override-route-1781977317711-85172c961e6128",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:41:57.777Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_5cea840f",
+      "characterId": "adjustment-override-route-1781977317711-85172c961e6128",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa5",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:41:58.088Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_b8ca6787",
+      "characterId": "adjustment-override-route-1781977317711-85172c961e6128",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_d964170c",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:41:58.297Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_87b02190",
+      "characterId": "adjustment-override-route-1781977317711-85172c961e6128",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531eca8e",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-20T17:41:58.413Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "import-apply-target-1781977317542-56182374362c18": [],
+  "adjustment-route-1782013799426-9dc9457edfdcd8": [
+    {
+      "id": "adjustment_history_50336d94",
+      "characterId": "adjustment-route-1782013799426-9dc9457edfdcd8",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T03:49:59.563Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_d10e8e5f",
+      "characterId": "adjustment-route-1782013799426-9dc9457edfdcd8",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T03:49:59.609Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "import-apply-target-1782013799866-9d9379b8a77b3": [],
+  "adjustment-override-route-1782013799625-cb00092d71ae": [
+    {
+      "id": "adjustment_history_4d2ec534",
+      "characterId": "adjustment-override-route-1782013799625-cb00092d71ae",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T03:50:00.218Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_4b56651e",
+      "characterId": "adjustment-override-route-1782013799625-cb00092d71ae",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa5",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T03:50:00.440Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_a735d130",
+      "characterId": "adjustment-override-route-1782013799625-cb00092d71ae",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_d964170c",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T03:50:00.545Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_761b38e1",
+      "characterId": "adjustment-override-route-1782013799625-cb00092d71ae",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531eca8e",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T03:50:00.653Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "export-adjustment-route-1782013800573-2b4c312128b9a": [
+    {
+      "id": "adjustment_history_b362b317",
+      "characterId": "export-adjustment-route-1782013800573-2b4c312128b9a",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T03:50:00.760Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "export-adjustment-route-1782014176353-59e105893d3698": [
+    {
+      "id": "adjustment_history_be6dfcde",
+      "characterId": "export-adjustment-route-1782014176353-59e105893d3698",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T03:56:16.724Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "import-apply-target-1782014176448-c9e4848b911248": [],
+  "adjustment-route-1782014175853-35832ece1c5cc": [
+    {
+      "id": "adjustment_history_e595469a",
+      "characterId": "adjustment-route-1782014175853-35832ece1c5cc",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T03:56:17.021Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_28db6ec4",
+      "characterId": "adjustment-route-1782014175853-35832ece1c5cc",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T03:56:17.171Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-override-route-1782014177195-1040959904d988": [
+    {
+      "id": "adjustment_history_c52dd644",
+      "characterId": "adjustment-override-route-1782014177195-1040959904d988",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T03:56:17.293Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_c354f040",
+      "characterId": "adjustment-override-route-1782014177195-1040959904d988",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa5",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T03:56:17.375Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_1f345f1b",
+      "characterId": "adjustment-override-route-1782014177195-1040959904d988",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_d964170c",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T03:56:17.482Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_ee1a19fd",
+      "characterId": "adjustment-override-route-1782014177195-1040959904d988",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531eca8e",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T03:56:17.605Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "adjustment-route-1782014311508-6afadb41660788": [
+    {
+      "id": "adjustment_history_23ae3553",
+      "characterId": "adjustment-route-1782014311508-6afadb41660788",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T03:58:31.949Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_abc73c01",
+      "characterId": "adjustment-route-1782014311508-6afadb41660788",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T03:58:32.218Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-override-route-1782014312244-a990cb22ada0d8": [
+    {
+      "id": "adjustment_history_f896e427",
+      "characterId": "adjustment-override-route-1782014312244-a990cb22ada0d8",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T03:58:32.440Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_f6be8509",
+      "characterId": "adjustment-override-route-1782014312244-a990cb22ada0d8",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa5",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T03:58:32.670Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_5450f0bc",
+      "characterId": "adjustment-override-route-1782014312244-a990cb22ada0d8",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_d964170c",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T03:58:33.355Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_2336bac1",
+      "characterId": "adjustment-override-route-1782014312244-a990cb22ada0d8",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531eca8e",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T03:58:33.519Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "import-apply-target-1782014312467-7ca2d202a12bc": [],
+  "export-adjustment-route-1782014312919-cf98a48f6512f8": [
+    {
+      "id": "adjustment_history_5b8f42d2",
+      "characterId": "export-adjustment-route-1782014312919-cf98a48f6512f8",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T03:58:33.161Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-route-1782014449597-e4ee6994f464": [
+    {
+      "id": "adjustment_history_1c70e59e",
+      "characterId": "adjustment-route-1782014449597-e4ee6994f464",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T04:00:50.243Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_e4fe752c",
+      "characterId": "adjustment-route-1782014449597-e4ee6994f464",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T04:00:50.593Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "export-adjustment-route-1782014450111-fa069237b4df28": [
+    {
+      "id": "adjustment_history_ca3d75de",
+      "characterId": "export-adjustment-route-1782014450111-fa069237b4df28",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T04:00:50.399Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "import-apply-target-1782014450769-ae98bb6066966": [],
+  "adjustment-override-route-1782014450687-69dab52e84ef18": [
+    {
+      "id": "adjustment_history_8b3d3c1c",
+      "characterId": "adjustment-override-route-1782014450687-69dab52e84ef18",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T04:00:51.370Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_8964bb35",
+      "characterId": "adjustment-override-route-1782014450687-69dab52e84ef18",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa5",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T04:00:51.510Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_e54432e7",
+      "characterId": "adjustment-override-route-1782014450687-69dab52e84ef18",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_d964170c",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T04:00:51.648Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_b429a901",
+      "characterId": "adjustment-override-route-1782014450687-69dab52e84ef18",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531eca8e",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T04:00:51.791Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "adjustment-route-1782014678966-e1d2ba6b438668": [
+    {
+      "id": "adjustment_history_aca5e3ce",
+      "characterId": "adjustment-route-1782014678966-e1d2ba6b438668",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T04:04:39.711Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_f2984b45",
+      "characterId": "adjustment-route-1782014678966-e1d2ba6b438668",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T04:04:39.794Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-override-route-1782014679822-fb9faededbe61": [
+    {
+      "id": "adjustment_history_432e6437",
+      "characterId": "adjustment-override-route-1782014679822-fb9faededbe61",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T04:04:39.955Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_6890682b",
+      "characterId": "adjustment-override-route-1782014679822-fb9faededbe61",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa5",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T04:04:41.032Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_c46fe648",
+      "characterId": "adjustment-override-route-1782014679822-fb9faededbe61",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_d964170c",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T04:04:41.181Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_9355b0c9",
+      "characterId": "adjustment-override-route-1782014679822-fb9faededbe61",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531eca8e",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T04:04:41.349Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "import-apply-target-1782014679644-2a6d7f4ef7c138": [],
+  "export-adjustment-route-1782014680117-47fe262b6b0df": [
+    {
+      "id": "adjustment_history_b2b53ee8",
+      "characterId": "export-adjustment-route-1782014680117-47fe262b6b0df",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T04:04:40.894Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-route-1782036463493-d4ff1ba773154": [
+    {
+      "id": "adjustment_history_1e46a1a7",
+      "characterId": "adjustment-route-1782036463493-d4ff1ba773154",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:07:44.242Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_f51052a",
+      "characterId": "adjustment-route-1782036463493-d4ff1ba773154",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:07:44.337Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-override-route-1782036464366-514b6d4077c6": [
+    {
+      "id": "adjustment_history_74b2de90",
+      "characterId": "adjustment-override-route-1782036464366-514b6d4077c6",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:07:44.916Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_748c1d9a",
+      "characterId": "adjustment-override-route-1782036464366-514b6d4077c6",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa5",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:07:45.411Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_d06c7d50",
+      "characterId": "adjustment-override-route-1782036464366-514b6d4077c6",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_d964170c",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:07:45.743Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_9f51ed1e",
+      "characterId": "adjustment-override-route-1782036464366-514b6d4077c6",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531eca8e",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:07:45.876Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "import-apply-target-1782036464970-f70b9b87aaa618": [],
+  "export-adjustment-route-1782036464058-9394c7413c23e8": [
+    {
+      "id": "adjustment_history_9760976f",
+      "characterId": "export-adjustment-route-1782036464058-9394c7413c23e8",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:07:45.533Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-route-1782036700542-00717caa5f0998": [
+    {
+      "id": "adjustment_history_a1f747d7",
+      "characterId": "adjustment-route-1782036700542-00717caa5f0998",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:11:41.315Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_3cf27392",
+      "characterId": "adjustment-route-1782036700542-00717caa5f0998",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:11:42.065Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "export-adjustment-route-1782036701845-89443e7ce7873": [
+    {
+      "id": "adjustment_history_7ad4a9fd",
+      "characterId": "export-adjustment-route-1782036701845-89443e7ce7873",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:11:42.684Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-override-route-1782036702166-21d0870ae0f75": [
+    {
+      "id": "adjustment_history_608ff221",
+      "characterId": "adjustment-override-route-1782036702166-21d0870ae0f75",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:11:42.842Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_6068d089",
+      "characterId": "adjustment-override-route-1782036702166-21d0870ae0f75",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa5",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:11:43.295Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_bc4982b6",
+      "characterId": "adjustment-override-route-1782036702166-21d0870ae0f75",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_d964170c",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:11:43.636Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_8b2ef9c8",
+      "characterId": "adjustment-override-route-1782036702166-21d0870ae0f75",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531eca8e",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:11:43.787Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "import-apply-target-1782036702887-757b70b3abe038": [],
+  "export-adjustment-route-1782036723247-0bf633793b896": [
+    {
+      "id": "adjustment_history_7b36d099",
+      "characterId": "export-adjustment-route-1782036723247-0bf633793b896",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:12:03.689Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-route-1782036722466-9c0642dfcc9438": [
+    {
+      "id": "adjustment_history_7d7f3fbf",
+      "characterId": "adjustment-route-1782036722466-9c0642dfcc9438",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:12:03.868Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_a48b67c5",
+      "characterId": "adjustment-route-1782036722466-9c0642dfcc9438",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:12:04.090Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-override-route-1782036724130-15ab06bd4137c8": [
+    {
+      "id": "adjustment_history_99d090df",
+      "characterId": "adjustment-override-route-1782036724130-15ab06bd4137c8",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:12:04.717Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_99ab436d",
+      "characterId": "adjustment-override-route-1782036724130-15ab06bd4137c8",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa5",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:12:05.571Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_f58b0d39",
+      "characterId": "adjustment-override-route-1782036724130-15ab06bd4137c8",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_d964170c",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:12:05.715Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_c4708bcd",
+      "characterId": "adjustment-override-route-1782036724130-15ab06bd4137c8",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531eca8e",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:12:05.886Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "import-apply-target-1782036724881-57abb30be5bad8": [],
+  "adjustment-route-1782036756665-5d0ba0b385954": [
+    {
+      "id": "adjustment_history_a76e249c",
+      "characterId": "adjustment-route-1782036756665-5d0ba0b385954",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:12:38.795Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_ae6b6809",
+      "characterId": "adjustment-route-1782036756665-5d0ba0b385954",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:12:40.036Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "export-adjustment-route-1782036757291-8885666fe15158": [
+    {
+      "id": "adjustment_history_f8757e43",
+      "characterId": "export-adjustment-route-1782036757291-8885666fe15158",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:12:39.129Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "import-apply-target-1782036758952-3568854da7eb18": [],
+  "adjustment-override-route-1782036760139-3f19b66e2f3348": [
+    {
+      "id": "adjustment_history_83765851",
+      "characterId": "adjustment-override-route-1782036760139-3f19b66e2f3348",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:12:40.320Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_819d8cd2",
+      "characterId": "adjustment-override-route-1782036760139-3f19b66e2f3348",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa5",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:12:40.474Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_dd7d59a5",
+      "characterId": "adjustment-override-route-1782036760139-3f19b66e2f3348",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_d964170c",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:12:40.622Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_ac632f2b",
+      "characterId": "adjustment-override-route-1782036760139-3f19b66e2f3348",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531eca8e",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:12:40.818Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "export-adjustment-route-1782036848820-92f550ea12f9c": [
+    {
+      "id": "adjustment_history_4ca918eb",
+      "characterId": "export-adjustment-route-1782036848820-92f550ea12f9c",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:14:09.314Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-route-1782036847969-2b2f04dbdb918": [
+    {
+      "id": "adjustment_history_8b64f651",
+      "characterId": "adjustment-route-1782036847969-2b2f04dbdb918",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:14:09.424Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_663ee488",
+      "characterId": "adjustment-route-1782036847969-2b2f04dbdb918",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:14:09.670Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "import-apply-target-1782036849788-b33d5f9edf1db8": [],
+  "adjustment-override-route-1782036850331-abb12d06c2008": [
+    {
+      "id": "adjustment_history_ceb175bf",
+      "characterId": "adjustment-override-route-1782036850331-abb12d06c2008",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:14:10.562Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_ccd96956",
+      "characterId": "adjustment-override-route-1782036850331-abb12d06c2008",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa5",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:14:10.803Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_2a6a281f",
+      "characterId": "adjustment-override-route-1782036850331-abb12d06c2008",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_d964170c",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:14:11.180Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_f9506607",
+      "characterId": "adjustment-override-route-1782036850331-abb12d06c2008",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531eca8e",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:14:11.440Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "adjustment-route-1782036881272-3d82743d4758d": [
+    {
+      "id": "adjustment_history_bc83fe95",
+      "characterId": "adjustment-route-1782036881272-3d82743d4758d",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:14:42.647Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_47826f2d",
+      "characterId": "adjustment-route-1782036881272-3d82743d4758d",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:14:42.812Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-override-route-1782036883354-5dac642b341aa": [
+    {
+      "id": "adjustment_history_a1e6c186",
+      "characterId": "adjustment-override-route-1782036883354-5dac642b341aa",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:14:44.107Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_a00fb3a7",
+      "characterId": "adjustment-override-route-1782036883354-5dac642b341aa",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa5",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:14:44.602Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_fbf01037",
+      "characterId": "adjustment-override-route-1782036883354-5dac642b341aa",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_d964170c",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:14:44.929Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_cc85da9d",
+      "characterId": "adjustment-override-route-1782036883354-5dac642b341aa",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531eca8e",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:14:45.091Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "import-apply-target-1782036883794-1571763be5348": [],
+  "export-adjustment-route-1782036882469-ebc8a9d4dcd68": [
+    {
+      "id": "adjustment_history_4ac2c2d0",
+      "characterId": "export-adjustment-route-1782036882469-ebc8a9d4dcd68",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:14:44.651Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "import-history-target-1782037193892-6d06979a5bab68": [],
+  "adjustment-route-1782037193898-5c36b287fb325": [
+    {
+      "id": "adjustment_history_ec85c630",
+      "characterId": "adjustment-route-1782037193898-5c36b287fb325",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:19:55.407Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_a0bca4d6",
+      "characterId": "adjustment-route-1782037193898-5c36b287fb325",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:19:56.459Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "export-adjustment-route-1782037195187-52972669636ae": [
+    {
+      "id": "adjustment_history_d1224647",
+      "characterId": "export-adjustment-route-1782037195187-52972669636ae",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:19:56.024Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-override-route-1782037196507-befaa620e5f768": [
+    {
+      "id": "adjustment_history_2e3afc59",
+      "characterId": "adjustment-override-route-1782037196507-befaa620e5f768",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:19:56.798Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_2c627f14",
+      "characterId": "adjustment-override-route-1782037196507-befaa620e5f768",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa5",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:19:56.947Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_89f31891",
+      "characterId": "adjustment-override-route-1782037196507-befaa620e5f768",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_d964170c",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:19:57.226Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_58d8f13d",
+      "characterId": "adjustment-override-route-1782037196507-befaa620e5f768",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531eca8e",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:19:57.427Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "import-apply-target-1782037197575-5181e83a4f40e8": [],
+  "import-history-target-1782037253176-b6f666fdcba808": [],
+  "export-adjustment-route-1782037255268-7db7f4b7e40268": [
+    {
+      "id": "adjustment_history_cecef07b",
+      "characterId": "export-adjustment-route-1782037255268-7db7f4b7e40268",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:20:56.268Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-route-1782037253199-d23db044332aa8": [
+    {
+      "id": "adjustment_history_a2d14f23",
+      "characterId": "adjustment-route-1782037253199-d23db044332aa8",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:20:56.568Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_c3ad271d",
+      "characterId": "adjustment-route-1782037253199-d23db044332aa8",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:20:57.095Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-override-route-1782037257405-8fae8d4a128e78": [
+    {
+      "id": "adjustment_history_82208386",
+      "characterId": "adjustment-override-route-1782037257405-8fae8d4a128e78",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:20:57.593Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_81f9a887",
+      "characterId": "adjustment-override-route-1782037257405-8fae8d4a128e78",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa5",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:20:58.020Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_ddd98138",
+      "characterId": "adjustment-override-route-1782037257405-8fae8d4a128e78",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_d964170c",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:20:58.203Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_acc04e61",
+      "characterId": "adjustment-override-route-1782037257405-8fae8d4a128e78",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531eca8e",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:20:58.638Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "import-apply-target-1782037257258-bf2e0465916cb8": [],
+  "export-adjustment-route-1782037499211-a96a289754311": [
+    {
+      "id": "adjustment_history_a395e8eb",
+      "characterId": "export-adjustment-route-1782037499211-a96a289754311",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:24:59.745Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-route-1782037498646-4e93d7bbe79da8": [
+    {
+      "id": "adjustment_history_45c6b6ad",
+      "characterId": "adjustment-route-1782037498646-4e93d7bbe79da8",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:25:00.756Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_f2dd2d2f",
+      "characterId": "adjustment-route-1782037498646-4e93d7bbe79da8",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:25:01.924Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "import-history-target-1782037498626-88ed6be27a7988": [],
+  "import-apply-target-1782037502055-778115b6d7f358": [],
+  "adjustment-override-route-1782037502184-f7b056ea1e9c88": [
+    {
+      "id": "adjustment_history_f266e5b9",
+      "characterId": "adjustment-override-route-1782037502184-f7b056ea1e9c88",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:25:02.563Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_f08e0f35",
+      "characterId": "adjustment-override-route-1782037502184-f7b056ea1e9c88",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa5",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:25:02.689Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_4c6dd7ea",
+      "characterId": "adjustment-override-route-1782037502184-f7b056ea1e9c88",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_d964170c",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:25:02.824Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_1b53567e",
+      "characterId": "adjustment-override-route-1782037502184-f7b056ea1e9c88",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531eca8e",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:25:02.995Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "adjustment-route-1782037546887-c59a91918ecec": [
+    {
+      "id": "adjustment_history_2ceae45",
+      "characterId": "adjustment-route-1782037546887-c59a91918ecec",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:25:48.812Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_f51ca7cf",
+      "characterId": "adjustment-route-1782037546887-c59a91918ecec",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:25:49.439Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "export-adjustment-route-1782037548738-0bcfe5b51da328": [
+    {
+      "id": "adjustment_history_aac0b6e0",
+      "characterId": "export-adjustment-route-1782037548738-0bcfe5b51da328",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:25:50.660Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "import-history-target-1782037546833-f5f94e4f32c38": [],
+  "import-apply-target-1782037549549-c6c07f00ee725": [],
+  "adjustment-override-route-1782037549853-82566d5c69969": [
+    {
+      "id": "adjustment_history_471a2f06",
+      "characterId": "adjustment-override-route-1782037549853-82566d5c69969",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:25:51.294Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_4541c502",
+      "characterId": "adjustment-override-route-1782037549853-82566d5c69969",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa5",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:25:51.497Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_a1219197",
+      "characterId": "adjustment-override-route-1782037549853-82566d5c69969",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_d964170c",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:25:51.643Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_700769e6",
+      "characterId": "adjustment-override-route-1782037549853-82566d5c69969",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531eca8e",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:25:51.841Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "import-history-target-1782037695720-2cbb9b93338f88": [],
+  "adjustment-route-1782037695732-0e52ff392adf": [
+    {
+      "id": "adjustment_history_ceec5239",
+      "characterId": "adjustment-route-1782037695732-0e52ff392adf",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:28:18.275Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_3946ad8c",
+      "characterId": "adjustment-route-1782037695732-0e52ff392adf",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:28:19.365Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "import-apply-target-1782037698526-d6156178362708": [],
+  "export-adjustment-route-1782037697205-a4d091c951792": [
+    {
+      "id": "adjustment_history_97b119f5",
+      "characterId": "export-adjustment-route-1782037697205-a4d091c951792",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:28:19.483Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "adjustment-override-route-1782037699575-826105e359b9a8": [
+    {
+      "id": "adjustment_history_3364d8d7",
+      "characterId": "adjustment-override-route-1782037699575-826105e359b9a8",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:28:19.745Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_318c089f",
+      "characterId": "adjustment-override-route-1782037699575-826105e359b9a8",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa5",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:28:19.881Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_b2f1e421",
+      "characterId": "adjustment-override-route-1782037699575-826105e359b9a8",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_d964170c",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:28:20.023Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_81d7b8af",
+      "characterId": "adjustment-override-route-1782037699575-826105e359b9a8",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531eca8e",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:28:20.211Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "adjustment-route-1782037731030-1d79735c69cd6": [
+    {
+      "id": "adjustment_history_8fba8f91",
+      "characterId": "adjustment-route-1782037731030-1d79735c69cd6",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:28:53.610Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_4e14775a",
+      "characterId": "adjustment-route-1782037731030-1d79735c69cd6",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:28:53.879Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "import-history-target-1782037730963-1854cbcf19b268": [],
+  "adjustment-override-route-1782037734171-daa00f49f13": [
+    {
+      "id": "adjustment_history_96b5636e",
+      "characterId": "adjustment-override-route-1782037734171-daa00f49f13",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:28:54.890Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_968d3448",
+      "characterId": "adjustment-override-route-1782037734171-daa00f49f13",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa5",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:28:55.049Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_f26df880",
+      "characterId": "adjustment-override-route-1782037734171-daa00f49f13",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_d964170c",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:28:55.434Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_c153d569",
+      "characterId": "adjustment-override-route-1782037734171-daa00f49f13",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531eca8e",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:28:55.649Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "export-adjustment-route-1782037734236-3127ef6181a168": [
+    {
+      "id": "adjustment_history_50390ea",
+      "characterId": "export-adjustment-route-1782037734236-3127ef6181a168",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T10:28:55.986Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "import-apply-target-1782037734005-cf1bee91b8813": [],
+  "adjustment-route-1782054965259-604303f031ac3": [
+    {
+      "id": "adjustment_history_b435ecac",
+      "characterId": "adjustment-route-1782054965259-604303f031ac3",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T15:16:10.987Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_11e9c0d4",
+      "characterId": "adjustment-route-1782054965259-604303f031ac3",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T15:16:12.035Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "export-adjustment-route-1782054967740-dafe457f37bd38": [
+    {
+      "id": "adjustment_history_76e72338",
+      "characterId": "export-adjustment-route-1782054967740-dafe457f37bd38",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T15:16:12.293Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "import-apply-target-1782054971716-13fa4b63717198": [],
+  "adjustment-override-route-1782054972089-49612af8cb2208": [
+    {
+      "id": "adjustment_history_cced68eb",
+      "characterId": "adjustment-override-route-1782054972089-49612af8cb2208",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T15:16:13.254Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_cb156b48",
+      "characterId": "adjustment-override-route-1782054972089-49612af8cb2208",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa5",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T15:16:13.533Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_26f5b4f4",
+      "characterId": "adjustment-override-route-1782054972089-49612af8cb2208",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_d964170c",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T15:16:13.809Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_f78c6c74",
+      "characterId": "adjustment-override-route-1782054972089-49612af8cb2208",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531eca8e",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T15:16:14.186Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ],
+  "adjustment-route-1782055082472-dfb9932d5317a8": [
+    {
+      "id": "adjustment_history_b3411b93",
+      "characterId": "adjustment-route-1782055082472-dfb9932d5317a8",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T15:18:05.714Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_39f80219",
+      "characterId": "adjustment-route-1782055082472-dfb9932d5317a8",
+      "action": "rollback",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T15:18:07.859Z",
+      "reasons": [
+        "rollback operations applied to cloned character state",
+        "input character state was not mutated"
+      ]
+    }
+  ],
+  "export-adjustment-route-1782055084057-81e74954d3c548": [
+    {
+      "id": "adjustment_history_89df8d59",
+      "characterId": "export-adjustment-route-1782055084057-81e74954d3c548",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T15:18:06.856Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    }
+  ],
+  "import-history-target-1782055082444-b9940bc6d23898": [],
+  "import-apply-target-1782055084313-0097ca1495ff78": [],
+  "adjustment-override-route-1782055087997-562bdcb6516ed": [
+    {
+      "id": "adjustment_history_734ef495",
+      "characterId": "adjustment-override-route-1782055087997-562bdcb6516ed",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa6",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T15:18:08.325Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_7176f74f",
+      "characterId": "adjustment-override-route-1782055087997-562bdcb6516ed",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531ecaa5",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T15:18:08.607Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_cd574f07",
+      "characterId": "adjustment-override-route-1782055087997-562bdcb6516ed",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_d964170c",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T15:18:08.915Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated"
+      ]
+    },
+    {
+      "id": "adjustment_history_9dedfba1",
+      "characterId": "adjustment-override-route-1782055087997-562bdcb6516ed",
+      "action": "apply",
+      "status": "applied",
+      "snapshotId": "parameter_snapshot_531eca8e",
+      "operationCount": 1,
+      "targetPaths": [
+        "metaState.selfControl"
+      ],
+      "createdAt": "2026-06-21T15:18:09.265Z",
+      "reasons": [
+        "patch applied to cloned character state",
+        "original character state was not mutated",
+        "active governance cooldown overridden by explicit human reason",
+        "manual correction after dashboard review"
+      ],
+      "governanceOverride": {
+        "used": true,
+        "reason": "manual correction after dashboard review"
+      }
+    }
+  ]
+}

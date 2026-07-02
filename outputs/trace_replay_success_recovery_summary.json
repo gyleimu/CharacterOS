@@ -1,0 +1,68 @@
+{
+  "scenario": "success_recovery",
+  "title": "认可恢复",
+  "steps": 3,
+  "coordinateDelta": {
+    "openness": 0.0003,
+    "conscientiousness": 0.0003,
+    "extroversion": 0.0003,
+    "agreeableness": 0.0001,
+    "neuroticism": -0.0003,
+    "trust": 0.0001,
+    "attachment": 0,
+    "fear": -0.0003,
+    "control": 0.0003
+  },
+  "firstForce": {
+    "trust": 0.0003,
+    "fear": -0.0005
+  },
+  "lastForce": {
+    "trust": 0.002,
+    "fear": -0.0022
+  },
+  "forceDelta": {
+    "trust": 0.0017,
+    "fear": -0.0017
+  },
+  "firstVelocity": {
+    "trust": 0,
+    "fear": 0
+  },
+  "lastVelocity": {
+    "trust": 0.0001,
+    "fear": -0.0002
+  },
+  "velocityDelta": {
+    "trust": 0.0001,
+    "fear": -0.0002
+  },
+  "clusterTrends": [
+    {
+      "category": "success",
+      "firstMass": 0.66,
+      "lastMass": 1.98,
+      "massDelta": 1.32,
+      "firstDensity": 1,
+      "lastDensity": 1,
+      "densityDelta": 0,
+      "firstStability": 1,
+      "lastStability": 1,
+      "stabilityDelta": 0
+    },
+    {
+      "category": "support",
+      "firstMass": 0.726,
+      "lastMass": 0.726,
+      "massDelta": 0,
+      "firstDensity": 1,
+      "lastDensity": 1,
+      "densityDelta": 0,
+      "firstStability": 1,
+      "lastStability": 1,
+      "stabilityDelta": 0
+    }
+  ],
+  "dominantClusterCategory": "success",
+  "dominantDirection": "recovery_drift"
+}

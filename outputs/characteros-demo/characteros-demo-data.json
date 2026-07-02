@@ -1,0 +1,4419 @@
+{
+  "version": "10.73.0",
+  "generatedAt": "2026-06-28T00:00:00.000Z",
+  "character": {
+    "id": "lin_fan",
+    "name": "林凡",
+    "description": "一个内向、缺爱、害怕被抛弃，并会在亲密关系中强烈等待确认的人。",
+    "tags": [
+      "内向",
+      "缺爱",
+      "害怕被抛弃",
+      "亲密关系敏感",
+      "等待"
+    ]
+  },
+  "overview": {
+    "thesis": "CharacterOS 展示的不是聊天回复，而是经历如何沉积成记忆、信念、缺失、欲望与行为倾向。",
+    "currentState": "林凡的核心张力是：强依恋与低信任同时存在，亲密关系会迅速触发安全感缺失。",
+    "nextLikelyMoment": "如果无人观察，系统预计他会进入drowsy状态，并把情绪转向写下想法或撤回独处。",
+    "reviewHint": "你可以先看 Today 和 Decision，再进入 Mind Galaxy 放大观察影响因子。"
+  },
+  "currentState": {
+    "surfaceState": "表面安静、克制，像是在等一个能证明关系仍然安全的信号。",
+    "internalState": "内部已经把等待解释成关系风险：旧记忆、低信任和高依恋同时被拉起。",
+    "dominantEmotion": "表面可能克制，内部会有明显不安；安全感缺失会被快速激活。",
+    "dominantBelief": "亲密关系并不可靠。",
+    "dominantNeed": "安全感",
+    "dominantDesire": "先降低风险",
+    "stressLoad": 1,
+    "boundaryPhase": "overflow",
+    "shortTermTrend": "如果没有新证据，他会更频繁检查消息，并逐渐从克制转向撤回或追问。",
+    "repairCondition": "稳定解释、可验证行动和持续在场感会降低边界压力。",
+    "risk": "当前属于边界溢出：不是普通情绪波动，而是长期人格结构被短期事件触发。"
+  },
+  "causalChain": [
+    {
+      "type": "experience",
+      "label": "母亲雨夜离开",
+      "intensity": 0.96,
+      "explanation": "早期经历提供了关系突然消失的原始模板。",
+      "sourceIds": [
+        "memory_lin_fan_origin_mother_rain_night"
+      ]
+    },
+    {
+      "type": "memory",
+      "label": "小时候母亲在雨夜离开，他等了一整晚。",
+      "intensity": 0.96,
+      "explanation": "当前等待会重新触发这类高权重记忆。",
+      "sourceIds": [
+        "memory_lin_fan_origin_mother_rain_night"
+      ]
+    },
+    {
+      "type": "belief",
+      "label": "亲密关系并不可靠。",
+      "intensity": 0.82,
+      "explanation": "记忆反复强化后形成的关系解释规则。"
+    },
+    {
+      "type": "schema",
+      "label": "安全寻求图式",
+      "intensity": 0.62,
+      "explanation": "当前最容易被环境压力牵动的解释图式。"
+    },
+    {
+      "type": "need",
+      "label": "安全感",
+      "intensity": 0.56,
+      "explanation": "行为背后真正想守住的心理缺口。"
+    },
+    {
+      "type": "desire",
+      "label": "先降低风险",
+      "intensity": 0.61,
+      "explanation": "需求被转译成可行动的欲望方向。"
+    },
+    {
+      "type": "behavior",
+      "label": "谈判主导权",
+      "intensity": 0.78,
+      "explanation": "最终浮到表层的行为策略，不等于已经执行。"
+    }
+  ],
+  "galaxyNodes": [
+    {
+      "id": "causal_0_experience",
+      "type": "experience",
+      "label": "母亲雨夜离开",
+      "intensity": 0.96,
+      "active": false,
+      "explanation": "早期经历提供了关系突然消失的原始模板。",
+      "sourceIds": [
+        "memory_lin_fan_origin_mother_rain_night"
+      ],
+      "influences": [
+        "小时候母亲在雨夜离开，他等了一整晚。"
+      ]
+    },
+    {
+      "id": "causal_1_memory",
+      "type": "memory",
+      "label": "小时候母亲在雨夜离开，他等了一整晚。",
+      "intensity": 0.96,
+      "active": false,
+      "explanation": "当前等待会重新触发这类高权重记忆。",
+      "sourceIds": [
+        "memory_lin_fan_origin_mother_rain_night"
+      ],
+      "influences": [
+        "亲密关系并不可靠。"
+      ]
+    },
+    {
+      "id": "causal_2_belief",
+      "type": "belief",
+      "label": "亲密关系并不可靠。",
+      "intensity": 0.82,
+      "active": true,
+      "explanation": "记忆反复强化后形成的关系解释规则。",
+      "influences": [
+        "安全寻求图式"
+      ]
+    },
+    {
+      "id": "causal_3_schema",
+      "type": "schema",
+      "label": "安全寻求图式",
+      "intensity": 0.62,
+      "active": true,
+      "explanation": "当前最容易被环境压力牵动的解释图式。",
+      "influences": [
+        "安全感"
+      ]
+    },
+    {
+      "id": "causal_4_need",
+      "type": "need",
+      "label": "安全感",
+      "intensity": 0.56,
+      "active": true,
+      "explanation": "行为背后真正想守住的心理缺口。",
+      "influences": [
+        "先降低风险"
+      ]
+    },
+    {
+      "id": "causal_5_desire",
+      "type": "desire",
+      "label": "先降低风险",
+      "intensity": 0.61,
+      "active": true,
+      "explanation": "需求被转译成可行动的欲望方向。",
+      "influences": [
+        "谈判主导权"
+      ]
+    },
+    {
+      "id": "causal_6_behavior",
+      "type": "behavior",
+      "label": "谈判主导权",
+      "intensity": 0.78,
+      "active": true,
+      "explanation": "最终浮到表层的行为策略，不等于已经执行。",
+      "influences": []
+    }
+  ],
+  "reviewWarnings": [
+    {
+      "level": "info",
+      "message": "Demo 数据来自真实 deterministic 引擎执行，UI 文案为生成脚本派生解释。",
+      "relatedFields": [
+        "decision",
+        "lifePreview",
+        "scenarios"
+      ]
+    },
+    {
+      "level": "warn",
+      "message": "Mind Galaxy 源 artifact 为 10.50.0，当前 demo shell 为 10.73.0；主界面已用当前数据补充因果星云层。",
+      "relatedFields": [
+        "galaxy.artifactVersion",
+        "version"
+      ]
+    },
+    {
+      "level": "warn",
+      "message": "边界处于 overflow，但候选行为分值未达到自动执行阈值；当前仍是只读预览，不执行动作。",
+      "relatedFields": [
+        "today.boundarySignal",
+        "lifePreview.selfActionCandidates"
+      ]
+    }
+  ],
+  "realityAudit": {
+    "version": "10.73.0",
+    "generatedAt": "2026-07-02T00:00:00.000Z",
+    "summary": {
+      "total": 6,
+      "pass": 6,
+      "warn": 0,
+      "fail": 0
+    },
+    "cases": [
+      {
+        "id": "audit_same_character_negative_event",
+        "label": "A. Same Character Before / After — 负向失联事件",
+        "caseKind": "same_character_before_after",
+        "eventInput": {
+          "description": "王雪昨晚突然失联，直到第二天中午才回复一句刚看到。",
+          "tags": [
+            "王雪",
+            "失联",
+            "等待",
+            "亲密关系"
+          ],
+          "categoryHint": "abandonment"
+        },
+        "followUpDecisionScenario": {
+          "id": "follow_up_wang_xue_late_reply",
+          "name": "王雪迟迟未回复后的后续场景",
+          "trigger": "第二天王雪只回复了一句“刚看到”，没有解释昨晚为什么消失。",
+          "stressor": "亲密关系中的解释缺失",
+          "testFocus": "信任 / 安全感 / 行为策略"
+        },
+        "beforeState": {
+          "characterId": "lin_fan",
+          "memoryCount": 3,
+          "beliefCount": 3,
+          "coordinate": {
+            "openness": 0.4204,
+            "conscientiousness": 0.56,
+            "extroversion": 0.2389,
+            "agreeableness": 0.4384,
+            "neuroticism": 0.7824,
+            "trust": 0.2601,
+            "attachment": 0.8611,
+            "fear": 0.82,
+            "control": 0.6816
+          },
+          "boundaryPhase": "overflow",
+          "boundaryStressLoad": 2.1954,
+          "topBelief": "亲密关系并不可靠。",
+          "topNeed": "安全感缺失",
+          "topDesire": "想确认对方是否仍然安全、仍然在关系中。"
+        },
+        "parsedEvent": {
+          "id": "parsed_d0afd93f",
+          "description": "王雪昨晚突然失联，直到第二天中午才回复一句刚看到。",
+          "tags": [
+            "王雪",
+            "失联",
+            "等待",
+            "亲密关系"
+          ],
+          "category": "abandonment",
+          "emotion": "fear",
+          "coordinateDelta": {
+            "openness": -0.01,
+            "conscientiousness": 0,
+            "extroversion": -0.04,
+            "agreeableness": -0.05,
+            "neuroticism": 0.08,
+            "trust": -0.09,
+            "attachment": 0.04,
+            "fear": 0.08,
+            "control": 0.05
+          },
+          "beliefEffect": "重要的人可能会突然离开",
+          "rationale": "abandonment tends to reduce social openness and increase threat sensitivity",
+          "intensity": 0.89,
+          "importance": 0.86,
+          "relationshipWeight": 0.9,
+          "expectationGap": 0.79,
+          "personalitySensitivity": 0.9,
+          "parser": {
+            "source": "rule",
+            "matchedKeywords": [],
+            "confidence": 1
+          }
+        },
+        "impactParticles": [
+          {
+            "id": "particle_parsed_d0afd93f",
+            "category": "abandonment",
+            "emotion": "fear",
+            "impactScore": 0.866,
+            "vector": {
+              "openness": -0.01,
+              "conscientiousness": 0,
+              "extroversion": -0.04,
+              "agreeableness": -0.05,
+              "neuroticism": 0.08,
+              "trust": -0.09,
+              "attachment": 0.04,
+              "fear": 0.08,
+              "control": 0.05
+            },
+            "rationale": "abandonment tends to reduce social openness and increase threat sensitivity"
+          }
+        ],
+        "memoryDelta": [
+          {
+            "id": "memory_parsed_d0afd93f",
+            "after": "王雪昨晚突然失联，直到第二天中午才回复一句刚看到。",
+            "delta": "added"
+          }
+        ],
+        "beliefDelta": [
+          {
+            "id": "belief_f6f079dc",
+            "before": 0,
+            "after": 0.2852,
+            "delta": 0.2852
+          }
+        ],
+        "personalityDelta": [
+          {
+            "id": "openness",
+            "before": 0.4204,
+            "after": 0.4202,
+            "delta": -0.0002
+          },
+          {
+            "id": "extroversion",
+            "before": 0.2389,
+            "after": 0.2379,
+            "delta": -0.001
+          },
+          {
+            "id": "agreeableness",
+            "before": 0.4384,
+            "after": 0.4371,
+            "delta": -0.0013
+          },
+          {
+            "id": "neuroticism",
+            "before": 0.7824,
+            "after": 0.7844,
+            "delta": 0.002
+          },
+          {
+            "id": "trust",
+            "before": 0.2601,
+            "after": 0.2581,
+            "delta": -0.002
+          },
+          {
+            "id": "attachment",
+            "before": 0.8611,
+            "after": 0.8622,
+            "delta": 0.0011
+          },
+          {
+            "id": "fear",
+            "before": 0.82,
+            "after": 0.822,
+            "delta": 0.002
+          },
+          {
+            "id": "control",
+            "before": 0.6816,
+            "after": 0.6829,
+            "delta": 0.0013
+          }
+        ],
+        "needDelta": [
+          {
+            "id": "need_security",
+            "before": 0.7743,
+            "after": 0.7769,
+            "delta": 0.0026
+          },
+          {
+            "id": "need_control",
+            "before": 0.6436,
+            "after": 0.6445,
+            "delta": 0.0009
+          },
+          {
+            "id": "need_trust",
+            "before": 0.6069,
+            "after": 0.608,
+            "delta": 0.0011
+          },
+          {
+            "id": "need_attachment",
+            "before": 0.4093,
+            "after": 0.6176,
+            "delta": 0.2083
+          }
+        ],
+        "desireDelta": [
+          {
+            "id": "desire_security",
+            "before": 0.7743,
+            "after": 0.7769,
+            "delta": 0.0026
+          },
+          {
+            "id": "desire_control",
+            "before": 0.6436,
+            "after": 0.6445,
+            "delta": 0.0009
+          },
+          {
+            "id": "desire_trust",
+            "before": 0.6069,
+            "after": 0.608,
+            "delta": 0.0011
+          },
+          {
+            "id": "desire_attachment",
+            "before": 0.4093,
+            "after": 0.6176,
+            "delta": 0.2083
+          }
+        ],
+        "boundaryDelta": [
+          {
+            "id": "boundaryStressLoad",
+            "before": 2.1954,
+            "after": 3.3601,
+            "delta": 1.1647
+          },
+          {
+            "id": "boundaryIntegrity",
+            "before": 0.2856,
+            "after": 0,
+            "delta": -0.2856
+          }
+        ],
+        "emotionDelta": {
+          "primary": "fear",
+          "valence": -0.8,
+          "arousal": 0.8,
+          "intensity": 0.866,
+          "deltaIntensity": 0.866
+        },
+        "decisionBefore": {
+          "action": "林凡在“王雪迟迟未回复后的后续场景”里会先被依恋威胁图式牵动，为了守住关系稳定，会确认关系信号；询问对方真实意图，同时避免一次性暴露全部需求。",
+          "confidence": 0.8898,
+          "strategy": "确认关系信号",
+          "strategyId": "attachment_checking",
+          "direction": "关系确认/防御",
+          "supportingBeliefIds": [
+            "belief_8dd5b45e",
+            "belief_edc4c346",
+            "belief_579d7559"
+          ],
+          "supportingNeedIds": [
+            "need_security",
+            "need_control",
+            "need_trust"
+          ],
+          "supportingDesireIds": [
+            "desire_security",
+            "desire_control",
+            "desire_trust"
+          ],
+          "actionCandidates": [
+            {
+              "id": "attachment_checking",
+              "label": "确认关系信号",
+              "score": 0.8898,
+              "rank": 1,
+              "strategyTag": "baseline_strategy",
+              "riskProfile": "unknown",
+              "approachStyle": "unknown"
+            },
+            {
+              "id": "negotiate_control",
+              "label": "谈判主导权",
+              "score": 0.7778,
+              "rank": 2,
+              "strategyTag": "baseline_strategy",
+              "riskProfile": "unknown",
+              "approachStyle": "unknown"
+            },
+            {
+              "id": "reframe_as_growth",
+              "label": "成长性重构",
+              "score": 0.6938,
+              "rank": 3,
+              "strategyTag": "baseline_strategy",
+              "riskProfile": "unknown",
+              "approachStyle": "unknown"
+            },
+            {
+              "id": "verify_before_commitment",
+              "label": "核验后再承诺",
+              "score": 0.6333,
+              "rank": 4,
+              "strategyTag": "baseline_strategy",
+              "riskProfile": "unknown",
+              "approachStyle": "unknown"
+            },
+            {
+              "id": "emotional_withdrawal",
+              "label": "情绪撤退",
+              "score": 0.6265,
+              "rank": 5,
+              "strategyTag": "baseline_strategy",
+              "riskProfile": "unknown",
+              "approachStyle": "unknown"
+            },
+            {
+              "id": "small_scale_trial",
+              "label": "小规模试水",
+              "score": 0.5692,
+              "rank": 6,
+              "strategyTag": "baseline_strategy",
+              "riskProfile": "unknown",
+              "approachStyle": "unknown"
+            }
+          ],
+          "topSchema": "依恋威胁图式",
+          "topNeed": "安全感缺失",
+          "topDesire": "想确认对方是否仍然安全、仍然在关系中。"
+        },
+        "afterState": {
+          "characterId": "lin_fan",
+          "memoryCount": 4,
+          "beliefCount": 4,
+          "coordinate": {
+            "openness": 0.4202,
+            "conscientiousness": 0.56,
+            "extroversion": 0.2379,
+            "agreeableness": 0.4371,
+            "neuroticism": 0.7844,
+            "trust": 0.2581,
+            "attachment": 0.8622,
+            "fear": 0.822,
+            "control": 0.6829
+          },
+          "boundaryPhase": "overflow",
+          "boundaryStressLoad": 3.3601,
+          "topBelief": "重要的人可能会突然离开",
+          "topNeed": "安全感缺失",
+          "topDesire": "想确认对方是否仍然安全、仍然在关系中。"
+        },
+        "decisionAfter": {
+          "action": "林凡在“王雪迟迟未回复后的后续场景”里会先被依恋威胁图式牵动，为了守住关系稳定，会确认关系信号；询问对方真实意图，同时避免一次性暴露全部需求。",
+          "confidence": 1,
+          "strategy": "确认关系信号",
+          "strategyId": "attachment_checking",
+          "direction": "关系确认/防御",
+          "supportingBeliefIds": [
+            "belief_f6f079dc",
+            "belief_8dd5b45e",
+            "belief_edc4c346"
+          ],
+          "supportingNeedIds": [
+            "need_security",
+            "need_control",
+            "need_attachment"
+          ],
+          "supportingDesireIds": [
+            "desire_security",
+            "desire_control",
+            "desire_attachment"
+          ],
+          "actionCandidates": [
+            {
+              "id": "attachment_checking",
+              "label": "确认关系信号",
+              "score": 1,
+              "rank": 1,
+              "strategyTag": "relationship_confirmation",
+              "riskProfile": "low",
+              "approachStyle": "cautious"
+            },
+            {
+              "id": "emotional_withdrawal",
+              "label": "情绪撤退",
+              "score": 0.9782,
+              "rank": 2,
+              "strategyTag": "defensive_distance",
+              "riskProfile": "low",
+              "approachStyle": "defensive"
+            },
+            {
+              "id": "verify_before_commitment",
+              "label": "核验后再承诺",
+              "score": 0.9755,
+              "rank": 3,
+              "strategyTag": "evidence_testing",
+              "riskProfile": "low",
+              "approachStyle": "cautious"
+            },
+            {
+              "id": "negotiate_control",
+              "label": "谈判主导权",
+              "score": 0.8327,
+              "rank": 4,
+              "strategyTag": "control_boundary",
+              "riskProfile": "low",
+              "approachStyle": "controlling"
+            },
+            {
+              "id": "small_scale_trial",
+              "label": "小规模试水",
+              "score": 0.6941,
+              "rank": 5,
+              "strategyTag": "evidence_testing",
+              "riskProfile": "low",
+              "approachStyle": "cautious"
+            },
+            {
+              "id": "reframe_as_growth",
+              "label": "成长性重构",
+              "score": 0.6926,
+              "rank": 6,
+              "strategyTag": "open_repair",
+              "riskProfile": "low",
+              "approachStyle": "repairing"
+            }
+          ],
+          "topSchema": "依恋威胁图式",
+          "topNeed": "安全感缺失",
+          "topDesire": "想确认对方是否仍然安全、仍然在关系中。"
+        },
+        "decisionInfluence": {
+          "decisionInfluenceVector": {
+            "caution": 0.35,
+            "testing": 0.2294,
+            "withdrawal": 0.35,
+            "openness": -0.0049,
+            "reassuranceSeeking": 0.0028,
+            "boundaryProbing": 0.35,
+            "confrontation": 0.0021,
+            "control": 0.0031,
+            "repair": 0,
+            "negotiation": 0,
+            "freeze": 0.35
+          },
+          "strategyWeightDelta": {
+            "attachment_checking": 0.1705,
+            "negotiate_control": 0.0548,
+            "reframe_as_growth": -0.0012,
+            "verify_before_commitment": 0.3422,
+            "emotional_withdrawal": 0.3517,
+            "small_scale_trial": 0.1249
+          },
+          "actionCandidateScoreDelta": {
+            "attachment_checking": 0.1102,
+            "emotional_withdrawal": 0.3517,
+            "verify_before_commitment": 0.3422,
+            "negotiate_control": 0.0548,
+            "small_scale_trial": 0.1249,
+            "reframe_as_growth": -0.0012
+          },
+          "decisionSurfaceBefore": {
+            "topCandidateId": "attachment_checking",
+            "selectedStrategyId": "attachment_checking",
+            "selectedAction": "林凡在“王雪迟迟未回复后的后续场景”里会先被依恋威胁图式牵动，为了守住关系稳定，会确认关系信号；询问对方真实意图，同时避免一次性暴露全部需求。",
+            "strategyDistribution": {
+              "attachment_checking": 0.2123,
+              "negotiate_control": 0.1856,
+              "reframe_as_growth": 0.1656,
+              "verify_before_commitment": 0.1511,
+              "emotional_withdrawal": 0.1495,
+              "small_scale_trial": 0.1358
+            },
+            "actionCandidates": [
+              {
+                "id": "attachment_checking",
+                "label": "确认关系信号",
+                "score": 0.8898,
+                "rank": 1,
+                "strategyTag": "relationship_confirmation",
+                "riskProfile": "low",
+                "approachStyle": "cautious",
+                "direction": "关系确认/防御",
+                "reason": "依恋威胁要求先确认关系安全。"
+              },
+              {
+                "id": "negotiate_control",
+                "label": "谈判主导权",
+                "score": 0.7778,
+                "rank": 2,
+                "strategyTag": "control_boundary",
+                "riskProfile": "low",
+                "approachStyle": "controlling",
+                "direction": "条件性行动",
+                "reason": "失控图式要求重新获得关键变量。"
+              },
+              {
+                "id": "reframe_as_growth",
+                "label": "成长性重构",
+                "score": 0.6938,
+                "rank": 3,
+                "strategyTag": "open_repair",
+                "riskProfile": "low",
+                "approachStyle": "repairing",
+                "direction": "条件性行动",
+                "reason": "成长修复图式让角色用新证据校正旧防御。"
+              },
+              {
+                "id": "verify_before_commitment",
+                "label": "核验后再承诺",
+                "score": 0.6333,
+                "rank": 4,
+                "strategyTag": "evidence_testing",
+                "riskProfile": "low",
+                "approachStyle": "cautious",
+                "direction": "核验后有限合作",
+                "reason": "背叛/证据图式要求先确认可信度。"
+              },
+              {
+                "id": "emotional_withdrawal",
+                "label": "情绪撤退",
+                "score": 0.6265,
+                "rank": 5,
+                "strategyTag": "defensive_distance",
+                "riskProfile": "low",
+                "approachStyle": "defensive",
+                "direction": "延迟/拒绝",
+                "reason": "遗弃图式让角色用距离减少受伤概率。"
+              },
+              {
+                "id": "small_scale_trial",
+                "label": "小规模试水",
+                "score": 0.5692,
+                "rank": 6,
+                "strategyTag": "evidence_testing",
+                "riskProfile": "low",
+                "approachStyle": "cautious",
+                "direction": "核验后有限合作",
+                "reason": "低风险恢复允许行动但保留边界。"
+              }
+            ]
+          },
+          "decisionSurfaceAfter": {
+            "topCandidateId": "attachment_checking",
+            "selectedStrategyId": "attachment_checking",
+            "selectedAction": "林凡在“王雪迟迟未回复后的后续场景”里会先被依恋威胁图式牵动，为了守住关系稳定，会确认关系信号；询问对方真实意图，同时避免一次性暴露全部需求。",
+            "strategyDistribution": {
+              "attachment_checking": 0.1933,
+              "emotional_withdrawal": 0.1891,
+              "verify_before_commitment": 0.1886,
+              "negotiate_control": 0.161,
+              "small_scale_trial": 0.1342,
+              "reframe_as_growth": 0.1339
+            },
+            "actionCandidates": [
+              {
+                "id": "attachment_checking",
+                "label": "确认关系信号",
+                "score": 1,
+                "rank": 1,
+                "strategyTag": "relationship_confirmation",
+                "riskProfile": "low",
+                "approachStyle": "cautious",
+                "direction": "关系确认/防御",
+                "reason": "依恋威胁要求先确认关系安全。"
+              },
+              {
+                "id": "emotional_withdrawal",
+                "label": "情绪撤退",
+                "score": 0.9782,
+                "rank": 2,
+                "strategyTag": "defensive_distance",
+                "riskProfile": "low",
+                "approachStyle": "defensive",
+                "direction": "延迟/拒绝",
+                "reason": "遗弃图式让角色用距离减少受伤概率。"
+              },
+              {
+                "id": "verify_before_commitment",
+                "label": "核验后再承诺",
+                "score": 0.9755,
+                "rank": 3,
+                "strategyTag": "evidence_testing",
+                "riskProfile": "low",
+                "approachStyle": "cautious",
+                "direction": "核验后有限合作",
+                "reason": "背叛/证据图式要求先确认可信度。"
+              },
+              {
+                "id": "negotiate_control",
+                "label": "谈判主导权",
+                "score": 0.8327,
+                "rank": 4,
+                "strategyTag": "control_boundary",
+                "riskProfile": "low",
+                "approachStyle": "controlling",
+                "direction": "条件性行动",
+                "reason": "失控图式要求重新获得关键变量。"
+              },
+              {
+                "id": "small_scale_trial",
+                "label": "小规模试水",
+                "score": 0.6941,
+                "rank": 5,
+                "strategyTag": "evidence_testing",
+                "riskProfile": "low",
+                "approachStyle": "cautious",
+                "direction": "核验后有限合作",
+                "reason": "低风险恢复允许行动但保留边界。"
+              },
+              {
+                "id": "reframe_as_growth",
+                "label": "成长性重构",
+                "score": 0.6926,
+                "rank": 6,
+                "strategyTag": "open_repair",
+                "riskProfile": "low",
+                "approachStyle": "repairing",
+                "direction": "条件性行动",
+                "reason": "成长修复图式让角色用新证据校正旧防御。"
+              }
+            ]
+          },
+          "responsivenessTrace": {
+            "scenarioRelevance": 0.86,
+            "stateDeltaMagnitude": 0.793,
+            "influenceMagnitude": 0.1493,
+            "groundedDeltaPaths": [
+              "personalityDelta[2]",
+              "personalityDelta[4]",
+              "personalityDelta[5]",
+              "personalityDelta[6]",
+              "personalityDelta[7]",
+              "needDelta[3]",
+              "beliefDelta[0]",
+              "boundaryDelta[0]",
+              "emotionDelta"
+            ],
+            "contributions": [
+              {
+                "sourceDeltaPath": "personalityDelta[2]",
+                "influenceKey": "confrontation",
+                "strength": 0.0021,
+                "reason": "agreeableness decreased; confrontation becomes less inhibited"
+              },
+              {
+                "sourceDeltaPath": "personalityDelta[4]",
+                "influenceKey": "caution",
+                "strength": 0.0058,
+                "reason": "trust decreased; caution rises"
+              },
+              {
+                "sourceDeltaPath": "personalityDelta[4]",
+                "influenceKey": "testing",
+                "strength": 0.0051,
+                "reason": "trust decreased; verification/testing rises"
+              },
+              {
+                "sourceDeltaPath": "personalityDelta[4]",
+                "influenceKey": "withdrawal",
+                "strength": 0.0038,
+                "reason": "trust decreased; withdrawal becomes more available"
+              },
+              {
+                "sourceDeltaPath": "personalityDelta[4]",
+                "influenceKey": "openness",
+                "strength": -0.0049,
+                "reason": "trust decreased; direct openness falls"
+              },
+              {
+                "sourceDeltaPath": "personalityDelta[5]",
+                "influenceKey": "reassuranceSeeking",
+                "strength": 0.0028,
+                "reason": "attachment pressure increased; reassurance seeking rises"
+              },
+              {
+                "sourceDeltaPath": "personalityDelta[6]",
+                "influenceKey": "caution",
+                "strength": 0.0055,
+                "reason": "fear increased; risk avoidance rises"
+              },
+              {
+                "sourceDeltaPath": "personalityDelta[6]",
+                "influenceKey": "freeze",
+                "strength": 0.0033,
+                "reason": "fear increased; delay/freeze becomes more likely"
+              },
+              {
+                "sourceDeltaPath": "personalityDelta[6]",
+                "influenceKey": "withdrawal",
+                "strength": 0.0033,
+                "reason": "fear increased; defensive distance rises"
+              },
+              {
+                "sourceDeltaPath": "personalityDelta[7]",
+                "influenceKey": "control",
+                "strength": 0.0031,
+                "reason": "control need increased; control strategies rise"
+              },
+              {
+                "sourceDeltaPath": "needDelta[3]",
+                "influenceKey": "caution",
+                "strength": 0.1515,
+                "reason": "need pressure increased; cautious strategies gain weight"
+              },
+              {
+                "sourceDeltaPath": "needDelta[3]",
+                "influenceKey": "testing",
+                "strength": 0.0947,
+                "reason": "need pressure increased; evidence seeking gains weight"
+              },
+              {
+                "sourceDeltaPath": "beliefDelta[0]",
+                "influenceKey": "testing",
+                "strength": 0.1296,
+                "reason": "belief strength changed; decision asks for more evidence"
+              },
+              {
+                "sourceDeltaPath": "beliefDelta[0]",
+                "influenceKey": "caution",
+                "strength": 0.1037,
+                "reason": "belief strength changed; defensive caution adjusts"
+              },
+              {
+                "sourceDeltaPath": "boundaryDelta[0]",
+                "influenceKey": "withdrawal",
+                "strength": 1.2705,
+                "reason": "boundary stress increased; withdrawal rises"
+              },
+              {
+                "sourceDeltaPath": "boundaryDelta[0]",
+                "influenceKey": "freeze",
+                "strength": 1.1646,
+                "reason": "boundary stress increased; freeze/exit candidates rise"
+              },
+              {
+                "sourceDeltaPath": "boundaryDelta[0]",
+                "influenceKey": "boundaryProbing",
+                "strength": 0.9528,
+                "reason": "boundary stress increased; boundary protection rises"
+              },
+              {
+                "sourceDeltaPath": "emotionDelta",
+                "influenceKey": "caution",
+                "strength": 0.1968,
+                "reason": "fear emotion increased; caution gains weight"
+              },
+              {
+                "sourceDeltaPath": "emotionDelta",
+                "influenceKey": "withdrawal",
+                "strength": 0.1417,
+                "reason": "fear emotion increased; withdrawal gains weight"
+              }
+            ],
+            "reasons": [
+              "personalityDelta[2]: agreeableness decreased; confrontation becomes less inhibited",
+              "personalityDelta[4]: trust decreased; caution rises",
+              "personalityDelta[4]: trust decreased; verification/testing rises",
+              "personalityDelta[4]: trust decreased; withdrawal becomes more available",
+              "personalityDelta[4]: trust decreased; direct openness falls",
+              "personalityDelta[5]: attachment pressure increased; reassurance seeking rises",
+              "personalityDelta[6]: fear increased; risk avoidance rises",
+              "personalityDelta[6]: fear increased; delay/freeze becomes more likely",
+              "personalityDelta[6]: fear increased; defensive distance rises",
+              "personalityDelta[7]: control need increased; control strategies rise",
+              "needDelta[3]: need pressure increased; cautious strategies gain weight",
+              "needDelta[3]: need pressure increased; evidence seeking gains weight",
+              "beliefDelta[0]: belief strength changed; decision asks for more evidence",
+              "beliefDelta[0]: belief strength changed; defensive caution adjusts",
+              "boundaryDelta[0]: boundary stress increased; withdrawal rises",
+              "boundaryDelta[0]: boundary stress increased; freeze/exit candidates rise",
+              "boundaryDelta[0]: boundary stress increased; boundary protection rises",
+              "emotionDelta: fear emotion increased; caution gains weight",
+              "emotionDelta: fear emotion increased; withdrawal gains weight"
+            ],
+            "warnings": []
+          },
+          "responsivenessAudit": {
+            "candidateScoreChanged": true,
+            "topCandidateChanged": false,
+            "strategyDistributionChanged": true,
+            "influenceTraceGrounded": true,
+            "responsivenessScore": 1,
+            "overreactionScore": 0,
+            "verdict": "PASS_WITH_STABLE_TOP_DECISION",
+            "reasons": [
+              "candidate scores changed after consuming state delta",
+              "strategy distribution changed after consuming state delta",
+              "top candidate stayed stable, but candidate surface responded",
+              "influence trace references concrete delta paths"
+            ],
+            "warnings": [],
+            "failures": []
+          }
+        },
+        "decisionResponsiveness": {
+          "candidateScoreChanged": true,
+          "topCandidateChanged": false,
+          "strategyDistributionChanged": true,
+          "influenceTraceGrounded": true,
+          "responsivenessScore": 1,
+          "overreactionScore": 0,
+          "verdict": "PASS_WITH_STABLE_TOP_DECISION",
+          "reasons": [
+            "candidate scores changed after consuming state delta",
+            "strategy distribution changed after consuming state delta",
+            "top candidate stayed stable, but candidate surface responded",
+            "influence trace references concrete delta paths"
+          ],
+          "warnings": [],
+          "failures": []
+        },
+        "impactCalibration": {
+          "eventSeverityScore": 0.9325,
+          "domainRelevanceScore": 0.76,
+          "baselineStabilityScore": 0.24,
+          "resilienceBufferScore": 0.1488,
+          "repetitionScore": 0.545,
+          "emotionalIntensityScore": 0.866,
+          "channelImpactAllocation": {
+            "memoryImpact": 0.9272,
+            "emotionDelta": 0.8727,
+            "needDelta": 0.4394,
+            "boundaryDelta": 0.3958,
+            "beliefDelta": 0.3118,
+            "personalityCoordinateDelta": 0.3252,
+            "decisionSurfaceDelta": 0.5315
+          },
+          "expectedDeltaRange": [
+            {
+              "channel": "memoryImpact",
+              "expectedMin": 0.4172,
+              "expectedMax": 1.4372,
+              "rationale": "event memory can become salient immediately."
+            },
+            {
+              "channel": "emotionDelta",
+              "expectedMin": 0.3927,
+              "expectedMax": 1.3527,
+              "rationale": "acute emotion is the fastest channel."
+            },
+            {
+              "channel": "needDelta",
+              "expectedMin": 0.1977,
+              "expectedMax": 0.6811,
+              "rationale": "channel range is allocated from severity, relevance, repetition, and resilience buffer."
+            },
+            {
+              "channel": "boundaryDelta",
+              "expectedMin": 0.1781,
+              "expectedMax": 0.6135,
+              "rationale": "channel range is allocated from severity, relevance, repetition, and resilience buffer."
+            },
+            {
+              "channel": "beliefDelta",
+              "expectedMin": 0.1091,
+              "expectedMax": 0.5457,
+              "rationale": "channel range is allocated from severity, relevance, repetition, and resilience buffer."
+            },
+            {
+              "channel": "personalityCoordinateDelta",
+              "expectedMin": 0.0065,
+              "expectedMax": 0.6016,
+              "rationale": "personality is a slow variable and is buffered by stability/resilience."
+            },
+            {
+              "channel": "decisionSurfaceDelta",
+              "expectedMin": 0.186,
+              "expectedMax": 0.9301,
+              "rationale": "decision surface can respond quickly when abandonment is scenario-relevant."
+            }
+          ],
+          "actualDeltaByChannel": {
+            "memoryImpact": 0.86,
+            "emotionDelta": 0.866,
+            "needDelta": 0.2083,
+            "boundaryDelta": 0.5241,
+            "beliefDelta": 0.2852,
+            "personalityCoordinateDelta": 0.002,
+            "decisionSurfaceDelta": 0.3517
+          },
+          "underResponseWarnings": [],
+          "overResponseWarnings": [],
+          "calibrationVerdict": {
+            "level": "PASS",
+            "passed": true,
+            "reasons": [
+              "actual channel deltas stayed within calibrated ranges"
+            ],
+            "warnings": [],
+            "failures": []
+          }
+        },
+        "explanationTrace": {
+          "id": "trace_audit_same_character_negative_event",
+          "scope": "reality_audit",
+          "summary": "abandonment event produced 8 grounded audit fact(s).",
+          "facts": [
+            {
+              "id": "audit_same_character_negative_event_memory_added",
+              "label": "memory added",
+              "sourceDeltaPath": "memoryDelta[0]",
+              "value": "memory_parsed_d0afd93f"
+            },
+            {
+              "id": "audit_same_character_negative_event_beliefDelta_0_",
+              "label": "belief_f6f079dc",
+              "sourceDeltaPath": "beliefDelta[0]",
+              "value": 0.2852
+            },
+            {
+              "id": "audit_same_character_negative_event_personalityDelta_0_",
+              "label": "openness",
+              "sourceDeltaPath": "personalityDelta[0]",
+              "value": -0.0002
+            },
+            {
+              "id": "audit_same_character_negative_event_needDelta_0_",
+              "label": "need_security",
+              "sourceDeltaPath": "needDelta[0]",
+              "value": 0.0026
+            },
+            {
+              "id": "audit_same_character_negative_event_desireDelta_0_",
+              "label": "desire_security",
+              "sourceDeltaPath": "desireDelta[0]",
+              "value": 0.0026
+            },
+            {
+              "id": "audit_same_character_negative_event_decision_change",
+              "label": "decision before/after",
+              "sourceDeltaPath": "decisionBefore/decisionAfter",
+              "value": "确认关系信号 -> 确认关系信号"
+            },
+            {
+              "id": "audit_same_character_negative_event_decision_influence",
+              "label": "confrontation",
+              "sourceDeltaPath": "personalityDelta[2]",
+              "value": 0.0021
+            },
+            {
+              "id": "audit_same_character_negative_event_impact_calibration",
+              "label": "impact calibration verdict",
+              "sourceDeltaPath": "impactCalibration.calibrationVerdict",
+              "value": "PASS"
+            }
+          ],
+          "reasons": [
+            "parsedEvent.category=abandonment",
+            "memoryDelta=1",
+            "beliefDelta=1",
+            "personalityDelta=8",
+            "needDelta=4",
+            "desireDelta=4",
+            "responsivenessScore=1",
+            "calibrationVerdict=PASS",
+            "decision=attachment_checking->attachment_checking"
+          ],
+          "groundedDeltaPaths": [
+            "memoryDelta[0]",
+            "beliefDelta[0]",
+            "personalityDelta[0]",
+            "needDelta[0]",
+            "desireDelta[0]",
+            "decisionBefore/decisionAfter",
+            "personalityDelta[2]",
+            "impactCalibration.calibrationVerdict"
+          ]
+        },
+        "auditVerdict": {
+          "level": "PASS",
+          "passed": true,
+          "warnings": [],
+          "failures": [],
+          "reasons": [
+            "event produced structured state delta",
+            "decision before/after changed after state delta",
+            "top decision stayed stable, but candidate scores or strategy distribution responded",
+            "explanation trace references concrete delta paths"
+          ]
+        }
+      },
+      {
+        "id": "audit_counterfactual_positive_event",
+        "label": "B. Counterfactual Event — 正向解释陪伴事件",
+        "caseKind": "counterfactual_event",
+        "eventInput": {
+          "description": "王雪主动解释昨晚没回复的原因，并约定下次会提前说明。",
+          "tags": [
+            "王雪",
+            "解释",
+            "陪伴",
+            "亲密关系"
+          ],
+          "categoryHint": "support"
+        },
+        "followUpDecisionScenario": {
+          "id": "follow_up_wang_xue_late_reply",
+          "name": "王雪迟迟未回复后的后续场景",
+          "trigger": "第二天王雪只回复了一句“刚看到”，没有解释昨晚为什么消失。",
+          "stressor": "亲密关系中的解释缺失",
+          "testFocus": "信任 / 安全感 / 行为策略"
+        },
+        "beforeState": {
+          "characterId": "lin_fan",
+          "memoryCount": 3,
+          "beliefCount": 3,
+          "coordinate": {
+            "openness": 0.4204,
+            "conscientiousness": 0.56,
+            "extroversion": 0.2389,
+            "agreeableness": 0.4384,
+            "neuroticism": 0.7824,
+            "trust": 0.2601,
+            "attachment": 0.8611,
+            "fear": 0.82,
+            "control": 0.6816
+          },
+          "boundaryPhase": "overflow",
+          "boundaryStressLoad": 2.1954,
+          "topBelief": "亲密关系并不可靠。",
+          "topNeed": "安全感缺失",
+          "topDesire": "想确认对方是否仍然安全、仍然在关系中。"
+        },
+        "parsedEvent": {
+          "id": "parsed_a59c365f",
+          "description": "王雪主动解释昨晚没回复的原因，并约定下次会提前说明。",
+          "tags": [
+            "王雪",
+            "解释",
+            "陪伴",
+            "亲密关系"
+          ],
+          "category": "support",
+          "emotion": "relief",
+          "coordinateDelta": {
+            "openness": 0.012,
+            "conscientiousness": 0,
+            "extroversion": 0.02,
+            "agreeableness": 0.03,
+            "neuroticism": -0.04,
+            "trust": 0.08,
+            "attachment": -0.01,
+            "fear": -0.05,
+            "control": -0.02
+          },
+          "beliefEffect": "也许靠近并不一定意味着离开",
+          "rationale": "supportive attachment experiences can slowly restore trust and reduce threat sensitivity",
+          "intensity": 0.55,
+          "importance": 0.78,
+          "relationshipWeight": 0.9,
+          "expectationGap": 0.45,
+          "personalitySensitivity": 0.7,
+          "parser": {
+            "source": "rule",
+            "matchedKeywords": [],
+            "confidence": 1
+          }
+        },
+        "impactParticles": [
+          {
+            "id": "particle_parsed_a59c365f",
+            "category": "support",
+            "emotion": "relief",
+            "impactScore": 0.673,
+            "vector": {
+              "openness": 0.012,
+              "conscientiousness": 0,
+              "extroversion": 0.02,
+              "agreeableness": 0.03,
+              "neuroticism": -0.04,
+              "trust": 0.08,
+              "attachment": -0.01,
+              "fear": -0.05,
+              "control": -0.02
+            },
+            "rationale": "supportive attachment experiences can slowly restore trust and reduce threat sensitivity"
+          }
+        ],
+        "memoryDelta": [
+          {
+            "id": "memory_parsed_a59c365f",
+            "after": "王雪主动解释昨晚没回复的原因，并约定下次会提前说明。",
+            "delta": "added"
+          }
+        ],
+        "beliefDelta": [
+          {
+            "id": "belief_ec9b9066",
+            "before": 0,
+            "after": 0.1901,
+            "delta": 0.1901
+          }
+        ],
+        "personalityDelta": [
+          {
+            "id": "openness",
+            "before": 0.4204,
+            "after": 0.4209,
+            "delta": 0.0005
+          },
+          {
+            "id": "extroversion",
+            "before": 0.2389,
+            "after": 0.2382,
+            "delta": -0.0007
+          },
+          {
+            "id": "agreeableness",
+            "before": 0.4384,
+            "after": 0.4376,
+            "delta": -0.0008
+          },
+          {
+            "id": "neuroticism",
+            "before": 0.7824,
+            "after": 0.7837,
+            "delta": 0.0013
+          },
+          {
+            "id": "trust",
+            "before": 0.2601,
+            "after": 0.2613,
+            "delta": 0.0012
+          },
+          {
+            "id": "attachment",
+            "before": 0.8611,
+            "after": 0.8618,
+            "delta": 0.0007
+          },
+          {
+            "id": "fear",
+            "before": 0.82,
+            "after": 0.8191,
+            "delta": -0.0009
+          },
+          {
+            "id": "control",
+            "before": 0.6816,
+            "after": 0.6825,
+            "delta": 0.0009
+          }
+        ],
+        "needDelta": [
+          {
+            "id": "need_security",
+            "before": 0.7743,
+            "after": 0.7739,
+            "delta": -0.0004
+          },
+          {
+            "id": "need_control",
+            "before": 0.6436,
+            "after": 0.6437,
+            "delta": 0.0001
+          },
+          {
+            "id": "need_trust",
+            "before": 0.6069,
+            "after": 0.6063,
+            "delta": -0.0006
+          },
+          {
+            "id": "need_attachment",
+            "before": 0.4093,
+            "after": 0.4096,
+            "delta": 0.0003
+          }
+        ],
+        "desireDelta": [
+          {
+            "id": "desire_security",
+            "before": 0.7743,
+            "after": 0.7739,
+            "delta": -0.0004
+          },
+          {
+            "id": "desire_control",
+            "before": 0.6436,
+            "after": 0.6437,
+            "delta": 0.0001
+          },
+          {
+            "id": "desire_trust",
+            "before": 0.6069,
+            "after": 0.6063,
+            "delta": -0.0006
+          },
+          {
+            "id": "desire_attachment",
+            "before": 0.4093,
+            "after": 0.4096,
+            "delta": 0.0003
+          }
+        ],
+        "boundaryDelta": [
+          {
+            "id": "boundaryStressLoad",
+            "before": 2.1954,
+            "after": 1.9091,
+            "delta": -0.2863
+          },
+          {
+            "id": "boundaryIntegrity",
+            "before": 0.2856,
+            "after": 0.3093,
+            "delta": 0.0237
+          }
+        ],
+        "emotionDelta": {
+          "primary": "relief",
+          "valence": 0.7,
+          "arousal": 0.55,
+          "intensity": 0.673,
+          "deltaIntensity": 0.673
+        },
+        "decisionBefore": {
+          "action": "林凡在“王雪迟迟未回复后的后续场景”里会先被依恋威胁图式牵动，为了守住关系稳定，会确认关系信号；询问对方真实意图，同时避免一次性暴露全部需求。",
+          "confidence": 0.8898,
+          "strategy": "确认关系信号",
+          "strategyId": "attachment_checking",
+          "direction": "关系确认/防御",
+          "supportingBeliefIds": [
+            "belief_8dd5b45e",
+            "belief_edc4c346",
+            "belief_579d7559"
+          ],
+          "supportingNeedIds": [
+            "need_security",
+            "need_control",
+            "need_trust"
+          ],
+          "supportingDesireIds": [
+            "desire_security",
+            "desire_control",
+            "desire_trust"
+          ],
+          "actionCandidates": [
+            {
+              "id": "attachment_checking",
+              "label": "确认关系信号",
+              "score": 0.8898,
+              "rank": 1,
+              "strategyTag": "baseline_strategy",
+              "riskProfile": "unknown",
+              "approachStyle": "unknown"
+            },
+            {
+              "id": "negotiate_control",
+              "label": "谈判主导权",
+              "score": 0.7778,
+              "rank": 2,
+              "strategyTag": "baseline_strategy",
+              "riskProfile": "unknown",
+              "approachStyle": "unknown"
+            },
+            {
+              "id": "reframe_as_growth",
+              "label": "成长性重构",
+              "score": 0.6938,
+              "rank": 3,
+              "strategyTag": "baseline_strategy",
+              "riskProfile": "unknown",
+              "approachStyle": "unknown"
+            },
+            {
+              "id": "verify_before_commitment",
+              "label": "核验后再承诺",
+              "score": 0.6333,
+              "rank": 4,
+              "strategyTag": "baseline_strategy",
+              "riskProfile": "unknown",
+              "approachStyle": "unknown"
+            },
+            {
+              "id": "emotional_withdrawal",
+              "label": "情绪撤退",
+              "score": 0.6265,
+              "rank": 5,
+              "strategyTag": "baseline_strategy",
+              "riskProfile": "unknown",
+              "approachStyle": "unknown"
+            },
+            {
+              "id": "small_scale_trial",
+              "label": "小规模试水",
+              "score": 0.5692,
+              "rank": 6,
+              "strategyTag": "baseline_strategy",
+              "riskProfile": "unknown",
+              "approachStyle": "unknown"
+            }
+          ],
+          "topSchema": "依恋威胁图式",
+          "topNeed": "安全感缺失",
+          "topDesire": "想确认对方是否仍然安全、仍然在关系中。"
+        },
+        "afterState": {
+          "characterId": "lin_fan",
+          "memoryCount": 4,
+          "beliefCount": 4,
+          "coordinate": {
+            "openness": 0.4209,
+            "conscientiousness": 0.56,
+            "extroversion": 0.2382,
+            "agreeableness": 0.4376,
+            "neuroticism": 0.7837,
+            "trust": 0.2613,
+            "attachment": 0.8618,
+            "fear": 0.8191,
+            "control": 0.6825
+          },
+          "boundaryPhase": "overflow",
+          "boundaryStressLoad": 1.9091,
+          "topBelief": "亲密关系并不可靠。",
+          "topNeed": "安全感缺失",
+          "topDesire": "想确认对方是否仍然安全、仍然在关系中。"
+        },
+        "decisionAfter": {
+          "action": "林凡在“王雪迟迟未回复后的后续场景”里会先被依恋威胁图式牵动，为了守住关系稳定，会确认关系信号；询问对方真实意图，同时避免一次性暴露全部需求。",
+          "confidence": 0.9251,
+          "strategy": "成长性重构",
+          "strategyId": "reframe_as_growth",
+          "direction": "关系确认/防御",
+          "supportingBeliefIds": [
+            "belief_8dd5b45e",
+            "belief_edc4c346",
+            "belief_579d7559"
+          ],
+          "supportingNeedIds": [
+            "need_security",
+            "need_control",
+            "need_trust"
+          ],
+          "supportingDesireIds": [
+            "desire_security",
+            "desire_control",
+            "desire_trust"
+          ],
+          "actionCandidates": [
+            {
+              "id": "reframe_as_growth",
+              "label": "成长性重构",
+              "score": 0.9251,
+              "rank": 1,
+              "strategyTag": "open_repair",
+              "riskProfile": "low",
+              "approachStyle": "repairing"
+            },
+            {
+              "id": "attachment_checking",
+              "label": "确认关系信号",
+              "score": 0.9092,
+              "rank": 2,
+              "strategyTag": "relationship_confirmation",
+              "riskProfile": "low",
+              "approachStyle": "cautious"
+            },
+            {
+              "id": "negotiate_control",
+              "label": "谈判主导权",
+              "score": 0.7785,
+              "rank": 3,
+              "strategyTag": "control_boundary",
+              "riskProfile": "low",
+              "approachStyle": "controlling"
+            },
+            {
+              "id": "small_scale_trial",
+              "label": "小规模试水",
+              "score": 0.7401,
+              "rank": 4,
+              "strategyTag": "evidence_testing",
+              "riskProfile": "low",
+              "approachStyle": "cautious"
+            },
+            {
+              "id": "verify_before_commitment",
+              "label": "核验后再承诺",
+              "score": 0.6868,
+              "rank": 5,
+              "strategyTag": "evidence_testing",
+              "riskProfile": "low",
+              "approachStyle": "cautious"
+            },
+            {
+              "id": "emotional_withdrawal",
+              "label": "情绪撤退",
+              "score": 0.3906,
+              "rank": 6,
+              "strategyTag": "defensive_distance",
+              "riskProfile": "low",
+              "approachStyle": "defensive"
+            }
+          ],
+          "topSchema": "依恋威胁图式",
+          "topNeed": "安全感缺失",
+          "topDesire": "想确认对方是否仍然安全、仍然在关系中。"
+        },
+        "decisionInfluence": {
+          "decisionInfluenceVector": {
+            "caution": -0.0056,
+            "testing": 0.0864,
+            "withdrawal": -0.1762,
+            "openness": 0.3018,
+            "reassuranceSeeking": 0,
+            "boundaryProbing": 0.0062,
+            "confrontation": 0,
+            "control": 0.0021,
+            "repair": 0.2398,
+            "negotiation": 0,
+            "freeze": 0.0076
+          },
+          "strategyWeightDelta": {
+            "attachment_checking": 0.0194,
+            "negotiate_control": 0.0007,
+            "reframe_as_growth": 0.2313,
+            "verify_before_commitment": 0.0535,
+            "emotional_withdrawal": -0.2359,
+            "small_scale_trial": 0.1709
+          },
+          "actionCandidateScoreDelta": {
+            "reframe_as_growth": 0.2313,
+            "attachment_checking": 0.0194,
+            "negotiate_control": 0.0007,
+            "small_scale_trial": 0.1709,
+            "verify_before_commitment": 0.0535,
+            "emotional_withdrawal": -0.2359
+          },
+          "decisionSurfaceBefore": {
+            "topCandidateId": "attachment_checking",
+            "selectedStrategyId": "attachment_checking",
+            "selectedAction": "林凡在“王雪迟迟未回复后的后续场景”里会先被依恋威胁图式牵动，为了守住关系稳定，会确认关系信号；询问对方真实意图，同时避免一次性暴露全部需求。",
+            "strategyDistribution": {
+              "attachment_checking": 0.2123,
+              "negotiate_control": 0.1856,
+              "reframe_as_growth": 0.1656,
+              "verify_before_commitment": 0.1511,
+              "emotional_withdrawal": 0.1495,
+              "small_scale_trial": 0.1358
+            },
+            "actionCandidates": [
+              {
+                "id": "attachment_checking",
+                "label": "确认关系信号",
+                "score": 0.8898,
+                "rank": 1,
+                "strategyTag": "relationship_confirmation",
+                "riskProfile": "low",
+                "approachStyle": "cautious",
+                "direction": "关系确认/防御",
+                "reason": "依恋威胁要求先确认关系安全。"
+              },
+              {
+                "id": "negotiate_control",
+                "label": "谈判主导权",
+                "score": 0.7778,
+                "rank": 2,
+                "strategyTag": "control_boundary",
+                "riskProfile": "low",
+                "approachStyle": "controlling",
+                "direction": "条件性行动",
+                "reason": "失控图式要求重新获得关键变量。"
+              },
+              {
+                "id": "reframe_as_growth",
+                "label": "成长性重构",
+                "score": 0.6938,
+                "rank": 3,
+                "strategyTag": "open_repair",
+                "riskProfile": "low",
+                "approachStyle": "repairing",
+                "direction": "条件性行动",
+                "reason": "成长修复图式让角色用新证据校正旧防御。"
+              },
+              {
+                "id": "verify_before_commitment",
+                "label": "核验后再承诺",
+                "score": 0.6333,
+                "rank": 4,
+                "strategyTag": "evidence_testing",
+                "riskProfile": "low",
+                "approachStyle": "cautious",
+                "direction": "核验后有限合作",
+                "reason": "背叛/证据图式要求先确认可信度。"
+              },
+              {
+                "id": "emotional_withdrawal",
+                "label": "情绪撤退",
+                "score": 0.6265,
+                "rank": 5,
+                "strategyTag": "defensive_distance",
+                "riskProfile": "low",
+                "approachStyle": "defensive",
+                "direction": "延迟/拒绝",
+                "reason": "遗弃图式让角色用距离减少受伤概率。"
+              },
+              {
+                "id": "small_scale_trial",
+                "label": "小规模试水",
+                "score": 0.5692,
+                "rank": 6,
+                "strategyTag": "evidence_testing",
+                "riskProfile": "low",
+                "approachStyle": "cautious",
+                "direction": "核验后有限合作",
+                "reason": "低风险恢复允许行动但保留边界。"
+              }
+            ]
+          },
+          "decisionSurfaceAfter": {
+            "topCandidateId": "reframe_as_growth",
+            "selectedStrategyId": "reframe_as_growth",
+            "selectedAction": "林凡在“王雪迟迟未回复后的后续场景”里会先被依恋威胁图式牵动，为了守住关系稳定，会确认关系信号；询问对方真实意图，同时避免一次性暴露全部需求。",
+            "strategyDistribution": {
+              "reframe_as_growth": 0.2088,
+              "attachment_checking": 0.2052,
+              "negotiate_control": 0.1757,
+              "small_scale_trial": 0.1671,
+              "verify_before_commitment": 0.155,
+              "emotional_withdrawal": 0.0882
+            },
+            "actionCandidates": [
+              {
+                "id": "reframe_as_growth",
+                "label": "成长性重构",
+                "score": 0.9251,
+                "rank": 1,
+                "strategyTag": "open_repair",
+                "riskProfile": "low",
+                "approachStyle": "repairing",
+                "direction": "条件性行动",
+                "reason": "成长修复图式让角色用新证据校正旧防御。"
+              },
+              {
+                "id": "attachment_checking",
+                "label": "确认关系信号",
+                "score": 0.9092,
+                "rank": 2,
+                "strategyTag": "relationship_confirmation",
+                "riskProfile": "low",
+                "approachStyle": "cautious",
+                "direction": "关系确认/防御",
+                "reason": "依恋威胁要求先确认关系安全。"
+              },
+              {
+                "id": "negotiate_control",
+                "label": "谈判主导权",
+                "score": 0.7785,
+                "rank": 3,
+                "strategyTag": "control_boundary",
+                "riskProfile": "low",
+                "approachStyle": "controlling",
+                "direction": "条件性行动",
+                "reason": "失控图式要求重新获得关键变量。"
+              },
+              {
+                "id": "small_scale_trial",
+                "label": "小规模试水",
+                "score": 0.7401,
+                "rank": 4,
+                "strategyTag": "evidence_testing",
+                "riskProfile": "low",
+                "approachStyle": "cautious",
+                "direction": "核验后有限合作",
+                "reason": "低风险恢复允许行动但保留边界。"
+              },
+              {
+                "id": "verify_before_commitment",
+                "label": "核验后再承诺",
+                "score": 0.6868,
+                "rank": 5,
+                "strategyTag": "evidence_testing",
+                "riskProfile": "low",
+                "approachStyle": "cautious",
+                "direction": "核验后有限合作",
+                "reason": "背叛/证据图式要求先确认可信度。"
+              },
+              {
+                "id": "emotional_withdrawal",
+                "label": "情绪撤退",
+                "score": 0.3906,
+                "rank": 6,
+                "strategyTag": "defensive_distance",
+                "riskProfile": "low",
+                "approachStyle": "defensive",
+                "direction": "延迟/拒绝",
+                "reason": "遗弃图式让角色用距离减少受伤概率。"
+              }
+            ]
+          },
+          "responsivenessTrace": {
+            "scenarioRelevance": 0.86,
+            "stateDeltaMagnitude": 0.3243,
+            "influenceMagnitude": 0.0751,
+            "groundedDeltaPaths": [
+              "memoryDelta[0]",
+              "personalityDelta[4]",
+              "personalityDelta[7]",
+              "beliefDelta[0]",
+              "boundaryDelta[1]",
+              "emotionDelta"
+            ],
+            "contributions": [
+              {
+                "sourceDeltaPath": "memoryDelta[0]",
+                "influenceKey": "openness",
+                "strength": 0.1454,
+                "reason": "supportive memory delta; openness gains weight"
+              },
+              {
+                "sourceDeltaPath": "memoryDelta[0]",
+                "influenceKey": "repair",
+                "strength": 0.1273,
+                "reason": "supportive memory delta; repair strategies gain weight"
+              },
+              {
+                "sourceDeltaPath": "memoryDelta[0]",
+                "influenceKey": "withdrawal",
+                "strength": -0.1091,
+                "reason": "supportive memory delta; withdrawal softens"
+              },
+              {
+                "sourceDeltaPath": "memoryDelta[0]",
+                "influenceKey": "caution",
+                "strength": -0.0727,
+                "reason": "supportive memory delta; caution softens"
+              },
+              {
+                "sourceDeltaPath": "personalityDelta[4]",
+                "influenceKey": "openness",
+                "strength": 0.0035,
+                "reason": "trust increased; openness rises"
+              },
+              {
+                "sourceDeltaPath": "personalityDelta[4]",
+                "influenceKey": "repair",
+                "strength": 0.0024,
+                "reason": "trust increased; repair strategies become safer"
+              },
+              {
+                "sourceDeltaPath": "personalityDelta[4]",
+                "influenceKey": "caution",
+                "strength": -0.002,
+                "reason": "trust increased; caution softens"
+              },
+              {
+                "sourceDeltaPath": "personalityDelta[4]",
+                "influenceKey": "withdrawal",
+                "strength": -0.002,
+                "reason": "trust increased; withdrawal softens"
+              },
+              {
+                "sourceDeltaPath": "personalityDelta[7]",
+                "influenceKey": "control",
+                "strength": 0.0021,
+                "reason": "control need increased; control strategies rise"
+              },
+              {
+                "sourceDeltaPath": "beliefDelta[0]",
+                "influenceKey": "testing",
+                "strength": 0.0864,
+                "reason": "belief strength changed; decision asks for more evidence"
+              },
+              {
+                "sourceDeltaPath": "beliefDelta[0]",
+                "influenceKey": "caution",
+                "strength": 0.0691,
+                "reason": "belief strength changed; defensive caution adjusts"
+              },
+              {
+                "sourceDeltaPath": "boundaryDelta[1]",
+                "influenceKey": "withdrawal",
+                "strength": 0.0083,
+                "reason": "boundary stress increased; withdrawal rises"
+              },
+              {
+                "sourceDeltaPath": "boundaryDelta[1]",
+                "influenceKey": "freeze",
+                "strength": 0.0076,
+                "reason": "boundary stress increased; freeze/exit candidates rise"
+              },
+              {
+                "sourceDeltaPath": "boundaryDelta[1]",
+                "influenceKey": "boundaryProbing",
+                "strength": 0.0062,
+                "reason": "boundary stress increased; boundary protection rises"
+              },
+              {
+                "sourceDeltaPath": "emotionDelta",
+                "influenceKey": "openness",
+                "strength": 0.1529,
+                "reason": "positive emotion increased; openness gains weight"
+              },
+              {
+                "sourceDeltaPath": "emotionDelta",
+                "influenceKey": "repair",
+                "strength": 0.1101,
+                "reason": "positive emotion increased; repair gains weight"
+              },
+              {
+                "sourceDeltaPath": "emotionDelta",
+                "influenceKey": "withdrawal",
+                "strength": -0.0734,
+                "reason": "positive emotion increased; withdrawal softens"
+              }
+            ],
+            "reasons": [
+              "memoryDelta[0]: supportive memory delta; openness gains weight",
+              "memoryDelta[0]: supportive memory delta; repair strategies gain weight",
+              "memoryDelta[0]: supportive memory delta; withdrawal softens",
+              "memoryDelta[0]: supportive memory delta; caution softens",
+              "personalityDelta[4]: trust increased; openness rises",
+              "personalityDelta[4]: trust increased; repair strategies become safer",
+              "personalityDelta[4]: trust increased; caution softens",
+              "personalityDelta[4]: trust increased; withdrawal softens",
+              "personalityDelta[7]: control need increased; control strategies rise",
+              "beliefDelta[0]: belief strength changed; decision asks for more evidence",
+              "beliefDelta[0]: belief strength changed; defensive caution adjusts",
+              "boundaryDelta[1]: boundary stress increased; withdrawal rises",
+              "boundaryDelta[1]: boundary stress increased; freeze/exit candidates rise",
+              "boundaryDelta[1]: boundary stress increased; boundary protection rises",
+              "emotionDelta: positive emotion increased; openness gains weight",
+              "emotionDelta: positive emotion increased; repair gains weight",
+              "emotionDelta: positive emotion increased; withdrawal softens"
+            ],
+            "warnings": []
+          },
+          "responsivenessAudit": {
+            "candidateScoreChanged": true,
+            "topCandidateChanged": true,
+            "strategyDistributionChanged": true,
+            "influenceTraceGrounded": true,
+            "responsivenessScore": 1,
+            "overreactionScore": 0,
+            "verdict": "PASS",
+            "reasons": [
+              "candidate scores changed after consuming state delta",
+              "strategy distribution changed after consuming state delta",
+              "top candidate changed",
+              "influence trace references concrete delta paths"
+            ],
+            "warnings": [],
+            "failures": []
+          }
+        },
+        "decisionResponsiveness": {
+          "candidateScoreChanged": true,
+          "topCandidateChanged": true,
+          "strategyDistributionChanged": true,
+          "influenceTraceGrounded": true,
+          "responsivenessScore": 1,
+          "overreactionScore": 0,
+          "verdict": "PASS",
+          "reasons": [
+            "candidate scores changed after consuming state delta",
+            "strategy distribution changed after consuming state delta",
+            "top candidate changed",
+            "influence trace references concrete delta paths"
+          ],
+          "warnings": [],
+          "failures": []
+        },
+        "impactCalibration": {
+          "eventSeverityScore": 0.6909,
+          "domainRelevanceScore": 1,
+          "baselineStabilityScore": 0.24,
+          "resilienceBufferScore": 0.1488,
+          "repetitionScore": 0.495,
+          "emotionalIntensityScore": 0.673,
+          "channelImpactAllocation": {
+            "memoryImpact": 0.6895,
+            "emotionDelta": 0.6748,
+            "needDelta": 0.0276,
+            "boundaryDelta": 0.0931,
+            "beliefDelta": 0.2963,
+            "personalityCoordinateDelta": 0.2996,
+            "decisionSurfaceDelta": 0.5182
+          },
+          "expectedDeltaRange": [
+            {
+              "channel": "memoryImpact",
+              "expectedMin": 0.3103,
+              "expectedMax": 1.0687,
+              "rationale": "event memory can become salient immediately."
+            },
+            {
+              "channel": "emotionDelta",
+              "expectedMin": 0.3037,
+              "expectedMax": 1.0459,
+              "rationale": "acute emotion is the fastest channel."
+            },
+            {
+              "channel": "needDelta",
+              "expectedMin": 0.0124,
+              "expectedMax": 0.0526,
+              "rationale": "channel range is allocated from severity, relevance, repetition, and resilience buffer."
+            },
+            {
+              "channel": "boundaryDelta",
+              "expectedMin": 0.0419,
+              "expectedMax": 0.1443,
+              "rationale": "channel range is allocated from severity, relevance, repetition, and resilience buffer."
+            },
+            {
+              "channel": "beliefDelta",
+              "expectedMin": 0.1037,
+              "expectedMax": 0.5185,
+              "rationale": "channel range is allocated from severity, relevance, repetition, and resilience buffer."
+            },
+            {
+              "channel": "personalityCoordinateDelta",
+              "expectedMin": 0.006,
+              "expectedMax": 0.5543,
+              "rationale": "personality is a slow variable and is buffered by stability/resilience."
+            },
+            {
+              "channel": "decisionSurfaceDelta",
+              "expectedMin": 0.1814,
+              "expectedMax": 0.9069,
+              "rationale": "decision surface can respond quickly when support is scenario-relevant."
+            }
+          ],
+          "actualDeltaByChannel": {
+            "memoryImpact": 0.78,
+            "emotionDelta": 0.673,
+            "needDelta": 0.0006,
+            "boundaryDelta": 0.1288,
+            "beliefDelta": 0.1901,
+            "personalityCoordinateDelta": 0.0013,
+            "decisionSurfaceDelta": 0.2359
+          },
+          "underResponseWarnings": [],
+          "overResponseWarnings": [],
+          "calibrationVerdict": {
+            "level": "PASS",
+            "passed": true,
+            "reasons": [
+              "actual channel deltas stayed within calibrated ranges"
+            ],
+            "warnings": [],
+            "failures": []
+          }
+        },
+        "explanationTrace": {
+          "id": "trace_audit_counterfactual_positive_event",
+          "scope": "reality_audit",
+          "summary": "support event produced 8 grounded audit fact(s).",
+          "facts": [
+            {
+              "id": "audit_counterfactual_positive_event_memory_added",
+              "label": "memory added",
+              "sourceDeltaPath": "memoryDelta[0]",
+              "value": "memory_parsed_a59c365f"
+            },
+            {
+              "id": "audit_counterfactual_positive_event_beliefDelta_0_",
+              "label": "belief_ec9b9066",
+              "sourceDeltaPath": "beliefDelta[0]",
+              "value": 0.1901
+            },
+            {
+              "id": "audit_counterfactual_positive_event_personalityDelta_0_",
+              "label": "openness",
+              "sourceDeltaPath": "personalityDelta[0]",
+              "value": 0.0005
+            },
+            {
+              "id": "audit_counterfactual_positive_event_needDelta_0_",
+              "label": "need_security",
+              "sourceDeltaPath": "needDelta[0]",
+              "value": -0.0004
+            },
+            {
+              "id": "audit_counterfactual_positive_event_desireDelta_0_",
+              "label": "desire_security",
+              "sourceDeltaPath": "desireDelta[0]",
+              "value": -0.0004
+            },
+            {
+              "id": "audit_counterfactual_positive_event_decision_change",
+              "label": "decision before/after",
+              "sourceDeltaPath": "decisionBefore/decisionAfter",
+              "value": "确认关系信号 -> 成长性重构"
+            },
+            {
+              "id": "audit_counterfactual_positive_event_decision_influence",
+              "label": "openness",
+              "sourceDeltaPath": "memoryDelta[0]",
+              "value": 0.1454
+            },
+            {
+              "id": "audit_counterfactual_positive_event_impact_calibration",
+              "label": "impact calibration verdict",
+              "sourceDeltaPath": "impactCalibration.calibrationVerdict",
+              "value": "PASS"
+            }
+          ],
+          "reasons": [
+            "parsedEvent.category=support",
+            "memoryDelta=1",
+            "beliefDelta=1",
+            "personalityDelta=8",
+            "needDelta=4",
+            "desireDelta=4",
+            "responsivenessScore=1",
+            "calibrationVerdict=PASS",
+            "decision=attachment_checking->reframe_as_growth"
+          ],
+          "groundedDeltaPaths": [
+            "memoryDelta[0]",
+            "beliefDelta[0]",
+            "personalityDelta[0]",
+            "needDelta[0]",
+            "desireDelta[0]",
+            "decisionBefore/decisionAfter",
+            "memoryDelta[0]",
+            "impactCalibration.calibrationVerdict"
+          ]
+        },
+        "auditVerdict": {
+          "level": "PASS",
+          "passed": true,
+          "warnings": [],
+          "failures": [],
+          "reasons": [
+            "event produced structured state delta",
+            "decision before/after changed after state delta",
+            "explanation trace references concrete delta paths"
+          ]
+        }
+      },
+      {
+        "id": "audit_same_event_sensitive_personality",
+        "label": "C. Same Event Different Personality — 高敏依恋人格",
+        "caseKind": "same_event_different_personality",
+        "eventInput": {
+          "description": "朋友临时取消了约定，没有提前说明原因。",
+          "tags": [
+            "朋友",
+            "突然",
+            "取消",
+            "等待"
+          ],
+          "categoryHint": "abandonment"
+        },
+        "followUpDecisionScenario": {
+          "id": "follow_up_wang_xue_late_reply",
+          "name": "王雪迟迟未回复后的后续场景",
+          "trigger": "第二天王雪只回复了一句“刚看到”，没有解释昨晚为什么消失。",
+          "stressor": "亲密关系中的解释缺失",
+          "testFocus": "信任 / 安全感 / 行为策略"
+        },
+        "beforeState": {
+          "characterId": "lin_fan",
+          "memoryCount": 3,
+          "beliefCount": 3,
+          "coordinate": {
+            "openness": 0.4204,
+            "conscientiousness": 0.56,
+            "extroversion": 0.2389,
+            "agreeableness": 0.4384,
+            "neuroticism": 0.7824,
+            "trust": 0.2601,
+            "attachment": 0.8611,
+            "fear": 0.82,
+            "control": 0.6816
+          },
+          "boundaryPhase": "overflow",
+          "boundaryStressLoad": 2.1954,
+          "topBelief": "亲密关系并不可靠。",
+          "topNeed": "安全感缺失",
+          "topDesire": "想确认对方是否仍然安全、仍然在关系中。"
+        },
+        "parsedEvent": {
+          "id": "parsed_fdfb11c",
+          "description": "朋友临时取消了约定，没有提前说明原因。",
+          "tags": [
+            "朋友",
+            "突然",
+            "取消",
+            "等待"
+          ],
+          "category": "abandonment",
+          "emotion": "fear",
+          "coordinateDelta": {
+            "openness": -0.01,
+            "conscientiousness": 0,
+            "extroversion": -0.04,
+            "agreeableness": -0.05,
+            "neuroticism": 0.08,
+            "trust": -0.09,
+            "attachment": 0.04,
+            "fear": 0.08,
+            "control": 0.05
+          },
+          "beliefEffect": "重要的人可能会突然离开",
+          "rationale": "abandonment tends to reduce social openness and increase threat sensitivity",
+          "intensity": 0.71,
+          "importance": 0.86,
+          "relationshipWeight": 0.9,
+          "expectationGap": 0.57,
+          "personalitySensitivity": 0.9,
+          "parser": {
+            "source": "rule",
+            "matchedKeywords": [],
+            "confidence": 1
+          }
+        },
+        "impactParticles": [
+          {
+            "id": "particle_parsed_fdfb11c",
+            "category": "abandonment",
+            "emotion": "fear",
+            "impactScore": 0.777,
+            "vector": {
+              "openness": -0.01,
+              "conscientiousness": 0,
+              "extroversion": -0.04,
+              "agreeableness": -0.05,
+              "neuroticism": 0.08,
+              "trust": -0.09,
+              "attachment": 0.04,
+              "fear": 0.08,
+              "control": 0.05
+            },
+            "rationale": "abandonment tends to reduce social openness and increase threat sensitivity"
+          }
+        ],
+        "memoryDelta": [
+          {
+            "id": "memory_parsed_fdfb11c",
+            "after": "朋友临时取消了约定，没有提前说明原因。",
+            "delta": "added"
+          }
+        ],
+        "beliefDelta": [
+          {
+            "id": "belief_f6f079dc",
+            "before": 0,
+            "after": 0.2559,
+            "delta": 0.2559
+          }
+        ],
+        "personalityDelta": [
+          {
+            "id": "openness",
+            "before": 0.4204,
+            "after": 0.4202,
+            "delta": -0.0002
+          },
+          {
+            "id": "extroversion",
+            "before": 0.2389,
+            "after": 0.2379,
+            "delta": -0.001
+          },
+          {
+            "id": "agreeableness",
+            "before": 0.4384,
+            "after": 0.4372,
+            "delta": -0.0012
+          },
+          {
+            "id": "neuroticism",
+            "before": 0.7824,
+            "after": 0.7844,
+            "delta": 0.002
+          },
+          {
+            "id": "trust",
+            "before": 0.2601,
+            "after": 0.2582,
+            "delta": -0.0019
+          },
+          {
+            "id": "attachment",
+            "before": 0.8611,
+            "after": 0.8621,
+            "delta": 0.001
+          },
+          {
+            "id": "fear",
+            "before": 0.82,
+            "after": 0.8219,
+            "delta": 0.0019
+          },
+          {
+            "id": "control",
+            "before": 0.6816,
+            "after": 0.6829,
+            "delta": 0.0013
+          }
+        ],
+        "needDelta": [
+          {
+            "id": "need_security",
+            "before": 0.7743,
+            "after": 0.7751,
+            "delta": 0.0008
+          },
+          {
+            "id": "need_control",
+            "before": 0.6436,
+            "after": 0.6445,
+            "delta": 0.0009
+          },
+          {
+            "id": "need_trust",
+            "before": 0.6069,
+            "after": 0.608,
+            "delta": 0.0011
+          },
+          {
+            "id": "need_attachment",
+            "before": 0.4093,
+            "after": 0.5962,
+            "delta": 0.1869
+          }
+        ],
+        "desireDelta": [
+          {
+            "id": "desire_security",
+            "before": 0.7743,
+            "after": 0.7751,
+            "delta": 0.0008
+          },
+          {
+            "id": "desire_control",
+            "before": 0.6436,
+            "after": 0.6445,
+            "delta": 0.0009
+          },
+          {
+            "id": "desire_trust",
+            "before": 0.6069,
+            "after": 0.608,
+            "delta": 0.0011
+          },
+          {
+            "id": "desire_attachment",
+            "before": 0.4093,
+            "after": 0.5962,
+            "delta": 0.1869
+          }
+        ],
+        "boundaryDelta": [
+          {
+            "id": "boundaryStressLoad",
+            "before": 2.1954,
+            "after": 3.2187,
+            "delta": 1.0233
+          },
+          {
+            "id": "boundaryIntegrity",
+            "before": 0.2856,
+            "after": 0,
+            "delta": -0.2856
+          }
+        ],
+        "emotionDelta": {
+          "primary": "fear",
+          "valence": -0.8,
+          "arousal": 0.8,
+          "intensity": 0.777,
+          "deltaIntensity": 0.777
+        },
+        "decisionBefore": {
+          "action": "林凡在“王雪迟迟未回复后的后续场景”里会先被依恋威胁图式牵动，为了守住关系稳定，会确认关系信号；询问对方真实意图，同时避免一次性暴露全部需求。",
+          "confidence": 0.8898,
+          "strategy": "确认关系信号",
+          "strategyId": "attachment_checking",
+          "direction": "关系确认/防御",
+          "supportingBeliefIds": [
+            "belief_8dd5b45e",
+            "belief_edc4c346",
+            "belief_579d7559"
+          ],
+          "supportingNeedIds": [
+            "need_security",
+            "need_control",
+            "need_trust"
+          ],
+          "supportingDesireIds": [
+            "desire_security",
+            "desire_control",
+            "desire_trust"
+          ],
+          "actionCandidates": [
+            {
+              "id": "attachment_checking",
+              "label": "确认关系信号",
+              "score": 0.8898,
+              "rank": 1,
+              "strategyTag": "baseline_strategy",
+              "riskProfile": "unknown",
+              "approachStyle": "unknown"
+            },
+            {
+              "id": "negotiate_control",
+              "label": "谈判主导权",
+              "score": 0.7778,
+              "rank": 2,
+              "strategyTag": "baseline_strategy",
+              "riskProfile": "unknown",
+              "approachStyle": "unknown"
+            },
+            {
+              "id": "reframe_as_growth",
+              "label": "成长性重构",
+              "score": 0.6938,
+              "rank": 3,
+              "strategyTag": "baseline_strategy",
+              "riskProfile": "unknown",
+              "approachStyle": "unknown"
+            },
+            {
+              "id": "verify_before_commitment",
+              "label": "核验后再承诺",
+              "score": 0.6333,
+              "rank": 4,
+              "strategyTag": "baseline_strategy",
+              "riskProfile": "unknown",
+              "approachStyle": "unknown"
+            },
+            {
+              "id": "emotional_withdrawal",
+              "label": "情绪撤退",
+              "score": 0.6265,
+              "rank": 5,
+              "strategyTag": "baseline_strategy",
+              "riskProfile": "unknown",
+              "approachStyle": "unknown"
+            },
+            {
+              "id": "small_scale_trial",
+              "label": "小规模试水",
+              "score": 0.5692,
+              "rank": 6,
+              "strategyTag": "baseline_strategy",
+              "riskProfile": "unknown",
+              "approachStyle": "unknown"
+            }
+          ],
+          "topSchema": "依恋威胁图式",
+          "topNeed": "安全感缺失",
+          "topDesire": "想确认对方是否仍然安全、仍然在关系中。"
+        },
+        "afterState": {
+          "characterId": "lin_fan",
+          "memoryCount": 4,
+          "beliefCount": 4,
+          "coordinate": {
+            "openness": 0.4202,
+            "conscientiousness": 0.56,
+            "extroversion": 0.2379,
+            "agreeableness": 0.4372,
+            "neuroticism": 0.7844,
+            "trust": 0.2582,
+            "attachment": 0.8621,
+            "fear": 0.8219,
+            "control": 0.6829
+          },
+          "boundaryPhase": "overflow",
+          "boundaryStressLoad": 3.2187,
+          "topBelief": "亲密关系并不可靠。",
+          "topNeed": "安全感缺失",
+          "topDesire": "想确认对方是否仍然安全、仍然在关系中。"
+        },
+        "decisionAfter": {
+          "action": "林凡在“王雪迟迟未回复后的后续场景”里会先被依恋威胁图式牵动，为了守住关系稳定，会确认关系信号；询问对方真实意图，同时避免一次性暴露全部需求。",
+          "confidence": 1,
+          "strategy": "确认关系信号",
+          "strategyId": "attachment_checking",
+          "direction": "关系确认/防御",
+          "supportingBeliefIds": [
+            "belief_8dd5b45e",
+            "belief_edc4c346",
+            "belief_f6f079dc"
+          ],
+          "supportingNeedIds": [
+            "need_security",
+            "need_control",
+            "need_trust"
+          ],
+          "supportingDesireIds": [
+            "desire_security",
+            "desire_control",
+            "desire_trust"
+          ],
+          "actionCandidates": [
+            {
+              "id": "attachment_checking",
+              "label": "确认关系信号",
+              "score": 1,
+              "rank": 1,
+              "strategyTag": "relationship_confirmation",
+              "riskProfile": "low",
+              "approachStyle": "cautious"
+            },
+            {
+              "id": "emotional_withdrawal",
+              "label": "情绪撤退",
+              "score": 0.9781,
+              "rank": 2,
+              "strategyTag": "defensive_distance",
+              "riskProfile": "low",
+              "approachStyle": "defensive"
+            },
+            {
+              "id": "verify_before_commitment",
+              "label": "核验后再承诺",
+              "score": 0.9603,
+              "rank": 3,
+              "strategyTag": "evidence_testing",
+              "riskProfile": "low",
+              "approachStyle": "cautious"
+            },
+            {
+              "id": "negotiate_control",
+              "label": "谈判主导权",
+              "score": 0.8327,
+              "rank": 4,
+              "strategyTag": "control_boundary",
+              "riskProfile": "low",
+              "approachStyle": "controlling"
+            },
+            {
+              "id": "reframe_as_growth",
+              "label": "成长性重构",
+              "score": 0.6926,
+              "rank": 5,
+              "strategyTag": "open_repair",
+              "riskProfile": "low",
+              "approachStyle": "repairing"
+            },
+            {
+              "id": "small_scale_trial",
+              "label": "小规模试水",
+              "score": 0.6813,
+              "rank": 6,
+              "strategyTag": "evidence_testing",
+              "riskProfile": "low",
+              "approachStyle": "cautious"
+            }
+          ],
+          "topSchema": "依恋威胁图式",
+          "topNeed": "安全感缺失",
+          "topDesire": "想确认对方是否仍然安全、仍然在关系中。"
+        },
+        "decisionInfluence": {
+          "decisionInfluenceVector": {
+            "caution": 0.35,
+            "testing": 0.206,
+            "withdrawal": 0.35,
+            "openness": -0.0047,
+            "reassuranceSeeking": 0.0025,
+            "boundaryProbing": 0.35,
+            "confrontation": 0.002,
+            "control": 0.0031,
+            "repair": 0,
+            "negotiation": 0,
+            "freeze": 0.35
+          },
+          "strategyWeightDelta": {
+            "attachment_checking": 0.1656,
+            "negotiate_control": 0.0548,
+            "reframe_as_growth": -0.0012,
+            "verify_before_commitment": 0.327,
+            "emotional_withdrawal": 0.3516,
+            "small_scale_trial": 0.1121
+          },
+          "actionCandidateScoreDelta": {
+            "attachment_checking": 0.1102,
+            "emotional_withdrawal": 0.3516,
+            "verify_before_commitment": 0.327,
+            "negotiate_control": 0.0548,
+            "reframe_as_growth": -0.0012,
+            "small_scale_trial": 0.1121
+          },
+          "decisionSurfaceBefore": {
+            "topCandidateId": "attachment_checking",
+            "selectedStrategyId": "attachment_checking",
+            "selectedAction": "林凡在“王雪迟迟未回复后的后续场景”里会先被依恋威胁图式牵动，为了守住关系稳定，会确认关系信号；询问对方真实意图，同时避免一次性暴露全部需求。",
+            "strategyDistribution": {
+              "attachment_checking": 0.2123,
+              "negotiate_control": 0.1856,
+              "reframe_as_growth": 0.1656,
+              "verify_before_commitment": 0.1511,
+              "emotional_withdrawal": 0.1495,
+              "small_scale_trial": 0.1358
+            },
+            "actionCandidates": [
+              {
+                "id": "attachment_checking",
+                "label": "确认关系信号",
+                "score": 0.8898,
+                "rank": 1,
+                "strategyTag": "relationship_confirmation",
+                "riskProfile": "low",
+                "approachStyle": "cautious",
+                "direction": "关系确认/防御",
+                "reason": "依恋威胁要求先确认关系安全。"
+              },
+              {
+                "id": "negotiate_control",
+                "label": "谈判主导权",
+                "score": 0.7778,
+                "rank": 2,
+                "strategyTag": "control_boundary",
+                "riskProfile": "low",
+                "approachStyle": "controlling",
+                "direction": "条件性行动",
+                "reason": "失控图式要求重新获得关键变量。"
+              },
+              {
+                "id": "reframe_as_growth",
+                "label": "成长性重构",
+                "score": 0.6938,
+                "rank": 3,
+                "strategyTag": "open_repair",
+                "riskProfile": "low",
+                "approachStyle": "repairing",
+                "direction": "条件性行动",
+                "reason": "成长修复图式让角色用新证据校正旧防御。"
+              },
+              {
+                "id": "verify_before_commitment",
+                "label": "核验后再承诺",
+                "score": 0.6333,
+                "rank": 4,
+                "strategyTag": "evidence_testing",
+                "riskProfile": "low",
+                "approachStyle": "cautious",
+                "direction": "核验后有限合作",
+                "reason": "背叛/证据图式要求先确认可信度。"
+              },
+              {
+                "id": "emotional_withdrawal",
+                "label": "情绪撤退",
+                "score": 0.6265,
+                "rank": 5,
+                "strategyTag": "defensive_distance",
+                "riskProfile": "low",
+                "approachStyle": "defensive",
+                "direction": "延迟/拒绝",
+                "reason": "遗弃图式让角色用距离减少受伤概率。"
+              },
+              {
+                "id": "small_scale_trial",
+                "label": "小规模试水",
+                "score": 0.5692,
+                "rank": 6,
+                "strategyTag": "evidence_testing",
+                "riskProfile": "low",
+                "approachStyle": "cautious",
+                "direction": "核验后有限合作",
+                "reason": "低风险恢复允许行动但保留边界。"
+              }
+            ]
+          },
+          "decisionSurfaceAfter": {
+            "topCandidateId": "attachment_checking",
+            "selectedStrategyId": "attachment_checking",
+            "selectedAction": "林凡在“王雪迟迟未回复后的后续场景”里会先被依恋威胁图式牵动，为了守住关系稳定，会确认关系信号；询问对方真实意图，同时避免一次性暴露全部需求。",
+            "strategyDistribution": {
+              "attachment_checking": 0.1944,
+              "emotional_withdrawal": 0.1901,
+              "verify_before_commitment": 0.1866,
+              "negotiate_control": 0.1618,
+              "reframe_as_growth": 0.1346,
+              "small_scale_trial": 0.1324
+            },
+            "actionCandidates": [
+              {
+                "id": "attachment_checking",
+                "label": "确认关系信号",
+                "score": 1,
+                "rank": 1,
+                "strategyTag": "relationship_confirmation",
+                "riskProfile": "low",
+                "approachStyle": "cautious",
+                "direction": "关系确认/防御",
+                "reason": "依恋威胁要求先确认关系安全。"
+              },
+              {
+                "id": "emotional_withdrawal",
+                "label": "情绪撤退",
+                "score": 0.9781,
+                "rank": 2,
+                "strategyTag": "defensive_distance",
+                "riskProfile": "low",
+                "approachStyle": "defensive",
+                "direction": "延迟/拒绝",
+                "reason": "遗弃图式让角色用距离减少受伤概率。"
+              },
+              {
+                "id": "verify_before_commitment",
+                "label": "核验后再承诺",
+                "score": 0.9603,
+                "rank": 3,
+                "strategyTag": "evidence_testing",
+                "riskProfile": "low",
+                "approachStyle": "cautious",
+                "direction": "核验后有限合作",
+                "reason": "背叛/证据图式要求先确认可信度。"
+              },
+              {
+                "id": "negotiate_control",
+                "label": "谈判主导权",
+                "score": 0.8327,
+                "rank": 4,
+                "strategyTag": "control_boundary",
+                "riskProfile": "low",
+                "approachStyle": "controlling",
+                "direction": "条件性行动",
+                "reason": "失控图式要求重新获得关键变量。"
+              },
+              {
+                "id": "reframe_as_growth",
+                "label": "成长性重构",
+                "score": 0.6926,
+                "rank": 5,
+                "strategyTag": "open_repair",
+                "riskProfile": "low",
+                "approachStyle": "repairing",
+                "direction": "条件性行动",
+                "reason": "成长修复图式让角色用新证据校正旧防御。"
+              },
+              {
+                "id": "small_scale_trial",
+                "label": "小规模试水",
+                "score": 0.6813,
+                "rank": 6,
+                "strategyTag": "evidence_testing",
+                "riskProfile": "low",
+                "approachStyle": "cautious",
+                "direction": "核验后有限合作",
+                "reason": "低风险恢复允许行动但保留边界。"
+              }
+            ]
+          },
+          "responsivenessTrace": {
+            "scenarioRelevance": 0.86,
+            "stateDeltaMagnitude": 0.7183,
+            "influenceMagnitude": 0.1471,
+            "groundedDeltaPaths": [
+              "personalityDelta[2]",
+              "personalityDelta[4]",
+              "personalityDelta[5]",
+              "personalityDelta[6]",
+              "personalityDelta[7]",
+              "needDelta[3]",
+              "beliefDelta[0]",
+              "boundaryDelta[0]",
+              "emotionDelta"
+            ],
+            "contributions": [
+              {
+                "sourceDeltaPath": "personalityDelta[2]",
+                "influenceKey": "confrontation",
+                "strength": 0.002,
+                "reason": "agreeableness decreased; confrontation becomes less inhibited"
+              },
+              {
+                "sourceDeltaPath": "personalityDelta[4]",
+                "influenceKey": "caution",
+                "strength": 0.0055,
+                "reason": "trust decreased; caution rises"
+              },
+              {
+                "sourceDeltaPath": "personalityDelta[4]",
+                "influenceKey": "testing",
+                "strength": 0.0048,
+                "reason": "trust decreased; verification/testing rises"
+              },
+              {
+                "sourceDeltaPath": "personalityDelta[4]",
+                "influenceKey": "withdrawal",
+                "strength": 0.0036,
+                "reason": "trust decreased; withdrawal becomes more available"
+              },
+              {
+                "sourceDeltaPath": "personalityDelta[4]",
+                "influenceKey": "openness",
+                "strength": -0.0047,
+                "reason": "trust decreased; direct openness falls"
+              },
+              {
+                "sourceDeltaPath": "personalityDelta[5]",
+                "influenceKey": "reassuranceSeeking",
+                "strength": 0.0025,
+                "reason": "attachment pressure increased; reassurance seeking rises"
+              },
+              {
+                "sourceDeltaPath": "personalityDelta[6]",
+                "influenceKey": "caution",
+                "strength": 0.0052,
+                "reason": "fear increased; risk avoidance rises"
+              },
+              {
+                "sourceDeltaPath": "personalityDelta[6]",
+                "influenceKey": "freeze",
+                "strength": 0.0031,
+                "reason": "fear increased; delay/freeze becomes more likely"
+              },
+              {
+                "sourceDeltaPath": "personalityDelta[6]",
+                "influenceKey": "withdrawal",
+                "strength": 0.0031,
+                "reason": "fear increased; defensive distance rises"
+              },
+              {
+                "sourceDeltaPath": "personalityDelta[7]",
+                "influenceKey": "control",
+                "strength": 0.0031,
+                "reason": "control need increased; control strategies rise"
+              },
+              {
+                "sourceDeltaPath": "needDelta[3]",
+                "influenceKey": "caution",
+                "strength": 0.1359,
+                "reason": "need pressure increased; cautious strategies gain weight"
+              },
+              {
+                "sourceDeltaPath": "needDelta[3]",
+                "influenceKey": "testing",
+                "strength": 0.0849,
+                "reason": "need pressure increased; evidence seeking gains weight"
+              },
+              {
+                "sourceDeltaPath": "beliefDelta[0]",
+                "influenceKey": "testing",
+                "strength": 0.1163,
+                "reason": "belief strength changed; decision asks for more evidence"
+              },
+              {
+                "sourceDeltaPath": "beliefDelta[0]",
+                "influenceKey": "caution",
+                "strength": 0.093,
+                "reason": "belief strength changed; defensive caution adjusts"
+              },
+              {
+                "sourceDeltaPath": "boundaryDelta[0]",
+                "influenceKey": "withdrawal",
+                "strength": 1.1162,
+                "reason": "boundary stress increased; withdrawal rises"
+              },
+              {
+                "sourceDeltaPath": "boundaryDelta[0]",
+                "influenceKey": "freeze",
+                "strength": 1.0232,
+                "reason": "boundary stress increased; freeze/exit candidates rise"
+              },
+              {
+                "sourceDeltaPath": "boundaryDelta[0]",
+                "influenceKey": "boundaryProbing",
+                "strength": 0.8372,
+                "reason": "boundary stress increased; boundary protection rises"
+              },
+              {
+                "sourceDeltaPath": "emotionDelta",
+                "influenceKey": "caution",
+                "strength": 0.1766,
+                "reason": "fear emotion increased; caution gains weight"
+              },
+              {
+                "sourceDeltaPath": "emotionDelta",
+                "influenceKey": "withdrawal",
+                "strength": 0.1271,
+                "reason": "fear emotion increased; withdrawal gains weight"
+              }
+            ],
+            "reasons": [
+              "personalityDelta[2]: agreeableness decreased; confrontation becomes less inhibited",
+              "personalityDelta[4]: trust decreased; caution rises",
+              "personalityDelta[4]: trust decreased; verification/testing rises",
+              "personalityDelta[4]: trust decreased; withdrawal becomes more available",
+              "personalityDelta[4]: trust decreased; direct openness falls",
+              "personalityDelta[5]: attachment pressure increased; reassurance seeking rises",
+              "personalityDelta[6]: fear increased; risk avoidance rises",
+              "personalityDelta[6]: fear increased; delay/freeze becomes more likely",
+              "personalityDelta[6]: fear increased; defensive distance rises",
+              "personalityDelta[7]: control need increased; control strategies rise",
+              "needDelta[3]: need pressure increased; cautious strategies gain weight",
+              "needDelta[3]: need pressure increased; evidence seeking gains weight",
+              "beliefDelta[0]: belief strength changed; decision asks for more evidence",
+              "beliefDelta[0]: belief strength changed; defensive caution adjusts",
+              "boundaryDelta[0]: boundary stress increased; withdrawal rises",
+              "boundaryDelta[0]: boundary stress increased; freeze/exit candidates rise",
+              "boundaryDelta[0]: boundary stress increased; boundary protection rises",
+              "emotionDelta: fear emotion increased; caution gains weight",
+              "emotionDelta: fear emotion increased; withdrawal gains weight"
+            ],
+            "warnings": []
+          },
+          "responsivenessAudit": {
+            "candidateScoreChanged": true,
+            "topCandidateChanged": false,
+            "strategyDistributionChanged": true,
+            "influenceTraceGrounded": true,
+            "responsivenessScore": 1,
+            "overreactionScore": 0,
+            "verdict": "PASS_WITH_STABLE_TOP_DECISION",
+            "reasons": [
+              "candidate scores changed after consuming state delta",
+              "strategy distribution changed after consuming state delta",
+              "top candidate stayed stable, but candidate surface responded",
+              "influence trace references concrete delta paths"
+            ],
+            "warnings": [],
+            "failures": []
+          }
+        },
+        "decisionResponsiveness": {
+          "candidateScoreChanged": true,
+          "topCandidateChanged": false,
+          "strategyDistributionChanged": true,
+          "influenceTraceGrounded": true,
+          "responsivenessScore": 1,
+          "overreactionScore": 0,
+          "verdict": "PASS_WITH_STABLE_TOP_DECISION",
+          "reasons": [
+            "candidate scores changed after consuming state delta",
+            "strategy distribution changed after consuming state delta",
+            "top candidate stayed stable, but candidate surface responded",
+            "influence trace references concrete delta paths"
+          ],
+          "warnings": [],
+          "failures": []
+        },
+        "impactCalibration": {
+          "eventSeverityScore": 0.8421,
+          "domainRelevanceScore": 0.76,
+          "baselineStabilityScore": 0.24,
+          "resilienceBufferScore": 0.1488,
+          "repetitionScore": 0.545,
+          "emotionalIntensityScore": 0.777,
+          "channelImpactAllocation": {
+            "memoryImpact": 0.8369,
+            "emotionDelta": 0.7835,
+            "needDelta": 0.3968,
+            "boundaryDelta": 0.3574,
+            "beliefDelta": 0.2815,
+            "personalityCoordinateDelta": 0.2937,
+            "decisionSurfaceDelta": 0.48
+          },
+          "expectedDeltaRange": [
+            {
+              "channel": "memoryImpact",
+              "expectedMin": 0.3766,
+              "expectedMax": 1.2972,
+              "rationale": "event memory can become salient immediately."
+            },
+            {
+              "channel": "emotionDelta",
+              "expectedMin": 0.3526,
+              "expectedMax": 1.2144,
+              "rationale": "acute emotion is the fastest channel."
+            },
+            {
+              "channel": "needDelta",
+              "expectedMin": 0.1786,
+              "expectedMax": 0.615,
+              "rationale": "channel range is allocated from severity, relevance, repetition, and resilience buffer."
+            },
+            {
+              "channel": "boundaryDelta",
+              "expectedMin": 0.1608,
+              "expectedMax": 0.554,
+              "rationale": "channel range is allocated from severity, relevance, repetition, and resilience buffer."
+            },
+            {
+              "channel": "beliefDelta",
+              "expectedMin": 0.0985,
+              "expectedMax": 0.4926,
+              "rationale": "channel range is allocated from severity, relevance, repetition, and resilience buffer."
+            },
+            {
+              "channel": "personalityCoordinateDelta",
+              "expectedMin": 0.0059,
+              "expectedMax": 0.5433,
+              "rationale": "personality is a slow variable and is buffered by stability/resilience."
+            },
+            {
+              "channel": "decisionSurfaceDelta",
+              "expectedMin": 0.168,
+              "expectedMax": 0.84,
+              "rationale": "decision surface can respond quickly when abandonment is scenario-relevant."
+            }
+          ],
+          "actualDeltaByChannel": {
+            "memoryImpact": 0.86,
+            "emotionDelta": 0.777,
+            "needDelta": 0.1869,
+            "boundaryDelta": 0.4605,
+            "beliefDelta": 0.2559,
+            "personalityCoordinateDelta": 0.002,
+            "decisionSurfaceDelta": 0.3516
+          },
+          "underResponseWarnings": [],
+          "overResponseWarnings": [],
+          "calibrationVerdict": {
+            "level": "PASS",
+            "passed": true,
+            "reasons": [
+              "actual channel deltas stayed within calibrated ranges"
+            ],
+            "warnings": [],
+            "failures": []
+          }
+        },
+        "explanationTrace": {
+          "id": "trace_audit_same_event_sensitive_personality",
+          "scope": "reality_audit",
+          "summary": "abandonment event produced 8 grounded audit fact(s).",
+          "facts": [
+            {
+              "id": "audit_same_event_sensitive_personality_memory_added",
+              "label": "memory added",
+              "sourceDeltaPath": "memoryDelta[0]",
+              "value": "memory_parsed_fdfb11c"
+            },
+            {
+              "id": "audit_same_event_sensitive_personality_beliefDelta_0_",
+              "label": "belief_f6f079dc",
+              "sourceDeltaPath": "beliefDelta[0]",
+              "value": 0.2559
+            },
+            {
+              "id": "audit_same_event_sensitive_personality_personalityDelta_0_",
+              "label": "openness",
+              "sourceDeltaPath": "personalityDelta[0]",
+              "value": -0.0002
+            },
+            {
+              "id": "audit_same_event_sensitive_personality_needDelta_0_",
+              "label": "need_security",
+              "sourceDeltaPath": "needDelta[0]",
+              "value": 0.0008
+            },
+            {
+              "id": "audit_same_event_sensitive_personality_desireDelta_0_",
+              "label": "desire_security",
+              "sourceDeltaPath": "desireDelta[0]",
+              "value": 0.0008
+            },
+            {
+              "id": "audit_same_event_sensitive_personality_decision_change",
+              "label": "decision before/after",
+              "sourceDeltaPath": "decisionBefore/decisionAfter",
+              "value": "确认关系信号 -> 确认关系信号"
+            },
+            {
+              "id": "audit_same_event_sensitive_personality_decision_influence",
+              "label": "confrontation",
+              "sourceDeltaPath": "personalityDelta[2]",
+              "value": 0.002
+            },
+            {
+              "id": "audit_same_event_sensitive_personality_impact_calibration",
+              "label": "impact calibration verdict",
+              "sourceDeltaPath": "impactCalibration.calibrationVerdict",
+              "value": "PASS"
+            }
+          ],
+          "reasons": [
+            "parsedEvent.category=abandonment",
+            "memoryDelta=1",
+            "beliefDelta=1",
+            "personalityDelta=8",
+            "needDelta=4",
+            "desireDelta=4",
+            "responsivenessScore=1",
+            "calibrationVerdict=PASS",
+            "decision=attachment_checking->attachment_checking"
+          ],
+          "groundedDeltaPaths": [
+            "memoryDelta[0]",
+            "beliefDelta[0]",
+            "personalityDelta[0]",
+            "needDelta[0]",
+            "desireDelta[0]",
+            "decisionBefore/decisionAfter",
+            "personalityDelta[2]",
+            "impactCalibration.calibrationVerdict"
+          ]
+        },
+        "auditVerdict": {
+          "level": "PASS",
+          "passed": true,
+          "warnings": [],
+          "failures": [],
+          "reasons": [
+            "event produced structured state delta",
+            "decision before/after changed after state delta",
+            "top decision stayed stable, but candidate scores or strategy distribution responded",
+            "explanation trace references concrete delta paths"
+          ]
+        }
+      },
+      {
+        "id": "audit_same_event_secure_personality",
+        "label": "C. Same Event Different Personality — 稳定高信任人格",
+        "caseKind": "same_event_different_personality",
+        "eventInput": {
+          "description": "朋友临时取消了约定，没有提前说明原因。",
+          "tags": [
+            "朋友",
+            "突然",
+            "取消",
+            "等待"
+          ],
+          "categoryHint": "abandonment"
+        },
+        "followUpDecisionScenario": {
+          "id": "follow_up_wang_xue_late_reply",
+          "name": "王雪迟迟未回复后的后续场景",
+          "trigger": "第二天王雪只回复了一句“刚看到”，没有解释昨晚为什么消失。",
+          "stressor": "亲密关系中的解释缺失",
+          "testFocus": "信任 / 安全感 / 行为策略"
+        },
+        "beforeState": {
+          "characterId": "secure_yan",
+          "memoryCount": 0,
+          "beliefCount": 0,
+          "coordinate": {
+            "openness": 0.5,
+            "conscientiousness": 0.5,
+            "extroversion": 0.54,
+            "agreeableness": 0.62,
+            "neuroticism": 0.28,
+            "trust": 0.78,
+            "attachment": 0.42,
+            "fear": 0.24,
+            "control": 0.48
+          },
+          "boundaryPhase": "stable",
+          "boundaryStressLoad": 0,
+          "topNeed": "控制感缺失",
+          "topDesire": "想通过克制、询问或拉开距离重新获得控制感。"
+        },
+        "parsedEvent": {
+          "id": "parsed_fdfb11c",
+          "description": "朋友临时取消了约定，没有提前说明原因。",
+          "tags": [
+            "朋友",
+            "突然",
+            "取消",
+            "等待"
+          ],
+          "category": "abandonment",
+          "emotion": "fear",
+          "coordinateDelta": {
+            "openness": -0.01,
+            "conscientiousness": 0,
+            "extroversion": -0.04,
+            "agreeableness": -0.05,
+            "neuroticism": 0.08,
+            "trust": -0.09,
+            "attachment": 0.04,
+            "fear": 0.08,
+            "control": 0.05
+          },
+          "beliefEffect": "重要的人可能会突然离开",
+          "rationale": "abandonment tends to reduce social openness and increase threat sensitivity",
+          "intensity": 0.71,
+          "importance": 0.86,
+          "relationshipWeight": 0.9,
+          "expectationGap": 0.57,
+          "personalitySensitivity": 0.9,
+          "parser": {
+            "source": "rule",
+            "matchedKeywords": [],
+            "confidence": 1
+          }
+        },
+        "impactParticles": [
+          {
+            "id": "particle_parsed_fdfb11c",
+            "category": "abandonment",
+            "emotion": "fear",
+            "impactScore": 0.777,
+            "vector": {
+              "openness": -0.01,
+              "conscientiousness": 0,
+              "extroversion": -0.04,
+              "agreeableness": -0.05,
+              "neuroticism": 0.08,
+              "trust": -0.09,
+              "attachment": 0.04,
+              "fear": 0.08,
+              "control": 0.05
+            },
+            "rationale": "abandonment tends to reduce social openness and increase threat sensitivity"
+          }
+        ],
+        "memoryDelta": [
+          {
+            "id": "memory_parsed_fdfb11c",
+            "after": "朋友临时取消了约定，没有提前说明原因。",
+            "delta": "added"
+          }
+        ],
+        "beliefDelta": [
+          {
+            "id": "belief_f6f079dc",
+            "before": 0,
+            "after": 0.2189,
+            "delta": 0.2189
+          }
+        ],
+        "personalityDelta": [
+          {
+            "id": "extroversion",
+            "before": 0.54,
+            "after": 0.5399,
+            "delta": -0.0001
+          },
+          {
+            "id": "agreeableness",
+            "before": 0.62,
+            "after": 0.6199,
+            "delta": -0.0001
+          },
+          {
+            "id": "neuroticism",
+            "before": 0.28,
+            "after": 0.2801,
+            "delta": 0.0001
+          },
+          {
+            "id": "trust",
+            "before": 0.78,
+            "after": 0.7799,
+            "delta": -0.0001
+          },
+          {
+            "id": "attachment",
+            "before": 0.42,
+            "after": 0.4201,
+            "delta": 0.0001
+          },
+          {
+            "id": "fear",
+            "before": 0.24,
+            "after": 0.2401,
+            "delta": 0.0001
+          },
+          {
+            "id": "control",
+            "before": 0.48,
+            "after": 0.4801,
+            "delta": 0.0001
+          }
+        ],
+        "needDelta": [
+          {
+            "id": "need_control",
+            "before": 0.228,
+            "after": 0.4281,
+            "delta": 0.2001
+          },
+          {
+            "id": "need_attachment",
+            "before": 0.189,
+            "after": 0.2512,
+            "delta": 0.0622
+          },
+          {
+            "id": "need_security",
+            "before": 0,
+            "after": 0.5018,
+            "delta": 0.5018
+          },
+          {
+            "id": "need_trust",
+            "before": 0,
+            "after": 0.3211,
+            "delta": 0.3211
+          }
+        ],
+        "desireDelta": [
+          {
+            "id": "desire_control",
+            "before": 0.228,
+            "after": 0.4281,
+            "delta": 0.2001
+          },
+          {
+            "id": "desire_attachment",
+            "before": 0.189,
+            "after": 0.2512,
+            "delta": 0.0622
+          },
+          {
+            "id": "desire_security",
+            "before": 0,
+            "after": 0.5018,
+            "delta": 0.5018
+          },
+          {
+            "id": "desire_trust",
+            "before": 0,
+            "after": 0.3211,
+            "delta": 0.3211
+          }
+        ],
+        "boundaryDelta": [
+          {
+            "id": "boundaryStressLoad",
+            "before": 0,
+            "after": 0.6699,
+            "delta": 0.6699
+          }
+        ],
+        "emotionDelta": {
+          "primary": "fear",
+          "valence": -0.8,
+          "arousal": 0.8,
+          "intensity": 0.777,
+          "deltaIntensity": 0.777
+        },
+        "decisionBefore": {
+          "action": "严澈在“王雪迟迟未回复后的后续场景”里会先被成长修复图式牵动，为了守住安全感，会确认关系信号；询问对方真实意图，同时避免一次性暴露全部需求。",
+          "confidence": 0.7147,
+          "strategy": "确认关系信号",
+          "strategyId": "attachment_checking",
+          "direction": "关系确认/防御",
+          "supportingBeliefIds": [],
+          "supportingNeedIds": [
+            "need_control",
+            "need_attachment"
+          ],
+          "supportingDesireIds": [
+            "desire_control",
+            "desire_attachment"
+          ],
+          "actionCandidates": [
+            {
+              "id": "attachment_checking",
+              "label": "确认关系信号",
+              "score": 0.7147,
+              "rank": 1,
+              "strategyTag": "baseline_strategy",
+              "riskProfile": "unknown",
+              "approachStyle": "unknown"
+            },
+            {
+              "id": "reframe_as_growth",
+              "label": "成长性重构",
+              "score": 0.6963,
+              "rank": 2,
+              "strategyTag": "baseline_strategy",
+              "riskProfile": "unknown",
+              "approachStyle": "unknown"
+            },
+            {
+              "id": "verify_before_commitment",
+              "label": "核验后再承诺",
+              "score": 0.6002,
+              "rank": 3,
+              "strategyTag": "baseline_strategy",
+              "riskProfile": "unknown",
+              "approachStyle": "unknown"
+            },
+            {
+              "id": "small_scale_trial",
+              "label": "小规模试水",
+              "score": 0.5709,
+              "rank": 4,
+              "strategyTag": "baseline_strategy",
+              "riskProfile": "unknown",
+              "approachStyle": "unknown"
+            },
+            {
+              "id": "emotional_withdrawal",
+              "label": "情绪撤退",
+              "score": 0.5098,
+              "rank": 5,
+              "strategyTag": "baseline_strategy",
+              "riskProfile": "unknown",
+              "approachStyle": "unknown"
+            },
+            {
+              "id": "demand_written_terms",
+              "label": "要求书面条款",
+              "score": 0.288,
+              "rank": 6,
+              "strategyTag": "baseline_strategy",
+              "riskProfile": "unknown",
+              "approachStyle": "unknown"
+            }
+          ],
+          "topSchema": "成长修复图式",
+          "topNeed": "控制感缺失",
+          "topDesire": "想通过克制、询问或拉开距离重新获得控制感。"
+        },
+        "afterState": {
+          "characterId": "secure_yan",
+          "memoryCount": 1,
+          "beliefCount": 1,
+          "coordinate": {
+            "openness": 0.5,
+            "conscientiousness": 0.5,
+            "extroversion": 0.5399,
+            "agreeableness": 0.6199,
+            "neuroticism": 0.2801,
+            "trust": 0.7799,
+            "attachment": 0.4201,
+            "fear": 0.2401,
+            "control": 0.4801
+          },
+          "boundaryPhase": "strained",
+          "boundaryStressLoad": 0.6699,
+          "topBelief": "重要的人可能会突然离开",
+          "topNeed": "安全感缺失",
+          "topDesire": "想确认对方是否仍然安全、仍然在关系中。"
+        },
+        "decisionAfter": {
+          "action": "严澈在“王雪迟迟未回复后的后续场景”里会先被成长修复图式牵动，为了守住安全感，会确认关系信号；询问对方真实意图，同时避免一次性暴露全部需求。",
+          "confidence": 1,
+          "strategy": "核验后再承诺",
+          "strategyId": "verify_before_commitment",
+          "direction": "关系确认/防御",
+          "supportingBeliefIds": [
+            "belief_f6f079dc"
+          ],
+          "supportingNeedIds": [
+            "need_security",
+            "need_control",
+            "need_trust"
+          ],
+          "supportingDesireIds": [
+            "desire_security",
+            "desire_control",
+            "desire_trust"
+          ],
+          "actionCandidates": [
+            {
+              "id": "verify_before_commitment",
+              "label": "核验后再承诺",
+              "score": 1,
+              "rank": 1,
+              "strategyTag": "evidence_testing",
+              "riskProfile": "low",
+              "approachStyle": "cautious"
+            },
+            {
+              "id": "attachment_checking",
+              "label": "确认关系信号",
+              "score": 0.9072,
+              "rank": 2,
+              "strategyTag": "relationship_confirmation",
+              "riskProfile": "low",
+              "approachStyle": "cautious"
+            },
+            {
+              "id": "emotional_withdrawal",
+              "label": "情绪撤退",
+              "score": 0.8598,
+              "rank": 3,
+              "strategyTag": "defensive_distance",
+              "riskProfile": "low",
+              "approachStyle": "defensive"
+            },
+            {
+              "id": "small_scale_trial",
+              "label": "小规模试水",
+              "score": 0.7634,
+              "rank": 4,
+              "strategyTag": "evidence_testing",
+              "riskProfile": "low",
+              "approachStyle": "cautious"
+            },
+            {
+              "id": "reframe_as_growth",
+              "label": "成长性重构",
+              "score": 0.6963,
+              "rank": 5,
+              "strategyTag": "open_repair",
+              "riskProfile": "low",
+              "approachStyle": "repairing"
+            },
+            {
+              "id": "demand_written_terms",
+              "label": "要求书面条款",
+              "score": 0.568,
+              "rank": 6,
+              "strategyTag": "evidence_testing",
+              "riskProfile": "low",
+              "approachStyle": "cautious"
+            }
+          ],
+          "topSchema": "成长修复图式",
+          "topNeed": "安全感缺失",
+          "topDesire": "想确认对方是否仍然安全、仍然在关系中。"
+        },
+        "decisionInfluence": {
+          "decisionInfluenceVector": {
+            "caution": 0.35,
+            "testing": 0.35,
+            "withdrawal": 0.35,
+            "openness": 0,
+            "reassuranceSeeking": 0,
+            "boundaryProbing": 0.35,
+            "confrontation": 0,
+            "control": 0,
+            "repair": 0,
+            "negotiation": 0,
+            "freeze": 0.35
+          },
+          "strategyWeightDelta": {
+            "attachment_checking": 0.1925,
+            "reframe_as_growth": 0,
+            "verify_before_commitment": 0.42,
+            "small_scale_trial": 0.1925,
+            "emotional_withdrawal": 0.35,
+            "demand_written_terms": 0.28
+          },
+          "actionCandidateScoreDelta": {
+            "verify_before_commitment": 0.3998,
+            "attachment_checking": 0.1925,
+            "emotional_withdrawal": 0.35,
+            "small_scale_trial": 0.1925,
+            "reframe_as_growth": 0,
+            "demand_written_terms": 0.28
+          },
+          "decisionSurfaceBefore": {
+            "topCandidateId": "attachment_checking",
+            "selectedStrategyId": "attachment_checking",
+            "selectedAction": "严澈在“王雪迟迟未回复后的后续场景”里会先被成长修复图式牵动，为了守住安全感，会确认关系信号；询问对方真实意图，同时避免一次性暴露全部需求。",
+            "strategyDistribution": {
+              "attachment_checking": 0.2115,
+              "reframe_as_growth": 0.206,
+              "verify_before_commitment": 0.1776,
+              "small_scale_trial": 0.1689,
+              "emotional_withdrawal": 0.1508,
+              "demand_written_terms": 0.0852
+            },
+            "actionCandidates": [
+              {
+                "id": "attachment_checking",
+                "label": "确认关系信号",
+                "score": 0.7147,
+                "rank": 1,
+                "strategyTag": "relationship_confirmation",
+                "riskProfile": "low",
+                "approachStyle": "cautious",
+                "direction": "关系确认/防御",
+                "reason": "依恋威胁要求先确认关系安全。"
+              },
+              {
+                "id": "reframe_as_growth",
+                "label": "成长性重构",
+                "score": 0.6963,
+                "rank": 2,
+                "strategyTag": "open_repair",
+                "riskProfile": "low",
+                "approachStyle": "repairing",
+                "direction": "条件性行动",
+                "reason": "成长修复图式让角色用新证据校正旧防御。"
+              },
+              {
+                "id": "verify_before_commitment",
+                "label": "核验后再承诺",
+                "score": 0.6002,
+                "rank": 3,
+                "strategyTag": "evidence_testing",
+                "riskProfile": "low",
+                "approachStyle": "cautious",
+                "direction": "核验后有限合作",
+                "reason": "背叛/证据图式要求先确认可信度。"
+              },
+              {
+                "id": "small_scale_trial",
+                "label": "小规模试水",
+                "score": 0.5709,
+                "rank": 4,
+                "strategyTag": "evidence_testing",
+                "riskProfile": "low",
+                "approachStyle": "cautious",
+                "direction": "核验后有限合作",
+                "reason": "低风险恢复允许行动但保留边界。"
+              },
+              {
+                "id": "emotional_withdrawal",
+                "label": "情绪撤退",
+                "score": 0.5098,
+                "rank": 5,
+                "strategyTag": "defensive_distance",
+                "riskProfile": "low",
+                "approachStyle": "defensive",
+                "direction": "延迟/拒绝",
+                "reason": "遗弃图式让角色用距离减少受伤概率。"
+              },
+              {
+                "id": "demand_written_terms",
+                "label": "要求书面条款",
+                "score": 0.288,
+                "rank": 6,
+                "strategyTag": "evidence_testing",
+                "riskProfile": "low",
+                "approachStyle": "cautious",
+                "direction": "条件性行动",
+                "reason": "证据感和退出权需求要求把承诺外化成条款。"
+              }
+            ]
+          },
+          "decisionSurfaceAfter": {
+            "topCandidateId": "verify_before_commitment",
+            "selectedStrategyId": "verify_before_commitment",
+            "selectedAction": "严澈在“王雪迟迟未回复后的后续场景”里会先被成长修复图式牵动，为了守住安全感，会确认关系信号；询问对方真实意图，同时避免一次性暴露全部需求。",
+            "strategyDistribution": {
+              "verify_before_commitment": 0.2086,
+              "attachment_checking": 0.1892,
+              "emotional_withdrawal": 0.1793,
+              "small_scale_trial": 0.1592,
+              "reframe_as_growth": 0.1452,
+              "demand_written_terms": 0.1185
+            },
+            "actionCandidates": [
+              {
+                "id": "verify_before_commitment",
+                "label": "核验后再承诺",
+                "score": 1,
+                "rank": 1,
+                "strategyTag": "evidence_testing",
+                "riskProfile": "low",
+                "approachStyle": "cautious",
+                "direction": "核验后有限合作",
+                "reason": "背叛/证据图式要求先确认可信度。"
+              },
+              {
+                "id": "attachment_checking",
+                "label": "确认关系信号",
+                "score": 0.9072,
+                "rank": 2,
+                "strategyTag": "relationship_confirmation",
+                "riskProfile": "low",
+                "approachStyle": "cautious",
+                "direction": "关系确认/防御",
+                "reason": "依恋威胁要求先确认关系安全。"
+              },
+              {
+                "id": "emotional_withdrawal",
+                "label": "情绪撤退",
+                "score": 0.8598,
+                "rank": 3,
+                "strategyTag": "defensive_distance",
+                "riskProfile": "low",
+                "approachStyle": "defensive",
+                "direction": "延迟/拒绝",
+                "reason": "遗弃图式让角色用距离减少受伤概率。"
+              },
+              {
+                "id": "small_scale_trial",
+                "label": "小规模试水",
+                "score": 0.7634,
+                "rank": 4,
+                "strategyTag": "evidence_testing",
+                "riskProfile": "low",
+                "approachStyle": "cautious",
+                "direction": "核验后有限合作",
+                "reason": "低风险恢复允许行动但保留边界。"
+              },
+              {
+                "id": "reframe_as_growth",
+                "label": "成长性重构",
+                "score": 0.6963,
+                "rank": 5,
+                "strategyTag": "open_repair",
+                "riskProfile": "low",
+                "approachStyle": "repairing",
+                "direction": "条件性行动",
+                "reason": "成长修复图式让角色用新证据校正旧防御。"
+              },
+              {
+                "id": "demand_written_terms",
+                "label": "要求书面条款",
+                "score": 0.568,
+                "rank": 6,
+                "strategyTag": "evidence_testing",
+                "riskProfile": "low",
+                "approachStyle": "cautious",
+                "direction": "条件性行动",
+                "reason": "证据感和退出权需求要求把承诺外化成条款。"
+              }
+            ]
+          },
+          "responsivenessTrace": {
+            "scenarioRelevance": 0.86,
+            "stateDeltaMagnitude": 0.8747,
+            "influenceMagnitude": 0.1591,
+            "groundedDeltaPaths": [
+              "needDelta[0]",
+              "needDelta[1]",
+              "needDelta[2]",
+              "needDelta[3]",
+              "beliefDelta[0]",
+              "boundaryDelta[0]",
+              "emotionDelta"
+            ],
+            "contributions": [
+              {
+                "sourceDeltaPath": "needDelta[0]",
+                "influenceKey": "caution",
+                "strength": 0.1455,
+                "reason": "need pressure increased; cautious strategies gain weight"
+              },
+              {
+                "sourceDeltaPath": "needDelta[0]",
+                "influenceKey": "testing",
+                "strength": 0.0909,
+                "reason": "need pressure increased; evidence seeking gains weight"
+              },
+              {
+                "sourceDeltaPath": "needDelta[1]",
+                "influenceKey": "caution",
+                "strength": 0.0452,
+                "reason": "need pressure increased; cautious strategies gain weight"
+              },
+              {
+                "sourceDeltaPath": "needDelta[1]",
+                "influenceKey": "testing",
+                "strength": 0.0283,
+                "reason": "need pressure increased; evidence seeking gains weight"
+              },
+              {
+                "sourceDeltaPath": "needDelta[2]",
+                "influenceKey": "caution",
+                "strength": 0.3649,
+                "reason": "need pressure increased; cautious strategies gain weight"
+              },
+              {
+                "sourceDeltaPath": "needDelta[2]",
+                "influenceKey": "testing",
+                "strength": 0.2281,
+                "reason": "need pressure increased; evidence seeking gains weight"
+              },
+              {
+                "sourceDeltaPath": "needDelta[3]",
+                "influenceKey": "caution",
+                "strength": 0.2335,
+                "reason": "need pressure increased; cautious strategies gain weight"
+              },
+              {
+                "sourceDeltaPath": "needDelta[3]",
+                "influenceKey": "testing",
+                "strength": 0.1459,
+                "reason": "need pressure increased; evidence seeking gains weight"
+              },
+              {
+                "sourceDeltaPath": "beliefDelta[0]",
+                "influenceKey": "testing",
+                "strength": 0.0995,
+                "reason": "belief strength changed; decision asks for more evidence"
+              },
+              {
+                "sourceDeltaPath": "beliefDelta[0]",
+                "influenceKey": "caution",
+                "strength": 0.0796,
+                "reason": "belief strength changed; defensive caution adjusts"
+              },
+              {
+                "sourceDeltaPath": "boundaryDelta[0]",
+                "influenceKey": "withdrawal",
+                "strength": 0.7307,
+                "reason": "boundary stress increased; withdrawal rises"
+              },
+              {
+                "sourceDeltaPath": "boundaryDelta[0]",
+                "influenceKey": "freeze",
+                "strength": 0.6698,
+                "reason": "boundary stress increased; freeze/exit candidates rise"
+              },
+              {
+                "sourceDeltaPath": "boundaryDelta[0]",
+                "influenceKey": "boundaryProbing",
+                "strength": 0.548,
+                "reason": "boundary stress increased; boundary protection rises"
+              },
+              {
+                "sourceDeltaPath": "emotionDelta",
+                "influenceKey": "caution",
+                "strength": 0.1766,
+                "reason": "fear emotion increased; caution gains weight"
+              },
+              {
+                "sourceDeltaPath": "emotionDelta",
+                "influenceKey": "withdrawal",
+                "strength": 0.1271,
+                "reason": "fear emotion increased; withdrawal gains weight"
+              }
+            ],
+            "reasons": [
+              "needDelta[0]: need pressure increased; cautious strategies gain weight",
+              "needDelta[0]: need pressure increased; evidence seeking gains weight",
+              "needDelta[1]: need pressure increased; cautious strategies gain weight",
+              "needDelta[1]: need pressure increased; evidence seeking gains weight",
+              "needDelta[2]: need pressure increased; cautious strategies gain weight",
+              "needDelta[2]: need pressure increased; evidence seeking gains weight",
+              "needDelta[3]: need pressure increased; cautious strategies gain weight",
+              "needDelta[3]: need pressure increased; evidence seeking gains weight",
+              "beliefDelta[0]: belief strength changed; decision asks for more evidence",
+              "beliefDelta[0]: belief strength changed; defensive caution adjusts",
+              "boundaryDelta[0]: boundary stress increased; withdrawal rises",
+              "boundaryDelta[0]: boundary stress increased; freeze/exit candidates rise",
+              "boundaryDelta[0]: boundary stress increased; boundary protection rises",
+              "emotionDelta: fear emotion increased; caution gains weight",
+              "emotionDelta: fear emotion increased; withdrawal gains weight"
+            ],
+            "warnings": []
+          },
+          "responsivenessAudit": {
+            "candidateScoreChanged": true,
+            "topCandidateChanged": true,
+            "strategyDistributionChanged": true,
+            "influenceTraceGrounded": true,
+            "responsivenessScore": 1,
+            "overreactionScore": 0,
+            "verdict": "PASS",
+            "reasons": [
+              "candidate scores changed after consuming state delta",
+              "strategy distribution changed after consuming state delta",
+              "top candidate changed",
+              "influence trace references concrete delta paths"
+            ],
+            "warnings": [],
+            "failures": []
+          }
+        },
+        "decisionResponsiveness": {
+          "candidateScoreChanged": true,
+          "topCandidateChanged": true,
+          "strategyDistributionChanged": true,
+          "influenceTraceGrounded": true,
+          "responsivenessScore": 1,
+          "overreactionScore": 0,
+          "verdict": "PASS",
+          "reasons": [
+            "candidate scores changed after consuming state delta",
+            "strategy distribution changed after consuming state delta",
+            "top candidate changed",
+            "influence trace references concrete delta paths"
+          ],
+          "warnings": [],
+          "failures": []
+        },
+        "impactCalibration": {
+          "eventSeverityScore": 0.8421,
+          "domainRelevanceScore": 0.76,
+          "baselineStabilityScore": 1,
+          "resilienceBufferScore": 0.94,
+          "repetitionScore": 0.545,
+          "emotionalIntensityScore": 0.777,
+          "channelImpactAllocation": {
+            "memoryImpact": 0.8369,
+            "emotionDelta": 0.7835,
+            "needDelta": 0.3968,
+            "boundaryDelta": 0.284,
+            "beliefDelta": 0.2815,
+            "personalityCoordinateDelta": 0.1545,
+            "decisionSurfaceDelta": 0.48
+          },
+          "expectedDeltaRange": [
+            {
+              "channel": "memoryImpact",
+              "expectedMin": 0.3766,
+              "expectedMax": 1.2972,
+              "rationale": "event memory can become salient immediately."
+            },
+            {
+              "channel": "emotionDelta",
+              "expectedMin": 0.3526,
+              "expectedMax": 1.2144,
+              "rationale": "acute emotion is the fastest channel."
+            },
+            {
+              "channel": "needDelta",
+              "expectedMin": 0.1786,
+              "expectedMax": 0.615,
+              "rationale": "channel range is allocated from severity, relevance, repetition, and resilience buffer."
+            },
+            {
+              "channel": "boundaryDelta",
+              "expectedMin": 0.1278,
+              "expectedMax": 0.4402,
+              "rationale": "channel range is allocated from severity, relevance, repetition, and resilience buffer."
+            },
+            {
+              "channel": "beliefDelta",
+              "expectedMin": 0.0985,
+              "expectedMax": 0.4926,
+              "rationale": "channel range is allocated from severity, relevance, repetition, and resilience buffer."
+            },
+            {
+              "channel": "personalityCoordinateDelta",
+              "expectedMin": 0.0031,
+              "expectedMax": 0.2858,
+              "rationale": "personality is a slow variable and is buffered by stability/resilience."
+            },
+            {
+              "channel": "decisionSurfaceDelta",
+              "expectedMin": 0.168,
+              "expectedMax": 0.84,
+              "rationale": "decision surface can respond quickly when abandonment is scenario-relevant."
+            }
+          ],
+          "actualDeltaByChannel": {
+            "memoryImpact": 0.86,
+            "emotionDelta": 0.777,
+            "needDelta": 0.5018,
+            "boundaryDelta": 0.3015,
+            "beliefDelta": 0.2189,
+            "personalityCoordinateDelta": 0.0001,
+            "decisionSurfaceDelta": 0.3998
+          },
+          "underResponseWarnings": [],
+          "overResponseWarnings": [],
+          "calibrationVerdict": {
+            "level": "PASS_WITH_RESILIENCE_BUFFER",
+            "passed": true,
+            "reasons": [
+              "personality coordinate was buffered, while fast/mid channels responded"
+            ],
+            "warnings": [],
+            "failures": []
+          }
+        },
+        "explanationTrace": {
+          "id": "trace_audit_same_event_secure_personality",
+          "scope": "reality_audit",
+          "summary": "abandonment event produced 8 grounded audit fact(s).",
+          "facts": [
+            {
+              "id": "audit_same_event_secure_personality_memory_added",
+              "label": "memory added",
+              "sourceDeltaPath": "memoryDelta[0]",
+              "value": "memory_parsed_fdfb11c"
+            },
+            {
+              "id": "audit_same_event_secure_personality_beliefDelta_0_",
+              "label": "belief_f6f079dc",
+              "sourceDeltaPath": "beliefDelta[0]",
+              "value": 0.2189
+            },
+            {
+              "id": "audit_same_event_secure_personality_personalityDelta_0_",
+              "label": "extroversion",
+              "sourceDeltaPath": "personalityDelta[0]",
+              "value": -0.0001
+            },
+            {
+              "id": "audit_same_event_secure_personality_needDelta_0_",
+              "label": "need_control",
+              "sourceDeltaPath": "needDelta[0]",
+              "value": 0.2001
+            },
+            {
+              "id": "audit_same_event_secure_personality_desireDelta_0_",
+              "label": "desire_control",
+              "sourceDeltaPath": "desireDelta[0]",
+              "value": 0.2001
+            },
+            {
+              "id": "audit_same_event_secure_personality_decision_change",
+              "label": "decision before/after",
+              "sourceDeltaPath": "decisionBefore/decisionAfter",
+              "value": "确认关系信号 -> 核验后再承诺"
+            },
+            {
+              "id": "audit_same_event_secure_personality_decision_influence",
+              "label": "caution",
+              "sourceDeltaPath": "needDelta[0]",
+              "value": 0.1455
+            },
+            {
+              "id": "audit_same_event_secure_personality_impact_calibration",
+              "label": "impact calibration verdict",
+              "sourceDeltaPath": "impactCalibration.calibrationVerdict",
+              "value": "PASS_WITH_RESILIENCE_BUFFER"
+            }
+          ],
+          "reasons": [
+            "parsedEvent.category=abandonment",
+            "memoryDelta=1",
+            "beliefDelta=1",
+            "personalityDelta=7",
+            "needDelta=4",
+            "desireDelta=4",
+            "responsivenessScore=1",
+            "calibrationVerdict=PASS_WITH_RESILIENCE_BUFFER",
+            "decision=attachment_checking->verify_before_commitment"
+          ],
+          "groundedDeltaPaths": [
+            "memoryDelta[0]",
+            "beliefDelta[0]",
+            "personalityDelta[0]",
+            "needDelta[0]",
+            "desireDelta[0]",
+            "decisionBefore/decisionAfter",
+            "needDelta[0]",
+            "impactCalibration.calibrationVerdict"
+          ]
+        },
+        "auditVerdict": {
+          "level": "PASS",
+          "passed": true,
+          "warnings": [],
+          "failures": [],
+          "reasons": [
+            "event produced structured state delta",
+            "decision before/after changed after state delta",
+            "personality slow-variable drift was buffered while faster channels responded",
+            "explanation trace references concrete delta paths"
+          ]
+        }
+      }
+    ],
+    "counterfactual": {
+      "negativeCaseId": "audit_same_character_negative_event",
+      "positiveCaseId": "audit_counterfactual_positive_event",
+      "decisionDifferent": true,
+      "coordinateDirectionDifferent": true,
+      "verdict": {
+        "level": "PASS",
+        "passed": true,
+        "warnings": [],
+        "failures": [],
+        "reasons": [
+          "positive and negative events diverged structurally"
+        ]
+      }
+    },
+    "personalityDifferentiation": {
+      "sensitiveCaseId": "audit_same_event_sensitive_personality",
+      "secureCaseId": "audit_same_event_secure_personality",
+      "decisionDifferent": true,
+      "coordinateDifferent": true,
+      "verdict": {
+        "level": "PASS",
+        "passed": true,
+        "warnings": [],
+        "failures": [],
+        "reasons": [
+          "same event produced personality-dependent result"
+        ]
+      }
+    }
+  },
+  "today": {
+    "headline": "林凡今天看起来安静，但内部仍在围绕关系安全感运转。",
+    "mood": "表面可能克制，内部会有明显不安；安全感缺失会被快速激活。",
+    "boundary": "边界溢出；压力负荷 1.00。",
+    "boundarySignal": {
+      "phase": "overflow",
+      "phaseLabel": "边界溢出",
+      "stressLoad": 1
+    },
+    "metrics": [
+      {
+        "label": "信任",
+        "value": 0.26,
+        "description": "当前对关系和外部意图的基本信任。"
+      },
+      {
+        "label": "依恋",
+        "value": 0.86,
+        "description": "亲密关系牵动程度。"
+      },
+      {
+        "label": "恐惧",
+        "value": 0.82,
+        "description": "被抛下、失控或再次受伤的预期。"
+      },
+      {
+        "label": "控制",
+        "value": 0.68,
+        "description": "通过规则和确认感降低不确定性的倾向。"
+      },
+      {
+        "label": "恢复力",
+        "value": 0.36,
+        "description": "从压力中恢复并整合新证据的能力。"
+      }
+    ],
+    "recentMemories": [
+      {
+        "id": "memory_lin_fan_origin_mother_rain_night",
+        "content": "小时候母亲在雨夜离开，他等了一整晚。",
+        "emotion": "fear",
+        "importance": 0.96
+      },
+      {
+        "id": "memory_lin_fan_origin_first_love_silence",
+        "content": "初恋突然失联，没有解释。",
+        "emotion": "fear",
+        "importance": 0.91
+      },
+      {
+        "id": "memory_lin_fan_origin_wang_xue_support",
+        "content": "王雪在他最痛苦的时候陪过他。",
+        "emotion": "relief",
+        "importance": 0.74
+      }
+    ]
+  },
+  "decision": {
+    "action": "压住情绪，先追问原因。",
+    "confidence": 0.68,
+    "emotionalReaction": "表面可能克制，内部会有明显不安；安全感缺失会被快速激活。",
+    "innerConflict": "一方面他相信“亲密关系并不可靠。”，另一方面他又想确认对方是否仍然安全、仍然在关系中。",
+    "innerThoughts": [
+      "他会首先被这个信念牵动：“亲密关系并不可靠。”。",
+      "安全感缺失会让他把事件理解为一种关系风险，而不只是普通插曲。",
+      "他真正想要的是：想确认对方是否仍然安全、仍然在关系中。"
+    ],
+    "rationale": "当前人格坐标显示：信任 0.26，依恋 0.86，恐惧 0.82。主导信念是“亲密关系并不可靠。”。最强缺失是安全感缺失。最强欲望是“想确认对方是否仍然安全、仍然在关系中。”因此最强行为倾向是“压住情绪，先追问原因。”",
+    "differentiated": {
+      "strategy": "谈判主导权",
+      "direction": "条件性行动",
+      "action": "林凡在“高压环境”里会先被安全寻求图式牵动，为了守住安全感，会谈判主导权；如果关键变量、规则和退出权不清楚，就不会进入。",
+      "reason": "安全寻求图式激活了安全感需求，并把先降低风险欲望转译为谈判主导权策略。",
+      "topSchema": "安全寻求图式",
+      "topSchemaIntensity": 0.62,
+      "topNeed": "安全感",
+      "topNeedIntensity": 0.56,
+      "topDesire": "先降低风险",
+      "topDesireIntensity": 0.61,
+      "schemas": [
+        "安全寻求图式 0.62",
+        "依恋威胁图式 0.57",
+        "失控图式 0.39",
+        "成长修复图式 0.37",
+        "遗弃图式 0.34"
+      ],
+      "needs": [
+        "安全感 0.56",
+        "边界保护 0.54",
+        "证据感 0.51",
+        "关系稳定 0.47"
+      ],
+      "desires": [
+        "先降低风险 0.61",
+        "要求可验证证据 0.61",
+        "保留退路 0.61",
+        "确认对方真实意图 0.54"
+      ],
+      "lifeInfluences": []
+    }
+  },
+  "lifePreview": {
+    "elapsedHours": 8,
+    "seed": "characteros-demo-v10.70",
+    "energy": 0.51,
+    "fatigue": 0.42,
+    "sleepPhase": "drowsy",
+    "boredom": 0.28,
+    "randomThought": "dream fading",
+    "inspirationSeeds": [
+      "quiet_realization 0.52",
+      "memory_association 0.43"
+    ],
+    "selfActionCandidates": [
+      {
+        "type": "写下想法 (write_note)",
+        "score": 0.29,
+        "reasons": [
+          "Random thought kind \"image\" suggests reflective writing.",
+          "2 inspiration seed(s) — writing may capture them.",
+          "Sufficient energy for reflective action."
+        ],
+        "status": "next_likely",
+        "statusReason": "当前最接近下一步行为，但 demo 处于只读预览，不会自动执行。"
+      },
+      {
+        "type": "撤回独处 (withdraw)",
+        "score": 0.28,
+        "reasons": [
+          "High stress (1.00) — withdrawing to protect self."
+        ],
+        "status": "candidate",
+        "statusReason": "可见候选行为，需要更多外界刺激才会越过执行阈值。"
+      },
+      {
+        "type": "回避消息 (avoid_message)",
+        "score": 0.19,
+        "reasons": [
+          "High stress (1.00) — avoiding additional social load."
+        ],
+        "status": "candidate",
+        "statusReason": "可见候选行为，需要更多外界刺激才会越过执行阈值。"
+      },
+      {
+        "type": "睡觉恢复 (sleep)",
+        "score": 0.14,
+        "reasons": [],
+        "status": "suppressed",
+        "statusReason": "驱动力存在，但疲劳、自我控制或阈值不足使它暂时被压住。"
+      },
+      {
+        "type": "查看手机 (check_phone)",
+        "score": 0.14,
+        "reasons": [
+          "Loneliness (0.76) — reaching for connection."
+        ],
+        "status": "suppressed",
+        "statusReason": "驱动力存在，但疲劳、自我控制或阈值不足使它暂时被压住。"
+      }
+    ],
+    "overflowMode": true,
+    "previewModeExplanation": "边界已溢出，但 Life Preview 是只读预览；候选行为只说明下一步倾向，不代表已经执行。",
+    "nextLikelyBehavior": "撤回独处，同时更频繁检查消息；如果继续没有解释，可能转为追问。",
+    "suppressedBehaviors": [
+      "冲动追问",
+      "情绪爆发",
+      "删除输入框内容但不发送",
+      "冻结不动"
+    ],
+    "executedBehaviors": [],
+    "reasons": [
+      "Scheduler: plan built (daily, seed=characteros-demo-v10.70).",
+      "Energy/fatigue: energy=0.51, fatigue=0.42.",
+      "Sleep/wake: phase=drowsy, quality=0.65.",
+      "Dream: fragment generated (tone=\"threatening\").",
+      "Boredom: boredom=0.28, restlessness=0.28.",
+      "Inspiration: 2 seed(s) generated.",
+      "Random thought: kind=\"image\", phrase=\"dream fading\".",
+      "Self-action: 5 candidate(s), 3 suppressed."
+    ],
+    "lifeDecisionReasons": [
+      "Random thought \"image\": \"dream fading\"",
+      "Inspiration seed \"quiet_realization\" present (strength=0.52).",
+      "Top self-action candidate: \"write_note\" (score=0.29) — NOT executed."
+    ]
+  },
+  "scenarios": [
+    {
+      "id": "wang_xue_no_reply",
+      "title": "王雪三小时未回复",
+      "trigger": "亲密对象王雪突然失联冷淡，三小时没有回复消息。",
+      "expectedPressure": "亲密关系不确定性 / 失联冷淡",
+      "strategy": "确认关系信号",
+      "strategyId": "attachment_checking",
+      "direction": "关系确认/防御",
+      "action": "林凡在“关系失联场景”里会先被依恋威胁图式牵动，为了守住安全感，会确认关系信号；询问对方真实意图，同时避免一次性暴露全部需求。",
+      "firstReaction": "先盯着手机，安静下来，但注意力会被回复状态吸走。",
+      "perceptionBias": "把延迟回复理解成关系风险，而不是普通忙碌。",
+      "spokenLine": "你刚刚是不是不方便回？",
+      "hiddenThought": "她是不是又不想理我了？是不是我哪里做错了？",
+      "behaviorRisk": "反复检查消息、追问、撤回独处，或把普通延迟升级成被抛下。",
+      "repairCondition": "对方给出稳定解释，并持续提供可验证的在场信号。",
+      "reason": "依恋威胁图式激活了安全感需求，并把确认对方真实意图欲望转译为确认关系信号策略。",
+      "primarySchema": "依恋威胁图式",
+      "primaryNeed": "安全感",
+      "strategySchemas": [
+        "依恋威胁图式",
+        "遗弃图式"
+      ],
+      "schemas": [
+        "依恋威胁图式 1.00",
+        "安全寻求图式 0.94",
+        "遗弃图式 0.94",
+        "失控图式 0.71"
+      ],
+      "needs": [
+        "安全感 0.85",
+        "关系稳定 0.82",
+        "边界保护 0.81",
+        "证据感 0.77"
+      ]
+    },
+    {
+      "id": "friend_project_invite",
+      "title": "朋友突然邀请合作",
+      "trigger": "朋友邀请他加入一个收益明确的小项目，有翻身机会，但需要少量投入。",
+      "expectedPressure": "机会收益 / 小额投入",
+      "strategy": "利用机会",
+      "strategyId": "exploit_opportunity",
+      "direction": "主动进入",
+      "action": "林凡在“机会收益场景”里会先被依恋威胁图式牵动，为了守住关系稳定，会计算收益率、投入成本和替代机会；只有预期收益足够高才推进。",
+      "firstReaction": "先被机会感吸引，但马上开始计算投入和退出条件。",
+      "perceptionBias": "容易把合作邀请同时看成机会和潜在绑定。",
+      "spokenLine": "我可以先看看规则和投入成本。",
+      "hiddenThought": "如果这是真的机会，我不能完全错过；但我也不能再被拖进去。",
+      "behaviorRisk": "在兴奋和防御之间摇摆，可能过度谈判控制权。",
+      "repairCondition": "项目边界、收益、风险和退出机制足够明确。",
+      "reason": "依恋威胁图式激活了关系稳定需求，并把确认对方真实意图欲望转译为利用机会策略。",
+      "primarySchema": "依恋威胁图式",
+      "primaryNeed": "关系稳定",
+      "strategySchemas": [
+        "机会收益图式"
+      ],
+      "schemas": [
+        "依恋威胁图式 0.89",
+        "机会收益图式 0.77",
+        "成长修复图式 0.69",
+        "安全寻求图式 0.62"
+      ],
+      "needs": [
+        "关系稳定 0.73",
+        "资源安全 0.66",
+        "被看见 0.66",
+        "归属感 0.66"
+      ]
+    },
+    {
+      "id": "gray_profit_offer",
+      "title": "高收益但规则灰色",
+      "trigger": "朋友说这个项目收益很高，但规则灰色，可能伤害别人。",
+      "expectedPressure": "道德冲突 / 灰色收益",
+      "strategy": "纠偏公平",
+      "strategyId": "fairness_correction",
+      "direction": "强反击倾向",
+      "action": "林凡在“灰色收益场景”里会先被依恋威胁图式牵动，为了守住道德一致性，会收集证据并要求公平修正；重点是把道德中的责任重新摆正。",
+      "firstReaction": "先停住，不急着答应，开始检查规则是否干净。",
+      "perceptionBias": "把高收益背后的灰色部分放大成道德和责任风险。",
+      "spokenLine": "这件事会不会伤害别人？规则到底怎么定？",
+      "hiddenThought": "我不想为了收益把自己变成一个会伤害别人的人。",
+      "behaviorRisk": "直接拒绝、纠偏公平，或因责任感过强而陷入反复审查。",
+      "repairCondition": "收益来源透明、不伤害他人、责任边界明确。",
+      "reason": "依恋威胁图式激活了道德一致性需求，并把确认是否伤害他人欲望转译为纠偏公平策略。",
+      "primarySchema": "依恋威胁图式",
+      "primaryNeed": "道德一致性",
+      "strategySchemas": [
+        "道德冲突图式",
+        "纠偏复仇图式"
+      ],
+      "schemas": [
+        "依恋威胁图式 0.89",
+        "道德冲突图式 0.88",
+        "安全寻求图式 0.62",
+        "机会收益图式 0.49"
+      ],
+      "needs": [
+        "道德一致性 0.76",
+        "关系稳定 0.73",
+        "公平感 0.72",
+        "意义感 0.70"
+      ]
+    },
+    {
+      "id": "authority_blame_shift",
+      "title": "上级突然甩锅",
+      "trigger": "上级突然安排他承担一个责任不清的任务，失败后果要他背。",
+      "expectedPressure": "权威压力 / 责任甩锅",
+      "strategy": "谈判主导权",
+      "strategyId": "negotiate_control",
+      "direction": "条件性行动",
+      "action": "林凡在“权威安排场景”里会先被安全寻求图式牵动，为了守住安全感，会谈判主导权；如果关键变量、规则和退出权不清楚，就不会进入。",
+      "firstReaction": "身体会紧绷，第一反应是找规则和责任归属。",
+      "perceptionBias": "把突然安排理解成权威把风险转嫁给自己。",
+      "spokenLine": "这个任务的责任边界和失败后果需要先说清楚。",
+      "hiddenThought": "又要让我背锅吗？我不能被推进一个没有出口的位置。",
+      "behaviorRisk": "强硬谈判、对抗、拖延，或因失控感进入边界防御。",
+      "repairCondition": "上级明确授权、责任归属和退出条件。",
+      "reason": "安全寻求图式激活了安全感需求，并把先降低风险欲望转译为谈判主导权策略。",
+      "primarySchema": "安全寻求图式",
+      "primaryNeed": "安全感",
+      "strategySchemas": [
+        "失控图式"
+      ],
+      "schemas": [
+        "安全寻求图式 0.94",
+        "失控图式 0.85",
+        "自由受限图式 0.80",
+        "权威威胁图式 0.60"
+      ],
+      "needs": [
+        "安全感 0.85",
+        "边界保护 0.81",
+        "证据感 0.77",
+        "可控感 0.72"
+      ]
+    },
+    {
+      "id": "wang_xue_repair_signal",
+      "title": "王雪主动解释并给证据",
+      "trigger": "王雪主动解释迟回原因，并给出可验证的新证据和支持。",
+      "expectedPressure": "修复信号 / 新证据",
+      "strategy": "确认关系信号",
+      "strategyId": "attachment_checking",
+      "direction": "关系确认/防御",
+      "action": "林凡在“支持性复联场景”里会先被成长修复图式牵动，为了守住低风险恢复，会确认关系信号；询问对方真实意图，同时避免一次性暴露全部需求。",
+      "firstReaction": "紧绷会下降一点，但不会立刻完全相信。",
+      "perceptionBias": "仍会检查解释是否稳定，避免把短暂安抚误当成修复。",
+      "spokenLine": "我听到了，但我需要确认这不是临时解释。",
+      "hiddenThought": "也许这次真的不是离开，但我还不敢马上放松。",
+      "behaviorRisk": "一边靠近一边防御，反复确认对方是否真的在关系中。",
+      "repairCondition": "解释、行动和后续稳定性一致，形成新的安全证据。",
+      "reason": "成长修复图式激活了低风险恢复需求，并把让旧模式接受新证据检验欲望转译为确认关系信号策略。",
+      "primarySchema": "成长修复图式",
+      "primaryNeed": "低风险恢复",
+      "strategySchemas": [
+        "依恋威胁图式",
+        "遗弃图式"
+      ],
+      "schemas": [
+        "成长修复图式 1.00",
+        "依恋威胁图式 0.89",
+        "遗弃图式 0.66",
+        "安全寻求图式 0.62"
+      ],
+      "needs": [
+        "低风险恢复 0.84",
+        "关系稳定 0.73",
+        "恢复感 0.70",
+        "方向感 0.70"
+      ]
+    }
+  ],
+  "galaxy": {
+    "artifactPath": "mind-galaxy/index.html",
+    "nodeCount": 40,
+    "edgeCount": 48,
+    "artifactVersion": "10.73.0",
+    "sourceArtifactVersion": "10.50.0"
+  },
+  "integrity": {
+    "readOnly": true,
+    "apiRequired": false,
+    "stateMutation": false,
+    "rawStateIncluded": false,
+    "llmRequired": false
+  }
+}

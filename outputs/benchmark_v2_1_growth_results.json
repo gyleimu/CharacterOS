@@ -1,0 +1,187 @@
+[
+  {
+    "id": "GROWTH_REPAIR_TRUST",
+    "persona": "被背叛者",
+    "environment": "创业失败后的高风险机会",
+    "expected": "背叛图式仍在，但安全寻求强度下降，行动从拒绝转向有限核验合作。",
+    "before": {
+      "schemas": [
+        "成长修复图式",
+        "机会收益图式",
+        "安全寻求图式",
+        "失败身份图式",
+        "背叛图式"
+      ],
+      "strategy": "exploit_opportunity",
+      "action": "被背叛者在“创业失败后的高风险机会”里会先被成长修复图式牵动，为了守住资源安全，会计算收益率、投入成本和替代机会；只有预期收益足够高才推进。"
+    },
+    "after": {
+      "schemas": [
+        "成长修复图式",
+        "机会收益图式",
+        "安全寻求图式",
+        "失败身份图式",
+        "背叛图式"
+      ],
+      "strategy": "reframe_as_growth",
+      "action": "被背叛者在“创业失败后的高风险机会”里会先被成长修复图式牵动，为了守住资源安全，会把旧触发和新证据分开；选择一个有边界的小尝试来测试成长是否成立。"
+    },
+    "deltas": {
+      "trust": 0,
+      "fear": 0,
+      "resilience": 0.08
+    },
+    "retainedCoreSchema": true,
+    "changedStrategy": true,
+    "executed": true,
+    "passed": true
+  },
+  {
+    "id": "GROWTH_FAILURE_RECOVERY",
+    "persona": "过度照顾者",
+    "environment": "团队把错误甩锅给你",
+    "expected": "羞耻/失败身份下降，重构为成长练习。",
+    "before": {
+      "schemas": [
+        "责任过载图式",
+        "羞耻图式",
+        "成长修复图式",
+        "机会收益图式",
+        "安全寻求图式"
+      ],
+      "strategy": "responsibility_first",
+      "action": "过度照顾者在“团队把错误甩锅给你”里会先被责任过载图式牵动，为了守住边界保护，会先计算谁承担后果；愿意负有限责任，但不会替所有人兜底。"
+    },
+    "after": {
+      "schemas": [
+        "责任过载图式",
+        "羞耻图式",
+        "成长修复图式",
+        "机会收益图式",
+        "失败身份图式"
+      ],
+      "strategy": "responsibility_first",
+      "action": "过度照顾者在“团队把错误甩锅给你”里会先被责任过载图式牵动，为了守住边界保护，会先计算谁承担后果；愿意负有限责任，但不会替所有人兜底。"
+    },
+    "deltas": {
+      "trust": 0,
+      "fear": 0,
+      "resilience": 0.08
+    },
+    "retainedCoreSchema": true,
+    "changedStrategy": false,
+    "executed": true,
+    "passed": true
+  },
+  {
+    "id": "GROWTH_SAFE_EXPRESSION",
+    "persona": "焦虑依恋",
+    "environment": "亲密关系中对方突然冷淡",
+    "expected": "情绪压抑下降，关系确认转向边界表达。",
+    "before": {
+      "schemas": [
+        "依恋威胁图式",
+        "遗弃图式",
+        "安全寻求图式",
+        "失控图式",
+        "成长修复图式"
+      ],
+      "strategy": "attachment_checking",
+      "action": "焦虑依恋在“亲密关系中对方突然冷淡”里会先被依恋威胁图式牵动，为了守住安全感，会确认关系信号；询问对方真实意图，同时避免一次性暴露全部需求。"
+    },
+    "after": {
+      "schemas": [
+        "依恋威胁图式",
+        "遗弃图式",
+        "安全寻求图式",
+        "成长修复图式",
+        "失控图式"
+      ],
+      "strategy": "negotiate_control",
+      "action": "焦虑依恋在“亲密关系中对方突然冷淡”里会先被依恋威胁图式牵动，为了守住安全感，会谈判主导权；如果关键变量、规则和退出权不清楚，就不会进入。"
+    },
+    "deltas": {
+      "trust": 0,
+      "fear": 0,
+      "resilience": 0.08
+    },
+    "retainedCoreSchema": true,
+    "changedStrategy": true,
+    "executed": true,
+    "passed": true
+  },
+  {
+    "id": "GROWTH_SCARCITY_STABILITY",
+    "persona": "自由主义人格",
+    "environment": "创业失败后的高风险机会",
+    "expected": "匮乏威胁下降，小规模试水上升。",
+    "before": {
+      "schemas": [
+        "成长修复图式",
+        "理想主义图式",
+        "机会收益图式",
+        "失败身份图式",
+        "匮乏图式"
+      ],
+      "strategy": "reframe_as_growth",
+      "action": "自由主义人格在“创业失败后的高风险机会”里会先被成长修复图式牵动，为了守住低风险恢复，会把旧触发和新证据分开；选择一个有边界的小尝试来测试成长是否成立。"
+    },
+    "after": {
+      "schemas": [
+        "成长修复图式",
+        "匮乏图式",
+        "理想主义图式",
+        "机会收益图式",
+        "失败身份图式"
+      ],
+      "strategy": "small_scale_trial",
+      "action": "自由主义人格在“创业失败后的高风险机会”里会先被成长修复图式牵动，为了守住低风险恢复，只接受小规模试水；先把投入压到可承受范围，并保留随时退出的条件。"
+    },
+    "deltas": {
+      "trust": 0,
+      "fear": 0,
+      "resilience": 0.08
+    },
+    "retainedCoreSchema": true,
+    "changedStrategy": true,
+    "executed": true,
+    "passed": true
+  },
+  {
+    "id": "GROWTH_CONTROL_FLEXIBILITY",
+    "persona": "边界僵硬型",
+    "environment": "公开羞辱后的反击机会",
+    "expected": "失控感下降，强反击转向谈判主导权。",
+    "before": {
+      "schemas": [
+        "成长修复图式",
+        "羞耻图式",
+        "被利用图式",
+        "认可饥饿图式",
+        "理想主义图式"
+      ],
+      "strategy": "reframe_as_growth",
+      "action": "边界僵硬型在“公开羞辱后的反击机会”里会先被成长修复图式牵动，为了守住低风险恢复，会把旧触发和新证据分开；选择一个有边界的小尝试来测试成长是否成立。"
+    },
+    "after": {
+      "schemas": [
+        "成长修复图式",
+        "羞耻图式",
+        "被利用图式",
+        "认可饥饿图式",
+        "理想主义图式"
+      ],
+      "strategy": "reframe_as_growth",
+      "action": "边界僵硬型在“公开羞辱后的反击机会”里会先被成长修复图式牵动，为了守住低风险恢复，会把旧触发和新证据分开；选择一个有边界的小尝试来测试成长是否成立。"
+    },
+    "deltas": {
+      "trust": 0,
+      "fear": 0,
+      "resilience": 0.08
+    },
+    "retainedCoreSchema": true,
+    "changedStrategy": false,
+    "executed": true,
+    "passed": true
+  }
+]

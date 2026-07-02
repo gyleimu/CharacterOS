@@ -1,0 +1,68 @@
+{
+  "scenario": "abandonment_then_repair",
+  "title": "失联后修复",
+  "steps": 4,
+  "coordinateDelta": {
+    "openness": 0,
+    "conscientiousness": 0,
+    "extroversion": -0.0008,
+    "agreeableness": -0.0011,
+    "neuroticism": 0.0021,
+    "trust": -0.002,
+    "attachment": 0.0008,
+    "fear": 0.0021,
+    "control": 0.0011
+  },
+  "firstForce": {
+    "trust": -0.0021,
+    "fear": 0.0018
+  },
+  "lastForce": {
+    "trust": -0.0031,
+    "fear": 0.0035
+  },
+  "forceDelta": {
+    "trust": -0.001,
+    "fear": 0.0017
+  },
+  "firstVelocity": {
+    "trust": -0.0001,
+    "fear": 0.0001
+  },
+  "lastVelocity": {
+    "trust": -0.0008,
+    "fear": 0.0009
+  },
+  "velocityDelta": {
+    "trust": -0.0007,
+    "fear": 0.0008
+  },
+  "clusterTrends": [
+    {
+      "category": "abandonment",
+      "firstMass": 0.874,
+      "lastMass": 2.622,
+      "massDelta": 1.748,
+      "firstDensity": 1,
+      "lastDensity": 1,
+      "densityDelta": 0,
+      "firstStability": 1,
+      "lastStability": 1,
+      "stabilityDelta": 0
+    },
+    {
+      "category": "support",
+      "firstMass": 0.726,
+      "lastMass": 2.178,
+      "massDelta": 1.452,
+      "firstDensity": 1,
+      "lastDensity": 1,
+      "densityDelta": 0,
+      "firstStability": 1,
+      "lastStability": 1,
+      "stabilityDelta": 0
+    }
+  ],
+  "dominantClusterCategory": "abandonment",
+  "dominantDirection": "defensive_drift"
+}

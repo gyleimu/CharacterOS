@@ -1,0 +1,233 @@
+{
+  "schemaVersion": "characteros.trace-replay.v1",
+  "title": "CharacterOS V2 trace replay",
+  "scenario": "betrayal_spiral",
+  "scenarioMeta": {
+    "title": "背叛螺旋",
+    "description": "连续背叛与隐瞒事件形成背叛星团，观察 trust 下拉和 fear 上升。",
+    "expectedForces": [
+      "betrayal: trust < 0, fear > 0"
+    ]
+  },
+  "createdBy": "CharacterOS core trace replay",
+  "parameters": {
+    "daysPerStep": 14,
+    "learningRate": 0.03
+  },
+  "initialCoordinate": {
+    "openness": 0.42,
+    "conscientiousness": 0.56,
+    "extroversion": 0.24,
+    "agreeableness": 0.44,
+    "neuroticism": 0.78,
+    "trust": 0.26,
+    "attachment": 0.86,
+    "fear": 0.82,
+    "control": 0.68
+  },
+  "steps": [
+    {
+      "step": 1,
+      "eventId": "trace_betrayal_1",
+      "category": "betrayal",
+      "impactScore": 0.838,
+      "boundary": {
+        "phase": "overflow",
+        "incomingStress": 0.8899,
+        "overflowAmount": 0.1699,
+        "driftMultiplier": 1.1109
+      },
+      "force": {
+        "openness": -0.0004,
+        "conscientiousness": 0.0002,
+        "extroversion": -0.0006,
+        "agreeableness": -0.0016,
+        "neuroticism": 0.0014,
+        "trust": -0.0025,
+        "attachment": -0.0004,
+        "fear": 0.0012,
+        "control": 0.0008
+      },
+      "clusterForces": [
+        {
+          "clusterId": "cluster_betrayal",
+          "category": "betrayal",
+          "magnitude": 0.0206,
+          "trust": -0.0025,
+          "fear": 0.0012
+        }
+      ],
+      "velocity": {
+        "openness": 0,
+        "conscientiousness": 0,
+        "extroversion": 0,
+        "agreeableness": -0.0001,
+        "neuroticism": 0,
+        "trust": -0.0001,
+        "attachment": 0,
+        "fear": 0,
+        "control": 0
+      },
+      "coordinate": {
+        "openness": 0.42,
+        "conscientiousness": 0.56,
+        "extroversion": 0.24,
+        "agreeableness": 0.4399,
+        "neuroticism": 0.78,
+        "trust": 0.2599,
+        "attachment": 0.86,
+        "fear": 0.82,
+        "control": 0.68
+      },
+      "clusterMetrics": [
+        {
+          "clusterId": "cluster_betrayal",
+          "category": "betrayal",
+          "mass": 0.838,
+          "density": 1,
+          "stability": 1,
+          "variance": 0
+        }
+      ]
+    },
+    {
+      "step": 2,
+      "eventId": "trace_betrayal_2",
+      "category": "betrayal",
+      "impactScore": 0.838,
+      "boundary": {
+        "phase": "overflow",
+        "incomingStress": 0.8949,
+        "overflowAmount": 1.0648,
+        "driftMultiplier": 1.7001
+      },
+      "force": {
+        "openness": -0.0012,
+        "conscientiousness": 0.0006,
+        "extroversion": -0.0019,
+        "agreeableness": -0.005,
+        "neuroticism": 0.0043,
+        "trust": -0.0074,
+        "attachment": -0.0012,
+        "fear": 0.0037,
+        "control": 0.0025
+      },
+      "clusterForces": [
+        {
+          "clusterId": "cluster_betrayal",
+          "category": "betrayal",
+          "magnitude": 0.0619,
+          "trust": -0.0074,
+          "fear": 0.0037
+        }
+      ],
+      "velocity": {
+        "openness": -0.0001,
+        "conscientiousness": 0,
+        "extroversion": -0.0001,
+        "agreeableness": -0.0003,
+        "neuroticism": 0.0002,
+        "trust": -0.0005,
+        "attachment": -0.0001,
+        "fear": 0.0002,
+        "control": 0.0001
+      },
+      "coordinate": {
+        "openness": 0.4199,
+        "conscientiousness": 0.56,
+        "extroversion": 0.2399,
+        "agreeableness": 0.4396,
+        "neuroticism": 0.7802,
+        "trust": 0.2594,
+        "attachment": 0.8599,
+        "fear": 0.8202,
+        "control": 0.6801
+      },
+      "clusterMetrics": [
+        {
+          "clusterId": "cluster_betrayal",
+          "category": "betrayal",
+          "mass": 2.514,
+          "density": 1,
+          "stability": 1,
+          "variance": 0
+        }
+      ]
+    },
+    {
+      "step": 3,
+      "eventId": "trace_betrayal_3",
+      "category": "betrayal",
+      "impactScore": 0.838,
+      "boundary": {
+        "phase": "overflow",
+        "incomingStress": 0.9263,
+        "overflowAmount": 1.9911,
+        "driftMultiplier": 2.3348
+      },
+      "force": {
+        "openness": -0.0025,
+        "conscientiousness": 0.0012,
+        "extroversion": -0.0037,
+        "agreeableness": -0.0099,
+        "neuroticism": 0.0087,
+        "trust": -0.0149,
+        "attachment": -0.0025,
+        "fear": 0.0074,
+        "control": 0.005
+      },
+      "clusterForces": [
+        {
+          "clusterId": "cluster_betrayal",
+          "category": "betrayal",
+          "magnitude": 0.1238,
+          "trust": -0.0149,
+          "fear": 0.0074
+        }
+      ],
+      "velocity": {
+        "openness": -0.0003,
+        "conscientiousness": 0.0001,
+        "extroversion": -0.0003,
+        "agreeableness": -0.0009,
+        "neuroticism": 0.0008,
+        "trust": -0.0015,
+        "attachment": -0.0003,
+        "fear": 0.0007,
+        "control": 0.0004
+      },
+      "coordinate": {
+        "openness": 0.4196,
+        "conscientiousness": 0.5601,
+        "extroversion": 0.2396,
+        "agreeableness": 0.4387,
+        "neuroticism": 0.781,
+        "trust": 0.2579,
+        "attachment": 0.8596,
+        "fear": 0.8209,
+        "control": 0.6805
+      },
+      "clusterMetrics": [
+        {
+          "clusterId": "cluster_betrayal",
+          "category": "betrayal",
+          "mass": 5.028,
+          "density": 1,
+          "stability": 1,
+          "variance": 0
+        }
+      ]
+    }
+  ],
+  "finalCoordinate": {
+    "openness": 0.4196,
+    "conscientiousness": 0.5601,
+    "extroversion": 0.2396,
+    "agreeableness": 0.4387,
+    "neuroticism": 0.781,
+    "trust": 0.2579,
+    "attachment": 0.8596,
+    "fear": 0.8209,
+    "control": 0.6805
+  }
+}

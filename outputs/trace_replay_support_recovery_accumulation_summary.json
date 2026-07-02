@@ -1,0 +1,56 @@
+{
+  "scenario": "support_recovery_accumulation",
+  "title": "持续支持修复",
+  "steps": 6,
+  "coordinateDelta": {
+    "openness": 0.0014,
+    "conscientiousness": 0,
+    "extroversion": 0.0025,
+    "agreeableness": 0.0044,
+    "neuroticism": -0.006,
+    "trust": 0.0088,
+    "attachment": -0.0014,
+    "fear": -0.006,
+    "control": -0.0025
+  },
+  "firstForce": {
+    "trust": 0.001,
+    "fear": -0.0007
+  },
+  "lastForce": {
+    "trust": 0.021,
+    "fear": -0.014
+  },
+  "forceDelta": {
+    "trust": 0.02,
+    "fear": -0.0133
+  },
+  "firstVelocity": {
+    "trust": 0,
+    "fear": 0
+  },
+  "lastVelocity": {
+    "trust": 0.0045,
+    "fear": -0.0031
+  },
+  "velocityDelta": {
+    "trust": 0.0045,
+    "fear": -0.0031
+  },
+  "clusterTrends": [
+    {
+      "category": "support",
+      "firstMass": 0.726,
+      "lastMass": 15.246,
+      "massDelta": 14.52,
+      "firstDensity": 1,
+      "lastDensity": 1,
+      "densityDelta": 0,
+      "firstStability": 1,
+      "lastStability": 1,
+      "stabilityDelta": 0
+    }
+  ],
+  "dominantClusterCategory": "support",
+  "dominantDirection": "recovery_drift"
+}

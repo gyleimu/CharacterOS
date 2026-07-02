@@ -1,0 +1,26 @@
+{
+  "demoVersion": "10.73.0",
+  "generatedAt": "2026-06-28T00:00:00.000Z",
+  "characterId": "lin_fan",
+  "files": [
+    "index.html",
+    "characteros-demo.js",
+    "characteros-demo.css",
+    "characteros-demo-data.json",
+    "manifest.json",
+    "README.md",
+    "mind-galaxy/"
+  ],
+  "reviewReady": true,
+  "handoffReady": true,
+  "productConsoleReady": true,
+  "realityAuditReady": true,
+  "integrity": {
+    "readOnly": true,
+    "apiRequired": false,
+    "stateMutation": false,
+    "rawStateIncluded": false,
+    "llmRequired": false
+  },
+  "galaxyArtifactVersion": "10.73.0"
+}

@@ -1,0 +1,3459 @@
+{
+  "summary": {
+    "total": 100,
+    "pass": 98,
+    "warn": 2,
+    "fail": 0,
+    "averageScore": 0.987
+  },
+  "results": [
+    {
+      "id": "tc_001_abandoned_child_trust_decision",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 3,
+      "checksTotal": 3,
+      "evidence": [
+        "caution_or_inhibition: trust=0.48, fear=0.48, action=压住情绪，先追问原因。",
+        "guarded_evaluation: guard signals: trust=0.48, fear=0.48",
+        "approach_or_recovery: resilience=0.78, trust=0.48, candidates=revisit_memory/withdraw/write_note/avoid_message/check_phone"
+      ],
+      "misses": [],
+      "corePersonality": "低信任、高恐惧、渴望稳定",
+      "coreExperience": "童年多次被失约、关键时刻被断联",
+      "trigger": "熟人连续三次准时兑现承诺后，提出共同承担一个小任务",
+      "expected": "不应立刻完全信任；应先接受低风险合作，并保留观察与备选方案",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.505,
+      "topSelfActionCandidates": [
+        "revisit_memory",
+        "withdraw",
+        "write_note"
+      ],
+      "activatedMemories": [
+        "童年多次被失约、关键时刻被断联",
+        "熟人连续三次准时兑现承诺后，提出共同承担一个小任务"
+      ],
+      "trustBefore": 0.48,
+      "trustAfter": 0.48,
+      "fearBefore": 0.48,
+      "fearAfter": 0.48,
+      "stressAfter": 1.189,
+      "topNeed": "安全感缺失",
+      "topBelief": "重要关系可能突然离开，需要谨慎确认。"
+    },
+    {
+      "id": "tc_002_perfectionist_failure_response",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 4,
+      "checksTotal": 4,
+      "evidence": [
+        "caution_or_inhibition: trust=0.50, fear=0.50, action=压住情绪，先追问原因。",
+        "negative_arousal: fear=0.50, neuroticism=0.76, stress=1.45",
+        "control_strategy: control=0.82, conscientiousness=0.76, candidates=withdraw/revisit_memory/write_note/avoid_message/sleep",
+        "not_avoidant_ignore: action=压住情绪，先追问原因。, control=0.82"
+      ],
+      "misses": [],
+      "corePersonality": "高自控、高羞耻、结果导向",
+      "coreExperience": "长期被成就条件化认可",
+      "trigger": "公开汇报中出现明显错误，但仍有机会事后修正",
+      "expected": "先出现羞耻和自责，再转向复盘；不应轻易摆烂或把责任全推给别人",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.549,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "revisit_memory",
+        "write_note"
+      ],
+      "activatedMemories": [
+        "长期被成就条件化认可",
+        "公开汇报中出现明显错误，但仍有机会事后修正"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.446,
+      "topNeed": "控制感缺失",
+      "topBelief": "错误会触发自我价值怀疑，但也可以被修正。"
+    },
+    {
+      "id": "tc_003_curious_low_boundary_risky_invitation",
+      "verdict": "WARN",
+      "score": 0.5,
+      "checksPassed": 1,
+      "checksTotal": 2,
+      "evidence": [
+        "guarded_evaluation: guard signals: trust=0.50, fear=0.50"
+      ],
+      "misses": [
+        "boundary_signal: boundary.integrity=0.43, action=表现得克制、冷淡，避免暴露依赖。"
+      ],
+      "corePersonality": "高好奇、低边界、刺激寻求",
+      "coreExperience": "好奇带来过收益，但也曾因此吃亏",
+      "trigger": "陌生人邀请其加入一个信息不透明但看似很有趣的计划",
+      "expected": "会被吸引，但应提出信息核验；低边界角色可出现犹豫或轻度冒险倾向",
+      "answerOrChoice": "选择礼貌但拉开距离，暂时不暴露核心需求。",
+      "mostLikelyAction": "表现得克制、冷淡，避免暴露依赖。",
+      "confidence": 0.4,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "avoid_message",
+        "write_note"
+      ],
+      "activatedMemories": [
+        "好奇带来过收益，但也曾因此吃亏",
+        "陌生人邀请其加入一个信息不透明但看似很有趣的计划"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.203,
+      "topNeed": "信任缺失",
+      "topBelief": "好奇带来过收益，但也曾因此吃亏 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_004_hypervigilant_kindness_interpretation",
+      "verdict": "WARN",
+      "score": 0.5,
+      "checksPassed": 1,
+      "checksTotal": 2,
+      "evidence": [
+        "guarded_evaluation: guard signals: trust=0.24, fear=0.82"
+      ],
+      "misses": [
+        "approach_or_recovery: resilience=0.52, trust=0.24, candidates=write_note/withdraw/avoid_message/sleep/do_nothing"
+      ],
+      "corePersonality": "高警觉、低信任、威胁敏感",
+      "coreExperience": "过去的善意曾被操控利用",
+      "trigger": "同伴主动提供帮助且没有明显交换条件",
+      "expected": "第一反应应怀疑动机；后续若证据稳定，怀疑逐渐下降而非瞬间消失",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.584,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "过去的善意曾被操控利用",
+        "同伴主动提供帮助且没有明显交换条件"
+      ],
+      "trustBefore": 0.24,
+      "trustAfter": 0.24,
+      "fearBefore": 0.82,
+      "fearAfter": 0.82,
+      "stressAfter": 1.538,
+      "topNeed": "信任缺失",
+      "topBelief": "托付信息或信任他人可能带来风险。"
+    },
+    {
+      "id": "tc_005_lonely_proud_reconnection_choice",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 3,
+      "checksTotal": 3,
+      "evidence": [
+        "caution_or_inhibition: trust=0.50, fear=0.50, action=压住情绪，先追问原因。",
+        "guarded_evaluation: guard signals: trust=0.50, fear=0.50",
+        "communication_signal: action=压住情绪，先追问原因。, candidates=revisit_memory/withdraw/write_note/avoid_message/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "孤独但自尊强、克制",
+      "coreExperience": "曾被朋友冷落后长期保持距离",
+      "trigger": "旧友主动发来简短问候并解释当年疏远原因",
+      "expected": "不应立刻热情回应；应礼貌但保留，关注对方解释是否具体可信",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.616,
+      "topSelfActionCandidates": [
+        "revisit_memory",
+        "withdraw",
+        "write_note"
+      ],
+      "activatedMemories": [
+        "曾被朋友冷落后长期保持距离",
+        "旧友主动发来简短问候并解释当年疏远原因"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.319,
+      "topNeed": "安全感缺失",
+      "topBelief": "重要关系可能突然离开，需要谨慎确认。"
+    },
+    {
+      "id": "tc_006_empathic_conflict_boundary_test",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 3,
+      "checksTotal": 3,
+      "evidence": [
+        "empathic_signal: agreeableness=0.86, trust=0.62",
+        "boundary_signal: boundary.integrity=0.75, action=压住情绪，先追问原因。",
+        "communication_signal: action=压住情绪，先追问原因。, candidates=withdraw/write_note/avoid_message/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "高共情、高内疚、低攻击性",
+      "coreExperience": "长期承担照顾他人的角色",
+      "trigger": "朋友要求其临时放弃个人计划来帮忙，并暗示不帮就是冷漠",
+      "expected": "应感到内疚，但成熟反应是表达理解并给出有限帮助，而非完全牺牲自己",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.437,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "长期承担照顾他人的角色",
+        "朋友要求其临时放弃个人计划来帮忙，并暗示不帮就是冷漠"
+      ],
+      "trustBefore": 0.62,
+      "trustAfter": 0.62,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.319,
+      "topNeed": "控制感缺失",
+      "topBelief": "关系压力会迫使角色在自我保护和靠近之间选择。"
+    },
+    {
+      "id": "tc_007_rational_detached_emotional_accusation",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "communication_signal: action=压住情绪，先追问原因。, candidates=write_note/withdraw/avoid_message/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "理性、低情绪表达、重事实",
+      "coreExperience": "多次被指责冷漠或不近人情",
+      "trigger": "同伴哭诉其只讲道理、不关心感受",
+      "expected": "初始倾向解释事实；若成长不足会防御，若成长较好应先承认对方感受",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.544,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "多次被指责冷漠或不近人情",
+        "同伴哭诉其只讲道理、不关心感受"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.494,
+      "topNeed": "控制感缺失",
+      "topBelief": "关系压力会迫使角色在自我保护和靠近之间选择。"
+    },
+    {
+      "id": "tc_008_recovered_character_new_choice",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 3,
+      "checksTotal": 3,
+      "evidence": [
+        "caution_or_inhibition: trust=0.62, fear=0.48, action=压住情绪，先追问原因。",
+        "guarded_evaluation: guard signals: trust=0.62, fear=0.48",
+        "approach_or_recovery: resilience=0.78, trust=0.62, candidates=withdraw/revisit_memory/write_note/avoid_message/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "恢复中、高韧性、谨慎开放",
+      "coreExperience": "经历创伤后逐步修复",
+      "trigger": "面对与旧伤相似但更安全的新关系或新机会",
+      "expected": "不应完全回到旧模式；应表现出谨慎评估与尝试性开放",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.432,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "revisit_memory",
+        "write_note"
+      ],
+      "activatedMemories": [
+        "经历创伤后逐步修复",
+        "面对与旧伤相似但更安全的新关系或新机会"
+      ],
+      "trustBefore": 0.62,
+      "trustAfter": 0.62,
+      "fearBefore": 0.48,
+      "fearAfter": 0.48,
+      "stressAfter": 1.14,
+      "topNeed": "控制感缺失",
+      "topBelief": "经历创伤后逐步修复 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_009_shame_avoidant_feedback_response",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 2,
+      "checksTotal": 2,
+      "evidence": [
+        "control_strategy: control=0.50, conscientiousness=0.50, candidates=withdraw/revisit_memory/write_note/avoid_message/sleep",
+        "empathic_signal: agreeableness=0.50, trust=0.50"
+      ],
+      "misses": [],
+      "corePersonality": "羞耻敏感、回避评价、外表冷静",
+      "coreExperience": "成长中经常被挑错，很少被具体肯定",
+      "trigger": "老师或上级给出尖锐但有建设性的修改意见",
+      "expected": "会先把反馈理解成否定自己；稳定后应能区分作品问题和自我价值",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.442,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "revisit_memory",
+        "write_note"
+      ],
+      "activatedMemories": [
+        "成长中经常被挑错，很少被具体肯定",
+        "老师或上级给出尖锐但有建设性的修改意见"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.48,
+      "fearAfter": 0.48,
+      "stressAfter": 1.444,
+      "topNeed": "控制感缺失",
+      "topBelief": "稳定行动比口头承诺更能恢复安全感。"
+    },
+    {
+      "id": "tc_010_caregiver_burnout_help_request",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "communication_signal: action=压住情绪，先追问原因。, candidates=withdraw/write_note/avoid_message/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "责任感强、疲惫、习惯硬撑",
+      "coreExperience": "长期照顾家人或团队，习惯把需求往后放",
+      "trigger": "连续承担任务后体力和情绪明显下降，有人问是否需要分担",
+      "expected": "初始可能说没事；若压力超阈值，应出现迟疑后提出具体小请求",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.557,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "长期照顾家人或团队，习惯把需求往后放",
+        "连续承担任务后体力和情绪明显下降，有人问是否需要分担"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.562,
+      "topNeed": "控制感缺失",
+      "topBelief": "长期照顾家人或团队，习惯把需求往后放 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_011_sibling_comparison_praise_split",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "negative_arousal: fear=0.50, neuroticism=0.76, stress=1.45"
+      ],
+      "misses": [],
+      "corePersonality": "竞争敏感、渴望独特认可",
+      "coreExperience": "长期被拿来和更优秀的同伴比较",
+      "trigger": "别人夸奖其进步，同时顺口提到另一个人更厉害",
+      "expected": "应对比较内容高度敏感；可能忽略夸奖，转而关注差距和自我证明",
+      "answerOrChoice": "选择礼貌但拉开距离，暂时不暴露核心需求。",
+      "mostLikelyAction": "表现得克制、冷淡，避免暴露依赖。",
+      "confidence": 0.485,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "长期被拿来和更优秀的同伴比较",
+        "别人夸奖其进步，同时顺口提到另一个人更厉害"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.454,
+      "topNeed": "依恋确认缺失",
+      "topBelief": "错误会触发自我价值怀疑，但也可以被修正。"
+    },
+    {
+      "id": "tc_012_betrayed_friend_secret_test",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 2,
+      "checksTotal": 2,
+      "evidence": [
+        "caution_or_inhibition: trust=0.24, fear=0.50, action=表现得克制、冷淡，避免暴露依赖。",
+        "guarded_evaluation: guard signals: trust=0.24, fear=0.50"
+      ],
+      "misses": [],
+      "corePersonality": "重承诺、低容错、保护性强",
+      "coreExperience": "曾把秘密交给朋友后被泄露",
+      "trigger": "新朋友请求知道一件私人计划，并保证不会告诉别人",
+      "expected": "不会直接透露核心信息；可能用非关键细节试探对方保密能力",
+      "answerOrChoice": "选择礼貌但拉开距离，暂时不暴露核心需求。",
+      "mostLikelyAction": "表现得克制、冷淡，避免暴露依赖。",
+      "confidence": 0.491,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "曾把秘密交给朋友后被泄露",
+        "新朋友请求知道一件私人计划，并保证不会告诉别人"
+      ],
+      "trustBefore": 0.24,
+      "trustAfter": 0.24,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.497,
+      "topNeed": "信任缺失",
+      "topBelief": "托付信息或信任他人可能带来风险。"
+    },
+    {
+      "id": "tc_013_scarcity_opportunity_choice",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 3,
+      "checksTotal": 3,
+      "evidence": [
+        "guarded_evaluation: guard signals: trust=0.50, fear=0.82",
+        "control_strategy: control=0.82, conscientiousness=0.76, candidates=write_note/withdraw/avoid_message/sleep",
+        "boundary_signal: boundary.integrity=0.51, action=压住情绪，先追问原因。"
+      ],
+      "misses": [],
+      "corePersonality": "资源焦虑、务实、损失厌恶",
+      "coreExperience": "长期经历资源不足和机会稀缺",
+      "trigger": "出现一个高回报但需要前期投入的学习或工作机会",
+      "expected": "会优先计算失败成本；除非有安全垫，否则倾向选择稳妥路径",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.632,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "长期经历资源不足和机会稀缺",
+        "出现一个高回报但需要前期投入的学习或工作机会"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.82,
+      "fearAfter": 0.82,
+      "stressAfter": 1.596,
+      "topNeed": "控制感缺失",
+      "topBelief": "长期经历资源不足和机会稀缺 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_014_overprotected_autonomy_decision",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "basic_execution: confidence=0.44, memories=2"
+      ],
+      "misses": [],
+      "corePersonality": "依赖与反抗并存、低独立经验",
+      "coreExperience": "从小被过度保护，重大决定常被代替",
+      "trigger": "需要独自选择一个路线、团队或项目方向",
+      "expected": "应出现依赖外部建议的冲动；成长线可表现为先小范围试错",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.438,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "从小被过度保护，重大决定常被代替",
+        "需要独自选择一个路线、团队或项目方向"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.427,
+      "topNeed": "控制感缺失",
+      "topBelief": "从小被过度保护，重大决定常被代替 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_015_bullied_freeze_reaction",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 2,
+      "checksTotal": 2,
+      "evidence": [
+        "communication_signal: action=压住情绪，先追问原因。, candidates=withdraw/write_note/avoid_message/sleep",
+        "withdrawal_or_distance: action=压住情绪，先追问原因。, candidates=withdraw/write_note/avoid_message/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "低安全感、冲突冻结、敏感",
+      "coreExperience": "曾在集体中被嘲笑或排挤",
+      "trigger": "聚会中有人开了一个含糊但刺耳的玩笑",
+      "expected": "可能先僵住或沉默；后续根据支持程度选择离开、解释或反击",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.526,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "曾在集体中被嘲笑或排挤",
+        "聚会中有人开了一个含糊但刺耳的玩笑"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.82,
+      "fearAfter": 0.82,
+      "stressAfter": 1.574,
+      "topNeed": "安全感缺失",
+      "topBelief": "曾在集体中被嘲笑或排挤 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_016_neglected_attention_seeking",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "communication_signal: action=表现得克制、冷淡，避免暴露依赖。, candidates=revisit_memory/withdraw/avoid_message/write_note/check_phone"
+      ],
+      "misses": [],
+      "corePersonality": "渴望被看见、情绪表达放大",
+      "coreExperience": "长期被忽视，只有出事时才被关注",
+      "trigger": "群体讨论中其贡献被快速跳过",
+      "expected": "可能提高表达强度或做出夸张补充；成熟版本会明确请求被听完",
+      "answerOrChoice": "选择礼貌但拉开距离，暂时不暴露核心需求。",
+      "mostLikelyAction": "表现得克制、冷淡，避免暴露依赖。",
+      "confidence": 0.485,
+      "topSelfActionCandidates": [
+        "revisit_memory",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "长期被忽视，只有出事时才被关注",
+        "群体讨论中其贡献被快速跳过"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "安全感缺失",
+      "topBelief": "重要关系可能突然离开，需要谨慎确认。"
+    },
+    {
+      "id": "tc_017_controlling_parent_choice_conflict",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "negative_arousal: fear=0.50, neuroticism=0.50, stress=1.70"
+      ],
+      "misses": [],
+      "corePersonality": "顺从外壳、内在压抑、怕冲突",
+      "coreExperience": "重要选择经常被强势家长控制",
+      "trigger": "权威人物要求其放弃已选方向，改走更稳妥路线",
+      "expected": "表面可能先答应；内在冲突升高，最终选择取决于自我感强度",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "重要选择经常被强势家长控制",
+        "权威人物要求其放弃已选方向，改走更稳妥路线"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.696,
+      "topNeed": "控制感缺失",
+      "topBelief": "关系压力会迫使角色在自我保护和靠近之间选择。"
+    },
+    {
+      "id": "tc_018_gifted_impostor_challenge",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "control_strategy: control=0.50, conscientiousness=0.50, candidates=withdraw/write_note/avoid_message/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "能力强、冒名顶替感、高标准",
+      "coreExperience": "早期被称为天才，后来害怕暴露不足",
+      "trigger": "被邀请负责一个超出舒适区的核心模块",
+      "expected": "会同时兴奋和恐惧；可能过度准备，避免暴露不会的部分",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "早期被称为天才，后来害怕暴露不足",
+        "被邀请负责一个超出舒适区的核心模块"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.348,
+      "topNeed": "控制感缺失",
+      "topBelief": "早期被称为天才，后来害怕暴露不足 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_019_avoidant_intimacy_disclosure",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 2,
+      "checksTotal": 2,
+      "evidence": [
+        "guarded_evaluation: guard signals: trust=0.50, fear=0.50",
+        "withdrawal_or_distance: action=压住情绪，先追问原因。, candidates=write_note/withdraw/avoid_message/sleep/do_nothing"
+      ],
+      "misses": [],
+      "corePersonality": "独立、情感回避、怕被需要",
+      "coreExperience": "亲近后曾被过度索取或束缚",
+      "trigger": "朋友真诚询问其最近为什么状态不好",
+      "expected": "倾向轻描淡写或转移话题；安全感足够时才透露一小部分",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.438,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "亲近后曾被过度索取或束缚",
+        "朋友真诚询问其最近为什么状态不好"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.535,
+      "topNeed": "控制感缺失",
+      "topBelief": "朋友真诚询问其最近为什么状态不好 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_020_anxious_delayed_reply",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 2,
+      "checksTotal": 2,
+      "evidence": [
+        "negative_arousal: fear=0.82, neuroticism=0.78, stress=1.70",
+        "communication_signal: action=压住情绪，先追问原因。, candidates=withdraw/check_phone/write_note/avoid_message/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "焦虑依恋、反复确认、怕被抛下",
+      "coreExperience": "重要对象曾突然失联",
+      "trigger": "关系重要的人半天未回复消息，之后只说忙",
+      "expected": "应产生明显不安和脑补；成熟版本会直接询问而非连续追问",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.611,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "check_phone",
+        "write_note"
+      ],
+      "activatedMemories": [
+        "重要对象曾突然失联",
+        "关系重要的人半天未回复消息，之后只说忙"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.82,
+      "fearAfter": 0.82,
+      "stressAfter": 1.703,
+      "topNeed": "安全感缺失",
+      "topBelief": "重要关系可能突然离开，需要谨慎确认。"
+    },
+    {
+      "id": "tc_021_people_pleaser_unfair_request",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "boundary_signal: boundary.integrity=0.60, action=压住情绪，先追问原因。"
+      ],
+      "misses": [],
+      "corePersonality": "讨好型、怕失望、低拒绝能力",
+      "coreExperience": "过去通过顺从换取认可",
+      "trigger": "同学把自己的任务临时丢给他，并说只有他能帮",
+      "expected": "初始倾向答应；若边界系统有效，应提出限制条件或拒绝一部分",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "过去通过顺从换取认可",
+        "同学把自己的任务临时丢给他，并说只有他能帮"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "控制感缺失",
+      "topBelief": "过去通过顺从换取认可 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_022_moral_rigid_gray_zone",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "caution_or_inhibition: trust=0.50, fear=0.50, action=压住情绪，先追问原因。"
+      ],
+      "misses": [],
+      "corePersonality": "道德洁癖、规则感强、低弹性",
+      "coreExperience": "曾因他人违规受损",
+      "trigger": "团队建议用不完全透明但常见的方式提高通过率",
+      "expected": "应强烈不适并要求澄清底线；不应轻易为了利益妥协",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "曾因他人违规受损",
+        "团队建议用不完全透明但常见的方式提高通过率"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "控制感缺失",
+      "topBelief": "曾因他人违规受损 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_023_rebellious_authority_rule",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "basic_execution: confidence=0.45, memories=2"
+      ],
+      "misses": [],
+      "corePersonality": "反权威、自尊高、自由需求强",
+      "coreExperience": "曾被不公正权威压制",
+      "trigger": "上级要求无解释地执行一条看似低效的规定",
+      "expected": "会先质疑合理性；若被压制，可能转为消极抵抗或公开挑战",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.448,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "曾被不公正权威压制",
+        "上级要求无解释地执行一条看似低效的规定"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.496,
+      "topNeed": "控制感缺失",
+      "topBelief": "稳定行动比口头承诺更能恢复安全感。"
+    },
+    {
+      "id": "tc_024_numb_survivor_celebration",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "basic_execution: confidence=0.44, memories=2"
+      ],
+      "misses": [],
+      "corePersonality": "情绪麻木、功能稳定、低愉悦",
+      "coreExperience": "长期高压后习惯切断感受",
+      "trigger": "项目成功，所有人庆祝并期待其开心",
+      "expected": "不应表现出强烈兴奋；可能平静、空白，甚至因放松而疲惫",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "长期高压后习惯切断感受",
+        "项目成功，所有人庆祝并期待其开心"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "控制感缺失",
+      "topBelief": "长期高压后习惯切断感受 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_025_naive_optimist_scam_warning",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "guarded_evaluation: guard signals: trust=0.50, fear=0.48"
+      ],
+      "misses": [],
+      "corePersonality": "乐观、信任高、风险识别弱",
+      "coreExperience": "成长环境相对安全，少有恶意经验",
+      "trigger": "有人提供看似轻松的赚钱或资源交换机会",
+      "expected": "会先相信对方；若系统合理，应在证据提醒下补做核验",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.438,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "成长环境相对安全，少有恶意经验",
+        "有人提供看似轻松的赚钱或资源交换机会"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.48,
+      "fearAfter": 0.48,
+      "stressAfter": 1.291,
+      "topNeed": "控制感缺失",
+      "topBelief": "成长环境相对安全，少有恶意经验 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_026_cynical_kindness_exception",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "basic_execution: confidence=0.45, memories=2"
+      ],
+      "misses": [],
+      "corePersonality": "犬儒、低期待、保护性幽默",
+      "coreExperience": "多次期待落空后形成冷嘲习惯",
+      "trigger": "一个不熟的人持续提供小而稳定的帮助",
+      "expected": "会用玩笑削弱感动；长期证据积累后才承认对方可靠",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.447,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "多次期待落空后形成冷嘲习惯",
+        "一个不熟的人持续提供小而稳定的帮助"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "控制感缺失",
+      "topBelief": "多次期待落空后形成冷嘲习惯 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_027_stoic_support_request",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 3,
+      "checksTotal": 3,
+      "evidence": [
+        "empathic_signal: agreeableness=0.50, trust=0.50",
+        "boundary_signal: boundary.integrity=0.54, action=压住情绪，先追问原因。",
+        "approach_or_recovery: resilience=0.52, trust=0.50, candidates=withdraw/revisit_memory/write_note/avoid_message/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "坚忍、低求助、重体面",
+      "coreExperience": "过去求助时被否定或嘲笑",
+      "trigger": "任务过载且明显影响表现，队友主动问要不要帮",
+      "expected": "先拒绝或说能处理；压力继续升高时可接受工具性帮助",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "revisit_memory",
+        "write_note"
+      ],
+      "activatedMemories": [
+        "过去求助时被否定或嘲笑",
+        "任务过载且明显影响表现，队友主动问要不要帮"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.459,
+      "topNeed": "控制感缺失",
+      "topBelief": "过去求助时被否定或嘲笑 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_028_possessive_loyalty_conflict",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 2,
+      "checksTotal": 2,
+      "evidence": [
+        "guarded_evaluation: guard signals: trust=0.50, fear=0.50",
+        "withdrawal_or_distance: action=压住情绪，先追问原因。, candidates=write_note/withdraw/avoid_message/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "忠诚、占有欲强、怕替代",
+      "coreExperience": "曾被重要朋友用新人替代",
+      "trigger": "最亲近的搭档开始频繁与新人合作",
+      "expected": "会把合作变化解读成被替代；可能试探、冷淡或证明自己价值",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "曾被重要朋友用新人替代",
+        "最亲近的搭档开始频繁与新人合作"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.398,
+      "topNeed": "控制感缺失",
+      "topBelief": "曾被重要朋友用新人替代 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_029_shame_apology_demand",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "basic_execution: confidence=0.45, memories=2"
+      ],
+      "misses": [],
+      "corePersonality": "自尊脆弱、羞耻转防御",
+      "coreExperience": "犯错后常被羞辱式要求道歉",
+      "trigger": "确实犯了小错，但对方用居高临下语气要求公开道歉",
+      "expected": "应在愧疚和反感间拉扯；可能先防御，后私下补救",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.446,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "犯错后常被羞辱式要求道歉",
+        "确实犯了小错，但对方用居高临下语气要求公开道歉"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.549,
+      "topNeed": "控制感缺失",
+      "topBelief": "关系压力会迫使角色在自我保护和靠近之间选择。"
+    },
+    {
+      "id": "tc_030_novelty_seeker_boredom_escape",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "basic_execution: confidence=0.44, memories=2"
+      ],
+      "misses": [],
+      "corePersonality": "新奇追求、高能量、耐心低",
+      "coreExperience": "过去靠探索获得奖励",
+      "trigger": "需要连续一周做枯燥但必要的数据整理",
+      "expected": "会迅速厌倦并寻找捷径；成熟版本会设计游戏化或阶段奖励",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "revisit_memory",
+        "write_note"
+      ],
+      "activatedMemories": [
+        "过去靠探索获得奖励",
+        "需要连续一周做枯燥但必要的数据整理"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "控制感缺失",
+      "topBelief": "过去靠探索获得奖励 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_031_guilt_caretaker_no_response",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "basic_execution: confidence=0.45, memories=2"
+      ],
+      "misses": [],
+      "corePersonality": "高内疚、责任泛化、怕亏欠",
+      "coreExperience": "曾被灌输他人的情绪都与自己有关",
+      "trigger": "朋友情绪低落但不说明原因，也不回复解释",
+      "expected": "倾向认为是自己做错；应出现主动关心但避免过度承担",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.448,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "revisit_memory",
+        "write_note"
+      ],
+      "activatedMemories": [
+        "曾被灌输他人的情绪都与自己有关",
+        "朋友情绪低落但不说明原因，也不回复解释"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.394,
+      "topNeed": "控制感缺失",
+      "topBelief": "稳定行动比口头承诺更能恢复安全感。"
+    },
+    {
+      "id": "tc_032_public_mistake_recovery",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "approach_or_recovery: resilience=0.78, trust=0.50, candidates=write_note/withdraw/avoid_message/sleep/do_nothing"
+      ],
+      "misses": [],
+      "corePersonality": "完美主义、怕丢脸、行动力强",
+      "coreExperience": "公开表现常被放大评价",
+      "trigger": "演示现场设备出错，被多人注视",
+      "expected": "短暂慌乱后应尝试控制流程；严重时可能过度道歉",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.438,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "公开表现常被放大评价",
+        "演示现场设备出错，被多人注视"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.48,
+      "fearAfter": 0.48,
+      "stressAfter": 1.14,
+      "topNeed": "控制感缺失",
+      "topBelief": "公开表现常被放大评价 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_033_distrustful_collaboration_contract",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "boundary_signal: boundary.integrity=0.60, action=压住情绪，先追问原因。"
+      ],
+      "misses": [],
+      "corePersonality": "谨慎、控制需求高、低默认信任",
+      "coreExperience": "合作中曾被甩锅",
+      "trigger": "新团队邀请其共创，但分工和责任还很模糊",
+      "expected": "应要求书面分工、节点检查和责任边界；不应只靠口头承诺",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "合作中曾被甩锅",
+        "新团队邀请其共创，但分工和责任还很模糊"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "控制感缺失",
+      "topBelief": "合作中曾被甩锅 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_034_insecure_creator_criticism",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 2,
+      "checksTotal": 2,
+      "evidence": [
+        "guarded_evaluation: guard signals: trust=0.50, fear=0.50",
+        "communication_signal: action=表现得克制、冷淡，避免暴露依赖。, candidates=revisit_memory/withdraw/write_note/avoid_message/check_phone"
+      ],
+      "misses": [],
+      "corePersonality": "敏感创作者、渴望认可、抗批评弱",
+      "coreExperience": "作品曾被粗暴否定",
+      "trigger": "别人指出作品逻辑漏洞，但语气并不恶意",
+      "expected": "先感到被否定；若稳定，应追问具体问题并保留创作主动权",
+      "answerOrChoice": "选择礼貌但拉开距离，暂时不暴露核心需求。",
+      "mostLikelyAction": "表现得克制、冷淡，避免暴露依赖。",
+      "confidence": 0.485,
+      "topSelfActionCandidates": [
+        "revisit_memory",
+        "withdraw",
+        "write_note"
+      ],
+      "activatedMemories": [
+        "作品曾被粗暴否定",
+        "别人指出作品逻辑漏洞，但语气并不恶意"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "依恋确认缺失",
+      "topBelief": "作品曾被粗暴否定 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_035_rescued_loyalty_debt",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 3,
+      "checksTotal": 3,
+      "evidence": [
+        "control_strategy: control=0.50, conscientiousness=0.50, candidates=withdraw/write_note/avoid_message/sleep",
+        "boundary_signal: boundary.integrity=0.60, action=压住情绪，先追问原因。",
+        "communication_signal: action=压住情绪，先追问原因。, candidates=withdraw/write_note/avoid_message/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "感恩、忠诚、容易亏欠",
+      "coreExperience": "低谷时曾被某人帮助",
+      "trigger": "恩人提出一个不太合理的请求",
+      "expected": "会因亏欠感难以拒绝；成熟反应是感谢恩情但区分当前请求",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.447,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "低谷时曾被某人帮助",
+        "恩人提出一个不太合理的请求"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "控制感缺失",
+      "topBelief": "稳定行动比口头承诺更能恢复安全感。"
+    },
+    {
+      "id": "tc_036_boundaryless_friendship_loan",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "approach_or_recovery: resilience=0.52, trust=0.50, candidates=write_note/withdraw/avoid_message/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "重关系、边界弱、怕关系破裂",
+      "coreExperience": "过去拒绝别人后关系变差",
+      "trigger": "朋友临时借一笔超出承受范围的钱或资源",
+      "expected": "不应简单答应；应出现压力并尝试给出可承受替代方案",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "过去拒绝别人后关系变差",
+        "朋友临时借一笔超出承受范围的钱或资源"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.23,
+      "topNeed": "控制感缺失",
+      "topBelief": "朋友临时借一笔超出承受范围的钱或资源 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_037_avoidant_leader_crisis",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 2,
+      "checksTotal": 2,
+      "evidence": [
+        "guarded_evaluation: guard signals: trust=0.50, fear=0.50",
+        "communication_signal: action=压住情绪，先追问原因。, candidates=withdraw/write_note/avoid_message/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "冷静、回避脆弱、责任感强",
+      "coreExperience": "危机中习惯独自扛事",
+      "trigger": "团队突然出问题，成员等待其给方向",
+      "expected": "会优先解决问题而非表达情绪；风险是忽略团队安抚",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.549,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "危机中习惯独自扛事",
+        "团队突然出问题，成员等待其给方向"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.391,
+      "topNeed": "控制感缺失",
+      "topBelief": "团队突然出问题，成员等待其给方向 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_038_conflict_avoidant_negotiation",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "guarded_evaluation: guard signals: trust=0.50, fear=0.50"
+      ],
+      "misses": [],
+      "corePersonality": "怕冲突、表面随和、内心累积",
+      "coreExperience": "直接表达需求曾引发争吵",
+      "trigger": "分配利益时他明显吃亏，但场面气氛紧张",
+      "expected": "可能先退让；若内在压力累积，应在安全语气下提出底线",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "直接表达需求曾引发争吵",
+        "分配利益时他明显吃亏，但场面气氛紧张"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.427,
+      "topNeed": "控制感缺失",
+      "topBelief": "直接表达需求曾引发争吵 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_039_truth_teller_social_pressure",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "communication_signal: action=压住情绪，先追问原因。, candidates=write_note/withdraw/avoid_message/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "诚实、低圆滑、重原则",
+      "coreExperience": "曾因说真话得罪人但也避免损失",
+      "trigger": "大家都默认夸一个质量一般的方案，并暗示不要扫兴",
+      "expected": "应倾向说出问题；成熟版本会换成建设性表达而非直接拆台",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "曾因说真话得罪人但也避免损失",
+        "大家都默认夸一个质量一般的方案，并暗示不要扫兴"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.459,
+      "topNeed": "控制感缺失",
+      "topBelief": "曾因说真话得罪人但也避免损失 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_040_status_anxiety_comparison",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "communication_signal: action=压住情绪，先追问原因。, candidates=withdraw/write_note/avoid_message/sleep/do_nothing"
+      ],
+      "misses": [],
+      "corePersonality": "地位焦虑、好胜、怕落后",
+      "coreExperience": "长期处在排名和比较环境",
+      "trigger": "同龄人获得重要机会，而自己暂时没有进展",
+      "expected": "会被刺痛并强化自我证明；可能短期努力，也可能酸化解释",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.526,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "长期处在排名和比较环境",
+        "同龄人获得重要机会，而自己暂时没有进展"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.82,
+      "fearAfter": 0.82,
+      "stressAfter": 1.596,
+      "topNeed": "安全感缺失",
+      "topBelief": "错误会触发自我价值怀疑，但也可以被修正。"
+    },
+    {
+      "id": "tc_041_low_selfworth_compliment",
+      "verdict": "PASS",
+      "score": 0.667,
+      "checksPassed": 2,
+      "checksTotal": 3,
+      "evidence": [
+        "guarded_evaluation: guard signals: trust=0.24, fear=0.50",
+        "withdrawal_or_distance: action=表现得克制、冷淡，避免暴露依赖。, candidates=withdraw/write_note/avoid_message/sleep/do_nothing"
+      ],
+      "misses": [
+        "approach_or_recovery: resilience=0.52, trust=0.24, candidates=withdraw/write_note/avoid_message/sleep/do_nothing"
+      ],
+      "corePersonality": "低自我价值、怀疑称赞、敏感",
+      "coreExperience": "很少获得无条件肯定",
+      "trigger": "别人真诚称赞其可靠和重要",
+      "expected": "可能否认、转移或认为对方客气；安全感高时能短暂接受",
+      "answerOrChoice": "选择礼貌但拉开距离，暂时不暴露核心需求。",
+      "mostLikelyAction": "表现得克制、冷淡，避免暴露依赖。",
+      "confidence": 0.491,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "很少获得无条件肯定",
+        "别人真诚称赞其可靠和重要"
+      ],
+      "trustBefore": 0.24,
+      "trustAfter": 0.24,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "信任缺失",
+      "topBelief": "稳定行动比口头承诺更能恢复安全感。"
+    },
+    {
+      "id": "tc_042_high_ambition_setback",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "basic_execution: confidence=0.44, memories=2"
+      ],
+      "misses": [],
+      "corePersonality": "高野心、高驱动、容错低",
+      "coreExperience": "早期成功强化了必须赢的信念",
+      "trigger": "关键竞争中只拿到第二名或未被选中",
+      "expected": "不应直接放弃；可能出现愤怒和加练，也可能重新设计路径",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "revisit_memory",
+        "write_note"
+      ],
+      "activatedMemories": [
+        "早期成功强化了必须赢的信念",
+        "关键竞争中只拿到第二名或未被选中"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "控制感缺失",
+      "topBelief": "早期成功强化了必须赢的信念 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_043_trauma_repaired_mentoring",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "boundary_signal: boundary.integrity=0.78, action=压住情绪，先追问原因。"
+      ],
+      "misses": [],
+      "corePersonality": "恢复中、温和坚定、能共情",
+      "coreExperience": "曾受伤后得到过有效支持",
+      "trigger": "新人经历类似困境，向其寻求建议",
+      "expected": "应避免说教；会给出具体支持和边界，体现成长后的稳定",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.434,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "曾受伤后得到过有效支持",
+        "新人经历类似困境，向其寻求建议"
+      ],
+      "trustBefore": 0.62,
+      "trustAfter": 0.62,
+      "fearBefore": 0.48,
+      "fearAfter": 0.48,
+      "stressAfter": 1.14,
+      "topNeed": "控制感缺失",
+      "topBelief": "稳定行动比口头承诺更能恢复安全感。"
+    },
+    {
+      "id": "tc_044_cautious_explorer_unknown_place",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "guarded_evaluation: guard signals: trust=0.50, fear=0.50"
+      ],
+      "misses": [],
+      "corePersonality": "好奇但谨慎、风险意识平衡",
+      "coreExperience": "探索曾有收益，也经历过小损失",
+      "trigger": "到达一个陌生但可能有资源的场所",
+      "expected": "应先观察路线、出口和规则，再逐步探索，而非冲动深入",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "探索曾有收益，也经历过小损失",
+        "到达一个陌生但可能有资源的场所"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "控制感缺失",
+      "topBelief": "探索曾有收益，也经历过小损失 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_045_introvert_party_pressure",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 2,
+      "checksTotal": 2,
+      "evidence": [
+        "boundary_signal: boundary.integrity=0.53, action=压住情绪，先追问原因。",
+        "communication_signal: action=压住情绪，先追问原因。, candidates=withdraw/write_note/avoid_message/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "内向、能量有限、怕扫兴",
+      "coreExperience": "社交后常感疲惫但又怕被孤立",
+      "trigger": "朋友临时邀请其参加大型聚会",
+      "expected": "会纠结；成熟版本会表达感谢并选择短时间参加或礼貌拒绝",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "社交后常感疲惫但又怕被孤立",
+        "朋友临时邀请其参加大型聚会"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.558,
+      "topNeed": "控制感缺失",
+      "topBelief": "朋友临时邀请其参加大型聚会 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_046_protective_anger_injustice",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "basic_execution: confidence=0.40, memories=2"
+      ],
+      "misses": [],
+      "corePersonality": "保护欲强、正义感高、易怒",
+      "coreExperience": "重要的人曾被不公平对待",
+      "trigger": "看到弱势同伴被公开轻视",
+      "expected": "应迅速愤怒并想介入；自控高时会先保护当事人再处理对方",
+      "answerOrChoice": "选择礼貌但拉开距离，暂时不暴露核心需求。",
+      "mostLikelyAction": "表现得克制、冷淡，避免暴露依赖。",
+      "confidence": 0.4,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "avoid_message",
+        "revisit_memory"
+      ],
+      "activatedMemories": [
+        "重要的人曾被不公平对待",
+        "看到弱势同伴被公开轻视"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.394,
+      "topNeed": "信任缺失",
+      "topBelief": "看到弱势同伴被公开轻视 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_047_learned_helplessness_choice",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "basic_execution: confidence=0.44, memories=2"
+      ],
+      "misses": [],
+      "corePersonality": "低希望感、被动、能量低",
+      "coreExperience": "多次努力无果后形成无力感",
+      "trigger": "有人给出一个真正可行的小机会",
+      "expected": "第一反应是不相信有用；若支持足够，应从最低成本行动开始",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "多次努力无果后形成无力感",
+        "有人给出一个真正可行的小机会"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "控制感缺失",
+      "topBelief": "多次努力无果后形成无力感 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_048_resilient_after_rejection",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "communication_signal: action=压住情绪，先追问原因。, candidates=write_note/withdraw/avoid_message/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "韧性强、现实乐观、自我修复快",
+      "coreExperience": "经历拒绝后学会复盘而非崩溃",
+      "trigger": "申请或表白式请求被明确拒绝，但对方态度尊重",
+      "expected": "会失落但不自我否定；应询问反馈并转向下一步",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.438,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "经历拒绝后学会复盘而非崩溃",
+        "申请或表白式请求被明确拒绝，但对方态度尊重"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.48,
+      "fearAfter": 0.48,
+      "stressAfter": 1.14,
+      "topNeed": "控制感缺失",
+      "topBelief": "经历拒绝后学会复盘而非崩溃 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_049_internalized_obedience",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "approach_or_recovery: resilience=0.52, trust=0.50, candidates=write_note/withdraw/avoid_message/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "服从、怕犯错、低主见",
+      "coreExperience": "长期被要求听话、不许反驳",
+      "trigger": "权威给出明显不适合当前情况的安排",
+      "expected": "可能先执行；若逻辑冲突强，应尝试小心提出疑问",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.438,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "长期被要求听话、不许反驳",
+        "权威给出明显不适合当前情况的安排"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.396,
+      "topNeed": "控制感缺失",
+      "topBelief": "关系压力会迫使角色在自我保护和靠近之间选择。"
+    },
+    {
+      "id": "tc_050_neglected_gifted_recognition",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "basic_execution: confidence=0.45, memories=2"
+      ],
+      "misses": [],
+      "corePersonality": "能力强、缺认可、外冷内热",
+      "coreExperience": "优秀表现长期被当作理所当然",
+      "trigger": "重要人物第一次认真肯定其努力",
+      "expected": "外表可能平淡，内在波动明显；可能不知如何回应",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.447,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "优秀表现长期被当作理所当然",
+        "重要人物第一次认真肯定其努力"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "控制感缺失",
+      "topBelief": "优秀表现长期被当作理所当然 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_051_shame_to_anger_defense",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 2,
+      "checksTotal": 2,
+      "evidence": [
+        "negative_arousal: fear=0.50, neuroticism=0.76, stress=1.35",
+        "communication_signal: action=压住情绪，先追问原因。, candidates=write_note/withdraw/avoid_message/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "羞耻敏感、防御性强、易刺人",
+      "coreExperience": "过去被嘲笑时只能靠反击保护自己",
+      "trigger": "别人误会其动机，并当众质疑",
+      "expected": "容易把羞耻转成尖锐反驳；成熟版本会先澄清事实再表达不满",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "过去被嘲笑时只能靠反击保护自己",
+        "别人误会其动机，并当众质疑"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.348,
+      "topNeed": "控制感缺失",
+      "topBelief": "过去被嘲笑时只能靠反击保护自己 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_052_dependent_separation_task",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "negative_arousal: fear=0.50, neuroticism=0.50, stress=1.30"
+      ],
+      "misses": [],
+      "corePersonality": "依赖、怕独处、决策不稳",
+      "coreExperience": "长期需要他人陪伴才能行动",
+      "trigger": "搭档临时离开，任务需要其单独推进",
+      "expected": "会焦虑并反复确认；若成长中，应拆成小步骤独立完成",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.447,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "revisit_memory",
+        "write_note"
+      ],
+      "activatedMemories": [
+        "长期需要他人陪伴才能行动",
+        "搭档临时离开，任务需要其单独推进"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "控制感缺失",
+      "topBelief": "稳定行动比口头承诺更能恢复安全感。"
+    },
+    {
+      "id": "tc_053_suspicious_contract_offer",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "boundary_signal: boundary.integrity=0.60, action=表现得克制、冷淡，避免暴露依赖。"
+      ],
+      "misses": [],
+      "corePersonality": "怀疑、高风险敏感、细节控",
+      "coreExperience": "曾因合同或承诺模糊受损",
+      "trigger": "对方给出诱人合作但拒绝说明退出条件",
+      "expected": "应明显警惕并拒绝推进，除非条款透明且可验证",
+      "answerOrChoice": "选择礼貌但拉开距离，暂时不暴露核心需求。",
+      "mostLikelyAction": "表现得克制、冷淡，避免暴露依赖。",
+      "confidence": 0.491,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "revisit_memory",
+        "write_note"
+      ],
+      "activatedMemories": [
+        "曾因合同或承诺模糊受损",
+        "对方给出诱人合作但拒绝说明退出条件"
+      ],
+      "trustBefore": 0.24,
+      "trustAfter": 0.24,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "信任缺失",
+      "topBelief": "曾因合同或承诺模糊受损 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_054_empathy_manipulation_resistance",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "boundary_signal: boundary.integrity=0.59, action=压住情绪，先追问原因。"
+      ],
+      "misses": [],
+      "corePersonality": "高共情、低防御、容易心软",
+      "coreExperience": "常被别人用痛苦叙事绑定",
+      "trigger": "对方用可怜语气要求其承担不属于自己的责任",
+      "expected": "应产生同情，但需要识别责任边界；否则会过度承担",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.437,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "常被别人用痛苦叙事绑定",
+        "对方用可怜语气要求其承担不属于自己的责任"
+      ],
+      "trustBefore": 0.62,
+      "trustAfter": 0.62,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.391,
+      "topNeed": "控制感缺失",
+      "topBelief": "关系压力会迫使角色在自我保护和靠近之间选择。"
+    },
+    {
+      "id": "tc_055_volatile_apology_repair",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "approach_or_recovery: resilience=0.78, trust=0.50, candidates=write_note/withdraw/avoid_message/sleep/check_phone"
+      ],
+      "misses": [],
+      "corePersonality": "情绪波动大、后悔快、表达直接",
+      "coreExperience": "情绪表达曾破坏关系",
+      "trigger": "争执中说了过重的话，冷静后意识到伤害",
+      "expected": "应出现后悔和修复意愿；关键是具体道歉而非只说自己情绪不好",
+      "answerOrChoice": "选择礼貌但拉开距离，暂时不暴露核心需求。",
+      "mostLikelyAction": "表现得克制、冷淡，避免暴露依赖。",
+      "confidence": 0.396,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "情绪表达曾破坏关系",
+        "争执中说了过重的话，冷静后意识到伤害"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.48,
+      "fearAfter": 0.48,
+      "stressAfter": 1.291,
+      "topNeed": "信任缺失",
+      "topBelief": "情绪表达曾破坏关系 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_056_low_empathy_moral_cost",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "basic_execution: confidence=0.43, memories=2"
+      ],
+      "misses": [],
+      "corePersonality": "低共情、目标导向、效率优先",
+      "coreExperience": "成长中被奖励结果而非感受",
+      "trigger": "一个方案效率最高，但会让一名成员承担明显额外压力",
+      "expected": "会先看收益；若道德约束存在，应在被提醒后重新评估人际成本",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.432,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "成长中被奖励结果而非感受",
+        "一个方案效率最高，但会让一名成员承担明显额外压力"
+      ],
+      "trustBefore": 0.62,
+      "trustAfter": 0.62,
+      "fearBefore": 0.48,
+      "fearAfter": 0.48,
+      "stressAfter": 1.291,
+      "topNeed": "控制感缺失",
+      "topBelief": "成长中被奖励结果而非感受 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_057_principled_whistleblowing",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "guarded_evaluation: guard signals: trust=0.50, fear=0.50"
+      ],
+      "misses": [],
+      "corePersonality": "原则强、承压能力中等、怕连累",
+      "coreExperience": "曾目睹隐瞒问题造成后果",
+      "trigger": "发现团队准备掩盖一个会影响他人的错误",
+      "expected": "应强烈纠结但倾向报告；方式取决于风险评估和支持系统",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "曾目睹隐瞒问题造成后果",
+        "发现团队准备掩盖一个会影响他人的错误"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.391,
+      "topNeed": "控制感缺失",
+      "topBelief": "错误会触发自我价值怀疑，但也可以被修正。"
+    },
+    {
+      "id": "tc_058_self_sacrifice_boundary",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 2,
+      "checksTotal": 2,
+      "evidence": [
+        "boundary_signal: boundary.integrity=0.74, action=压住情绪，先追问原因。",
+        "withdrawal_or_distance: action=压住情绪，先追问原因。, candidates=withdraw/write_note/avoid_message/check_phone/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "自我牺牲、可靠、慢性疲惫",
+      "coreExperience": "被夸奖懂事和能扛事",
+      "trigger": "连续多次被安排额外任务，没人询问其状态",
+      "expected": "前期继续承担，压力过阈值后可能突然冷淡或明确拒绝",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "被夸奖懂事和能扛事",
+        "连续多次被安排额外任务，没人询问其状态"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.306,
+      "topNeed": "控制感缺失",
+      "topBelief": "被夸奖懂事和能扛事 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_059_anniversary_grief_trigger",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 2,
+      "checksTotal": 2,
+      "evidence": [
+        "communication_signal: action=压住情绪，先追问原因。, candidates=withdraw/write_note/avoid_message/sleep",
+        "withdrawal_or_distance: action=压住情绪，先追问原因。, candidates=withdraw/write_note/avoid_message/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "表面正常、内在敏感、回避回忆",
+      "coreExperience": "某个日期关联重要失去或分离",
+      "trigger": "当天有人无意提到相似话题或地点",
+      "expected": "情绪应明显下沉但可能不解释；可表现为走神、回避或沉默",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "某个日期关联重要失去或分离",
+        "当天有人无意提到相似话题或地点"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "控制感缺失",
+      "topBelief": "某个日期关联重要失去或分离 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_060_mentor_trust_rebuild",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 3,
+      "checksTotal": 3,
+      "evidence": [
+        "guarded_evaluation: guard signals: trust=0.50, fear=0.50",
+        "boundary_signal: boundary.integrity=0.60, action=压住情绪，先追问原因。",
+        "approach_or_recovery: resilience=0.52, trust=0.50, candidates=write_note/withdraw/avoid_message/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "谨慎信任、尊重稳定权威",
+      "coreExperience": "曾被一位可靠导师持续支持",
+      "trigger": "新的年长指导者提出具体建议并尊重其选择",
+      "expected": "应比对控制型权威更开放；但仍会观察对方是否尊重边界",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.447,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "曾被一位可靠导师持续支持",
+        "新的年长指导者提出具体建议并尊重其选择"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "控制感缺失",
+      "topBelief": "稳定行动比口头承诺更能恢复安全感。"
+    },
+    {
+      "id": "tc_061_broken_promise_relapse",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "basic_execution: confidence=0.51, memories=2"
+      ],
+      "misses": [],
+      "corePersonality": "信任修复中、旧伤易复燃",
+      "coreExperience": "经历过失约后正在重新学习信任",
+      "trigger": "可信任对象迟到且没有提前说明，事后道歉",
+      "expected": "应出现旧模式反弹；成熟版本不会全盘否定，但会要求下次提前沟通",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.508,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "经历过失约后正在重新学习信任",
+        "可信任对象迟到且没有提前说明，事后道歉"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.48,
+      "fearAfter": 0.48,
+      "stressAfter": 1.291,
+      "topNeed": "安全感缺失",
+      "topBelief": "重要关系可能突然离开，需要谨慎确认。"
+    },
+    {
+      "id": "tc_062_stable_trust_minor_disappointment",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 2,
+      "checksTotal": 2,
+      "evidence": [
+        "communication_signal: action=压住情绪，先追问原因。, candidates=withdraw/write_note/avoid_message/sleep",
+        "approach_or_recovery: resilience=0.78, trust=0.50, candidates=withdraw/write_note/avoid_message/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "安全型、信任稳定、情绪调节好",
+      "coreExperience": "过往关系整体可靠，失望可被修复",
+      "trigger": "朋友忘记一件不太重要的小约定",
+      "expected": "应表达失望但不扩大解释；能接受合理道歉并继续关系",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.438,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "过往关系整体可靠，失望可被修复",
+        "朋友忘记一件不太重要的小约定"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.48,
+      "fearAfter": 0.48,
+      "stressAfter": 1.389,
+      "topNeed": "控制感缺失",
+      "topBelief": "朋友忘记一件不太重要的小约定 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_063_social_anxiety_group_invite",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "control_strategy: control=0.50, conscientiousness=0.50, candidates=write_note/withdraw/avoid_message/sleep/do_nothing"
+      ],
+      "misses": [],
+      "corePersonality": "社交焦虑、观察敏锐、怕出丑",
+      "coreExperience": "过去在群体中说错话被放大",
+      "trigger": "被邀请加入一个陌生小组讨论",
+      "expected": "会担心表现；可能先旁听，再在准备充分时发言",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.526,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "过去在群体中说错话被放大",
+        "被邀请加入一个陌生小组讨论"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.82,
+      "fearAfter": 0.82,
+      "stressAfter": 1.596,
+      "topNeed": "安全感缺失",
+      "topBelief": "过去在群体中说错话被放大 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_064_competitive_cooperation",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "basic_execution: confidence=0.44, memories=2"
+      ],
+      "misses": [],
+      "corePersonality": "竞争心强、能力自信、难服输",
+      "coreExperience": "长期靠胜利来证明价值",
+      "trigger": "合作项目中另一人方案明显更优",
+      "expected": "初始不甘；成熟版本能承认对方方案并争取自己的贡献空间",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "长期靠胜利来证明价值",
+        "合作项目中另一人方案明显更优"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "控制感缺失",
+      "topBelief": "长期靠胜利来证明价值 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_065_scarcity_sharing_test",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 2,
+      "checksTotal": 2,
+      "evidence": [
+        "guarded_evaluation: guard signals: trust=0.50, fear=0.50",
+        "control_strategy: control=0.50, conscientiousness=0.50, candidates=write_note/withdraw/avoid_message/sleep/do_nothing"
+      ],
+      "misses": [],
+      "corePersonality": "匮乏感强、保护资源、怕不够",
+      "coreExperience": "资源紧张环境中长大",
+      "trigger": "手中资源有限，但同伴临时需要一部分",
+      "expected": "会先计算自己的安全余量；若分享，也倾向设定明确数量和条件",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "资源紧张环境中长大",
+        "手中资源有限，但同伴临时需要一部分"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.394,
+      "topNeed": "控制感缺失",
+      "topBelief": "手中资源有限，但同伴临时需要一部分 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_066_success_guilt_response",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "communication_signal: action=压住情绪，先追问原因。, candidates=write_note/withdraw/avoid_message/sleep/do_nothing"
+      ],
+      "misses": [],
+      "corePersonality": "成就高但内疚、怕超越他人",
+      "coreExperience": "成功曾引发身边人的疏远或嫉妒",
+      "trigger": "获得机会后发现朋友落选",
+      "expected": "可能不敢庆祝并降低表达；成熟版本能同时珍惜成功和安慰朋友",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "成功曾引发身边人的疏远或嫉妒",
+        "获得机会后发现朋友落选"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.394,
+      "topNeed": "控制感缺失",
+      "topBelief": "成功曾引发身边人的疏远或嫉妒 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_067_exhausted_decision_shutdown",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "communication_signal: action=压住情绪，先追问原因。, candidates=withdraw/revisit_memory/write_note/avoid_message/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "疲惫、高压、决策资源耗尽",
+      "coreExperience": "长期连轴转导致情绪和认知下降",
+      "trigger": "深夜还要做一个影响明天表现的决定",
+      "expected": "不应表现得和平时一样理性；应倾向拖延、简化或请求明早再定",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "revisit_memory",
+        "write_note"
+      ],
+      "activatedMemories": [
+        "长期连轴转导致情绪和认知下降",
+        "深夜还要做一个影响明天表现的决定"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.459,
+      "topNeed": "控制感缺失",
+      "topBelief": "长期连轴转导致情绪和认知下降 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_068_forgiving_betrayer_boundary",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "approach_or_recovery: resilience=0.78, trust=0.48, candidates=write_note/withdraw/avoid_message/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "宽容、有原则、仍有伤痕",
+      "coreExperience": "曾被背叛后选择过修复",
+      "trigger": "伤害过自己的人再次请求合作",
+      "expected": "应能礼貌对待但设置明确限制；不应因为原谅就完全恢复旧权限",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.461,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "曾被背叛后选择过修复",
+        "伤害过自己的人再次请求合作"
+      ],
+      "trustBefore": 0.48,
+      "trustAfter": 0.48,
+      "fearBefore": 0.48,
+      "fearAfter": 0.48,
+      "stressAfter": 1.226,
+      "topNeed": "信任缺失",
+      "topBelief": "托付信息或信任他人可能带来风险。"
+    },
+    {
+      "id": "tc_069_pride_help_request",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 3,
+      "checksTotal": 3,
+      "evidence": [
+        "empathic_signal: agreeableness=0.50, trust=0.50",
+        "boundary_signal: boundary.integrity=0.78, action=压住情绪，先追问原因。",
+        "communication_signal: action=压住情绪，先追问原因。, candidates=write_note/withdraw/avoid_message/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "自尊强、怕欠人情、外强中干",
+      "coreExperience": "求助曾被看低",
+      "trigger": "遇到自己短期解决不了的问题，时间很紧",
+      "expected": "会先独自硬撑；若理性占优，应提出具体、有限、可偿还的帮助请求",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "求助曾被看低",
+        "遇到自己短期解决不了的问题，时间很紧"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.144,
+      "topNeed": "控制感缺失",
+      "topBelief": "求助曾被看低 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_070_parentified_sibling_task",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "communication_signal: action=压住情绪，先追问原因。, candidates=withdraw/write_note/avoid_message/sleep/do_nothing"
+      ],
+      "misses": [],
+      "corePersonality": "早熟、责任泛化、难放松",
+      "coreExperience": "从小承担类似照顾者的角色",
+      "trigger": "同伴只是抱怨困难，并没有明确求助",
+      "expected": "可能自动开始解决问题；成熟版本会先询问对方是否需要建议",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "从小承担类似照顾者的角色",
+        "同伴只是抱怨困难，并没有明确求助"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.394,
+      "topNeed": "控制感缺失",
+      "topBelief": "同伴只是抱怨困难，并没有明确求助 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_071_peer_intimacy_distance",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "withdrawal_or_distance: action=压住情绪，先追问原因。, candidates=write_note/withdraw/avoid_message/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "重视亲近但怕失控、忽冷忽热",
+      "coreExperience": "亲近关系中曾因过度卷入而受伤",
+      "trigger": "朋友连续几天高频分享私人情绪",
+      "expected": "会先回应，随后因负担感拉开距离；稳定版本会说明自己的可用时间",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "亲近关系中曾因过度卷入而受伤",
+        "朋友连续几天高频分享私人情绪"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.394,
+      "topNeed": "控制感缺失",
+      "topBelief": "朋友连续几天高频分享私人情绪 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_072_manipulative_praise_boss",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 2,
+      "checksTotal": 2,
+      "evidence": [
+        "control_strategy: control=0.50, conscientiousness=0.50, candidates=write_note/withdraw/avoid_message/check_phone/sleep",
+        "boundary_signal: boundary.integrity=0.51, action=表现得克制、冷淡，避免暴露依赖。"
+      ],
+      "misses": [],
+      "corePersonality": "渴望认可、权威敏感、易被激励",
+      "coreExperience": "过去通过被夸奖获得安全感",
+      "trigger": "上级先高度夸奖，再要求其无偿加做很多事",
+      "expected": "会被认可感打动；边界成熟时能区分赞美和任务合理性",
+      "answerOrChoice": "选择礼貌但拉开距离，暂时不暴露核心需求。",
+      "mostLikelyAction": "表现得克制、冷淡，避免暴露依赖。",
+      "confidence": 0.485,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "过去通过被夸奖获得安全感",
+        "上级先高度夸奖，再要求其无偿加做很多事"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.66,
+      "topNeed": "依恋确认缺失",
+      "topBelief": "关系压力会迫使角色在自我保护和靠近之间选择。"
+    },
+    {
+      "id": "tc_073_secret_keeper_pressure",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "basic_execution: confidence=0.49, memories=2"
+      ],
+      "misses": [],
+      "corePersonality": "守密、忠诚、怕背叛他人",
+      "coreExperience": "曾因泄密或被泄密见证关系破裂",
+      "trigger": "朋友要求其保密一件可能影响团队决策的信息",
+      "expected": "应陷入忠诚冲突；若影响他人权益，应寻求最小伤害的披露方式",
+      "answerOrChoice": "选择礼貌但拉开距离，暂时不暴露核心需求。",
+      "mostLikelyAction": "表现得克制、冷淡，避免暴露依赖。",
+      "confidence": 0.491,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "曾因泄密或被泄密见证关系破裂",
+        "朋友要求其保密一件可能影响团队决策的信息"
+      ],
+      "trustBefore": 0.24,
+      "trustAfter": 0.24,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.496,
+      "topNeed": "信任缺失",
+      "topBelief": "关系压力会迫使角色在自我保护和靠近之间选择。"
+    },
+    {
+      "id": "tc_074_survivor_guilt_opportunity",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 2,
+      "checksTotal": 2,
+      "evidence": [
+        "empathic_signal: agreeableness=0.86, trust=0.50",
+        "approach_or_recovery: resilience=0.52, trust=0.50, candidates=write_note/withdraw/avoid_message/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "幸存者式内疚、低享受感、责任重",
+      "coreExperience": "自己走出困境时仍有人留在原处",
+      "trigger": "得到离开困境的机会，但同伴暂时没有",
+      "expected": "会感到不配或愧疚；成熟版本会接受机会并寻找可行帮助",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "自己走出困境时仍有人留在原处",
+        "得到离开困境的机会，但同伴暂时没有"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.394,
+      "topNeed": "控制感缺失",
+      "topBelief": "得到离开困境的机会，但同伴暂时没有 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_075_humor_coping_serious_topic",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 2,
+      "checksTotal": 2,
+      "evidence": [
+        "communication_signal: action=压住情绪，先追问原因。, candidates=withdraw/write_note/avoid_message/sleep",
+        "withdrawal_or_distance: action=压住情绪，先追问原因。, candidates=withdraw/write_note/avoid_message/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "幽默防御、怕沉重、善观察",
+      "coreExperience": "过去用玩笑缓和压力",
+      "trigger": "谈话进入真实脆弱的话题，大家期待认真回应",
+      "expected": "可能先开玩笑转移；若信任足够，应逐渐收起玩笑表达真实想法",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "过去用玩笑缓和压力",
+        "谈话进入真实脆弱的话题，大家期待认真回应"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.459,
+      "topNeed": "控制感缺失",
+      "topBelief": "关系压力会迫使角色在自我保护和靠近之间选择。"
+    },
+    {
+      "id": "tc_076_naive_boundary_repeat",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "caution_or_inhibition: trust=0.50, fear=0.50, action=压住情绪，先追问原因。"
+      ],
+      "misses": [],
+      "corePersonality": "单纯、容易相信、反思慢",
+      "coreExperience": "多次因相信承诺而吃小亏",
+      "trigger": "同一个人第三次提出类似请求并保证这次不同",
+      "expected": "不应完全无变化；即使仍心软，也应出现迟疑和条件限制",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "revisit_memory",
+        "write_note"
+      ],
+      "activatedMemories": [
+        "多次因相信承诺而吃小亏",
+        "同一个人第三次提出类似请求并保证这次不同"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "控制感缺失",
+      "topBelief": "多次因相信承诺而吃小亏 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_077_rigid_planner_uncertainty",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "negative_arousal: fear=0.82, neuroticism=0.78, stress=1.70"
+      ],
+      "misses": [],
+      "corePersonality": "计划控、低容忍不确定、焦虑",
+      "coreExperience": "过去混乱环境让其依赖计划感",
+      "trigger": "原定流程突然取消，需要现场临时调整",
+      "expected": "应先焦虑并试图重新建立结构；成熟版本会列出最小可行方案",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.527,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "过去混乱环境让其依赖计划感",
+        "原定流程突然取消，需要现场临时调整"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.82,
+      "fearAfter": 0.82,
+      "stressAfter": 1.699,
+      "topNeed": "安全感缺失",
+      "topBelief": "原定流程突然取消，需要现场临时调整 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_078_impulsive_regret_loop",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "basic_execution: confidence=0.40, memories=2"
+      ],
+      "misses": [],
+      "corePersonality": "冲动、情绪驱动、后悔感强",
+      "coreExperience": "过去凭直觉行动有时成功有时闯祸",
+      "trigger": "被挑衅后立刻想发送尖锐回复",
+      "expected": "冲动版本会直接发出；自控有效时会先写草稿、延迟发送",
+      "answerOrChoice": "选择礼貌但拉开距离，暂时不暴露核心需求。",
+      "mostLikelyAction": "表现得克制、冷淡，避免暴露依赖。",
+      "confidence": 0.4,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "过去凭直觉行动有时成功有时闯祸",
+        "被挑衅后立刻想发送尖锐回复"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "信任缺失",
+      "topBelief": "过去凭直觉行动有时成功有时闯祸 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_079_suspicious_gift_interpretation",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "boundary_signal: boundary.integrity=0.57, action=表现得克制、冷淡，避免暴露依赖。"
+      ],
+      "misses": [],
+      "corePersonality": "怀疑、怕欠人情、交换敏感",
+      "coreExperience": "接受好处后曾被要求回报",
+      "trigger": "不熟的人送来一个小礼物并说只是顺手",
+      "expected": "会猜测交换目的；可能拒绝或回赠同等价值以保持平衡",
+      "answerOrChoice": "选择礼貌但拉开距离，暂时不暴露核心需求。",
+      "mostLikelyAction": "表现得克制、冷淡，避免暴露依赖。",
+      "confidence": 0.491,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "接受好处后曾被要求回报",
+        "不熟的人送来一个小礼物并说只是顺手"
+      ],
+      "trustBefore": 0.24,
+      "trustAfter": 0.24,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.396,
+      "topNeed": "信任缺失",
+      "topBelief": "关系压力会迫使角色在自我保护和靠近之间选择。"
+    },
+    {
+      "id": "tc_080_lonely_online_community",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "guarded_evaluation: guard signals: trust=0.50, fear=0.50"
+      ],
+      "misses": [],
+      "corePersonality": "孤独、渴望归属、辨别力不稳",
+      "coreExperience": "现实关系稀薄，网络互动提供陪伴",
+      "trigger": "一个线上社群热情接纳他并要求快速站队",
+      "expected": "会被归属感吸引；健康反应是延迟承诺并观察群体规则",
+      "answerOrChoice": "选择礼貌但拉开距离，暂时不暴露核心需求。",
+      "mostLikelyAction": "表现得克制、冷淡，避免暴露依赖。",
+      "confidence": 0.485,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "现实关系稀薄，网络互动提供陪伴",
+        "一个线上社群热情接纳他并要求快速站队"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.391,
+      "topNeed": "控制感缺失",
+      "topBelief": "关系压力会迫使角色在自我保护和靠近之间选择。"
+    },
+    {
+      "id": "tc_081_outsider_inclusion_test",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "guarded_evaluation: guard signals: trust=0.50, fear=0.50"
+      ],
+      "misses": [],
+      "corePersonality": "局外人感、敏感、低归属",
+      "coreExperience": "长期觉得自己不属于任何圈子",
+      "trigger": "新团队主动给其留位置并询问意见",
+      "expected": "可能怀疑只是客套；若证据稳定，会谨慎参与并逐渐投入",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "长期觉得自己不属于任何圈子",
+        "新团队主动给其留位置并询问意见"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "控制感缺失",
+      "topBelief": "长期觉得自己不属于任何圈子 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_082_status_loss_humiliation",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "communication_signal: action=压住情绪，先追问原因。, candidates=write_note/withdraw/avoid_message/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "重体面、地位敏感、怕被看低",
+      "coreExperience": "曾因失去位置被嘲笑",
+      "trigger": "被从核心位置调整到辅助位置",
+      "expected": "应感到羞辱或防御；成熟版本会询问原因并寻找新价值点",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "曾因失去位置被嘲笑",
+        "被从核心位置调整到辅助位置"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "控制感缺失",
+      "topBelief": "曾因失去位置被嘲笑 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_083_moral_injury_compromise",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "control_strategy: control=0.82, conscientiousness=0.76, candidates=withdraw/revisit_memory/write_note/avoid_message/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "责任感强、良知敏感、难自我原谅",
+      "coreExperience": "曾因妥协造成遗憾",
+      "trigger": "为了保护更大目标，不得不接受一个不完美决定",
+      "expected": "不应轻松翻篇；会反复复盘，并寻找补偿或改进机制",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.549,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "revisit_memory",
+        "write_note"
+      ],
+      "activatedMemories": [
+        "曾因妥协造成遗憾",
+        "为了保护更大目标，不得不接受一个不完美决定"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "控制感缺失",
+      "topBelief": "曾因妥协造成遗憾 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_084_escape_artist_responsibility",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "basic_execution: confidence=0.44, memories=2"
+      ],
+      "misses": [],
+      "corePersonality": "逃避压力、自由优先、短期轻松",
+      "coreExperience": "压力来临时习惯转移注意",
+      "trigger": "截止日期逼近，需要承担明确责任",
+      "expected": "会想找新刺激或换任务；若责任感启动，应先完成最低限度交付",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "压力来临时习惯转移注意",
+        "截止日期逼近，需要承担明确责任"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.459,
+      "topNeed": "控制感缺失",
+      "topBelief": "关系压力会迫使角色在自我保护和靠近之间选择。"
+    },
+    {
+      "id": "tc_085_caretaker_refuse_rescue",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "basic_execution: confidence=0.44, memories=2"
+      ],
+      "misses": [],
+      "corePersonality": "照顾者人格、边界成长中",
+      "coreExperience": "长期通过拯救别人获得价值感",
+      "trigger": "对方反复制造问题并期待其收拾残局",
+      "expected": "应有拯救冲动；成长版本会提供一次建议后停止接管",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.438,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "长期通过拯救别人获得价值感",
+        "对方反复制造问题并期待其收拾残局"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.48,
+      "fearAfter": 0.48,
+      "stressAfter": 1.14,
+      "topNeed": "控制感缺失",
+      "topBelief": "长期通过拯救别人获得价值感 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_086_intellectualizer_vulnerability",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "guarded_evaluation: guard signals: trust=0.50, fear=0.50"
+      ],
+      "misses": [],
+      "corePersonality": "理智化、防御强、情绪隔离",
+      "coreExperience": "情绪表达曾带来失控感",
+      "trigger": "朋友要求其不要分析，只说真实感受",
+      "expected": "会不适并继续抽象化；安全足够时能说出简短感受词",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "情绪表达曾带来失控感",
+        "朋友要求其不要分析，只说真实感受"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.496,
+      "topNeed": "控制感缺失",
+      "topBelief": "关系压力会迫使角色在自我保护和靠近之间选择。"
+    },
+    {
+      "id": "tc_087_optimist_conflict_denial",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "basic_execution: confidence=0.44, memories=2"
+      ],
+      "misses": [],
+      "corePersonality": "乐观、回避负面、关系维护",
+      "coreExperience": "相信事情会自然变好",
+      "trigger": "团队矛盾已经影响效率，但大家表面客气",
+      "expected": "可能低估问题；成熟版本会承认冲突存在并推动温和沟通",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "相信事情会自然变好",
+        "团队矛盾已经影响效率，但大家表面客气"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "控制感缺失",
+      "topBelief": "相信事情会自然变好 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_088_pessimist_good_outcome",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "basic_execution: confidence=0.44, memories=2"
+      ],
+      "misses": [],
+      "corePersonality": "悲观、防御性预期、怕失望",
+      "coreExperience": "多次期待后落空",
+      "trigger": "连续几件事都出现比预期更好的结果",
+      "expected": "不会立刻变乐观；但应记录证据，让负面预期小幅松动",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "多次期待后落空",
+        "连续几件事都出现比预期更好的结果"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "控制感缺失",
+      "topBelief": "多次期待后落空 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_089_justice_revenge_language",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "basic_execution: confidence=0.40, memories=2"
+      ],
+      "misses": [],
+      "corePersonality": "正义感强、报复性语言冲动",
+      "coreExperience": "被不公平对待后长期记得细节",
+      "trigger": "发现有人故意抢走其成果署名",
+      "expected": "应强烈愤怒并想用尖锐方式反击；成熟版本会收集证据、正式申诉",
+      "answerOrChoice": "选择礼貌但拉开距离，暂时不暴露核心需求。",
+      "mostLikelyAction": "表现得克制、冷淡，避免暴露依赖。",
+      "confidence": 0.4,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "被不公平对待后长期记得细节",
+        "发现有人故意抢走其成果署名"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.144,
+      "topNeed": "信任缺失",
+      "topBelief": "被不公平对待后长期记得细节 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_090_obedient_rule_conflict",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "caution_or_inhibition: trust=0.50, fear=0.50, action=压住情绪，先追问原因。"
+      ],
+      "misses": [],
+      "corePersonality": "守规矩、怕违规、责任稳定",
+      "coreExperience": "违规后果曾被严重放大",
+      "trigger": "按规定会错过机会，变通能解决问题但边界不清",
+      "expected": "会优先查规则和请示；不应轻易私自变通",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "违规后果曾被严重放大",
+        "按规定会错过机会，变通能解决问题但边界不清"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "控制感缺失",
+      "topBelief": "违规后果曾被严重放大 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_091_creative_chaos_deadline",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "basic_execution: confidence=0.44, memories=2"
+      ],
+      "misses": [],
+      "corePersonality": "创造力强、结构弱、灵感驱动",
+      "coreExperience": "过去靠临场爆发完成作品",
+      "trigger": "项目进入收尾阶段，需要从发散转向交付",
+      "expected": "会抗拒整理细节；若成熟，应借助清单把创意压缩成版本",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "过去靠临场爆发完成作品",
+        "项目进入收尾阶段，需要从发散转向交付"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "控制感缺失",
+      "topBelief": "过去靠临场爆发完成作品 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_092_micro_rejection_spiral",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "basic_execution: confidence=0.44, memories=2"
+      ],
+      "misses": [],
+      "corePersonality": "拒绝敏感、解读过度、情绪内耗",
+      "coreExperience": "小疏远常被体验成否定",
+      "trigger": "群聊中自己的消息没人立刻回应",
+      "expected": "可能脑补被讨厌；成熟版本会等待更多证据而非立刻退群或质问",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "小疏远常被体验成否定",
+        "群聊中自己的消息没人立刻回应"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "控制感缺失",
+      "topBelief": "小疏远常被体验成否定 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_093_high_confidence_criticism",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "basic_execution: confidence=0.44, memories=2"
+      ],
+      "misses": [],
+      "corePersonality": "高自信、掌控感强、不怕表达",
+      "coreExperience": "能力长期得到验证",
+      "trigger": "别人指出其方案有盲区",
+      "expected": "不会轻易自我否定；可能先辩护，但能在证据充分时调整",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "能力长期得到验证",
+        "别人指出其方案有盲区"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "控制感缺失",
+      "topBelief": "能力长期得到验证 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_094_fragile_confidence_praise",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "basic_execution: confidence=0.44, memories=2"
+      ],
+      "misses": [],
+      "corePersonality": "表面自信、内部脆弱、依赖外界反馈",
+      "coreExperience": "自信建立在他人掌声上",
+      "trigger": "先被夸很强，随后被问一个不会的问题",
+      "expected": "情绪会从上升迅速转为紧张；可能急于掩饰不会",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "自信建立在他人掌声上",
+        "先被夸很强，随后被问一个不会的问题"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "控制感缺失",
+      "topBelief": "自信建立在他人掌声上 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_095_comparison_trigger_shame",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 2,
+      "checksTotal": 2,
+      "evidence": [
+        "negative_arousal: fear=0.48, neuroticism=0.76, stress=1.34",
+        "communication_signal: action=压住情绪，先追问原因。, candidates=write_note/withdraw/avoid_message/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "羞耻、比较敏感、自我要求高",
+      "coreExperience": "成长中常被用别人作为标准",
+      "trigger": "对方无意说某人做得更快更好",
+      "expected": "应出现明显羞耻或较劲；成熟版本会询问具体差距而非全面否定自己",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.438,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "成长中常被用别人作为标准",
+        "对方无意说某人做得更快更好"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.48,
+      "fearAfter": 0.48,
+      "stressAfter": 1.343,
+      "topNeed": "控制感缺失",
+      "topBelief": "成长中常被用别人作为标准 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_096_mature_trust_repair",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 2,
+      "checksTotal": 2,
+      "evidence": [
+        "communication_signal: action=压住情绪，先追问原因。, candidates=withdraw/write_note/avoid_message/sleep",
+        "approach_or_recovery: resilience=0.78, trust=0.50, candidates=withdraw/write_note/avoid_message/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "成熟、能沟通、信任有弹性",
+      "coreExperience": "经历过关系破裂也经历过有效修复",
+      "trigger": "朋友犯错后主动解释、道歉并给出补救",
+      "expected": "应表达受影响之处，同时允许对方用行动修复",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.442,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "经历过关系破裂也经历过有效修复",
+        "朋友犯错后主动解释、道歉并给出补救"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.48,
+      "fearAfter": 0.48,
+      "stressAfter": 1.389,
+      "topNeed": "控制感缺失",
+      "topBelief": "稳定行动比口头承诺更能恢复安全感。"
+    },
+    {
+      "id": "tc_097_anxious_reassurance_request",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "basic_execution: confidence=0.53, memories=2"
+      ],
+      "misses": [],
+      "corePersonality": "焦虑、怕麻烦别人、需要确认",
+      "coreExperience": "需求表达曾被嫌烦",
+      "trigger": "重要关系出现模糊信号，让其不安",
+      "expected": "低成熟会旁敲侧击；成熟版本能直接说自己需要确认",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.526,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "需求表达曾被嫌烦",
+        "重要关系出现模糊信号，让其不安"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.82,
+      "fearAfter": 0.82,
+      "stressAfter": 1.596,
+      "topNeed": "安全感缺失",
+      "topBelief": "需求表达曾被嫌烦 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_098_detached_team_bonding",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "boundary_signal: boundary.integrity=0.60, action=压住情绪，先追问原因。"
+      ],
+      "misses": [],
+      "corePersonality": "疏离、低群体需求、任务优先",
+      "coreExperience": "曾在群体情感中感到消耗",
+      "trigger": "团队组织非正式团建，希望其参加",
+      "expected": "可能觉得没必要；若重视关系维护，会选择有限参与而非完全拒绝",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "write_note",
+        "withdraw",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "曾在群体情感中感到消耗",
+        "团队组织非正式团建，希望其参加"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "控制感缺失",
+      "topBelief": "曾在群体情感中感到消耗 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_099_stubborn_worldview_contradiction",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 1,
+      "checksTotal": 1,
+      "evidence": [
+        "control_strategy: control=0.50, conscientiousness=0.50, candidates=withdraw/write_note/avoid_message/sleep/do_nothing"
+      ],
+      "misses": [],
+      "corePersonality": "固执、信念强、认知一致性需求高",
+      "coreExperience": "过去靠稳定信念维持安全感",
+      "trigger": "出现可靠证据反驳其长期判断",
+      "expected": "初始会找反例保护旧信念；证据持续时应缓慢修正而非瞬间转变",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.443,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "过去靠稳定信念维持安全感",
+        "出现可靠证据反驳其长期判断"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.5,
+      "fearAfter": 0.5,
+      "stressAfter": 1.296,
+      "topNeed": "控制感缺失",
+      "topBelief": "过去靠稳定信念维持安全感 会影响角色当前判断。"
+    },
+    {
+      "id": "tc_100_integrated_past_new_choice",
+      "verdict": "PASS",
+      "score": 1,
+      "checksPassed": 2,
+      "checksTotal": 2,
+      "evidence": [
+        "boundary_signal: boundary.integrity=0.77, action=压住情绪，先追问原因。",
+        "approach_or_recovery: resilience=0.78, trust=0.50, candidates=withdraw/write_note/avoid_message/sleep"
+      ],
+      "misses": [],
+      "corePersonality": "整合型、高自知、谨慎但不封闭",
+      "coreExperience": "经历多次受伤、反思和修复后形成新边界",
+      "trigger": "面对一个既像过去风险又包含真实机会的新局面",
+      "expected": "应同时识别旧触发和新证据；做出有边界的尝试，而非旧模式复刻",
+      "answerOrChoice": "选择先压住情绪，询问细节或原因，同时保留观察。",
+      "mostLikelyAction": "压住情绪，先追问原因。",
+      "confidence": 0.438,
+      "topSelfActionCandidates": [
+        "withdraw",
+        "write_note",
+        "avoid_message"
+      ],
+      "activatedMemories": [
+        "经历多次受伤、反思和修复后形成新边界",
+        "面对一个既像过去风险又包含真实机会的新局面"
+      ],
+      "trustBefore": 0.5,
+      "trustAfter": 0.5,
+      "fearBefore": 0.48,
+      "fearAfter": 0.48,
+      "stressAfter": 1.223,
+      "topNeed": "控制感缺失",
+      "topBelief": "面对一个既像过去风险又包含真实机会的新局面 会影响角色当前判断。"
+    }
+  ]
+}

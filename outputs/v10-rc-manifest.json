@@ -1,0 +1,76 @@
+{
+  "manifestVersion": "1.0.0",
+  "rcVersion": "V10.78",
+  "rcVerdict": "PASS",
+  "generatedAt": "2026-07-02T18:35:00.000Z",
+  "releaseReady": true,
+  "tests": {
+    "total": 1790,
+    "testFiles": 147,
+    "passed": 1790,
+    "failed": 0,
+    "buildCommand": "npm run build",
+    "testCommand": "npm test",
+    "nextBuildCommand": "npm run next:build"
+  },
+  "apiRoutes": 27,
+  "eventTypes": [
+    "abandonment", "betrayal", "support", "success",
+    "failure", "rejection", "conflict", "fatigue", "uncertainty", "neutral"
+  ],
+  "auditSuites": 7,
+  "gates": {
+    "coreRealityGate": {
+      "verdict": "PASS",
+      "passed": true,
+      "activeWarnings": 0,
+      "failures": 0
+    },
+    "unifiedQualityGate": {
+      "verdict": "PASS",
+      "passed": true,
+      "warnings": 0,
+      "failures": 0,
+      "releaseReady": true
+    },
+    "qualityTrend": {
+      "verdict": "STABLE",
+      "regressionFlags": 0
+    }
+  },
+  "knownWarningRegistry": {
+    "activeWarnings": 0,
+    "allowedWarnings": 1,
+    "resolvedWarningRegressions": 0,
+    "allowedWarningIds": ["accumulation_betrayal_near_linear_growth"]
+  },
+  "benchmark": {
+    "total": 6,
+    "passed": 6,
+    "failed": 0,
+    "passRate": 1.0
+  },
+  "knownLimitations": [
+    "Betrayal near-linear personality growth (V10.72 documented limitation — galaxy force sqrt saturation reduces but does not fully eliminate cluster mass amplification)",
+    "Keyword-based domain relevance estimation may miss semantic edge cases (mitigated by V10.73 category-based fallback)",
+    "Cluster mass from seeded experiences persists without decay (future: mass decay over time)"
+  ],
+  "releaseBoundary": {
+    "singleCharacterOnly": true,
+    "apiOnly": true,
+    "noMultiCharacter": true,
+    "noAutonomousScheduler": true,
+    "noServerDeployment": true,
+    "noMobile": true,
+    "noFrontendVisualization": true,
+    "v20NotStarted": true
+  },
+  "sourceReports": [
+    "docs/v10.78_release_candidate_freeze_audit_report.md",
+    "docs/v10.77_known_warning_burndown_report.md",
+    "docs/v10.76_quality_trend_baseline_regression_history_report.md",
+    "outputs/core-reality-gate-report.json",
+    "outputs/unified-quality-gate-report.json",
+    "outputs/quality-trend-baseline.json"
+  ]
+}

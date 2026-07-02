@@ -1,0 +1,102 @@
+{
+  "trendVersion": "10.76.0",
+  "comparedAt": "2026-07-02T10:35:48.657Z",
+  "hasBaseline": true,
+  "trendVerdict": "STABLE",
+  "verdictDelta": "PASS → PASS",
+  "warningDelta": 0,
+  "failureDelta": 0,
+  "current": {
+    "version": "10.75.0",
+    "capturedAt": "2026-07-02T10:35:48.657Z",
+    "qualityVerdict": "PASS",
+    "releaseReady": true,
+    "failureCount": 0,
+    "warningCount": 0,
+    "benchmarkPassRate": 1,
+    "benchmarkPassed": 6,
+    "benchmarkFailed": 0,
+    "realityAuditPass": 1,
+    "realityAuditWarn": 0,
+    "realityAuditFail": 0,
+    "accumulationBetrayalVerdict": "WARN",
+    "accumulationSupportVerdict": "PASS",
+    "accumulationNeutralVerdict": "PASS",
+    "coverageVerdict": "PASS",
+    "supportBoundarySafe": true,
+    "neutralStable": true,
+    "decisionResponsive": true,
+    "explanationGrounded": true
+  },
+  "previous": {
+    "version": "10.75.0",
+    "capturedAt": "2026-07-02T10:26:09.121Z",
+    "qualityVerdict": "PASS",
+    "releaseReady": true,
+    "failureCount": 0,
+    "warningCount": 0,
+    "benchmarkPassRate": 1,
+    "benchmarkPassed": 6,
+    "benchmarkFailed": 0,
+    "realityAuditPass": 1,
+    "realityAuditWarn": 0,
+    "realityAuditFail": 0,
+    "accumulationBetrayalVerdict": "WARN",
+    "accumulationSupportVerdict": "PASS",
+    "accumulationNeutralVerdict": "PASS",
+    "coverageVerdict": "PASS",
+    "supportBoundarySafe": true,
+    "neutralStable": true,
+    "decisionResponsive": true,
+    "explanationGrounded": true
+  },
+  "metricDeltas": [
+    {
+      "key": "failureCount",
+      "label": "Failure Count",
+      "current": 0,
+      "previous": 0,
+      "delta": 0
+    },
+    {
+      "key": "warningCount",
+      "label": "Warning Count",
+      "current": 0,
+      "previous": 0,
+      "delta": 0
+    },
+    {
+      "key": "benchmarkPassRate",
+      "label": "Benchmark Pass Rate",
+      "current": 1,
+      "previous": 1,
+      "delta": 0
+    },
+    {
+      "key": "benchmarkPassed",
+      "label": "Benchmark Passed",
+      "current": 6,
+      "previous": 6,
+      "delta": 0
+    },
+    {
+      "key": "realityAuditPass",
+      "label": "Reality Audit Pass",
+      "current": 1,
+      "previous": 1,
+      "delta": 0
+    },
+    {
+      "key": "realityAuditWarn",
+      "label": "Reality Audit Warn",
+      "current": 0,
+      "previous": 0,
+      "delta": 0
+    }
+  ],
+  "regressionFlags": [],
+  "improvementFlags": [],
+  "recommendedActions": [
+    "No changes detected — system is stable"
+  ]
+}

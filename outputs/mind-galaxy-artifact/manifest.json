@@ -1,0 +1,38 @@
+{
+  "artifactVersion": "10.50.0",
+  "generatedAt": "2026-06-28T00:00:00.000Z",
+  "characterId": "lin_fan",
+  "source": "buildMindGalaxyViewSnapshot from CharacterOS blueprint (LinFan, seeded)",
+  "dataVersion": "10.47.0",
+  "contract": "mindGalaxyPreviewContract v10.47.0",
+  "stats": {
+    "nodeCount": 40,
+    "edgeCount": 48,
+    "driftNodeCount": 40,
+    "nodeTypes": {
+      "personality_core": 1,
+      "memory": 3,
+      "impact_cluster": 2,
+      "impact_particle": 3,
+      "belief": 3,
+      "need": 4,
+      "desire": 4,
+      "behavior_bias": 3,
+      "temporal_process": 17
+    }
+  },
+  "integrity": {
+    "fullStateIncluded": false,
+    "rawStateIncluded": false,
+    "clusterPayloadIncluded": false,
+    "memoryPayloadIncluded": false,
+    "routinePayloadIncluded": false
+  },
+  "files": [
+    "index.html",
+    "mind-galaxy-preview.js",
+    "mind-galaxy-real-data.json",
+    "manifest.json",
+    "README.md"
+  ]
+}

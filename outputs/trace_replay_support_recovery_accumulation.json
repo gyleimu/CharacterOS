@@ -1,0 +1,427 @@
+{
+  "schemaVersion": "characteros.trace-replay.v1",
+  "title": "CharacterOS V2 trace replay",
+  "scenario": "support_recovery_accumulation",
+  "scenarioMeta": {
+    "title": "持续支持修复",
+    "description": "连续稳定陪伴、解释和兑现承诺形成支持星团，观察 trust 正向速度和 fear 负向速度如何缓慢累积。",
+    "expectedForces": [
+      "support mass should increase over time",
+      "support: trust > 0, fear < 0",
+      "repair force should accumulate slowly through repeated safe experiences"
+    ]
+  },
+  "createdBy": "CharacterOS core trace replay",
+  "parameters": {
+    "daysPerStep": 14,
+    "learningRate": 0.03
+  },
+  "initialCoordinate": {
+    "openness": 0.42,
+    "conscientiousness": 0.56,
+    "extroversion": 0.24,
+    "agreeableness": 0.44,
+    "neuroticism": 0.78,
+    "trust": 0.26,
+    "attachment": 0.86,
+    "fear": 0.82,
+    "control": 0.68
+  },
+  "steps": [
+    {
+      "step": 1,
+      "eventId": "trace_repeat_support_1",
+      "category": "support",
+      "impactScore": 0.726,
+      "boundary": {
+        "phase": "overflow",
+        "incomingStress": 0.7565,
+        "overflowAmount": 0.0365,
+        "driftMultiplier": 1.0238
+      },
+      "force": {
+        "openness": 0.0002,
+        "conscientiousness": 0,
+        "extroversion": 0.0003,
+        "agreeableness": 0.0005,
+        "neuroticism": -0.0007,
+        "trust": 0.001,
+        "attachment": -0.0002,
+        "fear": -0.0007,
+        "control": -0.0003
+      },
+      "clusterForces": [
+        {
+          "clusterId": "cluster_support",
+          "category": "support",
+          "magnitude": 0.0171,
+          "trust": 0.001,
+          "fear": -0.0007
+        }
+      ],
+      "velocity": {
+        "openness": 0,
+        "conscientiousness": 0,
+        "extroversion": 0,
+        "agreeableness": 0,
+        "neuroticism": 0,
+        "trust": 0,
+        "attachment": 0,
+        "fear": 0,
+        "control": 0
+      },
+      "coordinate": {
+        "openness": 0.42,
+        "conscientiousness": 0.56,
+        "extroversion": 0.24,
+        "agreeableness": 0.44,
+        "neuroticism": 0.78,
+        "trust": 0.26,
+        "attachment": 0.86,
+        "fear": 0.82,
+        "control": 0.68
+      },
+      "clusterMetrics": [
+        {
+          "clusterId": "cluster_support",
+          "category": "support",
+          "mass": 0.726,
+          "density": 1,
+          "stability": 1,
+          "variance": 0
+        }
+      ]
+    },
+    {
+      "step": 2,
+      "eventId": "trace_repeat_support_2",
+      "category": "support",
+      "impactScore": 0.726,
+      "boundary": {
+        "phase": "overflow",
+        "incomingStress": 0.7574,
+        "overflowAmount": 0.7939,
+        "driftMultiplier": 1.5194
+      },
+      "force": {
+        "openness": 0.0005,
+        "conscientiousness": 0,
+        "extroversion": 0.001,
+        "agreeableness": 0.0015,
+        "neuroticism": -0.0021,
+        "trust": 0.0031,
+        "attachment": -0.0005,
+        "fear": -0.0021,
+        "control": -0.001
+      },
+      "clusterForces": [
+        {
+          "clusterId": "cluster_support",
+          "category": "support",
+          "magnitude": 0.0513,
+          "trust": 0.0031,
+          "fear": -0.0021
+        }
+      ],
+      "velocity": {
+        "openness": 0,
+        "conscientiousness": 0,
+        "extroversion": 0,
+        "agreeableness": 0.0001,
+        "neuroticism": -0.0001,
+        "trust": 0.0001,
+        "attachment": 0,
+        "fear": -0.0001,
+        "control": 0
+      },
+      "coordinate": {
+        "openness": 0.42,
+        "conscientiousness": 0.56,
+        "extroversion": 0.24,
+        "agreeableness": 0.4401,
+        "neuroticism": 0.7799,
+        "trust": 0.2601,
+        "attachment": 0.86,
+        "fear": 0.8199,
+        "control": 0.68
+      },
+      "clusterMetrics": [
+        {
+          "clusterId": "cluster_support",
+          "category": "support",
+          "mass": 2.178,
+          "density": 1,
+          "stability": 1,
+          "variance": 0
+        }
+      ]
+    },
+    {
+      "step": 3,
+      "eventId": "trace_repeat_support_3",
+      "category": "support",
+      "impactScore": 0.726,
+      "boundary": {
+        "phase": "overflow",
+        "incomingStress": 0.7776,
+        "overflowAmount": 1.5715,
+        "driftMultiplier": 2.0494
+      },
+      "force": {
+        "openness": 0.001,
+        "conscientiousness": 0,
+        "extroversion": 0.0021,
+        "agreeableness": 0.0031,
+        "neuroticism": -0.0041,
+        "trust": 0.0062,
+        "attachment": -0.001,
+        "fear": -0.0041,
+        "control": -0.0021
+      },
+      "clusterForces": [
+        {
+          "clusterId": "cluster_support",
+          "category": "support",
+          "magnitude": 0.1026,
+          "trust": 0.0062,
+          "fear": -0.0041
+        }
+      ],
+      "velocity": {
+        "openness": 0.0001,
+        "conscientiousness": 0,
+        "extroversion": 0.0001,
+        "agreeableness": 0.0003,
+        "neuroticism": -0.0003,
+        "trust": 0.0005,
+        "attachment": -0.0001,
+        "fear": -0.0003,
+        "control": -0.0001
+      },
+      "coordinate": {
+        "openness": 0.4201,
+        "conscientiousness": 0.56,
+        "extroversion": 0.2401,
+        "agreeableness": 0.4404,
+        "neuroticism": 0.7796,
+        "trust": 0.2606,
+        "attachment": 0.8599,
+        "fear": 0.8196,
+        "control": 0.6799
+      },
+      "clusterMetrics": [
+        {
+          "clusterId": "cluster_support",
+          "category": "support",
+          "mass": 4.356,
+          "density": 1,
+          "stability": 1,
+          "variance": 0
+        }
+      ]
+    },
+    {
+      "step": 4,
+      "eventId": "trace_repeat_support_4",
+      "category": "support",
+      "impactScore": 0.726,
+      "boundary": {
+        "phase": "overflow",
+        "incomingStress": 0.8177,
+        "overflowAmount": 2.3892,
+        "driftMultiplier": 2.6274
+      },
+      "force": {
+        "openness": 0.0017,
+        "conscientiousness": 0,
+        "extroversion": 0.0034,
+        "agreeableness": 0.0051,
+        "neuroticism": -0.0068,
+        "trust": 0.0103,
+        "attachment": -0.0017,
+        "fear": -0.0068,
+        "control": -0.0034
+      },
+      "clusterForces": [
+        {
+          "clusterId": "cluster_support",
+          "category": "support",
+          "magnitude": 0.171,
+          "trust": 0.0103,
+          "fear": -0.0068
+        }
+      ],
+      "velocity": {
+        "openness": 0.0002,
+        "conscientiousness": 0,
+        "extroversion": 0.0003,
+        "agreeableness": 0.0006,
+        "neuroticism": -0.0008,
+        "trust": 0.0012,
+        "attachment": -0.0002,
+        "fear": -0.0008,
+        "control": -0.0003
+      },
+      "coordinate": {
+        "openness": 0.4203,
+        "conscientiousness": 0.56,
+        "extroversion": 0.2404,
+        "agreeableness": 0.441,
+        "neuroticism": 0.7788,
+        "trust": 0.2618,
+        "attachment": 0.8597,
+        "fear": 0.8188,
+        "control": 0.6796
+      },
+      "clusterMetrics": [
+        {
+          "clusterId": "cluster_support",
+          "category": "support",
+          "mass": 7.26,
+          "density": 1,
+          "stability": 1,
+          "variance": 0
+        }
+      ]
+    },
+    {
+      "step": 5,
+      "eventId": "trace_repeat_support_5",
+      "category": "support",
+      "impactScore": 0.726,
+      "boundary": {
+        "phase": "overflow",
+        "incomingStress": 0.8785,
+        "overflowAmount": 3.2677,
+        "driftMultiplier": 3.268
+      },
+      "force": {
+        "openness": 0.0026,
+        "conscientiousness": 0,
+        "extroversion": 0.0051,
+        "agreeableness": 0.0077,
+        "neuroticism": -0.0103,
+        "trust": 0.0154,
+        "attachment": -0.0026,
+        "fear": -0.0103,
+        "control": -0.0051
+      },
+      "clusterForces": [
+        {
+          "clusterId": "cluster_support",
+          "category": "support",
+          "magnitude": 0.2567,
+          "trust": 0.0154,
+          "fear": -0.0103
+        }
+      ],
+      "velocity": {
+        "openness": 0.0004,
+        "conscientiousness": 0,
+        "extroversion": 0.0007,
+        "agreeableness": 0.0012,
+        "neuroticism": -0.0017,
+        "trust": 0.0025,
+        "attachment": -0.0004,
+        "fear": -0.0017,
+        "control": -0.0007
+      },
+      "coordinate": {
+        "openness": 0.4207,
+        "conscientiousness": 0.56,
+        "extroversion": 0.2411,
+        "agreeableness": 0.4422,
+        "neuroticism": 0.7771,
+        "trust": 0.2643,
+        "attachment": 0.8593,
+        "fear": 0.8171,
+        "control": 0.6789
+      },
+      "clusterMetrics": [
+        {
+          "clusterId": "cluster_support",
+          "category": "support",
+          "mass": 10.89,
+          "density": 1,
+          "stability": 1,
+          "variance": 0
+        }
+      ]
+    },
+    {
+      "step": 6,
+      "eventId": "trace_repeat_support_6",
+      "category": "support",
+      "impactScore": 0.726,
+      "boundary": {
+        "phase": "overflow",
+        "incomingStress": 0.8976,
+        "overflowAmount": 4.1653,
+        "driftMultiplier": 3.9456
+      },
+      "force": {
+        "openness": 0.0035,
+        "conscientiousness": 0,
+        "extroversion": 0.007,
+        "agreeableness": 0.0105,
+        "neuroticism": -0.014,
+        "trust": 0.021,
+        "attachment": -0.0035,
+        "fear": -0.014,
+        "control": -0.007
+      },
+      "clusterForces": [
+        {
+          "clusterId": "cluster_support",
+          "category": "support",
+          "magnitude": 0.35,
+          "trust": 0.021,
+          "fear": -0.014
+        }
+      ],
+      "velocity": {
+        "openness": 0.0007,
+        "conscientiousness": 0,
+        "extroversion": 0.0014,
+        "agreeableness": 0.0022,
+        "neuroticism": -0.0031,
+        "trust": 0.0045,
+        "attachment": -0.0007,
+        "fear": -0.0031,
+        "control": -0.0014
+      },
+      "coordinate": {
+        "openness": 0.4214,
+        "conscientiousness": 0.56,
+        "extroversion": 0.2425,
+        "agreeableness": 0.4444,
+        "neuroticism": 0.774,
+        "trust": 0.2688,
+        "attachment": 0.8586,
+        "fear": 0.814,
+        "control": 0.6775
+      },
+      "clusterMetrics": [
+        {
+          "clusterId": "cluster_support",
+          "category": "support",
+          "mass": 15.246,
+          "density": 1,
+          "stability": 1,
+          "variance": 0
+        }
+      ]
+    }
+  ],
+  "finalCoordinate": {
+    "openness": 0.4214,
+    "conscientiousness": 0.56,
+    "extroversion": 0.2425,
+    "agreeableness": 0.4444,
+    "neuroticism": 0.774,
+    "trust": 0.2688,
+    "attachment": 0.8586,
+    "fear": 0.814,
+    "control": 0.6775
+  }
+}

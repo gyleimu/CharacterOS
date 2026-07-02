@@ -1,0 +1,22 @@
+{
+  "version": "10.75.0",
+  "capturedAt": "2026-07-02T10:26:09.121Z",
+  "qualityVerdict": "PASS",
+  "releaseReady": true,
+  "failureCount": 0,
+  "warningCount": 0,
+  "benchmarkPassRate": 1,
+  "benchmarkPassed": 6,
+  "benchmarkFailed": 0,
+  "realityAuditPass": 1,
+  "realityAuditWarn": 0,
+  "realityAuditFail": 0,
+  "accumulationBetrayalVerdict": "WARN",
+  "accumulationSupportVerdict": "PASS",
+  "accumulationNeutralVerdict": "PASS",
+  "coverageVerdict": "PASS",
+  "supportBoundarySafe": true,
+  "neutralStable": true,
+  "decisionResponsive": true,
+  "explanationGrounded": true
+}

@@ -1,0 +1,56 @@
+{
+  "scenario": "betrayal_spiral",
+  "title": "背叛螺旋",
+  "steps": 3,
+  "coordinateDelta": {
+    "openness": -0.0004,
+    "conscientiousness": 0.0001,
+    "extroversion": -0.0004,
+    "agreeableness": -0.0013,
+    "neuroticism": 0.001,
+    "trust": -0.0021,
+    "attachment": -0.0004,
+    "fear": 0.0009,
+    "control": 0.0005
+  },
+  "firstForce": {
+    "trust": -0.0025,
+    "fear": 0.0012
+  },
+  "lastForce": {
+    "trust": -0.0149,
+    "fear": 0.0074
+  },
+  "forceDelta": {
+    "trust": -0.0124,
+    "fear": 0.0062
+  },
+  "firstVelocity": {
+    "trust": -0.0001,
+    "fear": 0
+  },
+  "lastVelocity": {
+    "trust": -0.0015,
+    "fear": 0.0007
+  },
+  "velocityDelta": {
+    "trust": -0.0014,
+    "fear": 0.0007
+  },
+  "clusterTrends": [
+    {
+      "category": "betrayal",
+      "firstMass": 0.838,
+      "lastMass": 5.028,
+      "massDelta": 4.19,
+      "firstDensity": 1,
+      "lastDensity": 1,
+      "densityDelta": 0,
+      "firstStability": 1,
+      "lastStability": 1,
+      "stabilityDelta": 0
+    }
+  ],
+  "dominantClusterCategory": "betrayal",
+  "dominantDirection": "defensive_drift"
+}

@@ -1,0 +1,88 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Character {
+  id            String          @id
+  name          String
+  description   String?
+  coordinate    String
+  learningRate  Float           @default(0.03)
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  memories      MemoryNode[]
+  clusters      ImpactCluster[]
+  particles     ImpactParticle[]
+  events        EventLog[]
+}
+
+model EventLog {
+  id           String    @id
+  characterId  String
+  description  String
+  tags         String
+  category     String
+  emotion      String
+  impactScore  Float?
+  rawEvent      String
+  createdAt    DateTime  @default(now())
+  character    Character @relation(fields: [characterId], references: [id], onDelete: Cascade)
+
+  @@index([characterId])
+  @@index([category])
+}
+
+model MemoryNode {
+  id              String    @id
+  characterId     String
+  content         String
+  vector          String
+  importance      Float
+  emotion         String
+  recency         Float
+  repetitionCount Int
+  beliefEffect    String
+  timeStamp       DateTime
+  clusterId       String?
+  character       Character @relation(fields: [characterId], references: [id], onDelete: Cascade)
+
+  @@index([characterId])
+  @@index([clusterId])
+}
+
+model ImpactCluster {
+  id               String    @id
+  characterId      String
+  category         String
+  centerCoordinate String
+  centerVector     String
+  mass             Float
+  density          Float
+  stability        Float
+  age              Int
+  particleIds      String
+  character        Character @relation(fields: [characterId], references: [id], onDelete: Cascade)
+
+  @@unique([characterId, category])
+  @@index([characterId])
+}
+
+model ImpactParticle {
+  id          String    @id
+  characterId String
+  description String
+  vector      String
+  impactScore Float
+  emotion     String
+  category    String
+  createdAt   DateTime  @default(now())
+  character   Character @relation(fields: [characterId], references: [id], onDelete: Cascade)
+
+  @@index([characterId])
+  @@index([category])
+}

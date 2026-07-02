@@ -1,0 +1,35 @@
+{
+  "name": "character-os",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc --noEmit",
+    "next:dev": "next dev",
+    "next:build": "next build",
+    "test": "vitest run",
+    "demo:physics": "tsx src/core/demo/physicsDemo.ts",
+    "demo:simulation": "tsx src/core/demo/simulationDemo.ts",
+    "demo:trace": "tsx src/core/demo/traceReplayDemo.ts",
+    "demo:service": "tsx src/services/demo/characterPhysicsServiceDemo.ts"
+  },
+  "devDependencies": {
+    "@prisma/client": "^6.19.3",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@types/three": "^0.185.0",
+    "prisma": "^6.19.3",
+    "tsx": "^4.20.0",
+    "typescript": "^5.8.0",
+    "vitest": "^3.2.0"
+  },
+  "dependencies": {
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.6.1",
+    "next": "^16.2.9",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "three": "^0.185.0"
+  }
+}

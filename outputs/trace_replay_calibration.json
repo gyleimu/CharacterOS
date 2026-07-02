@@ -1,0 +1,465 @@
+{
+  "title": "CharacterOS replay calibration suite",
+  "results": [
+    {
+      "scenario": "abandonment_then_repair",
+      "title": "失联后修复",
+      "summary": {
+        "scenario": "abandonment_then_repair",
+        "title": "失联后修复",
+        "steps": 4,
+        "coordinateDelta": {
+          "openness": 0,
+          "conscientiousness": 0,
+          "extroversion": -0.0008,
+          "agreeableness": -0.0011,
+          "neuroticism": 0.0021,
+          "trust": -0.002,
+          "attachment": 0.0008,
+          "fear": 0.0021,
+          "control": 0.0011
+        },
+        "firstForce": {
+          "trust": -0.0021,
+          "fear": 0.0018
+        },
+        "lastForce": {
+          "trust": -0.0031,
+          "fear": 0.0035
+        },
+        "forceDelta": {
+          "trust": -0.001,
+          "fear": 0.0017
+        },
+        "firstVelocity": {
+          "trust": -0.0001,
+          "fear": 0.0001
+        },
+        "lastVelocity": {
+          "trust": -0.0008,
+          "fear": 0.0009
+        },
+        "velocityDelta": {
+          "trust": -0.0007,
+          "fear": 0.0008
+        },
+        "clusterTrends": [
+          {
+            "category": "abandonment",
+            "firstMass": 0.874,
+            "lastMass": 2.622,
+            "massDelta": 1.748,
+            "firstDensity": 1,
+            "lastDensity": 1,
+            "densityDelta": 0,
+            "firstStability": 1,
+            "lastStability": 1,
+            "stabilityDelta": 0
+          },
+          {
+            "category": "support",
+            "firstMass": 0.726,
+            "lastMass": 2.178,
+            "massDelta": 1.452,
+            "firstDensity": 1,
+            "lastDensity": 1,
+            "densityDelta": 0,
+            "firstStability": 1,
+            "lastStability": 1,
+            "stabilityDelta": 0
+          }
+        ],
+        "dominantClusterCategory": "abandonment",
+        "dominantDirection": "defensive_drift"
+      },
+      "checks": [
+        {
+          "name": "dominant direction",
+          "severity": "pass",
+          "message": "dominant direction matches expected defensive_drift",
+          "value": "defensive_drift"
+        },
+        {
+          "name": "drift magnitude",
+          "severity": "pass",
+          "message": "personality drift is bounded and observable",
+          "value": 0.0041
+        },
+        {
+          "name": "velocity cap",
+          "severity": "pass",
+          "message": "personality velocity stays within per-step cap",
+          "value": 0.0009
+        },
+        {
+          "name": "dominant cluster mass",
+          "severity": "pass",
+          "message": "dominant cluster gained mass across replay",
+          "value": 1.748
+        }
+      ],
+      "passed": true
+    },
+    {
+      "scenario": "betrayal_spiral",
+      "title": "背叛螺旋",
+      "summary": {
+        "scenario": "betrayal_spiral",
+        "title": "背叛螺旋",
+        "steps": 3,
+        "coordinateDelta": {
+          "openness": -0.0004,
+          "conscientiousness": 0.0001,
+          "extroversion": -0.0004,
+          "agreeableness": -0.0013,
+          "neuroticism": 0.001,
+          "trust": -0.0021,
+          "attachment": -0.0004,
+          "fear": 0.0009,
+          "control": 0.0005
+        },
+        "firstForce": {
+          "trust": -0.0025,
+          "fear": 0.0012
+        },
+        "lastForce": {
+          "trust": -0.0149,
+          "fear": 0.0074
+        },
+        "forceDelta": {
+          "trust": -0.0124,
+          "fear": 0.0062
+        },
+        "firstVelocity": {
+          "trust": -0.0001,
+          "fear": 0
+        },
+        "lastVelocity": {
+          "trust": -0.0015,
+          "fear": 0.0007
+        },
+        "velocityDelta": {
+          "trust": -0.0014,
+          "fear": 0.0007
+        },
+        "clusterTrends": [
+          {
+            "category": "betrayal",
+            "firstMass": 0.838,
+            "lastMass": 5.028,
+            "massDelta": 4.19,
+            "firstDensity": 1,
+            "lastDensity": 1,
+            "densityDelta": 0,
+            "firstStability": 1,
+            "lastStability": 1,
+            "stabilityDelta": 0
+          }
+        ],
+        "dominantClusterCategory": "betrayal",
+        "dominantDirection": "defensive_drift"
+      },
+      "checks": [
+        {
+          "name": "dominant direction",
+          "severity": "pass",
+          "message": "dominant direction matches expected defensive_drift",
+          "value": "defensive_drift"
+        },
+        {
+          "name": "drift magnitude",
+          "severity": "pass",
+          "message": "personality drift is bounded and observable",
+          "value": 0.003
+        },
+        {
+          "name": "velocity cap",
+          "severity": "pass",
+          "message": "personality velocity stays within per-step cap",
+          "value": 0.0015
+        },
+        {
+          "name": "dominant cluster mass",
+          "severity": "pass",
+          "message": "dominant cluster gained mass across replay",
+          "value": 4.19
+        }
+      ],
+      "passed": true
+    },
+    {
+      "scenario": "success_recovery",
+      "title": "认可恢复",
+      "summary": {
+        "scenario": "success_recovery",
+        "title": "认可恢复",
+        "steps": 3,
+        "coordinateDelta": {
+          "openness": 0.0003,
+          "conscientiousness": 0.0003,
+          "extroversion": 0.0003,
+          "agreeableness": 0.0001,
+          "neuroticism": -0.0003,
+          "trust": 0.0001,
+          "attachment": 0,
+          "fear": -0.0003,
+          "control": 0.0003
+        },
+        "firstForce": {
+          "trust": 0.0003,
+          "fear": -0.0005
+        },
+        "lastForce": {
+          "trust": 0.002,
+          "fear": -0.0022
+        },
+        "forceDelta": {
+          "trust": 0.0017,
+          "fear": -0.0017
+        },
+        "firstVelocity": {
+          "trust": 0,
+          "fear": 0
+        },
+        "lastVelocity": {
+          "trust": 0.0001,
+          "fear": -0.0002
+        },
+        "velocityDelta": {
+          "trust": 0.0001,
+          "fear": -0.0002
+        },
+        "clusterTrends": [
+          {
+            "category": "success",
+            "firstMass": 0.66,
+            "lastMass": 1.98,
+            "massDelta": 1.32,
+            "firstDensity": 1,
+            "lastDensity": 1,
+            "densityDelta": 0,
+            "firstStability": 1,
+            "lastStability": 1,
+            "stabilityDelta": 0
+          },
+          {
+            "category": "support",
+            "firstMass": 0.726,
+            "lastMass": 0.726,
+            "massDelta": 0,
+            "firstDensity": 1,
+            "lastDensity": 1,
+            "densityDelta": 0,
+            "firstStability": 1,
+            "lastStability": 1,
+            "stabilityDelta": 0
+          }
+        ],
+        "dominantClusterCategory": "success",
+        "dominantDirection": "recovery_drift"
+      },
+      "checks": [
+        {
+          "name": "dominant direction",
+          "severity": "pass",
+          "message": "dominant direction matches expected recovery_drift",
+          "value": "recovery_drift"
+        },
+        {
+          "name": "drift magnitude",
+          "severity": "warn",
+          "message": "personality drift is very small; scenario may be too weak to inspect",
+          "value": 0.0004
+        },
+        {
+          "name": "velocity cap",
+          "severity": "pass",
+          "message": "personality velocity stays within per-step cap",
+          "value": 0.0002
+        },
+        {
+          "name": "dominant cluster mass",
+          "severity": "pass",
+          "message": "dominant cluster gained mass across replay",
+          "value": 1.32
+        }
+      ],
+      "passed": true
+    },
+    {
+      "scenario": "repeated_abandonment_accumulation",
+      "title": "重复抛弃累积",
+      "summary": {
+        "scenario": "repeated_abandonment_accumulation",
+        "title": "重复抛弃累积",
+        "steps": 6,
+        "coordinateDelta": {
+          "openness": -0.002,
+          "conscientiousness": 0,
+          "extroversion": -0.0079,
+          "agreeableness": -0.0103,
+          "neuroticism": 0.0165,
+          "trust": -0.0186,
+          "attachment": 0.0079,
+          "fear": 0.0165,
+          "control": 0.0103
+        },
+        "firstForce": {
+          "trust": -0.002,
+          "fear": 0.0017
+        },
+        "lastForce": {
+          "trust": -0.0315,
+          "fear": 0.028
+        },
+        "forceDelta": {
+          "trust": -0.0295,
+          "fear": 0.0263
+        },
+        "firstVelocity": {
+          "trust": -0.0001,
+          "fear": 0.0001
+        },
+        "lastVelocity": {
+          "trust": -0.0088,
+          "fear": 0.0078
+        },
+        "velocityDelta": {
+          "trust": -0.0087,
+          "fear": 0.0077
+        },
+        "clusterTrends": [
+          {
+            "category": "abandonment",
+            "firstMass": 0.828,
+            "lastMass": 17.388,
+            "massDelta": 16.56,
+            "firstDensity": 1,
+            "lastDensity": 1,
+            "densityDelta": 0,
+            "firstStability": 1,
+            "lastStability": 1,
+            "stabilityDelta": 0
+          }
+        ],
+        "dominantClusterCategory": "abandonment",
+        "dominantDirection": "defensive_drift"
+      },
+      "checks": [
+        {
+          "name": "dominant direction",
+          "severity": "pass",
+          "message": "dominant direction matches expected defensive_drift",
+          "value": "defensive_drift"
+        },
+        {
+          "name": "drift magnitude",
+          "severity": "pass",
+          "message": "personality drift is bounded and observable",
+          "value": 0.0351
+        },
+        {
+          "name": "velocity cap",
+          "severity": "pass",
+          "message": "personality velocity stays within per-step cap",
+          "value": 0.0088
+        },
+        {
+          "name": "dominant cluster mass",
+          "severity": "pass",
+          "message": "dominant cluster gained mass across replay",
+          "value": 16.56
+        }
+      ],
+      "passed": true
+    },
+    {
+      "scenario": "support_recovery_accumulation",
+      "title": "持续支持修复",
+      "summary": {
+        "scenario": "support_recovery_accumulation",
+        "title": "持续支持修复",
+        "steps": 6,
+        "coordinateDelta": {
+          "openness": 0.0014,
+          "conscientiousness": 0,
+          "extroversion": 0.0025,
+          "agreeableness": 0.0044,
+          "neuroticism": -0.006,
+          "trust": 0.0088,
+          "attachment": -0.0014,
+          "fear": -0.006,
+          "control": -0.0025
+        },
+        "firstForce": {
+          "trust": 0.001,
+          "fear": -0.0007
+        },
+        "lastForce": {
+          "trust": 0.021,
+          "fear": -0.014
+        },
+        "forceDelta": {
+          "trust": 0.02,
+          "fear": -0.0133
+        },
+        "firstVelocity": {
+          "trust": 0,
+          "fear": 0
+        },
+        "lastVelocity": {
+          "trust": 0.0045,
+          "fear": -0.0031
+        },
+        "velocityDelta": {
+          "trust": 0.0045,
+          "fear": -0.0031
+        },
+        "clusterTrends": [
+          {
+            "category": "support",
+            "firstMass": 0.726,
+            "lastMass": 15.246,
+            "massDelta": 14.52,
+            "firstDensity": 1,
+            "lastDensity": 1,
+            "densityDelta": 0,
+            "firstStability": 1,
+            "lastStability": 1,
+            "stabilityDelta": 0
+          }
+        ],
+        "dominantClusterCategory": "support",
+        "dominantDirection": "recovery_drift"
+      },
+      "checks": [
+        {
+          "name": "dominant direction",
+          "severity": "pass",
+          "message": "dominant direction matches expected recovery_drift",
+          "value": "recovery_drift"
+        },
+        {
+          "name": "drift magnitude",
+          "severity": "pass",
+          "message": "personality drift is bounded and observable",
+          "value": 0.0148
+        },
+        {
+          "name": "velocity cap",
+          "severity": "pass",
+          "message": "personality velocity stays within per-step cap",
+          "value": 0.0045
+        },
+        {
+          "name": "dominant cluster mass",
+          "severity": "pass",
+          "message": "dominant cluster gained mass across replay",
+          "value": 14.52
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "passed": true
+}

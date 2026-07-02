@@ -1,0 +1,130 @@
+{
+  "version": "10.75.0",
+  "generatedAt": "2026-07-02T10:35:47.064Z",
+  "qualityVerdict": {
+    "level": "PASS",
+    "passed": true,
+    "reasons": [
+      "Benchmark: 6/6 passed (100%), 0 failed",
+      "Reality Gate: PASS (10/10 checks)"
+    ],
+    "allowedWarnings": []
+  },
+  "releaseReadiness": {
+    "ready": true,
+    "blockers": [],
+    "recommendations": [
+      "Known limitations exist — see reality gate report for details"
+    ]
+  },
+  "unifiedSummary": {
+    "totalChecks": 16,
+    "passed": 16,
+    "warned": 0,
+    "failed": 0,
+    "benchmarkPassed": true,
+    "realityGatePassed": true,
+    "overallPassed": true
+  },
+  "benchmark": {
+    "total": 6,
+    "passed": 6,
+    "failed": 0,
+    "passRate": 1,
+    "verdict": "PASS",
+    "warnings": [],
+    "failures": []
+  },
+  "realityGate": {
+    "verdict": "PASS",
+    "summary": {
+      "totalChecks": 10,
+      "passed": 10,
+      "warned": 0,
+      "failed": 0,
+      "realityAuditPassed": true,
+      "accumulationPassed": true,
+      "coveragePassed": true,
+      "decisionResponsivenessPassed": true,
+      "explanationGrounded": true,
+      "supportBoundarySafe": true,
+      "neutralStable": true
+    },
+    "warnings": [
+      "accumulation/betrayalAccumulation: betrayalAccumulation WARN: personality accumulation shows near-linear growth with no saturation (early-avg=0.0092, recent-avg=0.0216); decision surface withdrawal did not increase across repeated negative events"
+    ],
+    "failures": []
+  },
+  "failures": [],
+  "warnings": [],
+  "regressionRisks": [
+    {
+      "id": "risk_boundary_overresponse",
+      "description": "Positive support events over-shifting boundary pressure (V10.70 regression)",
+      "severity": "high",
+      "guardedBy": "realityAudit.positiveSupport.boundaryDelta"
+    },
+    {
+      "id": "risk_force_linear_growth",
+      "description": "Repeated event force growing unbounded (V10.72 regression)",
+      "severity": "medium",
+      "guardedBy": "accumulation.saturationScore"
+    },
+    {
+      "id": "risk_trust_repair_failure",
+      "description": "Support events not producing visible trust repair (V10.72 regression)",
+      "severity": "medium",
+      "guardedBy": "accumulation.supportAccumulation.trust"
+    },
+    {
+      "id": "risk_neutral_overreaction",
+      "description": "Neutral events accumulating personality drift",
+      "severity": "high",
+      "guardedBy": "accumulation.neutralAccumulation.personalityDistance"
+    },
+    {
+      "id": "risk_decision_unresponsive",
+      "description": "State changed but decision surface unchanged",
+      "severity": "high",
+      "guardedBy": "realityAudit.decisionResponsiveness"
+    },
+    {
+      "id": "risk_explanation_ungrounded",
+      "description": "Explanation trace not referencing concrete delta paths",
+      "severity": "high",
+      "guardedBy": "realityAudit.explanationTrace"
+    },
+    {
+      "id": "risk_category_coverage_gap",
+      "description": "Event type category not covered by calibration",
+      "severity": "medium",
+      "guardedBy": "coverage.requiredEventCategories"
+    },
+    {
+      "id": "risk_personality_one_step_flip",
+      "description": "Single event causing large personality coordinate change",
+      "severity": "high",
+      "guardedBy": "accumulation.stepOneJumpRatios"
+    },
+    {
+      "id": "risk_benchmark_regression",
+      "description": "Benchmark directional assertions degrading",
+      "severity": "high",
+      "guardedBy": "benchmark.passRate"
+    },
+    {
+      "id": "risk_benchmark_coverage_gap",
+      "description": "Benchmark category coverage dropping",
+      "severity": "medium",
+      "guardedBy": "benchmark.coveredCategories"
+    }
+  ],
+  "thresholds": {
+    "benchmarkMinPassRate": 0.8,
+    "benchmarkMaxFailures": 1,
+    "benchmarkWarnMargin": 0.03
+  },
+  "recommendedNextActions": [
+    "All checks pass — system is release-ready"
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "debug-apply": [
+    {
+      "version": "v10.24",
+      "id": "longcommit_audit_290c776250cc5018",
+      "characterId": "debug-apply",
+      "simulationId": "longsim_d09382dfd40f97af",
+      "status": "blocked",
+      "createdAt": "2026-06-28T03:35:04.179Z",
+      "updatedAt": "2026-06-28T03:35:04.179Z",
+      "requestDigest": {
+        "algorithm": "sha256",
+        "canonicalization": "characteros-longitudinal-json-v1",
+        "value": "38ad11caffd2a4cbcf4fb4ea851b3e8afdc0893f997e5fba88a2ecdb1786c8d4"
+      },
+      "baseStateFingerprint": {
+        "algorithm": "sha256",
+        "canonicalization": "characteros-longitudinal-json-v1",
+        "value": "04abe2816b3ac6cc35d1b415fd898484af810337730b988d6d85d2ca532cae8e"
+      },
+      "finalStateFingerprint": {
+        "algorithm": "sha256",
+        "canonicalization": "characteros-longitudinal-json-v1",
+        "value": "b2c5518854f8c2f05079b7e0ae71ea3958bcd6a669ea9b61fd25232980b00412"
+      },
+      "commitPolicy": {
+        "enabled": true,
+        "commitDreams": true,
+        "commitRandomThoughts": true,
+        "commitInspirationSeeds": true
+      },
+      "changedPaths": [
+        "memories[3]",
+        "memories[4]",
+        "memories[5]",
+        "memories[6]",
+        "memories[7]",
+        "memories[8]"
+      ],
+      "generatedMemoryIds": [
+        "life-dream-dream-j2hpxnwm",
+        "life-insp-insp-route-ap-1",
+        "life-insp-insp-route-ap-0",
+        "life-insp-insp-route-ap-1",
+        "life-insp-insp-route-ap-0",
+        "life-insp-insp-route-ap-1"
+      ],
+      "beforeSummary": {
+        "memoryCount": 3,
+        "beliefCount": 3,
+        "trust": 0.258,
+        "fear": 0.8218,
+        "control": 0.6812,
+        "openness": 0.4198,
+        "conscientiousness": 0.56,
+        "boundaryStress": 3.4578,
+        "boundaryIntegrity": 0,
+        "metaResilience": 0.36,
+        "metaSelfControl": 0.52,
+        "latestMemorySnippet": "王雪在他最痛苦的时候陪过他。",
+        "topBeliefSnippet": "亲密关系并不可靠。"
+      },
+      "afterSummary": {
+        "memoryCount": 9,
+        "beliefCount": 3,
+        "trust": 0.258,
+        "fear": 0.8218,
+        "control": 0.6812,
+        "openness": 0.4198,
+        "conscientiousness": 0.56,
+        "boundaryStress": 3.4578,
+        "boundaryIntegrity": 0,
+        "metaResilience": 0.36,
+        "metaSelfControl": 0.52,
+        "latestMemorySnippet": "Inspiration seed: Memory pool (7 memories) — spontaneous association possible (t",
+        "topBeliefSnippet": "亲密关系并不可靠。"
+      },
+      "governanceStatus": "block",
+      "governanceBlockers": [
+        "final state failed structural integrity inspection."
+      ],
+      "governanceWarnings": [],
+      "rollbackPlan": {
+        "id": "rollback_81f711803715679b",
+        "simulationId": "longsim_d09382dfd40f97af",
+        "type": "remove_generated_memories",
+        "generatedMemoryIds": [
+          "life-dream-dream-j2hpxnwm",
+          "life-insp-insp-route-ap-1",
+          "life-insp-insp-route-ap-0",
+          "life-insp-insp-route-ap-1",
+          "life-insp-insp-route-ap-0",
+          "life-insp-insp-route-ap-1"
+        ],
+        "baseStateFingerprint": {
+          "algorithm": "sha256",
+          "canonicalization": "characteros-longitudinal-json-v1",
+          "value": "04abe2816b3ac6cc35d1b415fd898484af810337730b988d6d85d2ca532cae8e"
+        },
+        "finalStateFingerprint": {
+          "algorithm": "sha256",
+          "canonicalization": "characteros-longitudinal-json-v1",
+          "value": "b2c5518854f8c2f05079b7e0ae71ea3958bcd6a669ea9b61fd25232980b00412"
+        },
+        "staleWritePolicy": "block_if_changed",
+        "warnings": [],
+        "reasons": [
+          "Rollback removes generated memory ids only.",
+          "Rollback must block if the current state fingerprint differs from finalStateFingerprint."
+        ]
+      },
+      "warnings": [
+        "High stress may produce anxious or threatening dreams."
+      ],
+      "reasons": [
+        "Longitudinal commit audit entry records summaries and digests only.",
+        "Audit draft prepared before any persistent write.",
+        "Running 3 steps of 4h each (total: 12h).",
+        "commitPolicy.enabled=true confirms explicit commit intent.",
+        "No self-action candidate changes are present in commit surface.",
+        "Explicit longitudinal commit confirmation matched.",
+        "Current state fingerprint matches preview base state fingerprint.",
+        "Apply blocked: final state failed structural integrity inspection."
+      ]
+    }
+  ]
+}

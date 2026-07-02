@@ -1,0 +1,56 @@
+{
+  "scenario": "repeated_abandonment_accumulation",
+  "title": "重复抛弃累积",
+  "steps": 6,
+  "coordinateDelta": {
+    "openness": -0.002,
+    "conscientiousness": 0,
+    "extroversion": -0.0079,
+    "agreeableness": -0.0103,
+    "neuroticism": 0.0165,
+    "trust": -0.0186,
+    "attachment": 0.0079,
+    "fear": 0.0165,
+    "control": 0.0103
+  },
+  "firstForce": {
+    "trust": -0.002,
+    "fear": 0.0017
+  },
+  "lastForce": {
+    "trust": -0.0315,
+    "fear": 0.028
+  },
+  "forceDelta": {
+    "trust": -0.0295,
+    "fear": 0.0263
+  },
+  "firstVelocity": {
+    "trust": -0.0001,
+    "fear": 0.0001
+  },
+  "lastVelocity": {
+    "trust": -0.0088,
+    "fear": 0.0078
+  },
+  "velocityDelta": {
+    "trust": -0.0087,
+    "fear": 0.0077
+  },
+  "clusterTrends": [
+    {
+      "category": "abandonment",
+      "firstMass": 0.828,
+      "lastMass": 17.388,
+      "massDelta": 16.56,
+      "firstDensity": 1,
+      "lastDensity": 1,
+      "densityDelta": 0,
+      "firstStability": 1,
+      "lastStability": 1,
+      "stabilityDelta": 0
+    }
+  ],
+  "dominantClusterCategory": "abandonment",
+  "dominantDirection": "defensive_drift"
+}

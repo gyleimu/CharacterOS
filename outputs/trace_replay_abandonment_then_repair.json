@@ -1,0 +1,328 @@
+{
+  "schemaVersion": "characteros.trace-replay.v1",
+  "title": "CharacterOS V2 trace replay",
+  "scenario": "abandonment_then_repair",
+  "scenarioMeta": {
+    "title": "失联后修复",
+    "description": "先积累抛弃/失联星团，再引入陪伴与解释，观察修复性经历如何产生反向力。",
+    "expectedForces": [
+      "abandonment: trust < 0, fear > 0",
+      "support: trust > 0, fear < 0"
+    ]
+  },
+  "createdBy": "CharacterOS core trace replay",
+  "parameters": {
+    "daysPerStep": 14,
+    "learningRate": 0.03
+  },
+  "initialCoordinate": {
+    "openness": 0.42,
+    "conscientiousness": 0.56,
+    "extroversion": 0.24,
+    "agreeableness": 0.44,
+    "neuroticism": 0.78,
+    "trust": 0.26,
+    "attachment": 0.86,
+    "fear": 0.82,
+    "control": 0.68
+  },
+  "steps": [
+    {
+      "step": 1,
+      "eventId": "trace_abandonment_1",
+      "category": "abandonment",
+      "impactScore": 0.874,
+      "boundary": {
+        "phase": "overflow",
+        "incomingStress": 0.9517,
+        "overflowAmount": 0.2317,
+        "driftMultiplier": 1.1513
+      },
+      "force": {
+        "openness": -0.0002,
+        "conscientiousness": 0,
+        "extroversion": -0.0009,
+        "agreeableness": -0.0011,
+        "neuroticism": 0.0018,
+        "trust": -0.0021,
+        "attachment": 0.0009,
+        "fear": 0.0018,
+        "control": 0.0012
+      },
+      "clusterForces": [
+        {
+          "clusterId": "cluster_abandonment",
+          "category": "abandonment",
+          "magnitude": 0.023,
+          "trust": -0.0021,
+          "fear": 0.0018
+        }
+      ],
+      "velocity": {
+        "openness": 0,
+        "conscientiousness": 0,
+        "extroversion": 0,
+        "agreeableness": 0,
+        "neuroticism": 0.0001,
+        "trust": -0.0001,
+        "attachment": 0,
+        "fear": 0.0001,
+        "control": 0
+      },
+      "coordinate": {
+        "openness": 0.42,
+        "conscientiousness": 0.56,
+        "extroversion": 0.24,
+        "agreeableness": 0.44,
+        "neuroticism": 0.7801,
+        "trust": 0.2599,
+        "attachment": 0.86,
+        "fear": 0.8201,
+        "control": 0.68
+      },
+      "clusterMetrics": [
+        {
+          "clusterId": "cluster_abandonment",
+          "category": "abandonment",
+          "mass": 0.874,
+          "density": 1,
+          "stability": 1,
+          "variance": 0
+        }
+      ]
+    },
+    {
+      "step": 2,
+      "eventId": "trace_abandonment_2",
+      "category": "abandonment",
+      "impactScore": 0.874,
+      "boundary": {
+        "phase": "overflow",
+        "incomingStress": 0.9588,
+        "overflowAmount": 1.1905,
+        "driftMultiplier": 1.7839
+      },
+      "force": {
+        "openness": -0.0007,
+        "conscientiousness": 0,
+        "extroversion": -0.0028,
+        "agreeableness": -0.0034,
+        "neuroticism": 0.0055,
+        "trust": -0.0062,
+        "attachment": 0.0028,
+        "fear": 0.0055,
+        "control": 0.0034
+      },
+      "clusterForces": [
+        {
+          "clusterId": "cluster_abandonment",
+          "category": "abandonment",
+          "magnitude": 0.0688,
+          "trust": -0.0062,
+          "fear": 0.0055
+        }
+      ],
+      "velocity": {
+        "openness": 0,
+        "conscientiousness": 0,
+        "extroversion": -0.0001,
+        "agreeableness": -0.0002,
+        "neuroticism": 0.0004,
+        "trust": -0.0004,
+        "attachment": 0.0001,
+        "fear": 0.0004,
+        "control": 0.0002
+      },
+      "coordinate": {
+        "openness": 0.42,
+        "conscientiousness": 0.56,
+        "extroversion": 0.2399,
+        "agreeableness": 0.4398,
+        "neuroticism": 0.7805,
+        "trust": 0.2595,
+        "attachment": 0.8601,
+        "fear": 0.8205,
+        "control": 0.6802
+      },
+      "clusterMetrics": [
+        {
+          "clusterId": "cluster_abandonment",
+          "category": "abandonment",
+          "mass": 2.622,
+          "density": 1,
+          "stability": 1,
+          "variance": 0
+        }
+      ]
+    },
+    {
+      "step": 3,
+      "eventId": "trace_support_1",
+      "category": "support",
+      "impactScore": 0.726,
+      "boundary": {
+        "phase": "overflow",
+        "incomingStress": 0.7929,
+        "overflowAmount": 1.9834,
+        "driftMultiplier": 2.335
+      },
+      "force": {
+        "openness": -0.0005,
+        "conscientiousness": 0,
+        "extroversion": -0.0025,
+        "agreeableness": -0.0029,
+        "neuroticism": 0.0048,
+        "trust": -0.0052,
+        "attachment": 0.0026,
+        "fear": 0.0048,
+        "control": 0.0031
+      },
+      "clusterForces": [
+        {
+          "clusterId": "cluster_abandonment",
+          "category": "abandonment",
+          "magnitude": 0.0688,
+          "trust": -0.0062,
+          "fear": 0.0055
+        },
+        {
+          "clusterId": "cluster_support",
+          "category": "support",
+          "magnitude": 0.0171,
+          "trust": 0.001,
+          "fear": -0.0007
+        }
+      ],
+      "velocity": {
+        "openness": 0,
+        "conscientiousness": 0,
+        "extroversion": -0.0003,
+        "agreeableness": -0.0004,
+        "neuroticism": 0.0007,
+        "trust": -0.0007,
+        "attachment": 0.0003,
+        "fear": 0.0007,
+        "control": 0.0004
+      },
+      "coordinate": {
+        "openness": 0.42,
+        "conscientiousness": 0.56,
+        "extroversion": 0.2396,
+        "agreeableness": 0.4394,
+        "neuroticism": 0.7812,
+        "trust": 0.2588,
+        "attachment": 0.8604,
+        "fear": 0.8212,
+        "control": 0.6806
+      },
+      "clusterMetrics": [
+        {
+          "clusterId": "cluster_abandonment",
+          "category": "abandonment",
+          "mass": 2.622,
+          "density": 1,
+          "stability": 1,
+          "variance": 0
+        },
+        {
+          "clusterId": "cluster_support",
+          "category": "support",
+          "mass": 0.726,
+          "density": 1,
+          "stability": 1,
+          "variance": 0
+        }
+      ]
+    },
+    {
+      "step": 4,
+      "eventId": "trace_support_2",
+      "category": "support",
+      "impactScore": 0.726,
+      "boundary": {
+        "phase": "overflow",
+        "incomingStress": 0.8437,
+        "overflowAmount": 2.8271,
+        "driftMultiplier": 2.9415
+      },
+      "force": {
+        "openness": -0.0002,
+        "conscientiousness": 0,
+        "extroversion": -0.0018,
+        "agreeableness": -0.0019,
+        "neuroticism": 0.0035,
+        "trust": -0.0031,
+        "attachment": 0.0023,
+        "fear": 0.0035,
+        "control": 0.0024
+      },
+      "clusterForces": [
+        {
+          "clusterId": "cluster_abandonment",
+          "category": "abandonment",
+          "magnitude": 0.0688,
+          "trust": -0.0062,
+          "fear": 0.0055
+        },
+        {
+          "clusterId": "cluster_support",
+          "category": "support",
+          "magnitude": 0.0512,
+          "trust": 0.0031,
+          "fear": -0.002
+        }
+      ],
+      "velocity": {
+        "openness": 0,
+        "conscientiousness": 0,
+        "extroversion": -0.0004,
+        "agreeableness": -0.0005,
+        "neuroticism": 0.0009,
+        "trust": -0.0008,
+        "attachment": 0.0004,
+        "fear": 0.0009,
+        "control": 0.0005
+      },
+      "coordinate": {
+        "openness": 0.42,
+        "conscientiousness": 0.56,
+        "extroversion": 0.2392,
+        "agreeableness": 0.4389,
+        "neuroticism": 0.7821,
+        "trust": 0.258,
+        "attachment": 0.8608,
+        "fear": 0.8221,
+        "control": 0.6811
+      },
+      "clusterMetrics": [
+        {
+          "clusterId": "cluster_abandonment",
+          "category": "abandonment",
+          "mass": 2.622,
+          "density": 1,
+          "stability": 1,
+          "variance": 0
+        },
+        {
+          "clusterId": "cluster_support",
+          "category": "support",
+          "mass": 2.178,
+          "density": 1,
+          "stability": 1,
+          "variance": 0
+        }
+      ]
+    }
+  ],
+  "finalCoordinate": {
+    "openness": 0.42,
+    "conscientiousness": 0.56,
+    "extroversion": 0.2392,
+    "agreeableness": 0.4389,
+    "neuroticism": 0.7821,
+    "trust": 0.258,
+    "attachment": 0.8608,
+    "fear": 0.8221,
+    "control": 0.6811
+  }
+}
