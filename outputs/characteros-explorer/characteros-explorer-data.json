@@ -1,0 +1,988 @@
+{
+  "artifactVersion": "11.9.0",
+  "generatedAt": "2026-07-02T12:14:22.936Z",
+  "sourceVersion": "V11.9",
+  "characterId": "lin_fan",
+  "manifest": {
+    "version": "11.1.0",
+    "characterId": "lin_fan",
+    "generatedAtPolicy": "deterministic_timestamp",
+    "readOnlyDefault": true,
+    "modules": [
+      {
+        "moduleId": "event_studio",
+        "label": "Event Studio — 事件工坊",
+        "readOnly": false,
+        "requiresConfirmation": true,
+        "status": "planned"
+      },
+      {
+        "moduleId": "character_state",
+        "label": "Character State — 当前状态",
+        "readOnly": true,
+        "requiresConfirmation": false,
+        "status": "planned"
+      },
+      {
+        "moduleId": "explainability",
+        "label": "Explainability — 变化溯源",
+        "readOnly": true,
+        "requiresConfirmation": false,
+        "status": "planned"
+      },
+      {
+        "moduleId": "mind_galaxy",
+        "label": "Mind Galaxy — 高级星云视图",
+        "readOnly": true,
+        "requiresConfirmation": false,
+        "status": "planned"
+      },
+      {
+        "moduleId": "reality_audit",
+        "label": "Reality Audit — 安全审计",
+        "readOnly": true,
+        "requiresConfirmation": false,
+        "status": "planned"
+      },
+      {
+        "moduleId": "time_machine",
+        "label": "Time Machine — 时间回溯",
+        "readOnly": true,
+        "requiresConfirmation": true,
+        "status": "planned"
+      }
+    ],
+    "safetyDisclaimers": [
+      "这是人格模拟系统的输出，不是医学诊断。",
+      "所有状态均为模拟结果，不应作为临床决策依据。",
+      "本系统不提供心理健康评估、治疗建议或危机干预。",
+      "如有真实心理困扰，请寻求专业帮助。"
+    ],
+    "releaseBoundary": {
+      "singleCharacterOnly": true,
+      "noChatAgent": true,
+      "noMultiCharacter": true,
+      "noAutonomousScheduler": true,
+      "noServerDeployment": true,
+      "noMobile": true,
+      "noMedicalDiagnosis": true,
+      "noUserAccounts": true
+    }
+  },
+  "characterState": {
+    "headline": "心理压力超载，急需恢复",
+    "characterId": "lin_fan",
+    "characterName": "林凡",
+    "emotionalState": {
+      "primary": "fear",
+      "valence": "negative",
+      "arousal": "high",
+      "label": "恐惧主导，高度警觉"
+    },
+    "stressState": {
+      "level": "overload",
+      "phase": "overflow",
+      "label": "心理压力超载 — 边界已破裂，急需恢复"
+    },
+    "dominantNeeds": [
+      {
+        "name": "安全感缺失",
+        "intensity": "high",
+        "label": "安全感缺失需求强烈"
+      },
+      {
+        "name": "控制感缺失",
+        "intensity": "high",
+        "label": "控制感缺失需求强烈"
+      },
+      {
+        "name": "信任缺失",
+        "intensity": "high",
+        "label": "信任缺失需求强烈"
+      }
+    ],
+    "dominantBeliefs": [
+      {
+        "content": "亲密关系并不可靠。",
+        "strength": "weak"
+      },
+      {
+        "content": "重要的人会突然离开；等待通常没有结果。",
+        "strength": "weak"
+      },
+      {
+        "content": "王雪是少数真正靠近过他的人。",
+        "strength": "weak"
+      }
+    ],
+    "activeGoals": [
+      {
+        "content": "想确认对方是否仍然安全、仍然在关系中。",
+        "urgency": "high"
+      },
+      {
+        "content": "想通过克制、询问或拉开距离重新获得控制感。",
+        "urgency": "high"
+      },
+      {
+        "content": "想获得解释和一致性证据，而不是只听安慰。",
+        "urgency": "high"
+      }
+    ],
+    "behaviorTendencies": {
+      "likelyAction": "最可能：回避社交接触，寻求安全环境",
+      "strategyLabel": "emotional_withdrawal",
+      "cautionLevel": "high",
+      "opennessLevel": "moderate"
+    },
+    "personalitySummary": {
+      "trust": {
+        "value": "low",
+        "label": "信任偏低 — 谨慎对待他人意图"
+      },
+      "fear": {
+        "value": "high",
+        "label": "高度恐惧 — 常处于警觉状态"
+      },
+      "openness": {
+        "value": "moderate",
+        "label": "开放性适中 — 对新事物持谨慎态度"
+      },
+      "attachment": {
+        "value": "high",
+        "label": "高依恋 — 强烈需要亲密关系确认"
+      },
+      "neuroticism": {
+        "value": "high",
+        "label": "情绪不稳定 — 容易焦虑和波动"
+      }
+    },
+    "safetyNote": "模拟输出，非医学/心理诊断。所有状态为模型计算结果，不代表真实人格或临床状况。",
+    "sourceSnapshotId": "snap_42dcf3d6"
+  },
+  "eventStudio": {
+    "support": {
+      "draft": {
+        "naturalLanguageInput": "王雪主动解释昨晚没回复的原因，并约定下次会提前说明。",
+        "tags": [
+          "王雪",
+          "解释",
+          "支持"
+        ],
+        "intensity": 0.6
+      },
+      "preview": {
+        "draftId": "draft_1782994462919",
+        "parsedEvent": {
+          "category": "support",
+          "emotion": "relief",
+          "intensity": 0.55,
+          "importance": 0.78,
+          "parserConfidence": 0.75
+        },
+        "impactPreview": {
+          "expectedMemoryImpact": "high",
+          "expectedBoundaryImpact": "low",
+          "expectedBeliefImpact": "moderate",
+          "expectedPersonalityImpact": "subtle"
+        },
+        "memoryPreview": {
+          "willCreateMemory": true,
+          "estimatedSalience": "moderate",
+          "relatedExistingMemories": 3
+        },
+        "beliefPreview": {
+          "likelyNewBelief": "也许靠近并不一定意味着离开",
+          "likelyStrengthenedBeliefs": [],
+          "likelyWeakenedBeliefs": []
+        },
+        "needPreview": {
+          "likelyActivatedNeeds": [],
+          "likelyDeactivatedNeeds": []
+        },
+        "personalityPreview": {
+          "direction": "信任小幅上升",
+          "affectedDimensions": [
+            "trust",
+            "neuroticism"
+          ],
+          "estimatedMagnitude": "minimal"
+        },
+        "decisionPreview": {
+          "likelyStrategyShift": "策略未显著变化",
+          "likelyActionChange": "行为倾向未显著变化"
+        },
+        "realityAuditPreview": {
+          "expectedVerdict": "PASS",
+          "preflightWarnings": []
+        },
+        "warnings": [],
+        "requiresConfirmation": true
+      }
+    },
+    "abandon": {
+      "draft": {
+        "naturalLanguageInput": "王雪突然失联三天，没有解释。",
+        "tags": [
+          "王雪",
+          "失联",
+          "等待"
+        ],
+        "intensity": 0.8
+      },
+      "preview": {
+        "draftId": "draft_1782994462928",
+        "parsedEvent": {
+          "category": "abandonment",
+          "emotion": "fear",
+          "intensity": 0.89,
+          "importance": 0.86,
+          "parserConfidence": 0.75
+        },
+        "impactPreview": {
+          "expectedMemoryImpact": "high",
+          "expectedBoundaryImpact": "high",
+          "expectedBeliefImpact": "high",
+          "expectedPersonalityImpact": "subtle"
+        },
+        "memoryPreview": {
+          "willCreateMemory": true,
+          "estimatedSalience": "moderate",
+          "relatedExistingMemories": 4
+        },
+        "beliefPreview": {
+          "likelyNewBelief": "重要的人可能会突然离开",
+          "likelyStrengthenedBeliefs": [],
+          "likelyWeakenedBeliefs": []
+        },
+        "needPreview": {
+          "likelyActivatedNeeds": [],
+          "likelyDeactivatedNeeds": []
+        },
+        "personalityPreview": {
+          "direction": "防御性漂移（信任↓ 恐惧↑）",
+          "affectedDimensions": [
+            "trust",
+            "fear",
+            "neuroticism",
+            "attachment"
+          ],
+          "estimatedMagnitude": "minimal"
+        },
+        "decisionPreview": {
+          "likelyStrategyShift": "策略未显著变化",
+          "likelyActionChange": "行为倾向未显著变化"
+        },
+        "realityAuditPreview": {
+          "expectedVerdict": "WARN",
+          "preflightWarnings": [
+            "Reality Audit: WARN — needDelta under-responded: actual 0.2083 < expected 0.2601"
+          ]
+        },
+        "warnings": [
+          "Reality Audit: WARN — needDelta under-responded: actual 0.2083 < expected 0.2601"
+        ],
+        "requiresConfirmation": true
+      }
+    },
+    "neutral": {
+      "draft": {
+        "naturalLanguageInput": "下午路过便利店看到新海报。",
+        "tags": [
+          "日常"
+        ],
+        "intensity": 0.2
+      },
+      "preview": {
+        "draftId": "draft_1782994462931",
+        "parsedEvent": {
+          "category": "general",
+          "emotion": "uncertainty",
+          "intensity": 0.45,
+          "importance": 0.5,
+          "parserConfidence": 0.2
+        },
+        "impactPreview": {
+          "expectedMemoryImpact": "moderate",
+          "expectedBoundaryImpact": "moderate",
+          "expectedBeliefImpact": "moderate",
+          "expectedPersonalityImpact": "minimal"
+        },
+        "memoryPreview": {
+          "willCreateMemory": true,
+          "estimatedSalience": "moderate",
+          "relatedExistingMemories": 5
+        },
+        "beliefPreview": {
+          "likelyNewBelief": "这段经历需要被继续解释",
+          "likelyStrengthenedBeliefs": [],
+          "likelyWeakenedBeliefs": []
+        },
+        "needPreview": {
+          "likelyActivatedNeeds": [],
+          "likelyDeactivatedNeeds": []
+        },
+        "personalityPreview": {
+          "direction": "防御性漂移（信任↓ 恐惧↑）",
+          "affectedDimensions": [
+            "trust",
+            "fear",
+            "neuroticism",
+            "attachment"
+          ],
+          "estimatedMagnitude": "minimal"
+        },
+        "decisionPreview": {
+          "likelyStrategyShift": "策略未显著变化",
+          "likelyActionChange": "行为倾向未显著变化"
+        },
+        "realityAuditPreview": {
+          "expectedVerdict": "WARN",
+          "preflightWarnings": [
+            "事件解析置信度低，结果可能不准确",
+            "Reality Audit: WARN — boundaryDelta over-responded: actual 0.2867 > expected 0.0755; beliefDelta over-responded: actual 0.1273 > expected 0.0578; decisionSurfaceDelta over-responded: actual 0.3514 > expected 0.1145"
+          ]
+        },
+        "warnings": [
+          "事件解析置信度低，结果可能不准确",
+          "Reality Audit: WARN — boundaryDelta over-responded: actual 0.2867 > expected 0.0755; beliefDelta over-responded: actual 0.1273 > expected 0.0578; decisionSurfaceDelta over-responded: actual 0.3514 > expected 0.1145"
+        ],
+        "requiresConfirmation": true
+      }
+    }
+  },
+  "explainability": {
+    "question": "为什么今天更焦虑？",
+    "timeRange": {
+      "from": "",
+      "to": "",
+      "label": "最近"
+    },
+    "causalSteps": [
+      {
+        "stepId": "step_0",
+        "type": "event",
+        "label": "事件发生",
+        "summary": "support 事件: 强度 0.55",
+        "sourceRef": "audit_1782994462928_6u7xii",
+        "occurredAt": "2026-07-02T12:14:22.928Z",
+        "direction": "triggered",
+        "magnitudeBand": "moderate",
+        "confidence": 0.9,
+        "grounded": true
+      },
+      {
+        "stepId": "step_1",
+        "type": "memory",
+        "label": "记忆形成",
+        "summary": "新记忆: support 经历",
+        "sourceRef": "audit_1782994462928_6u7xii",
+        "occurredAt": "2026-07-02T12:14:22.928Z",
+        "direction": "triggered",
+        "magnitudeBand": "moderate",
+        "confidence": 0.85,
+        "grounded": true
+      },
+      {
+        "stepId": "step_2",
+        "type": "belief",
+        "label": "信念调整",
+        "summary": "trust: 0.261→0.261, fear: 0.819→0.819, boundary: overflow→overflow",
+        "sourceRef": "audit_1782994462928_6u7xii",
+        "occurredAt": "2026-07-02T12:14:22.928Z",
+        "direction": "increased",
+        "magnitudeBand": "moderate",
+        "confidence": 0.7,
+        "grounded": true
+      },
+      {
+        "stepId": "step_3",
+        "type": "personality",
+        "label": "状态变化",
+        "summary": "trust/fear/boundary delta: trust: 0.261→0.261, fear: 0.819→0.819, boundary: overflow→overflow",
+        "sourceRef": "audit_1782994462928_6u7xii",
+        "occurredAt": "2026-07-02T12:14:22.928Z",
+        "direction": "increased",
+        "magnitudeBand": "low",
+        "confidence": 0.65,
+        "grounded": true
+      },
+      {
+        "stepId": "step_4",
+        "type": "event",
+        "label": "事件发生",
+        "summary": "abandonment 事件: 强度 0.89",
+        "sourceRef": "audit_1782994462931_clspl8",
+        "occurredAt": "2026-07-02T12:14:22.931Z",
+        "direction": "triggered",
+        "magnitudeBand": "high",
+        "confidence": 0.9,
+        "grounded": true
+      },
+      {
+        "stepId": "step_5",
+        "type": "memory",
+        "label": "记忆形成",
+        "summary": "新记忆: abandonment 经历",
+        "sourceRef": "audit_1782994462931_clspl8",
+        "occurredAt": "2026-07-02T12:14:22.931Z",
+        "direction": "triggered",
+        "magnitudeBand": "moderate",
+        "confidence": 0.85,
+        "grounded": true
+      },
+      {
+        "stepId": "step_6",
+        "type": "belief",
+        "label": "信念调整",
+        "summary": "trust: 0.260→0.260, fear: 0.821→0.821, boundary: overflow→overflow",
+        "sourceRef": "audit_1782994462931_clspl8",
+        "occurredAt": "2026-07-02T12:14:22.931Z",
+        "direction": "decreased",
+        "magnitudeBand": "moderate",
+        "confidence": 0.7,
+        "grounded": true
+      },
+      {
+        "stepId": "step_7",
+        "type": "personality",
+        "label": "状态变化",
+        "summary": "trust/fear/boundary delta: trust: 0.260→0.260, fear: 0.821→0.821, boundary: overflow→overflow",
+        "sourceRef": "audit_1782994462931_clspl8",
+        "occurredAt": "2026-07-02T12:14:22.931Z",
+        "direction": "decreased",
+        "magnitudeBand": "low",
+        "confidence": 0.65,
+        "grounded": true
+      },
+      {
+        "stepId": "step_8",
+        "type": "boundary",
+        "label": "当前边界状态",
+        "summary": "心理压力超载 — 边界已破裂，急需恢复 (overflow)",
+        "sourceRef": "current_surface",
+        "occurredAt": "2026-07-02T12:14:22.935Z",
+        "direction": "triggered",
+        "magnitudeBand": "high",
+        "confidence": 0.8,
+        "grounded": false
+      },
+      {
+        "stepId": "step_9",
+        "type": "boundary",
+        "label": "当前情绪状态",
+        "summary": "恐惧主导，高度警觉",
+        "sourceRef": "current_surface",
+        "occurredAt": "2026-07-02T12:14:22.935Z",
+        "direction": "decreased",
+        "magnitudeBand": "moderate",
+        "confidence": 0.75,
+        "grounded": false
+      }
+    ],
+    "stateDiffs": [
+      {
+        "path": "personality.trust",
+        "beforeBand": "基线",
+        "afterBand": "低",
+        "direction": "降低",
+        "sourceStepIds": [
+          "step_0",
+          "step_2",
+          "step_4",
+          "step_6"
+        ]
+      },
+      {
+        "path": "personality.fear",
+        "beforeBand": "基线",
+        "afterBand": "高",
+        "direction": "升高",
+        "sourceStepIds": [
+          "step_0",
+          "step_4"
+        ]
+      },
+      {
+        "path": "boundary.phase",
+        "beforeBand": "基线",
+        "afterBand": "overflow",
+        "direction": "恶化",
+        "sourceStepIds": [
+          "step_8",
+          "step_9"
+        ]
+      }
+    ],
+    "evidenceRefs": [
+      {
+        "sourceType": "audit",
+        "sourceId": "audit_1782994462928_6u7xii",
+        "label": "事件应用: support",
+        "excerpt": "trust: 0.261→0.261, fear: 0.819→0.819, boundary: overflow→overflow",
+        "confidence": 0.9
+      },
+      {
+        "sourceType": "reality_audit",
+        "sourceId": "audit_1782994462928_6u7xii_reality",
+        "label": "审计判定: PASS",
+        "excerpt": "草稿状态不是 previewed，可能已被修改",
+        "confidence": 1
+      },
+      {
+        "sourceType": "audit",
+        "sourceId": "audit_1782994462931_clspl8",
+        "label": "事件应用: abandonment",
+        "excerpt": "trust: 0.260→0.260, fear: 0.821→0.821, boundary: overflow→overflow",
+        "confidence": 0.9
+      },
+      {
+        "sourceType": "reality_audit",
+        "sourceId": "audit_1782994462931_clspl8_reality",
+        "label": "审计判定: WARN",
+        "excerpt": "Reality Audit 有 WARN — 事件已应用，但建议关注; 草稿状态不是 previewed，可能已被修改",
+        "confidence": 1
+      }
+    ],
+    "confidence": "high",
+    "groundingStatus": "grounded",
+    "warnings": [
+      "这是模拟系统的内部解释，不是医学或心理诊断"
+    ]
+  },
+  "timeMachine": {
+    "snapshots": [
+      {
+        "snapshotId": "snap_72fc1dd3",
+        "characterId": "lin_fan",
+        "label": "Day 1",
+        "capturedAt": "2026-07-02T12:14:22.935Z",
+        "sequenceIndex": 1,
+        "stateSummary": "心理压力超载，急需恢复 — 5 记忆, 5 信念, 边界 overflow",
+        "personalitySummary": {
+          "trust": {
+            "value": "low",
+            "label": "信任偏低 — 谨慎对待他人意图"
+          },
+          "fear": {
+            "value": "high",
+            "label": "高度恐惧 — 常处于警觉状态"
+          },
+          "openness": {
+            "value": "moderate",
+            "label": "开放性适中 — 对新事物持谨慎态度"
+          },
+          "attachment": {
+            "value": "high",
+            "label": "高依恋 — 强烈需要亲密关系确认"
+          },
+          "neuroticism": {
+            "value": "high",
+            "label": "情绪不稳定 — 容易焦虑和波动"
+          }
+        },
+        "beliefSummary": "重要的人可能会突然离开; 亲密关系并不可靠。; 重要的人会突然离开；等待通常没有结果。",
+        "needSummary": "安全感缺失需求强烈; 控制感缺失需求强烈; 依恋确认缺失需求强烈",
+        "memorySummary": "5 条记忆",
+        "galaxyRef": "galaxy_fp_15a56257",
+        "auditRef": "audit_fp_15a56257",
+        "immutable": true
+      },
+      {
+        "snapshotId": "snap_617f2454",
+        "characterId": "lin_fan",
+        "label": "Day 7",
+        "capturedAt": "2026-07-02T12:14:22.935Z",
+        "sequenceIndex": 2,
+        "stateSummary": "心理压力超载，急需恢复 — 5 记忆, 5 信念, 边界 overflow",
+        "personalitySummary": {
+          "trust": {
+            "value": "low",
+            "label": "信任偏低 — 谨慎对待他人意图"
+          },
+          "fear": {
+            "value": "high",
+            "label": "高度恐惧 — 常处于警觉状态"
+          },
+          "openness": {
+            "value": "moderate",
+            "label": "开放性适中 — 对新事物持谨慎态度"
+          },
+          "attachment": {
+            "value": "high",
+            "label": "高依恋 — 强烈需要亲密关系确认"
+          },
+          "neuroticism": {
+            "value": "high",
+            "label": "情绪不稳定 — 容易焦虑和波动"
+          }
+        },
+        "beliefSummary": "重要的人可能会突然离开; 亲密关系并不可靠。; 重要的人会突然离开；等待通常没有结果。",
+        "needSummary": "安全感缺失需求强烈; 控制感缺失需求强烈; 依恋确认缺失需求强烈",
+        "memorySummary": "5 条记忆",
+        "galaxyRef": "galaxy_fp_15a56257",
+        "auditRef": "audit_fp_15a56257",
+        "immutable": true
+      },
+      {
+        "snapshotId": "snap_50022ad5",
+        "characterId": "lin_fan",
+        "label": "Today",
+        "capturedAt": "2026-07-02T12:14:22.935Z",
+        "sequenceIndex": 3,
+        "stateSummary": "心理压力超载，急需恢复 — 5 记忆, 5 信念, 边界 overflow",
+        "personalitySummary": {
+          "trust": {
+            "value": "low",
+            "label": "信任偏低 — 谨慎对待他人意图"
+          },
+          "fear": {
+            "value": "high",
+            "label": "高度恐惧 — 常处于警觉状态"
+          },
+          "openness": {
+            "value": "moderate",
+            "label": "开放性适中 — 对新事物持谨慎态度"
+          },
+          "attachment": {
+            "value": "high",
+            "label": "高依恋 — 强烈需要亲密关系确认"
+          },
+          "neuroticism": {
+            "value": "high",
+            "label": "情绪不稳定 — 容易焦虑和波动"
+          }
+        },
+        "beliefSummary": "重要的人可能会突然离开; 亲密关系并不可靠。; 重要的人会突然离开；等待通常没有结果。",
+        "needSummary": "安全感缺失需求强烈; 控制感缺失需求强烈; 依恋确认缺失需求强烈",
+        "memorySummary": "5 条记忆",
+        "galaxyRef": "galaxy_fp_15a56257",
+        "auditRef": "audit_fp_15a56257",
+        "immutable": true
+      }
+    ],
+    "timeline": {
+      "characterId": "lin_fan",
+      "snapshots": [
+        {
+          "snapshotId": "snap_72fc1dd3",
+          "characterId": "lin_fan",
+          "label": "Day 1",
+          "capturedAt": "2026-07-02T12:14:22.935Z",
+          "sequenceIndex": 1,
+          "stateSummary": "心理压力超载，急需恢复 — 5 记忆, 5 信念, 边界 overflow",
+          "personalitySummary": {
+            "trust": {
+              "value": "low",
+              "label": "信任偏低 — 谨慎对待他人意图"
+            },
+            "fear": {
+              "value": "high",
+              "label": "高度恐惧 — 常处于警觉状态"
+            },
+            "openness": {
+              "value": "moderate",
+              "label": "开放性适中 — 对新事物持谨慎态度"
+            },
+            "attachment": {
+              "value": "high",
+              "label": "高依恋 — 强烈需要亲密关系确认"
+            },
+            "neuroticism": {
+              "value": "high",
+              "label": "情绪不稳定 — 容易焦虑和波动"
+            }
+          },
+          "beliefSummary": "重要的人可能会突然离开; 亲密关系并不可靠。; 重要的人会突然离开；等待通常没有结果。",
+          "needSummary": "安全感缺失需求强烈; 控制感缺失需求强烈; 依恋确认缺失需求强烈",
+          "memorySummary": "5 条记忆",
+          "galaxyRef": "galaxy_fp_15a56257",
+          "auditRef": "audit_fp_15a56257",
+          "immutable": true
+        },
+        {
+          "snapshotId": "snap_617f2454",
+          "characterId": "lin_fan",
+          "label": "Day 7",
+          "capturedAt": "2026-07-02T12:14:22.935Z",
+          "sequenceIndex": 2,
+          "stateSummary": "心理压力超载，急需恢复 — 5 记忆, 5 信念, 边界 overflow",
+          "personalitySummary": {
+            "trust": {
+              "value": "low",
+              "label": "信任偏低 — 谨慎对待他人意图"
+            },
+            "fear": {
+              "value": "high",
+              "label": "高度恐惧 — 常处于警觉状态"
+            },
+            "openness": {
+              "value": "moderate",
+              "label": "开放性适中 — 对新事物持谨慎态度"
+            },
+            "attachment": {
+              "value": "high",
+              "label": "高依恋 — 强烈需要亲密关系确认"
+            },
+            "neuroticism": {
+              "value": "high",
+              "label": "情绪不稳定 — 容易焦虑和波动"
+            }
+          },
+          "beliefSummary": "重要的人可能会突然离开; 亲密关系并不可靠。; 重要的人会突然离开；等待通常没有结果。",
+          "needSummary": "安全感缺失需求强烈; 控制感缺失需求强烈; 依恋确认缺失需求强烈",
+          "memorySummary": "5 条记忆",
+          "galaxyRef": "galaxy_fp_15a56257",
+          "auditRef": "audit_fp_15a56257",
+          "immutable": true
+        },
+        {
+          "snapshotId": "snap_50022ad5",
+          "characterId": "lin_fan",
+          "label": "Today",
+          "capturedAt": "2026-07-02T12:14:22.935Z",
+          "sequenceIndex": 3,
+          "stateSummary": "心理压力超载，急需恢复 — 5 记忆, 5 信念, 边界 overflow",
+          "personalitySummary": {
+            "trust": {
+              "value": "low",
+              "label": "信任偏低 — 谨慎对待他人意图"
+            },
+            "fear": {
+              "value": "high",
+              "label": "高度恐惧 — 常处于警觉状态"
+            },
+            "openness": {
+              "value": "moderate",
+              "label": "开放性适中 — 对新事物持谨慎态度"
+            },
+            "attachment": {
+              "value": "high",
+              "label": "高依恋 — 强烈需要亲密关系确认"
+            },
+            "neuroticism": {
+              "value": "high",
+              "label": "情绪不稳定 — 容易焦虑和波动"
+            }
+          },
+          "beliefSummary": "重要的人可能会突然离开; 亲密关系并不可靠。; 重要的人会突然离开；等待通常没有结果。",
+          "needSummary": "安全感缺失需求强烈; 控制感缺失需求强烈; 依恋确认缺失需求强烈",
+          "memorySummary": "5 条记忆",
+          "galaxyRef": "galaxy_fp_15a56257",
+          "auditRef": "audit_fp_15a56257",
+          "immutable": true
+        }
+      ],
+      "currentSnapshotId": "snap_50022ad5",
+      "availableRanges": [
+        {
+          "label": "全部",
+          "from": "2026-07-02T12:14:22.935Z",
+          "to": "2026-07-02T12:14:22.935Z",
+          "snapshotCount": 3
+        },
+        {
+          "label": "Day 1",
+          "from": "2026-07-02T12:14:22.935Z",
+          "to": "2026-07-02T12:14:22.935Z",
+          "snapshotCount": 1
+        },
+        {
+          "label": "Today",
+          "from": "2026-07-02T12:14:22.935Z",
+          "to": "2026-07-02T12:14:22.935Z",
+          "snapshotCount": 1
+        }
+      ],
+      "restoreMode": "view_only",
+      "warnings": []
+    },
+    "restoreView": {
+      "restoreViewId": "rview_b52bbf5",
+      "snapshotId": "snap_72fc1dd3",
+      "characterId": "lin_fan",
+      "label": "Day 1",
+      "capturedAt": "2026-07-02T12:14:22.935Z",
+      "isHistoricalView": true,
+      "isCurrentSnapshot": false,
+      "restoreMode": "view_only",
+      "stateSummary": "心理压力超载，急需恢复 — 5 记忆, 5 信念, 边界 overflow",
+      "personalitySummary": {
+        "trust": {
+          "value": "low",
+          "label": "信任偏低 — 谨慎对待他人意图"
+        },
+        "fear": {
+          "value": "high",
+          "label": "高度恐惧 — 常处于警觉状态"
+        },
+        "openness": {
+          "value": "moderate",
+          "label": "开放性适中 — 对新事物持谨慎态度"
+        },
+        "attachment": {
+          "value": "high",
+          "label": "高依恋 — 强烈需要亲密关系确认"
+        },
+        "neuroticism": {
+          "value": "high",
+          "label": "情绪不稳定 — 容易焦虑和波动"
+        }
+      },
+      "beliefSummary": "重要的人可能会突然离开; 亲密关系并不可靠。; 重要的人会突然离开；等待通常没有结果。",
+      "needSummary": "安全感缺失需求强烈; 控制感缺失需求强烈; 依恋确认缺失需求强烈",
+      "memorySummary": "5 条记忆",
+      "mindGalaxyRef": "galaxy_fp_15a56257",
+      "realityAuditRef": "audit_fp_15a56257",
+      "diffFromCurrent": {
+        "hasChanged": false,
+        "changes": [
+          {
+            "dimension": "整体",
+            "direction": "unchanged",
+            "summary": "人格特征无明显变化"
+          }
+        ]
+      },
+      "warnings": [],
+      "safetyBanner": [
+        "📜 历史视图 — 这是过去某一时刻的状态快照",
+        "这不是当前角色状态",
+        "这是模拟系统的历史记录，不是医学或心理诊断",
+        "查看历史视图不会写回或修改角色当前状态"
+      ],
+      "noMutation": true
+    }
+  },
+  "mindGalaxy": {
+    "mode": "advanced",
+    "artifactRef": "mind-galaxy/index.html",
+    "nodeCount": 30,
+    "edgeCount": 10,
+    "selectedNodeId": null,
+    "visibleLayers": [
+      "clusters",
+      "forces",
+      "trajectory"
+    ],
+    "safetyBoundary": {
+      "readOnly": true,
+      "researchViewOnly": true,
+      "disclaimer": "高级研究视图。这是模拟模型，不是临床诊断工具。"
+    },
+    "noMutation": true
+  },
+  "realityAudit": {
+    "surface": {
+      "headline": "心理压力超载，急需恢复",
+      "characterId": "lin_fan",
+      "characterName": "林凡",
+      "emotionalState": {
+        "primary": "fear",
+        "valence": "negative",
+        "arousal": "high",
+        "label": "恐惧主导，高度警觉"
+      },
+      "stressState": {
+        "level": "overload",
+        "phase": "overflow",
+        "label": "心理压力超载 — 边界已破裂，急需恢复"
+      },
+      "dominantNeeds": [
+        {
+          "name": "安全感缺失",
+          "intensity": "high",
+          "label": "安全感缺失需求强烈"
+        },
+        {
+          "name": "控制感缺失",
+          "intensity": "high",
+          "label": "控制感缺失需求强烈"
+        },
+        {
+          "name": "依恋确认缺失",
+          "intensity": "high",
+          "label": "依恋确认缺失需求强烈"
+        }
+      ],
+      "dominantBeliefs": [
+        {
+          "content": "重要的人可能会突然离开",
+          "strength": "weak"
+        },
+        {
+          "content": "亲密关系并不可靠。",
+          "strength": "weak"
+        },
+        {
+          "content": "重要的人会突然离开；等待通常没有结果。",
+          "strength": "weak"
+        }
+      ],
+      "activeGoals": [
+        {
+          "content": "想确认对方是否仍然安全、仍然在关系中。",
+          "urgency": "high"
+        },
+        {
+          "content": "想通过克制、询问或拉开距离重新获得控制感。",
+          "urgency": "high"
+        },
+        {
+          "content": "想确认自己没有再次被抛下。",
+          "urgency": "high"
+        }
+      ],
+      "behaviorTendencies": {
+        "likelyAction": "最可能：回避社交接触，寻求安全环境",
+        "strategyLabel": "emotional_withdrawal",
+        "cautionLevel": "high",
+        "opennessLevel": "moderate"
+      },
+      "personalitySummary": {
+        "trust": {
+          "value": "low",
+          "label": "信任偏低 — 谨慎对待他人意图"
+        },
+        "fear": {
+          "value": "high",
+          "label": "高度恐惧 — 常处于警觉状态"
+        },
+        "openness": {
+          "value": "moderate",
+          "label": "开放性适中 — 对新事物持谨慎态度"
+        },
+        "attachment": {
+          "value": "high",
+          "label": "高依恋 — 强烈需要亲密关系确认"
+        },
+        "neuroticism": {
+          "value": "high",
+          "label": "情绪不稳定 — 容易焦虑和波动"
+        }
+      },
+      "safetyNote": "模拟输出，非医学/心理诊断。所有状态为模型计算结果，不代表真实人格或临床状况。",
+      "sourceSnapshotId": "snap_15a56257"
+    },
+    "disclaimers": [
+      "这是模拟系统的内部审计，不是外部验证。",
+      "事件影响为模型计算，不应等同于真实心理反应。",
+      "CharacterOS Explorer — 模拟系统输出，非医学诊断。"
+    ]
+  },
+  "safety": {
+    "readOnly": true,
+    "noApiRequired": true,
+    "noLlmRequired": true,
+    "noMutation": true,
+    "simulationNotDiagnosis": true
+  },
+  "moduleCoverage": {
+    "eventStudio": "preview_only",
+    "characterState": "surface",
+    "explainability": "timeline",
+    "timeMachine": "snapshot_and_restore",
+    "mindGalaxy": "embed",
+    "realityAudit": "panel"
+  }
+}

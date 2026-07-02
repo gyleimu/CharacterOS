@@ -1,0 +1,54 @@
+name: CharacterOS CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: TypeScript Build
+        run: npm run build
+
+      - name: Unit Tests
+        run: npm test
+
+      - name: Next.js Build
+        run: npm run next:build
+
+  quality-gates:
+    runs-on: ubuntu-latest
+    needs: build-and-test
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: Core Reality Gate
+        run: npm run test:reality
+
+      - name: Unified Quality Gate
+        run: npm run test:quality
+
+      - name: Quality Trend Baseline
+        run: npm run test:trend

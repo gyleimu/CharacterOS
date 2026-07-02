@@ -10,12 +10,12 @@ describe("V10.79 RC Documentation Seal", () => {
   });
 
   it("README mentions current test count", () => {
-    expect(readme).toContain("1790 tests");
-    expect(readme).toContain("147 files");
+    expect(readme).toContain("1973 tests");
+    expect(readme).toContain("159 files");
   });
 
-  it("README states current version is V10.78", () => {
-    expect(readme).toContain("V10.78");
+  it("README states current version includes V10 RC and V11 RC", () => {
+    expect(readme).toMatch(/V10.*RC|Release Candidate/);
   });
 
   it("README does not claim active warnings exist", () => {

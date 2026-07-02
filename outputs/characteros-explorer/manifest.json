@@ -1,0 +1,23 @@
+{
+  "artifactVersion": "11.9.0",
+  "generatedAt": "2026-07-02T12:14:22.936Z",
+  "characterId": "lin_fan",
+  "readOnly": true,
+  "noApiRequired": true,
+  "noLlmRequired": true,
+  "noMutation": true,
+  "files": [
+    "index.html",
+    "characteros-explorer-data.json",
+    "manifest.json",
+    "README.md"
+  ],
+  "moduleCoverage": {
+    "eventStudio": "preview_only",
+    "characterState": "surface",
+    "explainability": "timeline",
+    "timeMachine": "snapshot_and_restore",
+    "mindGalaxy": "embed",
+    "realityAudit": "panel"
+  }
+}

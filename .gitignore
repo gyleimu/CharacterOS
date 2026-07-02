@@ -8,7 +8,26 @@ data/physics_states.json
 data/physics_states.json.tmp-*
 prisma/dev.db
 prisma/dev.db-journal
+
+# Generated artifacts — screenshots and headless profiles
 outputs/*.png
 outputs/*headless-profile*/
 outputs/chrome-headless*/
+
+# Demo backups (ephemeral)
 outputs/characteros-demo-backup-*/
+
+# Local trend baseline (personal machine state)
+outputs/quality-trend-baseline.json
+
+# Legacy benchmark exports
+outputs/*.csv
+outputs/*.docx
+outputs/benchmark_v2_report_render/
+outputs/characteros_100_*
+outputs/run-benchmark-*.ts
+outputs/run-characteros-*.ts
+outputs/personality_space_preview.svg
+
+# Temporary scripts
+scripts/_*.ts

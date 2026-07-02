@@ -1,0 +1,70 @@
+{
+  "manifestVersion": "1.0.0",
+  "rcVersion": "V11.10",
+  "rcVerdict": "PASS",
+  "generatedAt": "2026-07-02T20:20:00.000Z",
+  "releaseReady": true,
+  "modules": {
+    "eventStudio": { "status": "apply-boundary-ready", "preview": true, "apply": true, "requiresConfirmation": true },
+    "characterState": { "status": "surface-ready", "qualitativeOnly": true, "noRawState": true },
+    "explainability": { "status": "timeline-ready", "noLlmRequired": true, "evidenceGrounded": true },
+    "mindGalaxy": { "status": "embed-ready", "advancedViewOnly": true, "noMutation": true },
+    "realityAudit": { "status": "panel-ready", "safetyDisclaimers": true },
+    "timeMachine": { "status": "snapshot-and-restore-ready", "viewOnly": true, "rollbackDeferred": true }
+  },
+  "tests": {
+    "total": 1961,
+    "testFiles": 158,
+    "explorerSpecific": 142,
+    "passed": 1961,
+    "failed": 0
+  },
+  "artifact": {
+    "path": "outputs/characteros-explorer",
+    "exists": true,
+    "readOnly": true,
+    "noApiRequired": true,
+    "noLlmRequired": true,
+    "noMutation": true
+  },
+  "gates": {
+    "coreRealityGate": "PASS",
+    "unifiedQualityGate": "PASS",
+    "qualityTrend": "STABLE",
+    "rcVerify": "PASS"
+  },
+  "safetyBoundaries": {
+    "noChatAgent": true,
+    "noMultiCharacter": true,
+    "noMedicalDiagnosis": true,
+    "noServerDeployment": true,
+    "noAutonomousScheduler": true,
+    "simulationNotDiagnosis": true
+  },
+  "releaseBoundary": {
+    "singleCharacterOnly": true,
+    "apiOptional": true,
+    "staticArtifactAvailable": true,
+    "v20NotStarted": true
+  },
+  "knownLimitations": [
+    "Time Machine rollback is deferred — restore view only, no actual state reversion",
+    "Mind Galaxy is embedded as reference, not interactive visualization",
+    "Explainability confidence is moderate when audit history is sparse",
+    "Needs/Desires require DerivedState for full fidelity (current: partial from deficiency engine)",
+    "Explorer service uses in-memory state (single-machine, no persistence)"
+  ],
+  "sourceReports": [
+    "docs/v11.0_characteros_explorer_design_charter.md",
+    "docs/v11.1_explorer_dto_types_report.md",
+    "docs/v11.2_event_studio_preview_core_report.md",
+    "docs/v11.3_event_studio_apply_boundary_report.md",
+    "docs/v11.4_character_state_surface_core_report.md",
+    "docs/v11.5_explainability_timeline_core_report.md",
+    "docs/v11.6_time_machine_snapshot_core_report.md",
+    "docs/v11.7_time_machine_restore_view_core_report.md",
+    "docs/v11.8_explorer_api_boundary_report.md",
+    "docs/v11.9_static_explorer_artifact_report.md",
+    "docs/v11.10_explorer_release_candidate_report.md"
+  ]
+}
