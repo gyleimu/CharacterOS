@@ -1,0 +1,78 @@
+{
+  "manifestVersion": "1.0.0",
+  "rcVersion": "V12.10",
+  "rcVerdict": "PASS",
+  "generatedAt": "2026-07-02T22:00:00.000Z",
+  "releaseReady": true,
+  "modules": {
+    "agentDtoTypes": { "status": "stable", "dtoCount": 9 },
+    "agentInputAdapter": { "status": "stable", "inputModes": 5 },
+    "eventCandidateExtractor": { "status": "stable", "deterministicFirst": true },
+    "agentPolicyGate": { "status": "stable", "policies": 4 },
+    "agentContextBuilder": { "status": "stable", "omittedRawState": true },
+    "replyPlanner": { "status": "stable", "intents": 7, "noLLM": true },
+    "writebackPlanner": { "status": "stable", "noExecution": true },
+    "agentSdkService": { "status": "stable", "methods": 6, "defaultNoMutation": true },
+    "staticHarness": { "status": "stable", "sampleTurns": 6 }
+  },
+  "tests": {
+    "total": 2151,
+    "testFiles": 169,
+    "agentSpecific": 163,
+    "passed": 2151,
+    "failed": 0
+  },
+  "harness": {
+    "path": "outputs/agent-sdk-harness",
+    "exists": true,
+    "readOnly": true,
+    "noApiRequired": true,
+    "noLlmRequired": true,
+    "noMutation": true
+  },
+  "gates": {
+    "coreRealityGate": "PASS",
+    "unifiedQualityGate": "PASS",
+    "qualityTrend": "STABLE",
+    "rcVerify": "PASS"
+  },
+  "safetyBoundaries": {
+    "noLLMCall": true,
+    "noFinalChatProse": true,
+    "noDirectCoreMutation": true,
+    "noWritebackByDefault": true,
+    "applyWritebackExplicitOnly": true,
+    "confirmationRequired": true,
+    "diagnosisBlocked": true,
+    "multiCharacterProhibited": true,
+    "rawStateHidden": true,
+    "pluginSecretsRedacted": true,
+    "simulationNotDiagnosis": true
+  },
+  "releaseBoundary": {
+    "singleCharacterOnly": true,
+    "sdkNotChatUI": true,
+    "realLLMDeferred": true,
+    "v20NotStarted": true
+  },
+  "knownLimitations": [
+    "Real LLM integration deferred — reply plan is structured blueprint only",
+    "Writeback execution requires confirmation + allowed policy",
+    "Time Machine rollback deferred",
+    "Needs/Desires require full DerivedState integration",
+    "Agent SDK service uses in-memory state (no persistence)"
+  ],
+  "sourceReports": [
+    "docs/v12.0_character_agent_sdk_design_charter.md",
+    "docs/v12.1_agent_dto_types_report.md",
+    "docs/v12.2_agent_input_adapter_report.md",
+    "docs/v12.3_event_candidate_extractor_report.md",
+    "docs/v12.4_agent_policy_gate_report.md",
+    "docs/v12.5_agent_context_builder_report.md",
+    "docs/v12.6_reply_planner_report.md",
+    "docs/v12.7_writeback_plan_audit_report.md",
+    "docs/v12.8_agent_sdk_service_boundary_report.md",
+    "docs/v12.9_static_sdk_harness_report.md",
+    "docs/v12.10_agent_sdk_release_candidate_report.md"
+  ]
+}

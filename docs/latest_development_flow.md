@@ -2,7 +2,13 @@
 
 ## 当前判断
 
-当前项目已从 V1 单角色心理动力闭环、V2 Personality Galaxy、V3 Infrastructure Hardening，推进到 V10.29 Longitudinal Single-Character Continuous Life Closed Loop。
+当前项目已从 V1 单角色心理动力闭环、V2 Personality Galaxy、V3 Infrastructure Hardening、V10 Continuous Life，推进到 V10 Core Kernel RC + V11 Explorer Platform RC。
+
+V10 RC: 核心物理引擎稳定，12 个审计套件，7 个质量门，0 active warnings。
+V11 RC: Explorer 单角色探索平台，6 个模块，static artifact。
+V12 RC: Agent SDK，9 个模块，6 个 service methods，static harness。
+当前测试: 2163 tests / 170 files / 0 failures。所有质量门 PASS。
+V12 是 SDK 接口层，不是聊天 UI。V20 Relationship Engine 未开始。
 
 后续开发以这份流程为准：
 

@@ -32,8 +32,8 @@ CharacterIdentity
 当前阶段：
 
 ```text
-CharacterOS V10 Core Kernel RC — V11 Explorer Platform RC
-Tests: 1973 (159 files) · Gates: All PASS · Modules: 6 Explorer + 12 Audit
+CharacterOS — V10 Core Kernel RC · V11 Explorer Platform RC · V12 Agent SDK RC
+Tests: 2163 (170 files) · Gates: All PASS · Modules: 6 Explorer + 9 Agent SDK + 12 Audit
 ```
 
 当前项目状态：
@@ -54,7 +54,7 @@ no server deployment  — 不做服务器部署
 
 ```text
 npm run build        tsc --noEmit
-npm test             159 files / 1973 tests / 0 failures
+npm test             170 files / 2163 tests / 0 failures
 npm run next:build   27 API routes
 ```
 

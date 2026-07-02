@@ -1,0 +1,22 @@
+{
+  "artifactVersion": "12.9.0",
+  "noApiRequired": true,
+  "noLlmRequired": true,
+  "noMutation": true,
+  "readOnly": true,
+  "files": [
+    "index.html",
+    "agent-sdk-harness-data.json",
+    "manifest.json",
+    "README.md"
+  ],
+  "moduleCoverage": [
+    "Agent DTO Types",
+    "Input Adapter",
+    "Event Candidate Extractor",
+    "Policy Gate",
+    "Context Builder",
+    "Reply Planner",
+    "Writeback Planner"
+  ]
+}

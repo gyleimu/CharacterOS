@@ -1,0 +1,405 @@
+{
+  "artifactVersion": "12.9.0",
+  "sdkVersion": "V12.9",
+  "generatedAt": "2026-07-02T13:55:45.956Z",
+  "sessionConfig": {
+    "sessionId": "session_1783000545946",
+    "characterId": "lin_fan",
+    "inputMode": "chat",
+    "writebackPolicy": "require_user_confirmation",
+    "safetyMode": "strict",
+    "llmMode": "disabled",
+    "createdAtPolicy": "deterministic_timestamp",
+    "readOnlyDefault": true,
+    "noMultiCharacter": true,
+    "noDiagnosis": true
+  },
+  "samples": [
+    {
+      "label": "chat_input",
+      "note": "普通对话中描述关系事件",
+      "normalizedInput": "王雪突然失联了三天，今天终于解释了原因。我感到既安心又困惑。",
+      "eventCandidates": [
+        {
+          "candidateId": "candidate_turn_4e888f88_draft",
+          "confidence": 0.6,
+          "extractionMethod": "deterministic",
+          "safetyFlags": [
+            "requires_user_confirmation"
+          ],
+          "draftSummary": "王雪突然失联了三天，今天终于解释了原因。我感到既安心又困惑。"
+        }
+      ],
+      "policyDecision": {
+        "decision": "preview_only",
+        "reasons": [
+          "需要用户授权写入"
+        ],
+        "warnings": [
+          "安全标记: requires_user_confirmation",
+          "用户未授权写入"
+        ],
+        "writebackAllowed": false,
+        "safetyLevel": "caution",
+        "auditRequired": true
+      },
+      "replyPlan": {
+        "replyPlanId": "reply_1783000545954",
+        "tone": "cautious",
+        "intent": "preview_event",
+        "groundedFacts": [
+          "当前状态: 心理压力超载，急需恢复",
+          "情绪状态: 恐惧主导，高度警觉",
+          "压力水平: 心理压力超载 — 边界已破裂，急需恢复 (overflow)",
+          "核心信念: 亲密关系并不可靠。 (强度: weak)",
+          "核心信念: 重要的人会突然离开；等待通常没有结果。 (强度: weak)",
+          "行为倾向: 最可能：回避社交接触，寻求安全环境"
+        ],
+        "uncertaintyNotes": [
+          "无法追溯因果链 — 历史事件证据不足。",
+          "策略警告: 安全标记: requires_user_confirmation; 用户未授权写入"
+        ],
+        "safetyNotices": [
+          "这是 CharacterOS 模拟系统的输出，不是医学或心理诊断。",
+          "角色状态为模型计算结果，不代表真实人格或临床状况。",
+          "本次交互不会写入角色状态 (writeback blocked)。"
+        ],
+        "suggestedResponseOutline": [
+          "总结候选事件及其预期影响（基于 EventStudioPreview）",
+          "说明事件强度、影响通道、personality delta 方向",
+          "如果策略允许: 提示用户可以确认应用事件",
+          "如果策略不允许: 说明为什么事件未被应用",
+          "[Safety] 包含 simulation-not-diagnosis 声明",
+          "[Audit] 操作需要审计记录"
+        ],
+        "llmAllowed": false,
+        "noStateMutation": true
+      },
+      "writebackPlan": {
+        "status": "preview_pending",
+        "applyRequiresConfirmation": false,
+        "previewRequired": true,
+        "selectedCandidateId": "candidate_turn_4e888f88_draft"
+      },
+      "noMutation": true
+    },
+    {
+      "label": "journal_input",
+      "note": "日记中的个人记录",
+      "normalizedInput": "今天在图书馆待了一天，感觉很充实。晚上王雪主动找我说话，解释了昨天为什么没回复。",
+      "eventCandidates": [
+        {
+          "candidateId": "candidate_turn_40d137cc_draft",
+          "confidence": 0.6,
+          "extractionMethod": "deterministic",
+          "safetyFlags": [
+            "requires_user_confirmation"
+          ],
+          "draftSummary": "今天在图书馆待了一天，感觉很充实。晚上王雪主动找我说话，解释了昨天为什么没回复。"
+        }
+      ],
+      "policyDecision": {
+        "decision": "preview_only",
+        "reasons": [
+          "需要用户授权写入"
+        ],
+        "warnings": [
+          "安全标记: requires_user_confirmation",
+          "用户未授权写入"
+        ],
+        "writebackAllowed": false,
+        "safetyLevel": "caution",
+        "auditRequired": true
+      },
+      "replyPlan": {
+        "replyPlanId": "reply_1783000545955",
+        "tone": "cautious",
+        "intent": "preview_event",
+        "groundedFacts": [
+          "当前状态: 心理压力超载，急需恢复",
+          "情绪状态: 恐惧主导，高度警觉",
+          "压力水平: 心理压力超载 — 边界已破裂，急需恢复 (overflow)",
+          "核心信念: 亲密关系并不可靠。 (强度: weak)",
+          "核心信念: 重要的人会突然离开；等待通常没有结果。 (强度: weak)",
+          "行为倾向: 最可能：回避社交接触，寻求安全环境"
+        ],
+        "uncertaintyNotes": [
+          "无法追溯因果链 — 历史事件证据不足。",
+          "策略警告: 安全标记: requires_user_confirmation; 用户未授权写入"
+        ],
+        "safetyNotices": [
+          "这是 CharacterOS 模拟系统的输出，不是医学或心理诊断。",
+          "角色状态为模型计算结果，不代表真实人格或临床状况。",
+          "本次交互不会写入角色状态 (writeback blocked)。"
+        ],
+        "suggestedResponseOutline": [
+          "总结候选事件及其预期影响（基于 EventStudioPreview）",
+          "说明事件强度、影响通道、personality delta 方向",
+          "如果策略允许: 提示用户可以确认应用事件",
+          "如果策略不允许: 说明为什么事件未被应用",
+          "[Safety] 包含 simulation-not-diagnosis 声明",
+          "[Audit] 操作需要审计记录"
+        ],
+        "llmAllowed": false,
+        "noStateMutation": true
+      },
+      "writebackPlan": {
+        "status": "preview_pending",
+        "applyRequiresConfirmation": false,
+        "previewRequired": true,
+        "selectedCandidateId": "candidate_turn_40d137cc_draft"
+      },
+      "noMutation": true
+    },
+    {
+      "label": "story_input",
+      "note": "小说场景中的情节",
+      "normalizedInput": "林凡推开沉重的木门，发现房间里空无一人。桌上的信写着：'我走了，不要找我。'",
+      "eventCandidates": [
+        {
+          "candidateId": "candidate_turn_5a50edde_draft",
+          "confidence": 0.6,
+          "extractionMethod": "deterministic",
+          "safetyFlags": [
+            "requires_user_confirmation"
+          ],
+          "draftSummary": "林凡推开沉重的木门，发现房间里空无一人。桌上的信写着：'我走了，不要找我。'"
+        }
+      ],
+      "policyDecision": {
+        "decision": "preview_only",
+        "reasons": [
+          "需要用户授权写入"
+        ],
+        "warnings": [
+          "安全标记: requires_user_confirmation",
+          "用户未授权写入"
+        ],
+        "writebackAllowed": false,
+        "safetyLevel": "caution",
+        "auditRequired": true
+      },
+      "replyPlan": {
+        "replyPlanId": "reply_1783000545955",
+        "tone": "cautious",
+        "intent": "preview_event",
+        "groundedFacts": [
+          "当前状态: 心理压力超载，急需恢复",
+          "情绪状态: 恐惧主导，高度警觉",
+          "压力水平: 心理压力超载 — 边界已破裂，急需恢复 (overflow)",
+          "核心信念: 亲密关系并不可靠。 (强度: weak)",
+          "核心信念: 重要的人会突然离开；等待通常没有结果。 (强度: weak)",
+          "行为倾向: 最可能：回避社交接触，寻求安全环境"
+        ],
+        "uncertaintyNotes": [
+          "无法追溯因果链 — 历史事件证据不足。",
+          "策略警告: 安全标记: requires_user_confirmation; 用户未授权写入"
+        ],
+        "safetyNotices": [
+          "这是 CharacterOS 模拟系统的输出，不是医学或心理诊断。",
+          "角色状态为模型计算结果，不代表真实人格或临床状况。",
+          "本次交互不会写入角色状态 (writeback blocked)。"
+        ],
+        "suggestedResponseOutline": [
+          "总结候选事件及其预期影响（基于 EventStudioPreview）",
+          "说明事件强度、影响通道、personality delta 方向",
+          "如果策略允许: 提示用户可以确认应用事件",
+          "如果策略不允许: 说明为什么事件未被应用",
+          "[Safety] 包含 simulation-not-diagnosis 声明",
+          "[Audit] 操作需要审计记录"
+        ],
+        "llmAllowed": false,
+        "noStateMutation": true
+      },
+      "writebackPlan": {
+        "status": "preview_pending",
+        "applyRequiresConfirmation": false,
+        "previewRequired": true,
+        "selectedCandidateId": "candidate_turn_5a50edde_draft"
+      },
+      "noMutation": true
+    },
+    {
+      "label": "plugin_input",
+      "note": "插件数据输入（API key 已遮蔽）",
+      "normalizedInput": "[plugin payload: 3 fields]",
+      "eventCandidates": [],
+      "policyDecision": {
+        "decision": "preview_only",
+        "reasons": [
+          "需要用户授权写入"
+        ],
+        "warnings": [
+          "用户未授权写入"
+        ],
+        "writebackAllowed": false,
+        "safetyLevel": "safe",
+        "auditRequired": true
+      },
+      "replyPlan": {
+        "replyPlanId": "reply_1783000545956",
+        "tone": "cautious",
+        "intent": "clarify_input",
+        "groundedFacts": [
+          "当前状态: 心理压力超载，急需恢复",
+          "情绪状态: 恐惧主导，高度警觉",
+          "压力水平: 心理压力超载 — 边界已破裂，急需恢复 (overflow)",
+          "核心信念: 亲密关系并不可靠。 (强度: weak)",
+          "核心信念: 重要的人会突然离开；等待通常没有结果。 (强度: weak)",
+          "行为倾向: 最可能：回避社交接触，寻求安全环境"
+        ],
+        "uncertaintyNotes": [
+          "无法追溯因果链 — 历史事件证据不足。",
+          "策略警告: 用户未授权写入"
+        ],
+        "safetyNotices": [
+          "这是 CharacterOS 模拟系统的输出，不是医学或心理诊断。",
+          "角色状态为模型计算结果，不代表真实人格或临床状况。",
+          "本次交互不会写入角色状态 (writeback blocked)。"
+        ],
+        "suggestedResponseOutline": [
+          "提示输入信息不足以提取事件或分析状态变化",
+          "建议用户提供更具体的事件描述或背景",
+          "当前系统状态保持不变",
+          "[Safety] 包含 simulation-not-diagnosis 声明",
+          "[Audit] 操作需要审计记录"
+        ],
+        "llmAllowed": false,
+        "noStateMutation": true
+      },
+      "writebackPlan": {
+        "status": "preview_pending",
+        "applyRequiresConfirmation": false,
+        "previewRequired": true
+      },
+      "noMutation": true
+    },
+    {
+      "label": "tool_input",
+      "note": "工具分析结果",
+      "normalizedInput": "负面情绪占比 67%，主要情绪为焦虑和不安。",
+      "eventCandidates": [],
+      "policyDecision": {
+        "decision": "preview_only",
+        "reasons": [
+          "需要用户授权写入"
+        ],
+        "warnings": [
+          "用户未授权写入"
+        ],
+        "writebackAllowed": false,
+        "safetyLevel": "safe",
+        "auditRequired": true
+      },
+      "replyPlan": {
+        "replyPlanId": "reply_1783000545956",
+        "tone": "cautious",
+        "intent": "clarify_input",
+        "groundedFacts": [
+          "当前状态: 心理压力超载，急需恢复",
+          "情绪状态: 恐惧主导，高度警觉",
+          "压力水平: 心理压力超载 — 边界已破裂，急需恢复 (overflow)",
+          "核心信念: 亲密关系并不可靠。 (强度: weak)",
+          "核心信念: 重要的人会突然离开；等待通常没有结果。 (强度: weak)",
+          "行为倾向: 最可能：回避社交接触，寻求安全环境"
+        ],
+        "uncertaintyNotes": [
+          "无法追溯因果链 — 历史事件证据不足。",
+          "策略警告: 用户未授权写入"
+        ],
+        "safetyNotices": [
+          "这是 CharacterOS 模拟系统的输出，不是医学或心理诊断。",
+          "角色状态为模型计算结果，不代表真实人格或临床状况。",
+          "本次交互不会写入角色状态 (writeback blocked)。"
+        ],
+        "suggestedResponseOutline": [
+          "提示输入信息不足以提取事件或分析状态变化",
+          "建议用户提供更具体的事件描述或背景",
+          "当前系统状态保持不变",
+          "[Safety] 包含 simulation-not-diagnosis 声明",
+          "[Audit] 操作需要审计记录"
+        ],
+        "llmAllowed": false,
+        "noStateMutation": true
+      },
+      "writebackPlan": {
+        "status": "preview_pending",
+        "applyRequiresConfirmation": false,
+        "previewRequired": true
+      },
+      "noMutation": true
+    },
+    {
+      "label": "blocked_input",
+      "note": "包含诊断语言 — 应被安全策略阻止",
+      "normalizedInput": "医生诊断我患有重度抑郁症，需要药物治疗和心理干预。",
+      "eventCandidates": [],
+      "policyDecision": {
+        "decision": "preview_only",
+        "reasons": [
+          "需要用户授权写入"
+        ],
+        "warnings": [
+          "用户未授权写入"
+        ],
+        "writebackAllowed": false,
+        "safetyLevel": "safe",
+        "auditRequired": true
+      },
+      "replyPlan": {
+        "replyPlanId": "reply_1783000545956",
+        "tone": "cautious",
+        "intent": "clarify_input",
+        "groundedFacts": [
+          "当前状态: 心理压力超载，急需恢复",
+          "情绪状态: 恐惧主导，高度警觉",
+          "压力水平: 心理压力超载 — 边界已破裂，急需恢复 (overflow)",
+          "核心信念: 亲密关系并不可靠。 (强度: weak)",
+          "核心信念: 重要的人会突然离开；等待通常没有结果。 (强度: weak)",
+          "行为倾向: 最可能：回避社交接触，寻求安全环境"
+        ],
+        "uncertaintyNotes": [
+          "无法追溯因果链 — 历史事件证据不足。",
+          "策略警告: 用户未授权写入"
+        ],
+        "safetyNotices": [
+          "这是 CharacterOS 模拟系统的输出，不是医学或心理诊断。",
+          "角色状态为模型计算结果，不代表真实人格或临床状况。",
+          "本次交互不会写入角色状态 (writeback blocked)。"
+        ],
+        "suggestedResponseOutline": [
+          "提示输入信息不足以提取事件或分析状态变化",
+          "建议用户提供更具体的事件描述或背景",
+          "当前系统状态保持不变",
+          "[Safety] 包含 simulation-not-diagnosis 声明",
+          "[Audit] 操作需要审计记录"
+        ],
+        "llmAllowed": false,
+        "noStateMutation": true
+      },
+      "writebackPlan": {
+        "status": "preview_pending",
+        "applyRequiresConfirmation": false,
+        "previewRequired": true
+      },
+      "noMutation": true
+    }
+  ],
+  "safety": {
+    "readOnly": true,
+    "noApiRequired": true,
+    "noLlmRequired": true,
+    "noMutation": true,
+    "simulationNotDiagnosis": true,
+    "noMultiCharacter": true
+  },
+  "moduleCoverage": [
+    "Agent DTO Types",
+    "Input Adapter",
+    "Event Candidate Extractor",
+    "Policy Gate",
+    "Context Builder",
+    "Reply Planner",
+    "Writeback Planner"
+  ]
+}

@@ -11,10 +11,11 @@ CharacterOS V1.0 (单角色心理动力闭环)
 经过 V2 Personality Galaxy、V3 Infrastructure Hardening、V4-V5 Temporal Process、V6 Benchmark、V7-V8 Mind Graph、V9 Character Editor、V10 Continuous Life，推进到：
 
 ```text
-CharacterOS V10.29 (Longitudinal Single-Character Continuous Life Closed Loop)
+CharacterOS — V10 Core Kernel RC + V11 Explorer Platform RC
+Tests: 1973 / 159 files / 0 failures · Gates: All PASS · Active warnings: 0
 ```
 
-当前处于 V10 稳定期，重心是单角色 Continuous Life 的完整性、审计闭环和文档同步。
+当前处于 V10+V11 双 RC 稳定期。V10 核心物理引擎和 V11 Explorer 探索平台均已封存。下一步进入 V12 Character Agent SDK 或 V11.13 post-RC hardening。
 
 ## V10 完成内容概览
 

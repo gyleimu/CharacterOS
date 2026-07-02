@@ -29,5 +29,14 @@ outputs/run-benchmark-*.ts
 outputs/run-characteros-*.ts
 outputs/personality_space_preview.svg
 
+# Legacy render artifacts (V2.x dashboard era)
+render_v2/
+render_v2_word/
+
+# Legacy benchmark bulk exports
+outputs/benchmark_v2_results.json
+outputs/benchmark_v2_tables.json
+outputs/benchmark_v2_1_results.json
+
 # Temporary scripts
 scripts/_*.ts

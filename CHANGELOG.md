@@ -53,9 +53,38 @@ Six-module platform for exploring one personality's life.
 | Explorer Modules | 6 |
 | Service Methods | 9 (8 read-only, 1 write) |
 
+## V12 RC (V12.10)
+
+### Character Agent SDK — Embeddable Interface Layer
+
+9-module SDK for connecting CharacterOS Core to external applications.
+
+| Module | Status |
+|--------|--------|
+| Agent DTO Types | ✅ |
+| Input Adapter (5 modes) | ✅ |
+| Event Candidate Extractor | ✅ |
+| Policy Gate (4 policies) | ✅ |
+| Context Builder | ✅ |
+| Reply Planner (7 intents) | ✅ |
+| Writeback Planner | ✅ |
+| SDK Service Boundary | ✅ |
+| Static SDK Harness | ✅ |
+
+### Key Metrics (V12 RC)
+
+| Metric | Value |
+|--------|-------|
+| Agent Tests | 163 |
+| Total Tests | 2163 |
+| Service Methods | 6 (5 read-only, 1 guarded write) |
+| Safety Boundaries | 11 |
+
+---
+
 ### Release Boundaries
 
-Same as V10 RC — single character, no chat, no multi, no deployment.
+Same as V10/V11 RC — single character, no chat, no multi, no deployment.
 
 ---
 

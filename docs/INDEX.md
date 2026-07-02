@@ -1,6 +1,12 @@
 # CharacterOS Documentation Index
 
-## V11 Explorer (Design Phase)
+## V12 Agent SDK (Design Phase)
+
+| Doc | Description |
+|-----|-------------|
+| [V12.0 Agent SDK Design Charter](v12.0_character_agent_sdk_design_charter.md) | Embeddable SDK architecture, 8 modules, safety model |
+
+## V11 Explorer (Complete)
 
 | Doc | Description |
 |-----|-------------|
