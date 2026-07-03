@@ -1,5 +1,6 @@
 /**
  * V12.6 — Reply Planner
+ * V12.12 — Deterministic replyPlanId (no Date.now())
  *
  * Generates structured AgentReplyPlan from policy decision + grounding bundle.
  * No LLM calls. No final prose. No roleplay output.
@@ -10,6 +11,16 @@ import type {
   AgentGroundingBundle, AgentReplyPlan,
   ReplyIntent, ReplyTone,
 } from "./agentTypes";
+
+// ── Stable hash helper (V12.12) ───────────────────────────────────────
+
+function stableHash(input: string): string {
+  let hash = 0;
+  for (let i = 0; i < input.length; i++) {
+    hash = ((hash << 5) - hash + input.charCodeAt(i)) | 0;
+  }
+  return Math.abs(hash).toString(16).slice(0, 8);
+}
 
 export interface ReplyPlannerInput {
   session: AgentSessionConfig;
@@ -31,7 +42,7 @@ export function buildAgentReplyPlan(input: ReplyPlannerInput): AgentReplyPlan {
   const llmAllowed = input.session.llmMode === "planned_boundary_only";
 
   const plan: AgentReplyPlan = {
-    replyPlanId: `reply_${Date.now()}`,
+    replyPlanId: `reply_${stableHash(input.session.sessionId + "|" + intent + "|" + tone + "|" + groundedFacts.length + "|" + JSON.stringify(input.hasCandidates) + "|" + JSON.stringify(input.hasEvidence))}`,
     tone,
     intent,
     groundedFacts,
