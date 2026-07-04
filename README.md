@@ -1,3 +1,4 @@
+Hermes approve test
 # CharacterOS
 
 CharacterOS 是一个 AI 小说人物决策引擎。
