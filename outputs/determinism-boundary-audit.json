@@ -1,0 +1,709 @@
+{
+  "auditVersion": "13.5.0",
+  "auditedAt": "2026-07-07T03:42:53.015Z",
+  "passed": true,
+  "releaseReady": true,
+  "summary": {
+    "modulesTotal": 8,
+    "modulesPassed": 8,
+    "forbiddenFindings": 0,
+    "allowedRuntimeSources": 90,
+    "replayPassed": 10,
+    "replayTotal": 10,
+    "failures": 0,
+    "warnings": 0
+  },
+  "checkedModules": [
+    {
+      "moduleName": "explorerDtoBuilders",
+      "passed": true,
+      "staticFindings": 0,
+      "forbiddenFindings": 0,
+      "replayPassed": 0,
+      "replayTotal": 0
+    },
+    {
+      "moduleName": "eventStudioPreview",
+      "passed": true,
+      "staticFindings": 0,
+      "forbiddenFindings": 0,
+      "replayPassed": 3,
+      "replayTotal": 3
+    },
+    {
+      "moduleName": "eventStudioApply",
+      "passed": true,
+      "staticFindings": 2,
+      "forbiddenFindings": 0,
+      "replayPassed": 0,
+      "replayTotal": 0
+    },
+    {
+      "moduleName": "agentDtoBuilders",
+      "passed": true,
+      "staticFindings": 0,
+      "forbiddenFindings": 0,
+      "replayPassed": 0,
+      "replayTotal": 0
+    },
+    {
+      "moduleName": "replyPlanner",
+      "passed": true,
+      "staticFindings": 0,
+      "forbiddenFindings": 0,
+      "replayPassed": 0,
+      "replayTotal": 0
+    },
+    {
+      "moduleName": "writebackPlanner",
+      "passed": true,
+      "staticFindings": 0,
+      "forbiddenFindings": 0,
+      "replayPassed": 0,
+      "replayTotal": 0
+    },
+    {
+      "moduleName": "llmBoundaryInstructions",
+      "passed": true,
+      "staticFindings": 0,
+      "forbiddenFindings": 0,
+      "replayPassed": 1,
+      "replayTotal": 1
+    },
+    {
+      "moduleName": "agentSdkService",
+      "passed": true,
+      "staticFindings": 0,
+      "forbiddenFindings": 0,
+      "replayPassed": 4,
+      "replayTotal": 4
+    }
+  ],
+  "forbiddenPatternFindings": [],
+  "allowedRuntimeSources": [
+    {
+      "source": "new Date()",
+      "file": "src/core/audit/coreRealityRegressionGate.ts",
+      "line": 82,
+      "justification": "Gate/report generatedAt/completedAt uses real time — runtime report"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/audit/coreRealityRegressionGate.ts",
+      "line": 82,
+      "justification": "Gate/report generatedAt/completedAt uses real time — runtime report"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/audit/coreRealityRegressionGate.ts",
+      "line": 353,
+      "justification": "Gate/report generatedAt/completedAt uses real time — runtime report"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/audit/coreRealityRegressionGate.ts",
+      "line": 353,
+      "justification": "Gate/report generatedAt/completedAt uses real time — runtime report"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/audit/qualityTrendBaseline.ts",
+      "line": 93,
+      "justification": "Gate/report generatedAt/completedAt uses real time — runtime report"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/audit/qualityTrendBaseline.ts",
+      "line": 93,
+      "justification": "Gate/report generatedAt/completedAt uses real time — runtime report"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/audit/releaseCandidateFreezeAudit.ts",
+      "line": 47,
+      "justification": "Gate/report generatedAt/completedAt uses real time — runtime report"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/audit/releaseCandidateFreezeAudit.ts",
+      "line": 47,
+      "justification": "Gate/report generatedAt/completedAt uses real time — runtime report"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/audit/unifiedQualityGate.ts",
+      "line": 82,
+      "justification": "Gate/report generatedAt/completedAt uses real time — runtime report"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/audit/unifiedQualityGate.ts",
+      "line": 82,
+      "justification": "Gate/report generatedAt/completedAt uses real time — runtime report"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/audit/unifiedQualityGate.ts",
+      "line": 241,
+      "justification": "Gate/report generatedAt/completedAt uses real time — runtime report"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/audit/unifiedQualityGate.ts",
+      "line": 241,
+      "justification": "Gate/report generatedAt/completedAt uses real time — runtime report"
+    },
+    {
+      "source": "Date.now()",
+      "file": "src/core/benchmark/benchmarkRunner.ts",
+      "line": 62,
+      "justification": "Benchmark execution records when tests ran — operational, not default ID"
+    },
+    {
+      "source": "Date.now()",
+      "file": "src/core/benchmark/benchmarkRunner.ts",
+      "line": 96,
+      "justification": "Benchmark execution records when tests ran — operational, not default ID"
+    },
+    {
+      "source": "Date.now()",
+      "file": "src/core/benchmark/benchmarkRunner.ts",
+      "line": 219,
+      "justification": "Benchmark execution records when tests ran — operational, not default ID"
+    },
+    {
+      "source": "Date.now()",
+      "file": "src/core/benchmark/benchmarkRunner.ts",
+      "line": 308,
+      "justification": "Benchmark execution records when tests ran — operational, not default ID"
+    },
+    {
+      "source": "Date.now()",
+      "file": "src/core/benchmark/benchmarkRunner.ts",
+      "line": 364,
+      "justification": "Benchmark execution records when tests ran — operational, not default ID"
+    },
+    {
+      "source": "Date.now()",
+      "file": "src/core/benchmark/benchmarkRunner.ts",
+      "line": 465,
+      "justification": "Benchmark execution records when tests ran — operational, not default ID"
+    },
+    {
+      "source": "Date.now()",
+      "file": "src/core/benchmark/benchmarkRunner.ts",
+      "line": 599,
+      "justification": "Benchmark execution records when tests ran — operational, not default ID"
+    },
+    {
+      "source": "Date.now()",
+      "file": "src/core/benchmark/benchmarkRunner.ts",
+      "line": 766,
+      "justification": "Benchmark execution records when tests ran — operational, not default ID"
+    },
+    {
+      "source": "Date.now()",
+      "file": "src/core/benchmark/benchmarkRunner.ts",
+      "line": 845,
+      "justification": "Benchmark execution records when tests ran — operational, not default ID"
+    },
+    {
+      "source": "Date.now()",
+      "file": "src/core/benchmark/benchmarkRunner.ts",
+      "line": 922,
+      "justification": "Benchmark execution records when tests ran — operational, not default ID"
+    },
+    {
+      "source": "Math.random() in template",
+      "file": "src/core/editor/characterEditPatch.ts",
+      "line": 420,
+      "justification": "Editor patch IDs for idempotent operations — not in default path builders"
+    },
+    {
+      "source": "Date.now()",
+      "file": "src/core/editor/characterEditPatch.ts",
+      "line": 420,
+      "justification": "Editor patch IDs for idempotent operations — not in default path builders"
+    },
+    {
+      "source": "Math.random()",
+      "file": "src/core/editor/characterEditPatch.ts",
+      "line": 420,
+      "justification": "Editor patch IDs for idempotent operations — not in default path builders"
+    },
+    {
+      "source": "Math.random()",
+      "file": "src/core/editor/characterEditPatch.ts",
+      "line": 420,
+      "justification": "Editor patch IDs for idempotent operations — not in default path builders"
+    },
+    {
+      "source": "Math.random()",
+      "file": "src/core/editor/characterEditPatch.ts",
+      "line": 420,
+      "justification": "Editor patch IDs for idempotent operations — not in default path builders"
+    },
+    {
+      "source": "Math.random() in template",
+      "file": "src/core/editor/characterEditPatch.ts",
+      "line": 585,
+      "justification": "Editor patch IDs for idempotent operations — not in default path builders"
+    },
+    {
+      "source": "Date.now()",
+      "file": "src/core/editor/characterEditPatch.ts",
+      "line": 585,
+      "justification": "Editor patch IDs for idempotent operations — not in default path builders"
+    },
+    {
+      "source": "Math.random()",
+      "file": "src/core/editor/characterEditPatch.ts",
+      "line": 585,
+      "justification": "Editor patch IDs for idempotent operations — not in default path builders"
+    },
+    {
+      "source": "Math.random()",
+      "file": "src/core/editor/characterEditPatch.ts",
+      "line": 585,
+      "justification": "Editor patch IDs for idempotent operations — not in default path builders"
+    },
+    {
+      "source": "Math.random()",
+      "file": "src/core/editor/characterEditPatch.ts",
+      "line": 585,
+      "justification": "Editor patch IDs for idempotent operations — not in default path builders"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/editor/characterEditPatch.ts",
+      "line": 634,
+      "justification": "Editor patch IDs for idempotent edit operations — operational, not core default path"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/editor/characterEditPatch.ts",
+      "line": 634,
+      "justification": "Editor patch IDs for idempotent edit operations — operational, not core default path"
+    },
+    {
+      "source": "Math.random() in template",
+      "file": "src/core/explainability/explanationTypes.ts",
+      "line": 118,
+      "justification": "Explainability modules record explanation generation time — operational"
+    },
+    {
+      "source": "Date.now()",
+      "file": "src/core/explainability/explanationTypes.ts",
+      "line": 118,
+      "justification": "Explainability modules record explanation generation time — operational"
+    },
+    {
+      "source": "Math.random()",
+      "file": "src/core/explainability/explanationTypes.ts",
+      "line": 118,
+      "justification": "Explainability modules record explanation generation time — operational"
+    },
+    {
+      "source": "Math.random()",
+      "file": "src/core/explainability/explanationTypes.ts",
+      "line": 118,
+      "justification": "Explainability modules record explanation generation time — operational"
+    },
+    {
+      "source": "Math.random()",
+      "file": "src/core/explainability/explanationTypes.ts",
+      "line": 118,
+      "justification": "Explainability modules record explanation generation time — operational"
+    },
+    {
+      "source": "Date.now() in template",
+      "file": "src/core/explainability/explanationTypes.ts",
+      "line": 126,
+      "justification": "Explainability modules record explanation generation time — operational"
+    },
+    {
+      "source": "Date.now()",
+      "file": "src/core/explainability/explanationTypes.ts",
+      "line": 126,
+      "justification": "Explainability modules record explanation generation time — operational"
+    },
+    {
+      "source": "Date.now() in template",
+      "file": "src/core/explainability/explanationTypes.ts",
+      "line": 134,
+      "justification": "Explainability modules record explanation generation time — operational"
+    },
+    {
+      "source": "Date.now()",
+      "file": "src/core/explainability/explanationTypes.ts",
+      "line": 134,
+      "justification": "Explainability modules record explanation generation time — operational"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/explainability/patchExplanation.ts",
+      "line": 293,
+      "justification": "Explainability modules record explanation generation time — operational"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/explainability/patchExplanation.ts",
+      "line": 293,
+      "justification": "Explainability modules record explanation generation time — operational"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/explainability/patchExplanation.ts",
+      "line": 520,
+      "justification": "Explainability modules record explanation generation time — operational"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/explainability/patchExplanation.ts",
+      "line": 520,
+      "justification": "Explainability modules record explanation generation time — operational"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/explainability/stateTransitionExplanation.ts",
+      "line": 173,
+      "justification": "Explainability modules record explanation generation time — operational"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/explainability/stateTransitionExplanation.ts",
+      "line": 173,
+      "justification": "Explainability modules record explanation generation time — operational"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/explorer/eventStudioApply.ts",
+      "line": 95,
+      "justification": "Audit entry appliedAt records actual application time — runtime record (explicitly allowed by V13.3 policy)"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/explorer/eventStudioApply.ts",
+      "line": 95,
+      "justification": "Audit entry appliedAt records actual application time — runtime record (explicitly allowed by V13.3 policy)"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/explorer/explainabilityTimeline.ts",
+      "line": 109,
+      "justification": "Explainability modules record explanation generation time — operational"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/explorer/explainabilityTimeline.ts",
+      "line": 109,
+      "justification": "Explainability modules record explanation generation time — operational"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/explorer/explainabilityTimeline.ts",
+      "line": 111,
+      "justification": "Explainability modules record explanation generation time — operational"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/explorer/explainabilityTimeline.ts",
+      "line": 111,
+      "justification": "Explainability modules record explanation generation time — operational"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/explorer/explainabilityTimeline.ts",
+      "line": 116,
+      "justification": "Explainability modules record explanation generation time — operational"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/explorer/explainabilityTimeline.ts",
+      "line": 116,
+      "justification": "Explainability modules record explanation generation time — operational"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/explorer/explainabilityTimeline.ts",
+      "line": 118,
+      "justification": "Explainability modules record explanation generation time — operational"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/explorer/explainabilityTimeline.ts",
+      "line": 118,
+      "justification": "Explainability modules record explanation generation time — operational"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/export/characterImportTransitionHistory.ts",
+      "line": 30,
+      "justification": "Import transition history records actual import time — operational export/import"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/export/characterImportTransitionHistory.ts",
+      "line": 30,
+      "justification": "Import transition history records actual import time — operational export/import"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/graph/mindGalaxyViewTypes.ts",
+      "line": 389,
+      "justification": "Graph snapshot timestamps for view rendering — visualization operational, not default builder ID"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/graph/mindGalaxyViewTypes.ts",
+      "line": 389,
+      "justification": "Graph snapshot timestamps for view rendering — visualization operational, not default builder ID"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/graph/mindGraphBuilder.ts",
+      "line": 72,
+      "justification": "Graph snapshot timestamps for view rendering — visualization operational, not default builder ID"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/graph/mindGraphBuilder.ts",
+      "line": 72,
+      "justification": "Graph snapshot timestamps for view rendering — visualization operational, not default builder ID"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/graph/mindGraphLayout.ts",
+      "line": 253,
+      "justification": "Graph snapshot timestamps for view rendering — visualization operational, not default builder ID"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/graph/mindGraphLayout.ts",
+      "line": 253,
+      "justification": "Graph snapshot timestamps for view rendering — visualization operational, not default builder ID"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/life/lifeTickPersistence.ts",
+      "line": 111,
+      "justification": "Life tick persistence records actual tick time — operational"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/life/lifeTickPersistence.ts",
+      "line": 111,
+      "justification": "Life tick persistence records actual tick time — operational"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/life/lifeTickRunner.ts",
+      "line": 190,
+      "justification": "Life tick persistence records actual tick time — operational"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/life/lifeTickRunner.ts",
+      "line": 190,
+      "justification": "Life tick persistence records actual tick time — operational"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/life/lifeTickRunner.ts",
+      "line": 473,
+      "justification": "Life tick persistence records actual tick time — operational"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/life/lifeTickRunner.ts",
+      "line": 473,
+      "justification": "Life tick persistence records actual tick time — operational"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/memory/memorySystem.ts",
+      "line": 26,
+      "justification": "Memory creation records when memory was formed — operational"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/memory/memorySystem.ts",
+      "line": 26,
+      "justification": "Memory creation records when memory was formed — operational"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/parameters/parameterAdjustmentGovernance.ts",
+      "line": 15,
+      "justification": "Parameter adjustment history records actual adjustment time — operational"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/parameters/parameterAdjustmentHistory.ts",
+      "line": 45,
+      "justification": "Parameter adjustment history records actual adjustment time — operational"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/parameters/parameterAdjustmentHistory.ts",
+      "line": 45,
+      "justification": "Parameter adjustment history records actual adjustment time — operational"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/temporal/internalStateField.ts",
+      "line": 162,
+      "justification": "Internal state field records temporal snapshots — operational"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/core/temporal/internalStateField.ts",
+      "line": 162,
+      "justification": "Internal state field records temporal snapshots — operational"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/services/benchmarkDto.ts",
+      "line": 55,
+      "justification": "Benchmark DTO report timestamp — runtime benchmark reporting, not default builder ID"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/services/benchmarkDto.ts",
+      "line": 55,
+      "justification": "Benchmark DTO report timestamp — runtime benchmark reporting, not default builder ID"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/services/characterPhysicsService.ts",
+      "line": 455,
+      "justification": "Service-level operational timestamp — recording physics operations"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/services/characterPhysicsService.ts",
+      "line": 455,
+      "justification": "Service-level operational timestamp — recording physics operations"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/services/characterPhysicsService.ts",
+      "line": 563,
+      "justification": "Service-level operational timestamp — recording physics operations"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/services/characterPhysicsService.ts",
+      "line": 563,
+      "justification": "Service-level operational timestamp — recording physics operations"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/services/characterPhysicsService.ts",
+      "line": 690,
+      "justification": "Service-level operational timestamp — recording physics operations"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/services/characterPhysicsService.ts",
+      "line": 690,
+      "justification": "Service-level operational timestamp — recording physics operations"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/services/explorerService.ts",
+      "line": 143,
+      "justification": "Explorer service createTimeMachineSnapshot uses real time — user-initiated history record"
+    },
+    {
+      "source": "new Date()",
+      "file": "src/services/explorerService.ts",
+      "line": 143,
+      "justification": "Explorer service createTimeMachineSnapshot uses real time — user-initiated history record"
+    }
+  ],
+  "deterministicReplayResults": [
+    {
+      "functionName": "buildEventStudioDraft",
+      "passed": true,
+      "run1": "{\"naturalLanguageInput\":\"测试事件\",\"occurredAt\":\"2026-01-01T00:00:00.000Z\",\"location\":\"\",\"people\":[],\"intensity\":0.5,\"repetitionCount\":1,\"sourceType\":\"user_input\",\"sourceId\":\"test_src\",\"tags\":[],\"status\":",
+      "run2": "{\"naturalLanguageInput\":\"测试事件\",\"occurredAt\":\"2026-01-01T00:00:00.000Z\",\"location\":\"\",\"people\":[],\"intensity\":0.5,\"repetitionCount\":1,\"sourceType\":\"user_input\",\"sourceId\":\"test_src\",\"tags\":[],\"status\":",
+      "identical": true,
+      "note": "Explorer DTO draft deterministic with all fields provided"
+    },
+    {
+      "functionName": "buildEventStudioPreview",
+      "passed": true,
+      "run1": "{\"draftId\":\"draft_test_001\",\"parsedEvent\":{\"category\":\"support\",\"emotion\":\"relief\",\"intensity\":0.6,\"importance\":0.7,\"parserConfidence\":0.9},\"impactPreview\":{\"expectedMemoryImpact\":\"moderate\",\"expected",
+      "run2": "{\"draftId\":\"draft_test_001\",\"parsedEvent\":{\"category\":\"support\",\"emotion\":\"relief\",\"intensity\":0.6,\"importance\":0.7,\"parserConfidence\":0.9},\"impactPreview\":{\"expectedMemoryImpact\":\"moderate\",\"expected",
+      "identical": true,
+      "note": "Explorer preview DTO deterministic"
+    },
+    {
+      "functionName": "buildEventStudioPreview_full",
+      "passed": true,
+      "run1": "{\"draftId\":\"test_event_001\",\"parsedEvent\":{\"category\":\"support\",\"emotion\":\"relief\",\"intensity\":0.55,\"importance\":0.78,\"parserConfidence\":0.6},\"impactPreview\":{\"expectedMemoryImpact\":\"high\",\"expectedBo",
+      "run2": "{\"draftId\":\"test_event_001\",\"parsedEvent\":{\"category\":\"support\",\"emotion\":\"relief\",\"intensity\":0.55,\"importance\":0.78,\"parserConfidence\":0.6},\"impactPreview\":{\"expectedMemoryImpact\":\"high\",\"expectedBo",
+      "identical": true,
+      "note": "Event Studio full preview deterministic with same state + draft"
+    },
+    {
+      "functionName": "applyEventStudioEvent_auditId",
+      "passed": true,
+      "run1": "\"audit_deterministic_seed_001\"",
+      "run2": "\"audit_deterministic_seed_001\"",
+      "identical": true,
+      "note": "Event Studio apply auditId deterministic with auditSeed"
+    },
+    {
+      "functionName": "buildAgentSessionConfig",
+      "passed": true,
+      "run1": "{\"sessionId\":\"test_session_001\",\"characterId\":\"lin_fan\",\"inputMode\":\"chat\",\"writebackPolicy\":\"preview_only\",\"safetyMode\":\"strict\",\"llmMode\":\"disabled\",\"createdAtPolicy\":\"deterministic_timestamp\",\"read",
+      "run2": "{\"sessionId\":\"test_session_001\",\"characterId\":\"lin_fan\",\"inputMode\":\"chat\",\"writebackPolicy\":\"preview_only\",\"safetyMode\":\"strict\",\"llmMode\":\"disabled\",\"createdAtPolicy\":\"deterministic_timestamp\",\"read",
+      "identical": true,
+      "note": "Agent session config deterministic with explicit sessionId"
+    },
+    {
+      "functionName": "buildAgentTurnInput",
+      "passed": true,
+      "run1": "{\"turnId\":\"test_turn_001\",\"sessionId\":\"test_session_001\",\"inputMode\":\"chat\",\"content\":\"你好\",\"occurredAt\":\"2026-01-01T00:00:00.000Z\",\"speakerLabel\":\"user\",\"sourceRef\":\"\",\"metadata\":{},\"consentForWriteba",
+      "run2": "{\"turnId\":\"test_turn_001\",\"sessionId\":\"test_session_001\",\"inputMode\":\"chat\",\"content\":\"你好\",\"occurredAt\":\"2026-01-01T00:00:00.000Z\",\"speakerLabel\":\"user\",\"sourceRef\":\"\",\"metadata\":{},\"consentForWriteba",
+      "identical": true,
+      "note": "Agent turn input deterministic with explicit IDs"
+    },
+    {
+      "functionName": "buildAgentReplyPlan",
+      "passed": true,
+      "run1": "{\"replyPlanId\":\"reply_3b9afe24\",\"tone\":\"cautious\",\"intent\":\"clarify_input\",\"groundedFacts\":[\"当前状态: 心理压力超载，急需恢复\",\"情绪状态: 恐惧主导，高度警觉\",\"压力水平: 心理压力超载 — 边界已破裂，急需恢复 (overflow)\",\"核心信念: 亲密关系并不可靠。 (强度: weak)\",\"核",
+      "run2": "{\"replyPlanId\":\"reply_3b9afe24\",\"tone\":\"cautious\",\"intent\":\"clarify_input\",\"groundedFacts\":[\"当前状态: 心理压力超载，急需恢复\",\"情绪状态: 恐惧主导，高度警觉\",\"压力水平: 心理压力超载 — 边界已破裂，急需恢复 (overflow)\",\"核心信念: 亲密关系并不可靠。 (强度: weak)\",\"核",
+      "identical": true,
+      "note": "Reply plan must be deterministic"
+    },
+    {
+      "functionName": "buildLLMBoundaryInstructions",
+      "passed": true,
+      "run1": "\"LLM is at planned boundary only — not executed. | Do NOT generate final chat prose. | Do NOT mutate character state. | Do NOT invent events or personality claims. | Do NOT produce medical/psychologic",
+      "run2": "\"LLM is at planned boundary only — not executed. | Do NOT generate final chat prose. | Do NOT mutate character state. | Do NOT invent events or personality claims. | Do NOT produce medical/psychologic",
+      "identical": true,
+      "note": "LLM boundary instructions are static text"
+    },
+    {
+      "functionName": "buildAgentWritebackPlan",
+      "passed": true,
+      "run1": "{\"writebackId\":\"writeback_test_turn_001\",\"policy\":\"preview_only\",\"candidates\":[],\"previewRequired\":true,\"applyRequiresConfirmation\":false,\"auditTrailRequired\":false,\"status\":\"preview_pending\"}",
+      "run2": "{\"writebackId\":\"writeback_test_turn_001\",\"policy\":\"preview_only\",\"candidates\":[],\"previewRequired\":true,\"applyRequiresConfirmation\":false,\"auditTrailRequired\":false,\"status\":\"preview_pending\"}",
+      "identical": true,
+      "note": "Writeback plan deterministic with turn ID-based writebackId"
+    },
+    {
+      "functionName": "eventStudioPreview_draftId_without_sourceId",
+      "passed": true,
+      "run1": "{\"draftId\":\"draft_5536cb73\"}",
+      "run2": "{\"draftId\":\"draft_5536cb73\"}",
+      "identical": true,
+      "note": "Preview draftId stable without sourceId"
+    }
+  ],
+  "failures": [],
+  "warnings": []
+}

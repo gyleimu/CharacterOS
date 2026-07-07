@@ -6,6 +6,14 @@
  */
 import { buildEventStudioDraft } from "../explorer/explorerDtoBuilders";
 import type { CharacterStateSurface } from "../explorer/explorerTypes";
+import {
+  DETERMINISTIC_TIMESTAMP,
+  deterministicSessionId,
+  deterministicTurnId,
+  deterministicReplyPlanId,
+  deterministicCandidateId,
+  deterministicWritebackId,
+} from "../deterministicHelpers";
 import type {
   AgentSessionConfig, AgentTurnInput, AgentEventCandidate,
   AgentPolicyDecision, AgentGroundingBundle, AgentReplyPlan,
@@ -17,7 +25,7 @@ import type {
 
 export function buildAgentSessionConfig(overrides: Partial<AgentSessionConfig> = {}): AgentSessionConfig {
   return {
-    sessionId: overrides.sessionId ?? `session_${Date.now()}`,
+    sessionId: overrides.sessionId ?? deterministicSessionId(overrides.characterId ?? "lin_fan", overrides.inputMode),
     characterId: overrides.characterId ?? "lin_fan",
     inputMode: overrides.inputMode ?? "chat",
     writebackPolicy: overrides.writebackPolicy ?? "require_user_confirmation",
@@ -34,11 +42,11 @@ export function buildAgentSessionConfig(overrides: Partial<AgentSessionConfig> =
 
 export function buildAgentTurnInput(overrides: Partial<AgentTurnInput> = {}): AgentTurnInput {
   const result: AgentTurnInput = {
-    turnId: overrides.turnId ?? `turn_${Date.now()}`,
+    turnId: overrides.turnId ?? deterministicTurnId(overrides.sessionId ?? "", overrides.content ?? ""),
     sessionId: overrides.sessionId ?? "",
     inputMode: overrides.inputMode ?? "chat",
     content: overrides.content ?? "",
-    occurredAt: overrides.occurredAt ?? new Date().toISOString(),
+    occurredAt: overrides.occurredAt ?? DETERMINISTIC_TIMESTAMP,
     speakerLabel: overrides.speakerLabel ?? "user",
     sourceRef: overrides.sourceRef ?? "",
     metadata: overrides.metadata ?? {},
@@ -57,7 +65,7 @@ export function buildAgentEventCandidateFromDraft(params: {
   relevance?: number;
 }): AgentEventCandidate {
   return {
-    candidateId: `candidate_${params.draft.sourceId || Date.now()}`,
+    candidateId: deterministicCandidateId(params.draft.sourceId || params.draft.naturalLanguageInput, params.extractionMethod ?? "deterministic"),
     draft: params.draft,
     extractionMethod: params.extractionMethod ?? "deterministic",
     confidence: Math.max(0, Math.min(1, params.confidence ?? 0.5)),
@@ -150,7 +158,7 @@ export function buildAgentReplyPlan(params: {
   llmAllowed?: boolean;
 }): AgentReplyPlan {
   return {
-    replyPlanId: `reply_${Date.now()}`,
+    replyPlanId: deterministicReplyPlanId("plan", ...(params.groundedFacts ?? [])),
     tone: "中性",
     intent: "基于角色状态提供信息",
     groundedFacts: params.groundedFacts ?? [],
@@ -174,7 +182,7 @@ export function buildAgentWritebackPlan(params: {
 }): AgentWritebackPlan {
   const candidates = params.candidates ?? [];
   const result: AgentWritebackPlan = {
-    writebackId: `writeback_${Date.now()}`,
+    writebackId: deterministicWritebackId(params.policy),
     policy: params.policy,
     candidates,
     previewRequired: params.policy !== "never",

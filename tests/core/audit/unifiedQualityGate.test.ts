@@ -3,8 +3,9 @@ import { runUnifiedQualityGate } from "../../../src/core/audit/unifiedQualityGat
 import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
-describe("V10.75 Unified Quality Gate", () => {
-  const gate = runUnifiedQualityGate();
+describe("V10.75 Unified Quality Gate", { timeout: 30000 }, () => {
+  // Skip determinism for non-determinism-specific tests (V13.3 audit is tested separately)
+  const gate = runUnifiedQualityGate({ skipDeterminism: true });
 
   it("aggregates benchmark and reality gate", () => {
     expect(gate.benchmarkResult).toBeDefined();
@@ -22,39 +23,35 @@ describe("V10.75 Unified Quality Gate", () => {
   });
 
   it("fails when benchmark hard threshold not met", () => {
-    // Simulate by running with impossibly strict config
     const strict = runUnifiedQualityGate({
       benchmarkMinPassRate: 1.0,
       benchmarkMaxFailures: 0,
+      skipDeterminism: true,
     });
 
-    // With 100% pass rate requirement, current system may or may not pass
-    // The gate should be honest about the result
     expect(typeof strict.qualityVerdict.level).toBe("string");
     expect(strict.config.benchmarkMinPassRate).toBe(1.0);
   });
 
   it("fails when reality gate has FAIL", () => {
-    // Config that forces reality gate to get strict thresholds
     const strictReality = runUnifiedQualityGate({
       realityGateConfig: {
         maxNeutralPersonalityDistance: 0.0001,
         failOnSupportBoundaryOverResponse: true,
       },
+      skipDeterminism: true,
     });
 
-    // Should still be honest about the result
     expect(typeof strictReality.qualityVerdict.level).toBe("string");
     expect(strictReality.unifiedSummary.realityGatePassed).toBeDefined();
   });
 
   it("warns when benchmark metric is close to threshold", () => {
-    // With warn margin of 0.5, almost any close-to-threshold should trigger
     const sensitive = runUnifiedQualityGate({
       benchmarkWarnMargin: 0.5,
+      skipDeterminism: true,
     });
 
-    // Should still complete without error
     expect(sensitive.qualityVerdict.level).toBeDefined();
   });
 
@@ -65,14 +62,13 @@ describe("V10.75 Unified Quality Gate", () => {
         expect(w.length).toBeGreaterThan(5);
       }
     }
-    // Allowed warnings should match when no failures
     if (gate.failures.length === 0) {
       expect(gate.qualityVerdict.allowedWarnings.length).toBe(gate.warnings.length);
     }
   });
 
   it("outputs deterministic JSON shape", () => {
-    const gate2 = runUnifiedQualityGate();
+    const gate2 = runUnifiedQualityGate({ skipDeterminism: true });
 
     expect(gate2.version).toBe(gate.version);
     expect(gate2.qualityVerdict.level).toBe(gate.qualityVerdict.level);
@@ -107,8 +103,8 @@ describe("V10.75 Unified Quality Gate", () => {
   });
 
   it("does not mutate state (idempotent)", () => {
-    const gate1 = runUnifiedQualityGate();
-    const gate2 = runUnifiedQualityGate();
+    const gate1 = runUnifiedQualityGate({ skipDeterminism: true });
+    const gate2 = runUnifiedQualityGate({ skipDeterminism: true });
 
     expect(gate2.unifiedSummary.totalChecks).toBe(gate1.unifiedSummary.totalChecks);
     expect(gate2.unifiedSummary.passed).toBe(gate1.unifiedSummary.passed);
@@ -117,7 +113,6 @@ describe("V10.75 Unified Quality Gate", () => {
   });
 
   it("preserves Core Reality Gate semantics", () => {
-    // Reality gate result inside unified gate should have same structure
     const rg = gate.realityGateResult;
     expect(rg.version).toBeDefined();
     expect(rg.suites.realityAudit).toBeDefined();
@@ -128,7 +123,7 @@ describe("V10.75 Unified Quality Gate", () => {
   });
 
   it("skip benchmark config works", () => {
-    const noBench = runUnifiedQualityGate({ skipBenchmark: true });
+    const noBench = runUnifiedQualityGate({ skipBenchmark: true, skipDeterminism: true });
 
     expect(noBench.benchmarkResult).toBeNull();
     expect(noBench.benchmarkSummary).toBeNull();
@@ -148,5 +143,20 @@ describe("V10.75 Unified Quality Gate", () => {
       expect(typeof action).toBe("string");
       expect(action.length).toBeGreaterThan(5);
     }
+  });
+
+  // ── V13.3: Determinism boundary audit integration ──
+
+  it("includes determinism audit result when not skipped", () => {
+    const gateWithDet = runUnifiedQualityGate();
+    expect(gateWithDet.determinismAuditResult).toBeDefined();
+    expect(gateWithDet.determinismAuditResult?.auditVersion).toBe("13.5.0");
+    expect(typeof gateWithDet.determinismAuditResult?.passed).toBe("boolean");
+    expect(gateWithDet.unifiedSummary.determinismPassed).toBeDefined();
+  });
+
+  it("skipDeterminism config skips the audit", () => {
+    const gateNoDet = runUnifiedQualityGate({ skipDeterminism: true });
+    expect(gateNoDet.determinismAuditResult).toBeNull();
   });
 });

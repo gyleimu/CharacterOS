@@ -5,6 +5,7 @@
  * No LLM calls. No final prose. No roleplay output.
  * Evidence-grounded. Policy-aware. Safety-first.
  */
+import { deterministicReplyPlanId } from "../deterministicHelpers";
 import type {
   AgentSessionConfig, AgentPolicyDecision,
   AgentGroundingBundle, AgentReplyPlan,
@@ -31,7 +32,7 @@ export function buildAgentReplyPlan(input: ReplyPlannerInput): AgentReplyPlan {
   const llmAllowed = input.session.llmMode === "planned_boundary_only";
 
   const plan: AgentReplyPlan = {
-    replyPlanId: `reply_${Date.now()}`,
+    replyPlanId: deterministicReplyPlanId(intent, ...groundedFacts),
     tone,
     intent,
     groundedFacts,

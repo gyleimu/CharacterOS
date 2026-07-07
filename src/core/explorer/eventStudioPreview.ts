@@ -24,6 +24,7 @@ import type {
   DecisionPreview,
 } from "./explorerTypes";
 import { buildEventStudioPreview as buildDto, buildCharacterStateSurfaceFromState } from "./explorerDtoBuilders";
+import { deterministicDraftId } from "../deterministicHelpers";
 
 export type PreviewMode = "parse_only" | "impact_preview" | "full_preview";
 
@@ -92,7 +93,7 @@ export function buildEventStudioPreview(
   // ── Parse-only mode: stop here ──
   if (mode === "parse_only") {
     return buildDto({
-      draftId: draft.sourceId || `draft_${Date.now()}`,
+      draftId: draft.sourceId || deterministicDraftId(draft.naturalLanguageInput, draft.tags),
       parsed: parsedSummary,
       impact: impactPreview,
       memory: memoryPreview,
@@ -112,7 +113,7 @@ export function buildEventStudioPreview(
     const personalityPreview = buildPersonalityStub(parsed);
 
     return buildDto({
-      draftId: draft.sourceId || `draft_${Date.now()}`,
+      draftId: draft.sourceId || deterministicDraftId(draft.naturalLanguageInput, draft.tags),
       parsed: parsedSummary,
       impact: impactPreview,
       memory: memoryPreview,
@@ -139,7 +140,7 @@ export function buildEventStudioPreview(
   if (input.followUpScenario) {
     try {
       const audit = runRealityAudit({
-        id: `preview_${draft.sourceId || Date.now()}`,
+        id: `preview_${draft.sourceId || deterministicDraftId(draft.naturalLanguageInput, draft.tags)}`,
         label: `Preview: ${draft.naturalLanguageInput.slice(0, 40)}`,
         baselineState: input.baselineState,
         eventInput: {
@@ -177,7 +178,7 @@ export function buildEventStudioPreview(
   };
 
   return buildDto({
-    draftId: draft.sourceId || `draft_${Date.now()}`,
+    draftId: draft.sourceId || deterministicDraftId(draft.naturalLanguageInput, draft.tags),
     parsed: parsedSummary,
     impact: impactPreview,
     memory: buildMemoryPreviewFromSimulation(cloned, input.baselineState, parsed),
