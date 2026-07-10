@@ -6,21 +6,12 @@
  * No LLM calls. No final prose. No roleplay output.
  * Evidence-grounded. Policy-aware. Safety-first.
  */
+import { deterministicReplyPlanId } from "../deterministicHelpers";
 import type {
   AgentSessionConfig, AgentPolicyDecision,
   AgentGroundingBundle, AgentReplyPlan,
   ReplyIntent, ReplyTone,
 } from "./agentTypes";
-
-// ── Stable hash helper (V12.12) ───────────────────────────────────────
-
-function stableHash(input: string): string {
-  let hash = 0;
-  for (let i = 0; i < input.length; i++) {
-    hash = ((hash << 5) - hash + input.charCodeAt(i)) | 0;
-  }
-  return Math.abs(hash).toString(16).slice(0, 8);
-}
 
 export interface ReplyPlannerInput {
   session: AgentSessionConfig;
@@ -42,7 +33,14 @@ export function buildAgentReplyPlan(input: ReplyPlannerInput): AgentReplyPlan {
   const llmAllowed = input.session.llmMode === "planned_boundary_only";
 
   const plan: AgentReplyPlan = {
-    replyPlanId: `reply_${stableHash(input.session.sessionId + "|" + intent + "|" + tone + "|" + groundedFacts.length + "|" + JSON.stringify(input.hasCandidates) + "|" + JSON.stringify(input.hasEvidence))}`,
+    replyPlanId: deterministicReplyPlanId(
+      intent,
+      input.session.sessionId,
+      tone,
+      JSON.stringify(input.hasCandidates ?? false),
+      JSON.stringify(input.hasEvidence ?? false),
+      ...groundedFacts,
+    ),
     tone,
     intent,
     groundedFacts,

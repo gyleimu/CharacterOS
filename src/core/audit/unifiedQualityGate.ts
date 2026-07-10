@@ -7,6 +7,7 @@
 import { runBenchmarkCases, type RunBenchmarkCasesResult } from "../benchmark/benchmarkRunner";
 import { firstReplayBenchmarkFixtures } from "../benchmark/fixtures/firstReplayFixtures";
 import { runCoreRealityRegressionGate, type CoreRealityGateResult, type GateConfig } from "./coreRealityRegressionGate";
+import { runDeterminismBoundaryAudit, type DeterminismBoundaryAuditResult } from "./determinismBoundaryAudit";
 
 export type QualityVerdictLevel = "PASS" | "WARN" | "FAIL";
 
@@ -21,6 +22,8 @@ export interface UnifiedQualityGateConfig {
   realityGateConfig?: GateConfig;
   /** Whether to skip benchmark (for faster iterations). Default false. */
   skipBenchmark?: boolean;
+  /** Whether to skip determinism audit (for faster iterations). Default false. */
+  skipDeterminism?: boolean;
 }
 
 export interface BenchmarkQualitySummary {
@@ -45,6 +48,7 @@ export interface UnifiedQualityGateResult {
   benchmarkResult: RunBenchmarkCasesResult | null;
   benchmarkSummary: BenchmarkQualitySummary | null;
   realityGateResult: CoreRealityGateResult;
+  determinismAuditResult: DeterminismBoundaryAuditResult | null;
   unifiedSummary: {
     totalChecks: number;
     passed: number;
@@ -52,6 +56,7 @@ export interface UnifiedQualityGateResult {
     failed: number;
     benchmarkPassed: boolean;
     realityGatePassed: boolean;
+    determinismPassed: boolean;
     overallPassed: boolean;
   };
   qualityVerdict: {
@@ -118,19 +123,50 @@ export function runUnifiedQualityGate(
     `Reality Gate: ${realityGateResult.gateVerdict.level} (${realityGateResult.summary.passed}/${realityGateResult.summary.totalChecks} checks)`,
   );
 
+  // ── Determinism Audit (V13.3) ──
+  let determinismAuditResult: DeterminismBoundaryAuditResult | null = null;
+
+  if (!cfg.skipDeterminism) {
+    determinismAuditResult = runDeterminismBoundaryAudit();
+
+    if (!determinismAuditResult.passed) {
+      allFailures.push(
+        ...determinismAuditResult.failures.map((f) => `[determinism] ${f}`),
+      );
+    }
+    if (determinismAuditResult.warnings.length > 0) {
+      allWarnings.push(
+        ...determinismAuditResult.warnings.map((w) => `[determinism] ${w}`),
+      );
+    }
+    allReasons.push(
+      `Determinism Audit: ${determinismAuditResult.passed ? "PASS" : "FAIL"} (${determinismAuditResult.forbiddenPatternFindings.length} forbidden, ${determinismAuditResult.deterministicReplayResults.filter((r) => r.passed).length}/${determinismAuditResult.deterministicReplayResults.length} replay)`,
+    );
+  } else {
+    allReasons.push("Determinism Audit: SKIPPED");
+  }
+
   // ── Combined verdict ──
   const benchmarkPassed = benchmarkSummary ? benchmarkSummary.verdict !== "FAIL" : true;
   const realityGatePassed = realityGateResult.gateVerdict.passed;
+  const determinismPassed = determinismAuditResult ? determinismAuditResult.passed : true;
 
   const totalChecks =
-    (benchmarkSummary?.total ?? 0) + realityGateResult.summary.totalChecks;
+    (benchmarkSummary?.total ?? 0) +
+    realityGateResult.summary.totalChecks +
+    (determinismAuditResult ? 1 : 0);
   const passedChecks =
-    (benchmarkSummary?.passed ?? 0) + realityGateResult.summary.passed;
+    (benchmarkSummary?.passed ?? 0) +
+    realityGateResult.summary.passed +
+    (determinismAuditResult?.passed ? 1 : 0);
   const warnedChecks =
     (benchmarkSummary ? (benchmarkSummary.verdict === "WARN" ? 1 : 0) : 0) +
-    realityGateResult.summary.warned;
+    realityGateResult.summary.warned +
+    (determinismAuditResult && !determinismAuditResult.passed && determinismAuditResult.warnings.length > 0 ? 1 : 0);
   const failedChecks =
-    (benchmarkSummary?.failed ?? 0) + realityGateResult.summary.failed;
+    (benchmarkSummary?.failed ?? 0) +
+    realityGateResult.summary.failed +
+    (determinismAuditResult && !determinismAuditResult.passed ? 1 : 0);
 
   const level: QualityVerdictLevel =
     allFailures.length > 0 ? "FAIL" :
@@ -147,6 +183,9 @@ export function runUnifiedQualityGate(
   if (!realityGatePassed) {
     blockers.push("Reality gate has failures — all core reality checks must pass");
   }
+  if (!determinismPassed) {
+    blockers.push("Determinism boundary audit has failures — all core default paths must be deterministic");
+  }
   if (allFailures.length > 0) {
     blockers.push(`${allFailures.length} unified failures detected`);
   }
@@ -159,6 +198,9 @@ export function runUnifiedQualityGate(
   }
   if (realityGateResult.gateVerdict.knownLimitations.length > 0) {
     recommendations.push("Known limitations exist — see reality gate report for details");
+  }
+  if (determinismAuditResult && determinismAuditResult.warnings.length > 0) {
+    recommendations.push(`${determinismAuditResult.warnings.length} determinism warnings — review allowed runtime sources`);
   }
 
   const ready = blockers.length === 0;
@@ -178,6 +220,9 @@ export function runUnifiedQualityGate(
   if (benchmarkSummary && benchmarkSummary.passRate < 0.9) {
     nextActions.push(`Improve benchmark pass rate from ${(benchmarkSummary.passRate * 100).toFixed(0)}% to ≥90%`);
   }
+  if (determinismAuditResult && determinismAuditResult.forbiddenPatternFindings.length > 0) {
+    nextActions.push(`Fix ${determinismAuditResult.forbiddenPatternFindings.length} determinism violations in core default paths`);
+  }
   if (allFailures.length === 0 && allWarnings.length === 0) {
     nextActions.push("All checks pass — system is release-ready");
   }
@@ -187,6 +232,7 @@ export function runUnifiedQualityGate(
     ...realityGateResult.regressionRisks,
     { id: "risk_benchmark_regression", description: "Benchmark directional assertions degrading", severity: "high", guardedBy: "benchmark.passRate" },
     { id: "risk_benchmark_coverage_gap", description: "Benchmark category coverage dropping", severity: "medium", guardedBy: "benchmark.coveredCategories" },
+    { id: "risk_determinism_drift", description: "Non-deterministic defaults introduced into core paths", severity: "high", guardedBy: "determinismBoundaryAudit.forbiddenPatternFindings" },
   ];
 
   return {
@@ -199,6 +245,7 @@ export function runUnifiedQualityGate(
       : null,
     benchmarkSummary,
     realityGateResult,
+    determinismAuditResult,
     unifiedSummary: {
       totalChecks,
       passed: passedChecks,
@@ -206,6 +253,7 @@ export function runUnifiedQualityGate(
       failed: failedChecks,
       benchmarkPassed,
       realityGatePassed,
+      determinismPassed,
       overallPassed: allFailures.length === 0,
     },
     qualityVerdict: {
@@ -291,6 +339,7 @@ function normalizeUnifiedConfig(config: UnifiedQualityGateConfig): Required<Unif
     benchmarkWarnMargin: config.benchmarkWarnMargin ?? 0.03,
     realityGateConfig: config.realityGateConfig ?? {},
     skipBenchmark: config.skipBenchmark ?? false,
+    skipDeterminism: config.skipDeterminism ?? false,
   };
 }
 

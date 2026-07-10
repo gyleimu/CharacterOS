@@ -8,6 +8,7 @@
 import type { CharacterPhysicsState } from "../physics/physicsEngine";
 import { buildCharacterStateSurface } from "./characterStateSurface";
 import type { RealityAuditResult } from "../audit/realityAudit";
+import { DETERMINISTIC_TIMESTAMP } from "../deterministicHelpers";
 import type {
   ExplorerManifest,
   EventStudioDraft,
@@ -82,7 +83,7 @@ export function summarizeExplorerModules(): ExplorerManifest["modules"] {
 export function buildEventStudioDraft(overrides: Partial<EventStudioDraft> = {}): EventStudioDraft {
   return {
     naturalLanguageInput: overrides.naturalLanguageInput ?? "",
-    occurredAt: overrides.occurredAt ?? new Date().toISOString(),
+    occurredAt: overrides.occurredAt ?? DETERMINISTIC_TIMESTAMP,
     location: overrides.location ?? "",
     people: overrides.people ?? [],
     intensity: clamp01(overrides.intensity ?? 0.5),

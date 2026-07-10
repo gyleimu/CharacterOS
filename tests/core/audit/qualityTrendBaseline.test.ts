@@ -31,7 +31,7 @@ function makeSnapshot(overrides: Partial<QualityBaselineSnapshot> = {}): Quality
 }
 
 describe("V10.76 Quality Trend Baseline", () => {
-  const currentGate = runUnifiedQualityGate();
+  const currentGate = runUnifiedQualityGate({ skipDeterminism: true });
 
   it("no previous baseline returns NO_BASELINE", () => {
     const trend = runQualityTrendBaseline({ current: currentGate, previousSnapshot: null });
@@ -72,6 +72,7 @@ describe("V10.76 Quality Trend Baseline", () => {
     const cleanBaseline = makeSnapshot({ failureCount: 0 });
     const badGate = runUnifiedQualityGate({
       realityGateConfig: { maxNeutralPersonalityDistance: 0.0001 },
+      skipDeterminism: true,
     });
 
     const trend = runQualityTrendBaseline({
@@ -95,6 +96,7 @@ describe("V10.76 Quality Trend Baseline", () => {
       realityGateConfig: { maxNeutralPersonalityDistance: 0.0001 },
       benchmarkMinPassRate: 1.0,
       benchmarkMaxFailures: 0,
+      skipDeterminism: true,
     });
 
     // Only test regression if the strict gate actually has failures

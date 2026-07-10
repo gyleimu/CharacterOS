@@ -19,6 +19,7 @@ import type {
   EventStudioAuditEntry,
 } from "./explorerTypes";
 import { buildCharacterStateSurfaceFromState } from "./explorerDtoBuilders";
+import { deterministicAuditId } from "../deterministicHelpers";
 
 const DEFAULT_CONFIRMATION = "apply";
 
@@ -82,7 +83,13 @@ export function applyEventStudioEvent(
   // ── Build audit entry ──
   const auditId = opts.auditSeed
     ? `audit_${opts.auditSeed}`
-    : `audit_${computeAuditFingerprint(input.actorId, input.draft.sourceId, input.confirmation, beforeFingerprint, input.preview.parsedEvent)}`;
+    : deterministicAuditId(computeAuditFingerprint(
+      input.actorId,
+      input.draft.sourceId || input.preview.draftId,
+      input.confirmation,
+      beforeFingerprint,
+      input.preview.parsedEvent,
+    ));
 
   const auditEntry: EventStudioAuditEntry = {
     auditId,

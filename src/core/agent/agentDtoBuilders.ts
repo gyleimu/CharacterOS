@@ -8,6 +8,14 @@
 
 import { buildEventStudioDraft } from "../explorer/explorerDtoBuilders";
 import type { CharacterStateSurface } from "../explorer/explorerTypes";
+import {
+  DETERMINISTIC_TIMESTAMP,
+  deterministicSessionId,
+  deterministicTurnId,
+  deterministicReplyPlanId,
+  deterministicCandidateId,
+  deterministicWritebackId,
+} from "../deterministicHelpers";
 import type {
   AgentSessionConfig, AgentTurnInput, AgentEventCandidate,
   AgentPolicyDecision, AgentGroundingBundle, AgentReplyPlan,
@@ -15,26 +23,11 @@ import type {
   InputMode, WritebackPolicy, SafetyMode, LLMMode,
 } from "./agentTypes";
 
-// ── Stable hash helper (V12.12) ───────────────────────────────────────
-
-/**
- * Deterministic djb2-derived hash. Same input → same output every time.
- * Used for generating IDs in builder defaults where the caller did not
- * supply an explicit ID.
- */
-function stableHash(input: string): string {
-  let hash = 0;
-  for (let i = 0; i < input.length; i++) {
-    hash = ((hash << 5) - hash + input.charCodeAt(i)) | 0;
-  }
-  return Math.abs(hash).toString(16).slice(0, 8);
-}
-
 // ── Session Config ────────────────────────────────────────────────────────
 
 export function buildAgentSessionConfig(overrides: Partial<AgentSessionConfig> = {}): AgentSessionConfig {
   return {
-    sessionId: overrides.sessionId ?? "session_unknown",
+    sessionId: overrides.sessionId ?? deterministicSessionId(overrides.characterId ?? "lin_fan", overrides.inputMode),
     characterId: overrides.characterId ?? "lin_fan",
     inputMode: overrides.inputMode ?? "chat",
     writebackPolicy: overrides.writebackPolicy ?? "require_user_confirmation",
@@ -51,11 +44,11 @@ export function buildAgentSessionConfig(overrides: Partial<AgentSessionConfig> =
 
 export function buildAgentTurnInput(overrides: Partial<AgentTurnInput> = {}): AgentTurnInput {
   const result: AgentTurnInput = {
-    turnId: overrides.turnId ?? "turn_unknown",
+    turnId: overrides.turnId ?? deterministicTurnId(overrides.sessionId ?? "", overrides.content ?? ""),
     sessionId: overrides.sessionId ?? "",
     inputMode: overrides.inputMode ?? "chat",
     content: overrides.content ?? "",
-    occurredAt: overrides.occurredAt ?? "unknown",
+    occurredAt: overrides.occurredAt ?? DETERMINISTIC_TIMESTAMP,
     speakerLabel: overrides.speakerLabel ?? "user",
     sourceRef: overrides.sourceRef ?? "",
     metadata: overrides.metadata ?? {},
@@ -74,7 +67,7 @@ export function buildAgentEventCandidateFromDraft(params: {
   relevance?: number;
 }): AgentEventCandidate {
   return {
-    candidateId: `candidate_${params.draft.sourceId || "unknown"}`,
+    candidateId: deterministicCandidateId(params.draft.sourceId || params.draft.naturalLanguageInput, params.extractionMethod ?? "deterministic"),
     draft: params.draft,
     extractionMethod: params.extractionMethod ?? "deterministic",
     confidence: Math.max(0, Math.min(1, params.confidence ?? 0.5)),
@@ -166,9 +159,8 @@ export function buildAgentReplyPlan(params: {
   safetyNotices?: string[];
   llmAllowed?: boolean;
 }): AgentReplyPlan {
-  const idSeed = JSON.stringify(params);
   return {
-    replyPlanId: `reply_${stableHash(idSeed)}`,
+    replyPlanId: deterministicReplyPlanId("plan", JSON.stringify(params)),
     tone: "中性",
     intent: "基于角色状态提供信息",
     groundedFacts: params.groundedFacts ?? [],
@@ -193,7 +185,7 @@ export function buildAgentWritebackPlan(params: {
   const candidates = params.candidates ?? [];
   const idSeed = `${params.policy}|${candidates.map((c) => c.candidateId).join(",")}`;
   const result: AgentWritebackPlan = {
-    writebackId: `writeback_${stableHash(idSeed)}`,
+    writebackId: deterministicWritebackId(idSeed),
     policy: params.policy,
     candidates,
     previewRequired: params.policy !== "never",

@@ -1,12 +1,13 @@
 {
   "version": "10.75.0",
-  "generatedAt": "2026-07-03T18:47:32.136Z",
+  "generatedAt": "2026-07-10T00:13:58.000Z",
   "qualityVerdict": {
     "level": "PASS",
     "passed": true,
     "reasons": [
       "Benchmark: 6/6 passed (100%), 0 failed",
-      "Reality Gate: PASS (10/10 checks)"
+      "Reality Gate: PASS (10/10 checks)",
+      "Determinism Audit: PASS (0 forbidden, 10/10 replay)"
     ],
     "allowedWarnings": []
   },
@@ -18,12 +19,13 @@
     ]
   },
   "unifiedSummary": {
-    "totalChecks": 16,
-    "passed": 16,
+    "totalChecks": 17,
+    "passed": 17,
     "warned": 0,
     "failed": 0,
     "benchmarkPassed": true,
     "realityGatePassed": true,
+    "determinismPassed": true,
     "overallPassed": true
   },
   "benchmark": {
@@ -117,6 +119,12 @@
       "description": "Benchmark category coverage dropping",
       "severity": "medium",
       "guardedBy": "benchmark.coveredCategories"
+    },
+    {
+      "id": "risk_determinism_drift",
+      "description": "Non-deterministic defaults introduced into core paths",
+      "severity": "high",
+      "guardedBy": "determinismBoundaryAudit.forbiddenPatternFindings"
     }
   ],
   "thresholds": {
