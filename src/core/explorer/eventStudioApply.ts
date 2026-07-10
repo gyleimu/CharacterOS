@@ -1,5 +1,6 @@
 /**
  * V11.3 — Event Studio Apply Boundary
+ * V12.12 — Deterministic auditId (no Date.now() / Math.random() fallback)
  *
  * Confirmation-gated write boundary for applying events to character state.
  * Default: clone-and-return. Mutation only with explicit allowMutation=true.
@@ -9,8 +10,6 @@ import type { CharacterPhysicsState } from "../physics/physicsEngine";
 import { CharacterPhysicsEngine } from "../physics/physicsEngine";
 import { deserializeCharacterPhysicsState, serializeCharacterPhysicsState } from "../physics/serialization";
 import { parseExperienceEvent } from "../event/eventParser";
-import { runRealityAudit } from "../audit/realityAudit";
-import type { EnvironmentSeed } from "../differentiation/characterDifferentiation";
 import type {
   EventStudioDraft,
   EventStudioPreview,
@@ -83,7 +82,7 @@ export function applyEventStudioEvent(
   // ── Build audit entry ──
   const auditId = opts.auditSeed
     ? `audit_${opts.auditSeed}`
-    : `audit_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+    : `audit_${computeAuditFingerprint(input.actorId, input.draft.sourceId, input.confirmation, beforeFingerprint, input.preview.parsedEvent)}`;
 
   const auditEntry: EventStudioAuditEntry = {
     auditId,
@@ -169,6 +168,38 @@ function computeFingerprint(state: CharacterPhysicsState): string {
     hash = ((hash << 5) - hash + str.charCodeAt(i)) | 0;
   }
   return `fp_${Math.abs(hash).toString(16)}`;
+}
+
+/**
+ * V12.12 — Deterministic audit fingerprint.
+ * Uses actorId + draft sourceId + confirmation + before state fingerprint
+ * + parsed event summary to produce a stable audit ID.
+ * Same inputs → same audit ID; no Date.now() / Math.random().
+ */
+function computeAuditFingerprint(
+  actorId: string | undefined,
+  draftSourceId: string | undefined,
+  confirmation: string,
+  beforeFingerprint: string,
+  parsedEvent: unknown,
+): string {
+  const eventSummary = typeof parsedEvent === "string"
+    ? parsedEvent
+    : (parsedEvent && typeof parsedEvent === "object" && "summary" in (parsedEvent as Record<string, unknown>))
+      ? String((parsedEvent as Record<string, unknown>).summary)
+      : JSON.stringify(parsedEvent ?? "no_event");
+  const seed = [
+    actorId ?? "unknown",
+    draftSourceId ?? "unknown",
+    confirmation,
+    beforeFingerprint,
+    eventSummary,
+  ].join("|");
+  let hash = 0;
+  for (let i = 0; i < seed.length; i++) {
+    hash = ((hash << 5) - hash + seed.charCodeAt(i)) | 0;
+  }
+  return Math.abs(hash).toString(16).slice(0, 12);
 }
 
 function normalizeOptions(opts?: EventStudioApplyOptions): Required<EventStudioApplyOptions> {

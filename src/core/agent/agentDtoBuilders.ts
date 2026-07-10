@@ -1,9 +1,11 @@
 /**
  * V12.1 — Agent SDK DTO Builders
+ * V12.12 — Deterministic ID paths: no Date.now() / Math.random() in defaults
  *
  * Pure, deterministic builders. Read-only by default.
  * No LLM execution. No raw state. No multi-character.
  */
+
 import { buildEventStudioDraft } from "../explorer/explorerDtoBuilders";
 import type { CharacterStateSurface } from "../explorer/explorerTypes";
 import type {
@@ -13,11 +15,26 @@ import type {
   InputMode, WritebackPolicy, SafetyMode, LLMMode,
 } from "./agentTypes";
 
+// ── Stable hash helper (V12.12) ───────────────────────────────────────
+
+/**
+ * Deterministic djb2-derived hash. Same input → same output every time.
+ * Used for generating IDs in builder defaults where the caller did not
+ * supply an explicit ID.
+ */
+function stableHash(input: string): string {
+  let hash = 0;
+  for (let i = 0; i < input.length; i++) {
+    hash = ((hash << 5) - hash + input.charCodeAt(i)) | 0;
+  }
+  return Math.abs(hash).toString(16).slice(0, 8);
+}
+
 // ── Session Config ────────────────────────────────────────────────────────
 
 export function buildAgentSessionConfig(overrides: Partial<AgentSessionConfig> = {}): AgentSessionConfig {
   return {
-    sessionId: overrides.sessionId ?? `session_${Date.now()}`,
+    sessionId: overrides.sessionId ?? "session_unknown",
     characterId: overrides.characterId ?? "lin_fan",
     inputMode: overrides.inputMode ?? "chat",
     writebackPolicy: overrides.writebackPolicy ?? "require_user_confirmation",
@@ -34,11 +51,11 @@ export function buildAgentSessionConfig(overrides: Partial<AgentSessionConfig> =
 
 export function buildAgentTurnInput(overrides: Partial<AgentTurnInput> = {}): AgentTurnInput {
   const result: AgentTurnInput = {
-    turnId: overrides.turnId ?? `turn_${Date.now()}`,
+    turnId: overrides.turnId ?? "turn_unknown",
     sessionId: overrides.sessionId ?? "",
     inputMode: overrides.inputMode ?? "chat",
     content: overrides.content ?? "",
-    occurredAt: overrides.occurredAt ?? new Date().toISOString(),
+    occurredAt: overrides.occurredAt ?? "unknown",
     speakerLabel: overrides.speakerLabel ?? "user",
     sourceRef: overrides.sourceRef ?? "",
     metadata: overrides.metadata ?? {},
@@ -57,7 +74,7 @@ export function buildAgentEventCandidateFromDraft(params: {
   relevance?: number;
 }): AgentEventCandidate {
   return {
-    candidateId: `candidate_${params.draft.sourceId || Date.now()}`,
+    candidateId: `candidate_${params.draft.sourceId || "unknown"}`,
     draft: params.draft,
     extractionMethod: params.extractionMethod ?? "deterministic",
     confidence: Math.max(0, Math.min(1, params.confidence ?? 0.5)),
@@ -142,15 +159,16 @@ export function buildAgentPolicyDecision(params: {
   return result;
 }
 
-// ── Reply Plan ────────────────────────────────────────────────────────────
+// ── Reply Plan (DTO builder) ──────────────────────────────────────────────
 
 export function buildAgentReplyPlan(params: {
   groundedFacts?: string[];
   safetyNotices?: string[];
   llmAllowed?: boolean;
 }): AgentReplyPlan {
+  const idSeed = JSON.stringify(params);
   return {
-    replyPlanId: `reply_${Date.now()}`,
+    replyPlanId: `reply_${stableHash(idSeed)}`,
     tone: "中性",
     intent: "基于角色状态提供信息",
     groundedFacts: params.groundedFacts ?? [],
@@ -173,8 +191,9 @@ export function buildAgentWritebackPlan(params: {
   candidates?: AgentEventCandidate[];
 }): AgentWritebackPlan {
   const candidates = params.candidates ?? [];
+  const idSeed = `${params.policy}|${candidates.map((c) => c.candidateId).join(",")}`;
   const result: AgentWritebackPlan = {
-    writebackId: `writeback_${Date.now()}`,
+    writebackId: `writeback_${stableHash(idSeed)}`,
     policy: params.policy,
     candidates,
     previewRequired: params.policy !== "never",
@@ -229,5 +248,6 @@ export function summarizeAgentSdkBoundary(): string[] {
     "safetyMode: strict — 严格安全模式",
     "noMutation: true — Agent 不能直接修改 Core 状态",
     "LLM boundary: replyPlan 中包含 boundary instructions，LLM 不能越过",
+    "V12.12: deterministic IDs — no Date.now() / Math.random() in default paths",
   ];
 }
