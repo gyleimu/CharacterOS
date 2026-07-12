@@ -1,0 +1,52 @@
+{
+  "registryVersion": "1.0.0",
+  "reviewedAt": "2026-07-12",
+  "source": "npm audit --json",
+  "policy": {
+    "blockCritical": true,
+    "blockHigh": true,
+    "moderateRequiresRegistry": true,
+    "lowRequiresMonitoring": true,
+    "forceFixProhibited": true
+  },
+  "summary": {
+    "critical": 0,
+    "high": 0,
+    "moderate": 2,
+    "low": 1,
+    "total": 3,
+    "releaseBlocking": 0
+  },
+  "risks": [
+    {
+      "id": "GHSA-g7r4-m6w7-qqqr",
+      "package": "esbuild",
+      "severity": "low",
+      "dependencyPath": "vite > esbuild",
+      "status": "monitoring",
+      "exposure": "Windows development-server tooling",
+      "mitigation": "Do not expose the local development server to untrusted users; upgrade when Vite resolves to a compatible patched esbuild.",
+      "resolutionCondition": "Installed esbuild is outside the affected 0.27.3-0.28.0 range."
+    },
+    {
+      "id": "GHSA-qx2v-qp2m-jg93",
+      "package": "postcss",
+      "severity": "moderate",
+      "dependencyPath": "next > postcss",
+      "status": "accepted_with_mitigation",
+      "exposure": "CSS stringify output when supplied with untrusted CSS content",
+      "mitigation": "Do not pass untrusted user CSS through the affected stringify path; retain output escaping and monitor the Next dependency chain.",
+      "resolutionCondition": "Next resolves PostCSS to 8.5.10 or later through a compatible release."
+    },
+    {
+      "id": "next-via-postcss-2026-07-12",
+      "package": "next",
+      "severity": "moderate",
+      "dependencyPath": "direct dependency via bundled postcss",
+      "status": "accepted_with_mitigation",
+      "exposure": "Transitive PostCSS advisory reported against the installed Next release",
+      "mitigation": "Reject npm's incompatible downgrade suggestion; keep lockfile pinned and upgrade only to a compatible patched Next release.",
+      "resolutionCondition": "A compatible Next release removes the affected PostCSS dependency range."
+    }
+  ]
+}

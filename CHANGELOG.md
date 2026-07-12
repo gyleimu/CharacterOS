@@ -1,5 +1,16 @@
 # Changelog
 
+## V13 LLM Boundary RC
+
+- Safe prompt boundary backed by mediated Agent grounding data
+- Deterministic Mock Provider with no network or real credentials
+- Output validation for diagnosis, mutation, raw state, secrets, truncation, certainty, and safety notices
+- Evidence grounding with unsupported-claim rejection and deterministic fallback
+- 18-case LLM Boundary Quality Gate with deterministic double replay
+- SHA-256 sealed offline Harness and V13 RC manifest
+- Dependency security policy and reviewed risk registry
+- Real providers remain explicitly deferred
+
 ## V10 RC (V10.78)
 
 ### Core Reality Audit Suite (V10.67–V10.78)

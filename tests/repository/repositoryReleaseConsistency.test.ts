@@ -53,10 +53,55 @@ describe("Repository release consistency", () => {
       "src/core/llmBoundary/llmGroundingChecker.ts",
       "src/core/llmBoundary/llmFallbackReplyGenerator.ts",
       "src/core/llmBoundary/llmBoundaryService.ts",
+      "src/core/audit/llmBoundaryQualityGate.ts",
+      "scripts/run-llm-boundary-quality-gate.ts",
       "outputs/llm-boundary-harness/index.html",
       "outputs/llm-boundary-harness/manifest.json",
+      "outputs/llm-boundary-quality-gate.json",
+      "outputs/llm-boundary-quality-gate.md",
+      "outputs/v13-llm-boundary-rc-manifest.json",
+      "outputs/dependency-risk-register.json",
+      "outputs/dependency-security-gate.json",
+      "outputs/dependency-security-gate.md",
+      "src/core/audit/dependencySecurityGate.ts",
+      "scripts/run-dependency-security-gate.ts",
+      "docs/core_calibration_durability_roadmap.md",
+      "docs/dependency_security_policy.md",
+      "docs/v13.9_llm_boundary_quality_gate_rc_report.md",
     ];
     expect(required.filter((file) => !exists(file))).toEqual([]);
+  });
+
+  it("runs the V13 LLM boundary quality gate in rc:verify and CI", () => {
+    const pkg = JSON.parse(read("package.json")) as { scripts?: Record<string, string> };
+    const ci = read(".github/workflows/ci.yml");
+    expect(pkg.scripts?.["test:llm-quality"]).toContain("run-llm-boundary-quality-gate");
+    expect(pkg.scripts?.["test:security"]).toContain("run-dependency-security-gate");
+    expect(pkg.scripts?.["rc:verify"]).toContain("run-llm-boundary-quality-gate");
+    expect(ci).toContain("npm run test:llm-quality");
+    expect(ci).toContain("npm run test:security");
+  });
+
+  it("tracks dependency risks without allowing forced framework downgrade", () => {
+    const registry = JSON.parse(read("outputs/dependency-risk-register.json")) as {
+      policy: Record<string, boolean>;
+      summary: Record<string, number>;
+    };
+    const gate = JSON.parse(read("outputs/dependency-security-gate.json")) as {
+      gateVerdict: { level: string; passed: boolean };
+      registeredFindings: unknown[];
+      unregisteredFindings: unknown[];
+    };
+    expect(registry.policy).toMatchObject({
+      blockCritical: true,
+      blockHigh: true,
+      moderateRequiresRegistry: true,
+      forceFixProhibited: true,
+    });
+    expect(registry.summary).toMatchObject({ critical: 0, high: 0, moderate: 2, low: 1 });
+    expect(gate.gateVerdict).toEqual({ level: "PASS", passed: true });
+    expect(gate.registeredFindings).toHaveLength(3);
+    expect(gate.unregisteredFindings).toEqual([]);
   });
 
   it("contains no unresolved merge markers in release-owned sources", () => {

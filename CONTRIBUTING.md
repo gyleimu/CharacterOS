@@ -20,6 +20,9 @@ npm run next:build     # Next.js production build
 npm run test:reality   # Core Reality Gate
 npm run test:quality   # Unified Quality Gate (benchmark + reality)
 npm run test:trend     # Quality Trend Baseline
+npm run test:determinism # Determinism Boundary Audit
+npm run test:llm-quality # LLM Boundary Quality Gate
+npm run test:security  # Dependency Security Gate (high/critical)
 npm run rc:verify      # All gates (RC verification)
 ```
 
@@ -30,6 +33,8 @@ Any core logic change must pass:
 - **Core Reality Gate**: PASS, 0 active warnings, 0 failures
 - **Unified Quality Gate**: PASS, releaseReady=true
 - **Quality Trend**: Not REGRESSED, 0 high-severity regression flags
+- **LLM Boundary Quality Gate**: PASS, 0 unsafe deliveries, 0 replay failures
+- **Dependency Security Gate**: 0 high/critical; moderate findings must be registered
 
 ## Adding New Event Types
 

@@ -33,7 +33,7 @@ CharacterIdentity
 
 ```text
 CharacterOS — Core Kernel · Explorer Platform · Agent SDK · LLM Boundary
-V10/V11/V12 RC artifacts remain sealed; V13.8 offline Mock Provider Harness is complete.
+V10/V11/V12 RC artifacts remain sealed; V13.9 Mock-only LLM Boundary RC is complete.
 ```
 
 当前项目状态：
@@ -55,7 +55,7 @@ no server deployment  — 不做服务器部署
 
 ```text
 npm run build        tsc --noEmit
-npm test             180 files / 2447 tests / 0 failures
+npm test             183 files / 2483 tests / 0 failures
 npm run next:build   Explorer/MindSpace 页面 + API routes
 ```
 
@@ -68,6 +68,8 @@ Quality Trend             STABLE (0 regression flags)
 Known Warning Registry    0 active / 1 allowed / 0 regressed
 Benchmark V2.1            6/6 passed (100%)
 Determinism Boundary      PASS
+LLM Boundary Quality Gate PASS   (18/18, 0 unsafe deliveries)
+Dependency Security       0 high / 0 critical
 ```
 
 V10 RC Verdict: **PASS** ✅
@@ -361,6 +363,9 @@ Quality Gates：
 npm run test:reality   # Core Reality Gate
 npm run test:quality   # Unified Quality Gate (benchmark + reality)
 npm run test:trend     # Quality Trend Baseline
+npm run test:determinism # Determinism Boundary Audit
+npm run test:llm-quality # LLM Boundary Quality Gate
+npm run test:security  # Block high/critical dependency vulnerabilities
 npm run rc:verify      # All gates (RC verification)
 ```
 

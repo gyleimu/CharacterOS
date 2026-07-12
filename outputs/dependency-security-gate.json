@@ -1,0 +1,37 @@
+{
+  "version": "1.0.0",
+  "liveSummary": {
+    "info": 0,
+    "low": 1,
+    "moderate": 2,
+    "high": 0,
+    "critical": 0,
+    "total": 3
+  },
+  "registeredFindings": [
+    {
+      "package": "esbuild",
+      "severity": "low",
+      "riskId": "GHSA-g7r4-m6w7-qqqr"
+    },
+    {
+      "package": "next",
+      "severity": "moderate",
+      "riskId": "next-via-postcss-2026-07-12"
+    },
+    {
+      "package": "postcss",
+      "severity": "moderate",
+      "riskId": "GHSA-qx2v-qp2m-jg93"
+    }
+  ],
+  "unregisteredFindings": [],
+  "blockingFindings": [],
+  "resolvedCandidates": [],
+  "registryCountMatches": true,
+  "failures": [],
+  "gateVerdict": {
+    "level": "PASS",
+    "passed": true
+  }
+}

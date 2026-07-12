@@ -103,6 +103,44 @@ describe("V13.8 offline LLM boundary execution", () => {
     expect(result.fallbackReason).toBe("grounding_failed");
   });
 
+  it("does not deliver a truncated provider response", async () => {
+    const preview = fixture();
+    const provider: LlmProviderAdapter = {
+      providerType: "mock",
+      async complete(input) {
+        const grounded = await new MockLlmProvider().complete(input);
+        return buildLlmProviderResponse({
+          providerId: input.providerConfig.providerId,
+          requestId: input.request.requestId,
+          rawText: grounded.rawText,
+          finishReason: "length",
+        });
+      },
+    };
+
+    const result = await executeLlmBoundary({ preview, provider });
+    expect(result.providerValidation?.finalVerdict).toBe("warn");
+    expect(result.providerValidation?.violations.some((item) => item.ruleId === "complete_output")).toBe(true);
+    expect(result.fallbackReason).toBe("validation_failed");
+    expect(result.reply.source).toBe("fallback");
+  });
+
+  it("does not deliver an over-certain provider response", async () => {
+    const preview = fixture();
+    const provider = new MockLlmProvider({
+      mode: "custom",
+      customText: [
+        `[事实] ${preview.prompt.groundingFacts[0]}`,
+        "[事实] 这就是客观事实。",
+        ...preview.prompt.safetyNotices.map((notice) => `[安全] ${notice}`),
+      ].join("\n"),
+    });
+
+    const result = await executeLlmBoundary({ preview, provider });
+    expect(result.providerValidation?.violations.some((item) => item.ruleId === "preserve_uncertainty")).toBe(true);
+    expect(result.fallbackReason).toBe("validation_failed");
+  });
+
   it("validates the final fallback again before delivery", async () => {
     const result = await executeLlmBoundary({
       preview: fixture(),

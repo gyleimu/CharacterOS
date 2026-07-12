@@ -1,5 +1,12 @@
 # CharacterOS Documentation Index
 
+## Active Core Roadmap
+
+| Doc | Description |
+|-----|-------------|
+| [Core Calibration & Durability Roadmap](core_calibration_durability_roadmap.md) | LLM safety, temporal semantics, model calibration, durable state, and dependency governance |
+| [Dependency Security Policy](dependency_security_policy.md) | High/critical CI blocking, moderate risk registry, and compatible upgrade policy |
+
 ## V13 LLM Boundary & Determinism
 
 | Doc | Description |
@@ -13,6 +20,7 @@
 | [V13.6 Branch Reconciliation](v13.6_branch_test_coverage_reconciliation_report.md) | LLM and determinism branches integrated into one release line |
 | [V13.7 LLM Boundary Integration](v13.7_llm_boundary_integration_qa_report.md) | Agent reply plan to safe offline LLM boundary preview |
 | [V13.8 Mock Provider Harness](v13.8_mock_provider_harness_report.md) | Offline provider, validation, grounding, fallback, and static audit artifact |
+| [V13.9 LLM Boundary QA / RC](v13.9_llm_boundary_quality_gate_rc_report.md) | 18-case quality gate, adversarial replay, artifact seal, and Mock-only RC |
 
 ## V12 Agent SDK (Complete RC)
 
@@ -106,5 +114,5 @@
 
 ---
 
-**Current Line:** V13.8 offline LLM Boundary closed loop on top of V10/V11/V12 RCs
+**Current Line:** V13.9 Mock-only LLM Boundary RC on top of V10/V11/V12 RCs
 **Last Updated:** 2026-07-12

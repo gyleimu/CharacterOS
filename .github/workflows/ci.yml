@@ -44,6 +44,9 @@ jobs:
       - run: npm ci
       - run: npm run build
 
+      - name: Dependency Security Gate
+        run: npm run test:security
+
       - name: Core Reality Gate
         run: npm run test:reality
 
@@ -58,6 +61,9 @@ jobs:
 
       - name: LLM Boundary Harness
         run: npm run export:llm-harness && npm run test:llm-boundary
+
+      - name: LLM Boundary Quality Gate
+        run: npm run test:llm-quality
 
       - name: Repository Release Consistency
         run: npm run test:repository

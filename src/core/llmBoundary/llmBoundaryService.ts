@@ -97,7 +97,7 @@ export async function executeLlmBoundary(
     response: providerResponse,
     providerConfig: preview.providerConfig,
   });
-  if (!providerValidation.valid) {
+  if (!providerValidation.valid || hasBlockingValidationWarning(providerValidation)) {
     return fallbackResult(preview, "validation_failed", true, providerResponse, providerValidation, null);
   }
   const providerGrounding = checkLlmOutputGrounding({
@@ -213,8 +213,16 @@ function executionId(
     "llmexec",
     preview.request.requestId,
     preview.prompt.promptId,
+    preview.providerConfig.providerId,
+    String(preview.providerConfig.networkAllowed),
     outcome,
     ...resultIds,
+  );
+}
+
+function hasBlockingValidationWarning(validation: LlmOutputValidationResult): boolean {
+  return validation.violations.some(
+    (violation) => violation.severity === "warn" && violation.ruleId !== "no_unsupported_claim",
   );
 }
 
