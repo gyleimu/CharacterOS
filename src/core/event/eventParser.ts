@@ -11,6 +11,7 @@ export interface ParseExperienceEventInput {
   description: string;
   tags?: string[];
   categoryHint?: EventCategory | "auto";
+  occurredAt?: string;
 }
 
 export interface ParsedExperienceEvent extends ExperienceEvent {
@@ -42,6 +43,7 @@ export function parseExperienceEvent(input: ParseExperienceEventInput): ParsedEx
     relationshipWeight: impact.relationshipWeight,
     expectationGap: impact.expectationGap,
     personalitySensitivity: impact.personalitySensitivity,
+    ...(input.occurredAt ? { occurredAt: input.occurredAt } : {}),
     parser: {
       source: "rule",
       matchedKeywords: inferred.matchedKeywords,

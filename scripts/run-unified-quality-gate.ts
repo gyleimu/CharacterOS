@@ -39,6 +39,7 @@ function main(): void {
   console.log(`  Overall Passed: ${result.unifiedSummary.overallPassed}`);
   console.log(`  Benchmark Passed: ${result.unifiedSummary.benchmarkPassed}`);
   console.log(`  Reality Gate Passed: ${result.unifiedSummary.realityGatePassed}`);
+  console.log(`  Temporal Semantics Passed: ${result.unifiedSummary.temporalSemanticsPassed}`);
   console.log(`  Failures: ${result.failures.length}`);
   console.log(`  Warnings: ${result.warnings.length}`);
   console.log(`  Release Ready: ${result.releaseReadiness.ready}`);
@@ -76,6 +77,13 @@ function serializeResult(result: UnifiedQualityGateResult): unknown {
       warnings: result.realityGateResult.warnings.map((w) => `${w.suite}/${w.caseId ?? ""}: ${w.message}`),
       failures: result.realityGateResult.failures.map((f) => `${f.suite}/${f.caseId ?? ""}: ${f.message}`),
     },
+    temporalSemantics: result.temporalSemanticsAuditResult
+      ? {
+          verdict: result.temporalSemanticsAuditResult.gateVerdict.level,
+          summary: result.temporalSemanticsAuditResult.summary,
+          failures: result.temporalSemanticsAuditResult.failures,
+        }
+      : null,
     failures: result.failures,
     warnings: result.warnings,
     regressionRisks: result.regressionRisks,
@@ -103,12 +111,22 @@ function buildMarkdown(result: UnifiedQualityGateResult): string {
   l.push(`|--------|-------|`);
   l.push(`| Benchmark | ${result.unifiedSummary.benchmarkPassed ? "✅" : "❌"} |`);
   l.push(`| Reality Gate | ${result.unifiedSummary.realityGatePassed ? "✅" : "❌"} |`);
+  l.push(`| Temporal Semantics | ${result.unifiedSummary.temporalSemanticsPassed ? "✅" : "❌"} |`);
   l.push(`| Total Checks | ${result.unifiedSummary.totalChecks} |`);
   l.push(`| Passed | ${result.unifiedSummary.passed} |`);
   l.push(`| Warned | ${result.unifiedSummary.warned} |`);
   l.push(`| Failed | ${result.unifiedSummary.failed} |`);
   l.push(`| Overall | ${result.unifiedSummary.overallPassed ? "✅" : "❌"} |`);
   l.push("");
+
+  if (result.temporalSemanticsAuditResult) {
+    l.push("## Temporal Semantics");
+    l.push("");
+    l.push(`- **Verdict:** ${result.temporalSemanticsAuditResult.gateVerdict.level}`);
+    l.push(`- **Cases:** ${result.temporalSemanticsAuditResult.summary.passedCases}/${result.temporalSemanticsAuditResult.summary.totalCases}`);
+    l.push(`- **Assertions:** ${result.temporalSemanticsAuditResult.summary.passedAssertions}/${result.temporalSemanticsAuditResult.summary.totalAssertions}`);
+    l.push("");
+  }
 
   if (result.benchmarkSummary) {
     l.push("## Benchmark V2.1");

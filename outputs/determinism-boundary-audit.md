@@ -1,6 +1,6 @@
 # Determinism Boundary Audit — V13.3
 
-**Audited:** 2026-07-12T12:29:19.448Z
+**Audited:** 2026-07-12T18:08:35.503Z
 **Verdict:** ✅ PASS
 **Release Ready:** ✅ Yes
 
@@ -49,13 +49,13 @@ These patterns use runtime timestamps but are classified as allowed because they
   - Gate/report generatedAt/completedAt uses real time — runtime report
 - **src/core/audit/releaseCandidateFreezeAudit.ts:47** — `new Date()`
   - Gate/report generatedAt/completedAt uses real time — runtime report
-- **src/core/audit/unifiedQualityGate.ts:82** — `new Date()`
+- **src/core/audit/unifiedQualityGate.ts:87** — `new Date()`
   - Gate/report generatedAt/completedAt uses real time — runtime report
-- **src/core/audit/unifiedQualityGate.ts:82** — `new Date()`
+- **src/core/audit/unifiedQualityGate.ts:87** — `new Date()`
   - Gate/report generatedAt/completedAt uses real time — runtime report
-- **src/core/audit/unifiedQualityGate.ts:241** — `new Date()`
+- **src/core/audit/unifiedQualityGate.ts:272** — `new Date()`
   - Gate/report generatedAt/completedAt uses real time — runtime report
-- **src/core/audit/unifiedQualityGate.ts:241** — `new Date()`
+- **src/core/audit/unifiedQualityGate.ts:272** — `new Date()`
   - Gate/report generatedAt/completedAt uses real time — runtime report
 - **src/core/benchmark/benchmarkRunner.ts:62** — `Date.now()`
   - Benchmark execution records when tests ran — operational, not default ID
@@ -131,9 +131,9 @@ These patterns use runtime timestamps but are classified as allowed because they
   - Explainability modules record explanation generation time — operational
 - **src/core/explainability/stateTransitionExplanation.ts:173** — `new Date()`
   - Explainability modules record explanation generation time — operational
-- **src/core/explorer/eventStudioApply.ts:100** — `new Date()`
+- **src/core/explorer/eventStudioApply.ts:107** — `new Date()`
   - Audit entry appliedAt records actual application time — runtime record (explicitly allowed by V13.3 policy)
-- **src/core/explorer/eventStudioApply.ts:100** — `new Date()`
+- **src/core/explorer/eventStudioApply.ts:107** — `new Date()`
   - Audit entry appliedAt records actual application time — runtime record (explicitly allowed by V13.3 policy)
 - **src/core/explorer/explainabilityTimeline.ts:109** — `new Date()`
   - Explainability modules record explanation generation time — operational
@@ -209,9 +209,9 @@ These patterns use runtime timestamps but are classified as allowed because they
   - Service-level operational timestamp — recording physics operations
 - **src/services/characterPhysicsService.ts:690** — `new Date()`
   - Service-level operational timestamp — recording physics operations
-- **src/services/explorerService.ts:143** — `new Date()`
+- **src/services/explorerService.ts:150** — `new Date()`
   - Explorer service createTimeMachineSnapshot uses real time — user-initiated history record
-- **src/services/explorerService.ts:143** — `new Date()`
+- **src/services/explorerService.ts:150** — `new Date()`
   - Explorer service createTimeMachineSnapshot uses real time — user-initiated history record
 
 ## Replay Results

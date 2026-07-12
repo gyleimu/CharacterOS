@@ -1,6 +1,6 @@
 {
   "auditVersion": "13.5.0",
-  "auditedAt": "2026-07-12T12:29:19.448Z",
+  "auditedAt": "2026-07-12T18:08:35.503Z",
   "passed": true,
   "releaseReady": true,
   "summary": {
@@ -132,25 +132,25 @@
     {
       "source": "new Date()",
       "file": "src/core/audit/unifiedQualityGate.ts",
-      "line": 82,
+      "line": 87,
       "justification": "Gate/report generatedAt/completedAt uses real time — runtime report"
     },
     {
       "source": "new Date()",
       "file": "src/core/audit/unifiedQualityGate.ts",
-      "line": 82,
+      "line": 87,
       "justification": "Gate/report generatedAt/completedAt uses real time — runtime report"
     },
     {
       "source": "new Date()",
       "file": "src/core/audit/unifiedQualityGate.ts",
-      "line": 241,
+      "line": 272,
       "justification": "Gate/report generatedAt/completedAt uses real time — runtime report"
     },
     {
       "source": "new Date()",
       "file": "src/core/audit/unifiedQualityGate.ts",
-      "line": 241,
+      "line": 272,
       "justification": "Gate/report generatedAt/completedAt uses real time — runtime report"
     },
     {
@@ -378,13 +378,13 @@
     {
       "source": "new Date()",
       "file": "src/core/explorer/eventStudioApply.ts",
-      "line": 100,
+      "line": 107,
       "justification": "Audit entry appliedAt records actual application time — runtime record (explicitly allowed by V13.3 policy)"
     },
     {
       "source": "new Date()",
       "file": "src/core/explorer/eventStudioApply.ts",
-      "line": 100,
+      "line": 107,
       "justification": "Audit entry appliedAt records actual application time — runtime record (explicitly allowed by V13.3 policy)"
     },
     {
@@ -612,13 +612,13 @@
     {
       "source": "new Date()",
       "file": "src/services/explorerService.ts",
-      "line": 143,
+      "line": 150,
       "justification": "Explorer service createTimeMachineSnapshot uses real time — user-initiated history record"
     },
     {
       "source": "new Date()",
       "file": "src/services/explorerService.ts",
-      "line": 143,
+      "line": 150,
       "justification": "Explorer service createTimeMachineSnapshot uses real time — user-initiated history record"
     }
   ],
@@ -698,8 +698,8 @@
     {
       "functionName": "eventStudioPreview_draftId_without_sourceId",
       "passed": true,
-      "run1": "{\"draftId\":\"draft_5536cb73\"}",
-      "run2": "{\"draftId\":\"draft_5536cb73\"}",
+      "run1": "{\"draftId\":\"draft_10929c4b\"}",
+      "run2": "{\"draftId\":\"draft_10929c4b\"}",
       "identical": true,
       "note": "Preview draftId stable without sourceId"
     }

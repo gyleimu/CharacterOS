@@ -1,5 +1,16 @@
 # Changelog
 
+## Temporal Semantics Core
+
+- Added persistent logical event clock and backward-compatible state serialization
+- Added elapsed-time recovery before each forward-timed event
+- Added 24-hour semantic repeat saturation with a bounded non-zero impact floor
+- Added 14-day personality velocity half-life and post-decay cluster metric synchronization
+- Added canonical event timestamps, out-of-order protection, and inherited-clock safeguards
+- Exposed temporal trace through physics results, API DTOs, simulation snapshots, and Event Studio
+- Added 7-case / 21-assertion Temporal Semantics Audit and integrated it into CI and unified quality gates
+- Current timing constants remain engineering priors pending Golden Trajectory calibration
+
 ## V13 LLM Boundary RC
 
 - Safe prompt boundary backed by mediated Agent grounding data

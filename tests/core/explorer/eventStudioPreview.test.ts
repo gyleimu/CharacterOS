@@ -21,6 +21,21 @@ function snapshotState(state: any) {
 describe("V11.2 Event Studio Preview Core", () => {
   const baseline = createCharacterStateFromBlueprint(createLinFanBlueprint(), { seedInitialExperiences: true });
 
+  it("includes event time in deterministic draft identity", () => {
+    const firstDraft = buildEventStudioDraft({
+      naturalLanguageInput: "王雪主动解释昨晚没回复的原因。",
+      tags: ["解释", "支持"],
+      occurredAt: "2026-07-01T00:00:00.000Z",
+    });
+    const secondDraft = buildEventStudioDraft({
+      ...firstDraft,
+      occurredAt: "2026-07-02T00:00:00.000Z",
+    });
+    const first = buildEventStudioPreview({ draft: firstDraft, baselineState: baseline, previewMode: "parse_only" });
+    const second = buildEventStudioPreview({ draft: secondDraft, baselineState: baseline, previewMode: "parse_only" });
+    expect(first.draftId).not.toBe(second.draftId);
+  });
+
   // ── Parse Only ──
 
   it("parse_only returns parsed event only", () => {

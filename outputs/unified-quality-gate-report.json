@@ -1,13 +1,14 @@
 {
   "version": "10.75.0",
-  "generatedAt": "2026-07-12T12:29:17.583Z",
+  "generatedAt": "2026-07-12T18:08:33.466Z",
   "qualityVerdict": {
     "level": "PASS",
     "passed": true,
     "reasons": [
       "Benchmark: 6/6 passed (100%), 0 failed",
       "Reality Gate: PASS (10/10 checks)",
-      "Determinism Audit: PASS (0 forbidden, 10/10 replay)"
+      "Determinism Audit: PASS (0 forbidden, 10/10 replay)",
+      "Temporal Semantics: PASS (7/7 cases)"
     ],
     "allowedWarnings": []
   },
@@ -17,13 +18,14 @@
     "recommendations": []
   },
   "unifiedSummary": {
-    "totalChecks": 17,
-    "passed": 17,
+    "totalChecks": 24,
+    "passed": 24,
     "warned": 0,
     "failed": 0,
     "benchmarkPassed": true,
     "realityGatePassed": true,
     "determinismPassed": true,
+    "temporalSemanticsPassed": true,
     "overallPassed": true
   },
   "benchmark": {
@@ -51,6 +53,17 @@
       "neutralStable": true
     },
     "warnings": [],
+    "failures": []
+  },
+  "temporalSemantics": {
+    "verdict": "PASS",
+    "summary": {
+      "totalCases": 7,
+      "passedCases": 7,
+      "failedCases": 0,
+      "totalAssertions": 21,
+      "passedAssertions": 21
+    },
     "failures": []
   },
   "failures": [],
@@ -121,6 +134,12 @@
       "description": "Non-deterministic defaults introduced into core paths",
       "severity": "high",
       "guardedBy": "determinismBoundaryAudit.forbiddenPatternFindings"
+    },
+    {
+      "id": "risk_temporal_semantics_regression",
+      "description": "Event concentration, recovery, or ordering semantics regress",
+      "severity": "high",
+      "guardedBy": "temporalSemanticsAudit.gateVerdict"
     }
   ],
   "thresholds": {

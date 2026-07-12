@@ -10,6 +10,8 @@ import type { ExperienceEvent } from "../event/event";
 import type { PersonalityCoordinateValues } from "../personality/coordinate";
 import { coordinateToRecord } from "../personality/coordinate";
 import { toGalaxyStepTrace, type GalaxyStepTrace } from "../trace/galaxyTrace";
+import type { EventTemporalTrace } from "../time/eventTemporalSemantics";
+import { UNKNOWN_EVENT_OCCURRED_AT } from "../time/eventTemporalSemantics";
 
 export interface SimulationSnapshot {
   step: number;
@@ -29,6 +31,7 @@ export interface SimulationSnapshot {
   coordinate: PersonalityCoordinateValues;
   boundaryImpact: BoundaryImpactResult;
   galaxyTrace: GalaxyStepTrace;
+  temporalSemantics: EventTemporalTrace;
 }
 
 export interface SimulationResult {
@@ -46,7 +49,14 @@ export function runEventSequence(params: {
   const snapshots: SimulationSnapshot[] = [];
 
   params.events.forEach((event, index) => {
-    if ((params.daysPerStep ?? 0) > 0 && params.state.memories.length > 0) {
+    const hasExplicitEventTime = Boolean(
+      event.occurredAt &&
+      event.occurredAt !== UNKNOWN_EVENT_OCCURRED_AT &&
+      Number.isFinite(Date.parse(event.occurredAt)),
+    );
+    // daysPerStep is a legacy memory-only simulation control. Explicit event
+    // timestamps own elapsed-time recovery and must not be decayed twice.
+    if ((params.daysPerStep ?? 0) > 0 && params.state.memories.length > 0 && !hasExplicitEventTime) {
       params.state.memories = decayMemories(params.state.memories, params.daysPerStep ?? 0);
       params.state.clusters = syncClustersWithGalaxyMetrics(params.state.clusters, params.state.memories);
     }
@@ -79,6 +89,7 @@ function snapshot(
     velocity: coordinateToRecord(state.velocity),
     coordinate: coordinateToRecord(step.coordinateDrift.after),
     boundaryImpact: step.boundaryImpact,
-    galaxyTrace: toGalaxyStepTrace(step)
+    galaxyTrace: toGalaxyStepTrace(step),
+    temporalSemantics: step.temporalSemantics,
   };
 }

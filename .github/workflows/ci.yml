@@ -59,6 +59,9 @@ jobs:
       - name: Determinism Boundary
         run: npm run test:determinism
 
+      - name: Temporal Semantics Audit
+        run: npm run test:temporal
+
       - name: LLM Boundary Harness
         run: npm run export:llm-harness && npm run test:llm-boundary
 

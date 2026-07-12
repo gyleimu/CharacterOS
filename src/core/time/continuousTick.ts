@@ -56,6 +56,7 @@ import { buildProceduralDecaySubProcessTrace } from "../temporal/subprocesses/pr
 import { buildBoundaryRecoverySubProcessTrace } from "../temporal/subprocesses/boundaryRecoverySubProcess";
 import { buildRewardRecoverySubProcessTrace } from "../temporal/subprocesses/rewardRecoverySubProcess";
 import type { TemporalSubProcessTrace } from "../temporal/subProcessTrace";
+import { advanceTemporalStateByDays } from "./eventTemporalSemantics";
 
 export interface ContinuousTickOptions {
   daysElapsed?: number;
@@ -127,6 +128,8 @@ export interface ContinuousTickTrace {
   effectiveDeepThinkingThreshold: number;
   deepThinkingRecommended: boolean;
   reasons: string[];
+  temporalClockBefore: string | null;
+  temporalClockAfter: string | null;
 }
 
 // =========================================================================
@@ -170,6 +173,7 @@ export function runContinuousTick(
   // Phase 1: snapshot — capture pre-tick baselines before any mutation.
   // ═══════════════════════════════════════════════════════════════════
   const normalizedOptions = normalizeContinuousTickOptions(options);
+  const temporalClockBefore = state.temporal.lastProcessedAt;
   const daysElapsed = normalizedOptions.daysElapsed;
   const baseMemoryDecayRate = normalizedOptions.memoryDecayRate;
   const baseDeepThinkingThreshold = normalizedOptions.deepThinkingThreshold;
@@ -424,6 +428,8 @@ export function runContinuousTick(
     reasons: timePerception.reasons
   });
 
+  state.temporal = advanceTemporalStateByDays(state.temporal, daysElapsed);
+
   return {
     daysElapsed,
     phases,
@@ -458,7 +464,9 @@ export function runContinuousTick(
     effectiveMemoryDecayRate: memoryDecayRate,
     effectiveDeepThinkingThreshold: deepThinkingThreshold,
     deepThinkingRecommended: reasons.length > 0,
-    reasons
+    reasons,
+    temporalClockBefore,
+    temporalClockAfter: state.temporal.lastProcessedAt,
   };
 }
 

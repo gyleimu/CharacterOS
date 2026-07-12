@@ -31,8 +31,14 @@ export function deterministicId(prefix: string, ...parts: string[]): string {
 /**
  * Deterministic content-based ID for event studio drafts without sourceId.
  */
-export function deterministicDraftId(naturalLanguageInput: string, tags?: string[]): string {
-  return deterministicId("draft", naturalLanguageInput, (tags ?? []).join(","));
+export function deterministicDraftId(
+  naturalLanguageInput: string,
+  tags?: string[],
+  occurredAt?: string,
+): string {
+  const parts = [naturalLanguageInput, (tags ?? []).join(",")];
+  if (occurredAt) parts.push(occurredAt);
+  return deterministicId("draft", ...parts);
 }
 
 /**

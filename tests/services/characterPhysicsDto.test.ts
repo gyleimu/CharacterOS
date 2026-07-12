@@ -20,7 +20,8 @@ const event: ExperienceEvent = {
   importance: 0.8,
   relationshipWeight: 0.9,
   expectationGap: 0.8,
-  personalitySensitivity: 0.9
+  personalitySensitivity: 0.9,
+  occurredAt: "2026-07-13T00:00:00.000Z",
 };
 
 describe("Character Physics DTO adapters", () => {
@@ -40,6 +41,8 @@ describe("Character Physics DTO adapters", () => {
     expect(response.worldInterpretation.frame).toBe("rejection");
     expect(response.galaxyTrace.totalForce.values.trust).toBeLessThan(0);
     expect(response.galaxyTrace.nextVelocity.values.trust).toBeLessThan(0);
+    expect(response.temporalSemantics.mode).toBe("first_timed_event");
+    expect(response.state.temporal?.lastProcessedAt).toBe("2026-07-13T00:00:00.000Z");
     expect(encoded).toContain("memory_dto_event_1");
   });
 

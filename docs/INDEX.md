@@ -7,6 +7,12 @@
 | [Core Calibration & Durability Roadmap](core_calibration_durability_roadmap.md) | LLM safety, temporal semantics, model calibration, durable state, and dependency governance |
 | [Dependency Security Policy](dependency_security_policy.md) | High/critical CI blocking, moderate risk registry, and compatible upgrade policy |
 
+## Temporal Semantics
+
+| Doc | Description |
+|-----|-------------|
+| [Temporal Semantics Core Report](v14.0_temporal_semantics_report.md) | Event clock, density saturation, elapsed-time recovery, ordering safety, replay audit, and residual calibration risks |
+
 ## V13 LLM Boundary & Determinism
 
 | Doc | Description |
@@ -114,5 +120,5 @@
 
 ---
 
-**Current Line:** V13.9 Mock-only LLM Boundary RC on top of V10/V11/V12 RCs
-**Last Updated:** 2026-07-12
+**Current Line:** Temporal Semantics core complete on top of V13.9 Mock-only LLM Boundary RC
+**Last Updated:** 2026-07-13

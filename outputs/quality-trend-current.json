@@ -1,6 +1,6 @@
 {
   "trendVersion": "10.76.0",
-  "comparedAt": "2026-07-12T12:29:18.725Z",
+  "comparedAt": "2026-07-12T18:08:34.681Z",
   "hasBaseline": true,
   "trendVerdict": "STABLE",
   "verdictDelta": "PASS → PASS",
@@ -8,7 +8,7 @@
   "failureDelta": 0,
   "current": {
     "version": "10.75.0",
-    "capturedAt": "2026-07-12T12:29:18.724Z",
+    "capturedAt": "2026-07-12T18:08:34.680Z",
     "qualityVerdict": "PASS",
     "releaseReady": true,
     "failureCount": 0,

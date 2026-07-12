@@ -12,12 +12,14 @@ describe("V10.75 Unified Quality Gate", { timeout: 30000 }, () => {
     expect(gate.benchmarkSummary).toBeDefined();
     expect(gate.realityGateResult).toBeDefined();
     expect(gate.realityGateResult.suites.realityAudit).toBeDefined();
+    expect(gate.temporalSemanticsAuditResult).toBeDefined();
   });
 
   it("passes when benchmark pass and reality gate has only allowed WARN", () => {
     // Current system: benchmark should pass, reality gate is WARN (documented)
     expect(gate.unifiedSummary.benchmarkPassed).toBe(true);
     expect(gate.unifiedSummary.realityGatePassed).toBe(true);
+    expect(gate.unifiedSummary.temporalSemanticsPassed).toBe(true);
     expect(gate.qualityVerdict.passed).toBe(true);
     expect(gate.failures).toHaveLength(0);
   });
@@ -158,5 +160,15 @@ describe("V10.75 Unified Quality Gate", { timeout: 30000 }, () => {
   it("skipDeterminism config skips the audit", () => {
     const gateNoDet = runUnifiedQualityGate({ skipDeterminism: true });
     expect(gateNoDet.determinismAuditResult).toBeNull();
+  });
+
+  it("includes temporal semantics audit and supports explicitly skipping it", () => {
+    expect(gate.temporalSemanticsAuditResult?.gateVerdict.level).toBe("PASS");
+    const skipped = runUnifiedQualityGate({
+      skipDeterminism: true,
+      skipTemporalSemantics: true,
+    });
+    expect(skipped.temporalSemanticsAuditResult).toBeNull();
+    expect(skipped.unifiedSummary.temporalSemanticsPassed).toBe(true);
   });
 });

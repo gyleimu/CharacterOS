@@ -16,4 +16,6 @@ export interface ExperienceEvent {
   coordinateDelta?: Partial<PersonalityCoordinateValues>;
   beliefEffect?: string;
   rationale?: string;
+  /** Optional ISO-8601 event time consumed by Temporal Semantics. */
+  occurredAt?: string;
 }

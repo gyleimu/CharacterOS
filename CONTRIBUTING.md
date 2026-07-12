@@ -21,6 +21,7 @@ npm run test:reality   # Core Reality Gate
 npm run test:quality   # Unified Quality Gate (benchmark + reality)
 npm run test:trend     # Quality Trend Baseline
 npm run test:determinism # Determinism Boundary Audit
+npm run test:temporal  # Temporal Semantics Audit
 npm run test:llm-quality # LLM Boundary Quality Gate
 npm run test:security  # Dependency Security Gate (high/critical)
 npm run rc:verify      # All gates (RC verification)
@@ -35,6 +36,7 @@ Any core logic change must pass:
 - **Quality Trend**: Not REGRESSED, 0 high-severity regression flags
 - **LLM Boundary Quality Gate**: PASS, 0 unsafe deliveries, 0 replay failures
 - **Dependency Security Gate**: 0 high/critical; moderate findings must be registered
+- **Temporal Semantics Audit**: PASS; concentration, recovery, ordering and replay checks all pass
 
 ## Adding New Event Types
 
@@ -63,6 +65,6 @@ Any core logic change must pass:
 ## Project Boundaries
 
 - **Single-character only** — No multi-character or relationship networks
-- **API-only** — No frontend, no dashboard, no visualization
+- **Headless core** — Frontend and MindSpace may observe DTOs, but cannot import mutation internals or write state directly
 - **No deployment** — Local development only
 - **V20 is not started** — Do not begin multi-character work

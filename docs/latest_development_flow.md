@@ -8,6 +8,7 @@ V10 RC: 核心物理引擎稳定，12 个审计套件，7 个质量门，0 activ
 V11 RC: Explorer 单角色探索平台，6 个模块，static artifact。
 V12 RC: Agent SDK，9 个模块，6 个 service methods，static harness。
 V13 已将 LLM Boundary foundation 与 Determinism Boundary hardening 收敛到同一集成分支。V13.9 已完成 Mock Provider、Output Validator、Grounding Checker、Deterministic Fallback、18-case Quality Gate、静态 Harness 与 Mock-only RC seal。
+Temporal Semantics 已完成：事件时间、24 小时密度饱和、事件间 recovery/decay、人格 velocity 半衰期、乱序保护和确定性回放已经进入 `processEvent()` 核心链路，并由独立质量门守卫。
 V12 是 SDK 接口层，不是聊天 UI。V20 Relationship Engine 未开始。
 
 核心风险治理与后续验收标准以 [`core_calibration_durability_roadmap.md`](core_calibration_durability_roadmap.md) 为准。执行顺序固定为：LLM Boundary RC、时间语义、人格校准、可靠持久化、真实 Provider 评估。
@@ -204,23 +205,25 @@ finalStateForCommit, commit preview, commit apply, commit audit, commit rollback
 1. 保持现有 Character Physics Core 可运行。
 2. V10 Continuous Life 闭环稳定。
 3. V13.9 LLM Boundary RC 保持封存，不接真实模型 Provider。
-4. 保持 Explorer/MindSpace 只读，不继续用视觉包装替代核心真实性工作。
-5. 不做多角色、关系系统、世界模拟。
-6. 不继续堆 benchmark case。
-7. 确保 build、test、next:build、benchmark 全部通过。
+4. Temporal Semantics 保持 7/7 cases、21/21 assertions 全通过。
+5. 下一阶段只做 Parameter Registry、Golden Trajectory、敏感性与属性测试。
+6. 保持 Explorer/MindSpace 只读，不继续用视觉包装替代核心真实性工作。
+7. 不做多角色、关系系统、世界模拟。
+8. 不继续堆无校准目标的 benchmark case。
+9. 确保 build、test、next:build 和全部质量门通过。
 ```
 
 ## V13 之后的核心硬化顺序
 
 ```text
 V13.9 LLM Boundary QA / RC
--> Temporal Semantics
--> Golden Trajectory + Parameter Registry
+-> Temporal Semantics (complete)
+-> Parameter Registry + Golden Trajectory (next)
 -> Event Store + Transactional Snapshot
 -> Real Provider Evaluation
 ```
 
-其中 Temporal Semantics 优先于人格参数继续校准。只要事件次数仍可能替代真实 elapsed time，新增权重校准就没有可靠基础。
+Temporal Semantics 已解除“事件调用次数直接替代 elapsed time”的主要风险。下一步必须把散落参数收敛到版本化注册表，并用轨迹合理区间校准，不能声称当前工程系数具有心理学实证效度。
 
 真实 Provider 的进入门槛是：0 unsafe delivery、0 ungrounded delivery、0 mutation/writeback authority、断网时 deterministic fallback 可用。持久化的进入门槛是 Event Log 可重放、写入幂等、expected version 冲突可检测、Snapshot 可验证。
 
@@ -238,9 +241,9 @@ V13.9 LLM Boundary QA / RC
 ## 当前版本
 
 ```text
-CharacterOS V13.9 Mock-only LLM Boundary RC
+CharacterOS Temporal Semantics core stage complete on top of V13.9 Mock-only LLM Boundary RC
 V10 Core / V11 Explorer / V12 Agent SDK RC 保持封存
 27 API routes + MindSpace read-only surface + offline LLM Boundary Harness
-Build / Test / Next build / Core Reality / Unified Quality / Determinism / LLM Quality 必须全部通过
-Next: Temporal Semantics，随后 Golden Trajectory / Parameter Registry
+Build / Test / Next build / Core Reality / Unified Quality / Determinism / Temporal / LLM Quality 必须全部通过
+Next: Versioned Parameter Registry + Golden Trajectory
 ```

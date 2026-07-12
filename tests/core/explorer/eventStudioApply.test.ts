@@ -113,6 +113,10 @@ describe("V11.3 Event Studio Apply Boundary", () => {
     expect(result.applied).toBe(true);
     // Target was mutated
     expect(target.memories.length).not.toBe(memBefore);
+    const trustTransition = result.stateDeltaSummary.match(/trust: ([0-9.]+)→([0-9.]+)/);
+    expect(trustTransition).not.toBeNull();
+    expect(trustTransition?.[1]).toBe(trustBefore.toFixed(3));
+    expect(trustTransition?.[2]).toBe(target.coordinate.values.trust.toFixed(3));
   });
 
   // ── Audit Entry ──
@@ -202,6 +206,34 @@ describe("V11.3 Event Studio Apply Boundary", () => {
     expect(r1.auditEntry!.auditId).toBe(r2.auditEntry!.auditId);
   });
 
+  it("uses event time in deterministic audit identity", () => {
+    const buildInput = (occurredAt: string) => {
+      const draft = buildEventStudioDraft({
+        naturalLanguageInput: "王雪主动解释并陪伴。",
+        tags: ["解释", "支持"],
+        sourceId: "same_source",
+        occurredAt,
+      });
+      const preview = buildPreview({
+        draft,
+        baselineState: baseline,
+        followUpScenario: scenario,
+        previewMode: "full_preview",
+      });
+      return {
+        baselineState: baseline,
+        draft,
+        preview,
+        confirmation: "apply",
+        applyReason: "time identity test",
+        actorId: "u1",
+      };
+    };
+    const first = applyEventStudioEvent(buildInput("2026-07-01T00:00:00.000Z"));
+    const second = applyEventStudioEvent(buildInput("2026-07-02T00:00:00.000Z"));
+    expect(first.auditEntry?.auditId).not.toBe(second.auditEntry?.auditId);
+  });
+
   // ── Repeat events ──
 
   it("repetitionCount > 1 applies multiple times", () => {
@@ -225,5 +257,39 @@ describe("V11.3 Event Studio Apply Boundary", () => {
     expect(result.applied).toBe(true);
     // Should have 3 new memories
     expect(target.memories.length).toBe(beforeMem + 3);
+  });
+
+  it("propagates occurredAt into applied memories and temporal audit state", () => {
+    const target = createCharacterStateFromBlueprint(createLinFanBlueprint(), { seedInitialExperiences: true });
+    const draft = buildEventStudioDraft({
+      naturalLanguageInput: "王雪再次失联。",
+      tags: ["失联"],
+      repetitionCount: 3,
+      sourceId: "d_timed_repeat",
+      occurredAt: "2026-07-13T08:00:00+08:00",
+      status: "previewed",
+    });
+    const preview = buildPreview({
+      draft,
+      baselineState: target,
+      followUpScenario: scenario,
+      previewMode: "full_preview",
+    });
+    const result = applyEventStudioEvent({
+      baselineState: target,
+      draft,
+      preview,
+      confirmation: "apply",
+      applyReason: "timed repeat test",
+      actorId: "u1",
+      options: { allowMutation: true },
+    });
+
+    expect(result.applied).toBe(true);
+    expect(target.memories.slice(-3).every((memory) => memory.timeStamp === "2026-07-13T00:00:00.000Z")).toBe(true);
+    expect(target.temporal.lastProcessedAt).toBe("2026-07-13T00:00:00.000Z");
+    expect(target.temporal.recentEvents.slice(-3).map((record) => record.densityScale)).toEqual(
+      [...target.temporal.recentEvents.slice(-3).map((record) => record.densityScale)].sort((a, b) => b - a),
+    );
   });
 });

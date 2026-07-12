@@ -58,7 +58,14 @@ export function previewEvent(
   options?: { previewMode?: "parse_only" | "impact_preview" | "full_preview" },
 ): EventStudioPreviewResponse {
   const state = getOrCreateState(characterId);
-  const fullDraft = buildEventStudioDraft({ ...draft, sourceId: draft.sourceId ?? deterministicDraftId(draft.naturalLanguageInput ?? "", draft.tags) });
+  const fullDraft = buildEventStudioDraft({
+    ...draft,
+    sourceId: draft.sourceId ?? deterministicDraftId(
+      draft.naturalLanguageInput ?? "",
+      draft.tags,
+      draft.occurredAt,
+    ),
+  });
 
   const relationshipScenario = {
     id: "explorer_service_scenario",

@@ -13,6 +13,7 @@ import type { HomeostasisState } from "../homeostasis/homeostasis";
 import { deriveCharacterState, type DerivedCharacterState } from "../state/derivedCharacterState";
 import { createCharacterPhysicsState, type CharacterPhysicsState } from "./physicsEngine";
 import type { CharacterIdentity } from "../character/characterBlueprint";
+import type { CharacterTemporalState } from "../time/eventTemporalSemantics";
 
 export interface SerializedImpactCluster {
   id: string;
@@ -42,6 +43,7 @@ export interface SerializedCharacterPhysicsState {
   rewardState?: RewardState;
   homeostasisState?: HomeostasisState;
   boredomState?: BoredomState;
+  temporal?: CharacterTemporalState;
   learningRate: number;
   derived: DerivedCharacterState;
   galaxy: PersonalityGalaxySnapshot;
@@ -66,6 +68,7 @@ export function serializeCharacterPhysicsState(
     rewardState: state.rewardState,
     homeostasisState: state.homeostasisState,
     boredomState: state.boredomState,
+    temporal: state.temporal,
     learningRate: state.learningRate,
     derived: deriveCharacterState(state),
     galaxy: simulatePersonalityGalaxyStep({
@@ -110,6 +113,9 @@ export function deserializeCharacterPhysicsState(
   }
   if (serialized.boredomState) {
     stateParams.boredomState = serialized.boredomState;
+  }
+  if (serialized.temporal) {
+    stateParams.temporal = serialized.temporal;
   }
   const state = createCharacterPhysicsState(stateParams);
   state.particles = [...serialized.particles];

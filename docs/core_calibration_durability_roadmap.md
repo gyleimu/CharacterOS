@@ -19,7 +19,7 @@
 | 阶段 | 目标 | 进入条件 | 完成标准 |
 |------|------|----------|----------|
 | V13.9 | LLM Boundary QA / RC | V13.8 离线闭环通过 | 独立质量门、对抗集、RC manifest、0 unsafe delivery |
-| Temporal Semantics | 解除事件次数与人格速度的错误绑定 | V13 RC 封存 | elapsed time、事件密度、恢复窗口进入核心积分 |
+| Temporal Semantics | 解除事件次数与人格速度的错误绑定 | V13 RC 封存 | ✅ 已完成：elapsed time、事件密度、恢复窗口进入核心积分，独立 Gate PASS |
 | Model Calibration | 建立可复现的人格轨迹校准体系 | 时间语义稳定 | Golden trajectory、参数注册表、敏感性和属性测试 |
 | Durable State | 建立可重放的持久化边界 | 状态 schema 稳定 | Event Store、事务、版本冲突、幂等与快照恢复 |
 | Provider Evaluation | 评估真实语言模型 Adapter | 前述质量门全部通过 | Provider 可替换、断网可用、无诊断和无越权写回 |
@@ -50,6 +50,8 @@ active warnings = 0
 
 ## Temporal Semantics
 
+状态：**已完成**。实现与数值验收见 [`v14.0_temporal_semantics_report.md`](v14.0_temporal_semantics_report.md)。
+
 ### 核心改造
 
 - 人格积分显式接收 `elapsedTime`，不再把一次事件调用等同于固定时间步。
@@ -66,7 +68,11 @@ active warnings = 0
 - 长期无事件必须向稳态恢复，而不是保持永久激活。
 - 同一带时间戳事件序列重放必须得到相同状态和审计结果。
 
+当前结果：7/7 audit cases、21/21 assertions、0 failures。下一阶段不得继续凭单个 fixture 调权重，应进入 Model Calibration。
+
 ## Model Calibration
+
+状态：**下一阶段**。第一步先建立版本化参数注册表，再建立 Golden Trajectory；不允许反过来用 fixture 倒逼散落 magic number。
 
 ### Golden Trajectory
 

@@ -8,6 +8,7 @@ import { runBenchmarkCases, type RunBenchmarkCasesResult } from "../benchmark/be
 import { firstReplayBenchmarkFixtures } from "../benchmark/fixtures/firstReplayFixtures";
 import { runCoreRealityRegressionGate, type CoreRealityGateResult, type GateConfig } from "./coreRealityRegressionGate";
 import { runDeterminismBoundaryAudit, type DeterminismBoundaryAuditResult } from "./determinismBoundaryAudit";
+import { runTemporalSemanticsAudit, type TemporalSemanticsAuditResult } from "./temporalSemanticsAudit";
 
 export type QualityVerdictLevel = "PASS" | "WARN" | "FAIL";
 
@@ -24,6 +25,8 @@ export interface UnifiedQualityGateConfig {
   skipBenchmark?: boolean;
   /** Whether to skip determinism audit (for faster iterations). Default false. */
   skipDeterminism?: boolean;
+  /** Whether to skip temporal semantics audit (for faster iterations). Default false. */
+  skipTemporalSemantics?: boolean;
 }
 
 export interface BenchmarkQualitySummary {
@@ -49,6 +52,7 @@ export interface UnifiedQualityGateResult {
   benchmarkSummary: BenchmarkQualitySummary | null;
   realityGateResult: CoreRealityGateResult;
   determinismAuditResult: DeterminismBoundaryAuditResult | null;
+  temporalSemanticsAuditResult: TemporalSemanticsAuditResult | null;
   unifiedSummary: {
     totalChecks: number;
     passed: number;
@@ -57,6 +61,7 @@ export interface UnifiedQualityGateResult {
     benchmarkPassed: boolean;
     realityGatePassed: boolean;
     determinismPassed: boolean;
+    temporalSemanticsPassed: boolean;
     overallPassed: boolean;
   };
   qualityVerdict: {
@@ -146,19 +151,40 @@ export function runUnifiedQualityGate(
     allReasons.push("Determinism Audit: SKIPPED");
   }
 
+  // ── Temporal Semantics Audit ──
+  let temporalSemanticsAuditResult: TemporalSemanticsAuditResult | null = null;
+  if (!cfg.skipTemporalSemantics) {
+    temporalSemanticsAuditResult = runTemporalSemanticsAudit();
+    if (!temporalSemanticsAuditResult.gateVerdict.passed) {
+      allFailures.push(
+        ...temporalSemanticsAuditResult.failures.map((failure) => `[temporal] ${failure}`),
+      );
+    }
+    allReasons.push(
+      `Temporal Semantics: ${temporalSemanticsAuditResult.gateVerdict.level} (${temporalSemanticsAuditResult.summary.passedCases}/${temporalSemanticsAuditResult.summary.totalCases} cases)`,
+    );
+  } else {
+    allReasons.push("Temporal Semantics: SKIPPED");
+  }
+
   // ── Combined verdict ──
   const benchmarkPassed = benchmarkSummary ? benchmarkSummary.verdict !== "FAIL" : true;
   const realityGatePassed = realityGateResult.gateVerdict.passed;
   const determinismPassed = determinismAuditResult ? determinismAuditResult.passed : true;
+  const temporalSemanticsPassed = temporalSemanticsAuditResult
+    ? temporalSemanticsAuditResult.gateVerdict.passed
+    : true;
 
   const totalChecks =
     (benchmarkSummary?.total ?? 0) +
     realityGateResult.summary.totalChecks +
-    (determinismAuditResult ? 1 : 0);
+    (determinismAuditResult ? 1 : 0) +
+    (temporalSemanticsAuditResult ? temporalSemanticsAuditResult.summary.totalCases : 0);
   const passedChecks =
     (benchmarkSummary?.passed ?? 0) +
     realityGateResult.summary.passed +
-    (determinismAuditResult?.passed ? 1 : 0);
+    (determinismAuditResult?.passed ? 1 : 0) +
+    (temporalSemanticsAuditResult?.summary.passedCases ?? 0);
   const warnedChecks =
     (benchmarkSummary ? (benchmarkSummary.verdict === "WARN" ? 1 : 0) : 0) +
     realityGateResult.summary.warned +
@@ -166,7 +192,8 @@ export function runUnifiedQualityGate(
   const failedChecks =
     (benchmarkSummary?.failed ?? 0) +
     realityGateResult.summary.failed +
-    (determinismAuditResult && !determinismAuditResult.passed ? 1 : 0);
+    (determinismAuditResult && !determinismAuditResult.passed ? 1 : 0) +
+    (temporalSemanticsAuditResult?.summary.failedCases ?? 0);
 
   const level: QualityVerdictLevel =
     allFailures.length > 0 ? "FAIL" :
@@ -185,6 +212,9 @@ export function runUnifiedQualityGate(
   }
   if (!determinismPassed) {
     blockers.push("Determinism boundary audit has failures — all core default paths must be deterministic");
+  }
+  if (!temporalSemanticsPassed) {
+    blockers.push("Temporal semantics audit has failures — event timing and recovery must pass before release");
   }
   if (allFailures.length > 0) {
     blockers.push(`${allFailures.length} unified failures detected`);
@@ -233,6 +263,7 @@ export function runUnifiedQualityGate(
     { id: "risk_benchmark_regression", description: "Benchmark directional assertions degrading", severity: "high", guardedBy: "benchmark.passRate" },
     { id: "risk_benchmark_coverage_gap", description: "Benchmark category coverage dropping", severity: "medium", guardedBy: "benchmark.coveredCategories" },
     { id: "risk_determinism_drift", description: "Non-deterministic defaults introduced into core paths", severity: "high", guardedBy: "determinismBoundaryAudit.forbiddenPatternFindings" },
+    { id: "risk_temporal_semantics_regression", description: "Event concentration, recovery, or ordering semantics regress", severity: "high", guardedBy: "temporalSemanticsAudit.gateVerdict" },
   ];
 
   return {
@@ -246,6 +277,7 @@ export function runUnifiedQualityGate(
     benchmarkSummary,
     realityGateResult,
     determinismAuditResult,
+    temporalSemanticsAuditResult,
     unifiedSummary: {
       totalChecks,
       passed: passedChecks,
@@ -254,6 +286,7 @@ export function runUnifiedQualityGate(
       benchmarkPassed,
       realityGatePassed,
       determinismPassed,
+      temporalSemanticsPassed,
       overallPassed: allFailures.length === 0,
     },
     qualityVerdict: {
@@ -340,6 +373,7 @@ function normalizeUnifiedConfig(config: UnifiedQualityGateConfig): Required<Unif
     realityGateConfig: config.realityGateConfig ?? {},
     skipBenchmark: config.skipBenchmark ?? false,
     skipDeterminism: config.skipDeterminism ?? false,
+    skipTemporalSemantics: config.skipTemporalSemantics ?? false,
   };
 }
 

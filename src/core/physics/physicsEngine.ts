@@ -1,6 +1,6 @@
 import { assimilateMemoryIntoBeliefs } from "../belief/beliefEvolution";
 import type { BeliefState } from "../belief/beliefState";
-import { calculateImpactScore, type ImpactScore } from "../benchmark/impact";
+import { calculateImpactScore, impactScore as createImpactScore, type ImpactScore } from "../benchmark/impact";
 import { clamp01, round4 } from "../parameters/parameterMath";
 import { defaultBiologicalNature, type BiologicalNature } from "../biological/nature";
 import { defaultBoredomState, type BoredomState } from "../boredom/boredomSystem";
@@ -23,7 +23,7 @@ import { getEventCategoryPhysics } from "../event/categoryPhysics";
 import type { ExperienceEvent } from "../event/event";
 import { classifyEventCategory, resolveEventCategory } from "../event/eventCategoryClassifier";
 import type { EventImpactVector } from "../event/impactVector";
-import { syncClusterWithGalaxyMetrics } from "../galaxy/clusterMetrics";
+import { syncClustersWithGalaxyMetrics, syncClusterWithGalaxyMetrics } from "../galaxy/clusterMetrics";
 import { simulatePersonalityGalaxyStep, type PersonalityGalaxySnapshot } from "../galaxy/personalityGalaxyEngine";
 import { createMemoryNode } from "../memory/memorySystem";
 import type { MemoryNode } from "../memory/memoryNode";
@@ -45,6 +45,17 @@ import {
   type RewardState
 } from "../reward/rewardSystem";
 import { perceiveEventTime, type TimePerceptionTrace } from "../time/timePerception";
+import { runContinuousTick } from "../time/continuousTick";
+import {
+  commitEventTemporalState,
+  createCharacterTemporalState,
+  personalityVelocityRetention,
+  planEventTemporalSemantics,
+  type CharacterTemporalState,
+  type EventTemporalPlan,
+  type EventTemporalRecoverySummary,
+  type EventTemporalTrace,
+} from "../time/eventTemporalSemantics";
 import { interpretEvent, type WorldModelInterpretation } from "../worldmodel/worldModel";
 import { evaluateEventAttention, type AttentionEvaluation } from "../attention/attentionSystem";
 import {
@@ -73,6 +84,7 @@ export interface CharacterPhysicsState {
   rewardState: RewardState;
   homeostasisState: HomeostasisState;
   boredomState: BoredomState;
+  temporal: CharacterTemporalState;
   learningRate: number;
 }
 
@@ -92,6 +104,8 @@ export interface PhysicsStepResult {
   worldInterpretation: WorldModelInterpretation;
   /** Per-event attention evaluation — diagnostic only, does NOT modify personality. */
   attentionEvaluation: AttentionEvaluation;
+  /** Elapsed-time recovery and event-density saturation applied before this step. */
+  temporalSemantics: EventTemporalTrace;
 }
 
 export function createCharacterPhysicsState(params?: {
@@ -107,6 +121,7 @@ export function createCharacterPhysicsState(params?: {
   rewardState?: RewardState;
   homeostasisState?: HomeostasisState;
   boredomState?: BoredomState;
+  temporal?: CharacterTemporalState;
   learningRate?: number;
 }): CharacterPhysicsState {
   const coordinate =
@@ -132,6 +147,7 @@ export function createCharacterPhysicsState(params?: {
     rewardState: params?.rewardState ?? defaultRewardState(),
     homeostasisState: params?.homeostasisState ?? defaultHomeostasisState(),
     boredomState: params?.boredomState ?? defaultBoredomState(),
+    temporal: createCharacterTemporalState(params?.temporal),
     learningRate: params?.learningRate ?? 0.03
   };
 }
@@ -140,10 +156,19 @@ export class CharacterPhysicsEngine {
   processEvent(state: CharacterPhysicsState, event: ExperienceEvent): PhysicsStepResult {
     const category = resolveEventCategory(event);
     const resolvedEvent = event.category === category ? event : { ...event, category };
-    const impactScore = calculateEventImpactScore(resolvedEvent);
-    const emotion = inferEmotion(resolvedEvent, impactScore);
+    const rawImpactScore = calculateEventImpactScore(resolvedEvent);
+    const temporalPlan = planEventTemporalSemantics({
+      temporal: state.temporal,
+      event: resolvedEvent,
+      category,
+      rawImpactValue: rawImpactScore.value,
+    });
+    const temporalRecovery = applyElapsedTimeRecovery(state, temporalPlan);
+    const temporalEvent = eventWithResolvedTime(resolvedEvent, temporalPlan);
+    const impactScore = createImpactScore(temporalPlan.effectiveImpactValue);
+    const emotion = inferEmotion(temporalEvent, impactScore);
     const particle = createParticleForEvent(
-      resolvedEvent,
+      temporalEvent,
       category,
       emotion,
       impactScore,
@@ -151,25 +176,25 @@ export class CharacterPhysicsEngine {
     );
     const { cluster, memoryNode } = absorbEventIntoMemoryGalaxy({
       state,
-      event: resolvedEvent,
+      event: temporalEvent,
       category,
       particle,
       impactScore,
       emotion
     });
-    const boundaryImpact = applyEventBoundaryImpact({ state, event: resolvedEvent, impactScore });
-    const proceduralActivations = updateProceduralRoutinesForEvent({ state, event: resolvedEvent });
-    const rewardResult = updateRewardForEvent({ state, event: resolvedEvent, category, proceduralActivations });
+    const boundaryImpact = applyEventBoundaryImpact({ state, event: temporalEvent, impactScore });
+    const proceduralActivations = updateProceduralRoutinesForEvent({ state, event: temporalEvent });
+    const rewardResult = updateRewardForEvent({ state, event: temporalEvent, category, proceduralActivations });
     const timePerception = perceiveEventTime({
-      event: resolvedEvent,
+      event: temporalEvent,
       emotion,
       meta: state.metaState,
       boundary: state.boundary,
       reward: state.rewardState
     });
-    const worldInterpretation = interpretEventWithCurrentBeliefs({ state, event: resolvedEvent, emotion, timePerception });
+    const worldInterpretation = interpretEventWithCurrentBeliefs({ state, event: temporalEvent, emotion, timePerception });
     const attentionEvaluation = evaluateEventAttention({
-      event: resolvedEvent,
+      event: temporalEvent,
       meta: state.metaState,
       boundary: state.boundary
     });
@@ -179,9 +204,21 @@ export class CharacterPhysicsEngine {
       category,
       impactScore,
     });
+    state.temporal = commitEventTemporalState({
+      temporal: state.temporal,
+      event: temporalEvent,
+      category,
+      plan: temporalPlan,
+    });
+    const temporalSemantics: EventTemporalTrace = {
+      ...temporalPlan,
+      recovery: temporalRecovery,
+      clockAfter: state.temporal.lastProcessedAt,
+      processedEventCountAfter: state.temporal.processedEventCount,
+    };
 
     return {
-      event: resolvedEvent,
+      event: temporalEvent,
       emotion,
       impactScore,
       particle,
@@ -194,9 +231,20 @@ export class CharacterPhysicsEngine {
       rewardResult,
       timePerception,
       worldInterpretation,
-      attentionEvaluation
+      attentionEvaluation,
+      temporalSemantics,
     };
   }
+}
+
+function eventWithResolvedTime(
+  event: ExperienceEvent,
+  plan: EventTemporalPlan,
+): ExperienceEvent {
+  const { occurredAt: _ignored, ...withoutTime } = event;
+  return plan.resolvedOccurredAt
+    ? { ...withoutTime, occurredAt: plan.resolvedOccurredAt }
+    : withoutTime;
 }
 
 function calculateEventImpactScore(event: ExperienceEvent): ImpactScore {
@@ -247,6 +295,7 @@ function absorbEventIntoMemoryGalaxy(params: {
     impactScore: params.impactScore,
     emotion: params.emotion,
     clusterId: absorbedCluster.id,
+    ...(params.event.occurredAt ? { timeStamp: params.event.occurredAt } : {}),
     // Each runtime event is already represented by its own MemoryNode.
     // Repetition counts above 1 are reserved for imported aggregate memories.
     repetitionCount: 1
@@ -256,6 +305,58 @@ function absorbEventIntoMemoryGalaxy(params: {
   const cluster = syncClusterWithGalaxyMetrics(absorbedCluster, params.state.memories);
   params.state.clusters.set(params.category, cluster);
   return { cluster, memoryNode };
+}
+
+function applyElapsedTimeRecovery(
+  state: CharacterPhysicsState,
+  plan: EventTemporalPlan,
+): EventTemporalRecoverySummary {
+  const before = captureTemporalRecoveryState(state);
+  const retention = personalityVelocityRetention(plan.elapsedDaysApplied);
+
+  if (plan.elapsedDaysApplied > 0) {
+    runContinuousTick(state, { daysElapsed: plan.elapsedDaysApplied });
+    state.clusters = syncClustersWithGalaxyMetrics(state.clusters, state.memories);
+    const velocity = zeroCoordinateDelta();
+    for (const key of BASE_PERSONALITY_KEYS) {
+      velocity.values[key] = round4(state.velocity.values[key] * retention);
+    }
+    state.velocity = velocity;
+  }
+
+  const after = captureTemporalRecoveryState(state);
+  return {
+    applied: plan.elapsedDaysApplied > 0,
+    daysApplied: plan.elapsedDaysApplied,
+    boundaryStressBefore: before.boundaryStress,
+    boundaryStressAfter: after.boundaryStress,
+    averageMemoryRecencyBefore: before.averageMemoryRecency,
+    averageMemoryRecencyAfter: after.averageMemoryRecency,
+    clusterMassBefore: before.clusterMass,
+    clusterMassAfter: after.clusterMass,
+    velocityMagnitudeBefore: before.velocityMagnitude,
+    velocityMagnitudeAfter: after.velocityMagnitude,
+    velocityRetention: retention,
+  };
+}
+
+function captureTemporalRecoveryState(state: CharacterPhysicsState): {
+  boundaryStress: number;
+  averageMemoryRecency: number;
+  clusterMass: number;
+  velocityMagnitude: number;
+} {
+  const recencyTotal = state.memories.reduce((sum, memory) => sum + memory.recency, 0);
+  const clusterMass = [...state.clusters.values()].reduce((sum, cluster) => sum + cluster.mass, 0);
+  const velocityMagnitude = Math.sqrt(
+    BASE_PERSONALITY_KEYS.reduce((sum, key) => sum + state.velocity.values[key] ** 2, 0),
+  );
+  return {
+    boundaryStress: round4(state.boundary.stressLoad),
+    averageMemoryRecency: round4(state.memories.length ? recencyTotal / state.memories.length : 0),
+    clusterMass: round4(clusterMass),
+    velocityMagnitude: round4(velocityMagnitude),
+  };
 }
 
 function applyEventBoundaryImpact(params: {

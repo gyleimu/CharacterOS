@@ -54,5 +54,20 @@ describe("CharacterPhysicsState serialization", () => {
     expect(restored.coordinate.values.trust).toBeCloseTo(state.coordinate.values.trust);
     expect(serialized.galaxy.forces).toHaveLength(1);
     expect(serialized.galaxy.clusterMetrics[0]?.metrics.mass).toBeGreaterThan(0);
+    expect(restored.temporal.processedEventCount).toBe(1);
+    expect(restored.temporal.timedEventCount).toBe(0);
+  });
+
+  it("loads pre-temporal serialized states with an empty logical clock", () => {
+    const state = createCharacterPhysicsState({ coordinate: linFanInitialCoordinate() });
+    const serialized = serializeCharacterPhysicsState(state);
+    const legacy = { ...serialized };
+    delete legacy.temporal;
+
+    const restored = deserializeCharacterPhysicsState(legacy);
+
+    expect(restored.temporal.lastProcessedAt).toBeNull();
+    expect(restored.temporal.processedEventCount).toBe(0);
+    expect(restored.temporal.recentEvents).toEqual([]);
   });
 });

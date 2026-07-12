@@ -61,6 +61,7 @@ export function buildEventStudioPreview(
   const parseInput: Parameters<typeof parseExperienceEvent>[0] = {
     description: draft.naturalLanguageInput,
     categoryHint: "auto",
+    occurredAt: draft.occurredAt,
   };
   if (draft.tags.length > 0) parseInput.tags = draft.tags;
   const parsed = parseExperienceEvent(parseInput);
@@ -94,7 +95,7 @@ export function buildEventStudioPreview(
   // ── Parse-only mode: stop here ──
   if (mode === "parse_only") {
     return buildDto({
-      draftId: draft.sourceId || deterministicDraftId(draft.naturalLanguageInput, draft.tags),
+      draftId: draft.sourceId || deterministicDraftId(draft.naturalLanguageInput, draft.tags, draft.occurredAt),
       parsed: parsedSummary,
       impact: impactPreview,
       memory: memoryPreview,
@@ -114,7 +115,7 @@ export function buildEventStudioPreview(
     const personalityPreview = buildPersonalityStub(parsed);
 
     return buildDto({
-      draftId: draft.sourceId || deterministicDraftId(draft.naturalLanguageInput, draft.tags),
+      draftId: draft.sourceId || deterministicDraftId(draft.naturalLanguageInput, draft.tags, draft.occurredAt),
       parsed: parsedSummary,
       impact: impactPreview,
       memory: memoryPreview,
@@ -133,21 +134,23 @@ export function buildEventStudioPreview(
 
   // Apply repeated events on clone
   for (let i = 0; i < draft.repetitionCount; i++) {
-    engine.processEvent(cloned, parsed);
+    const step = engine.processEvent(cloned, parsed);
+    warnings.push(...step.temporalSemantics.warnings.map((warning) => `Temporal Semantics: ${warning}`));
   }
 
   // Run reality audit on clone
-  let auditWarnings: string[] = [...warnings];
+  let auditWarnings: string[] = [...new Set(warnings)];
   if (input.followUpScenario) {
     try {
       const audit = runRealityAudit({
-        id: `preview_${draft.sourceId || deterministicDraftId(draft.naturalLanguageInput, draft.tags)}`,
+        id: `preview_${draft.sourceId || deterministicDraftId(draft.naturalLanguageInput, draft.tags, draft.occurredAt)}`,
         label: `Preview: ${draft.naturalLanguageInput.slice(0, 40)}`,
         baselineState: input.baselineState,
         eventInput: {
           description: draft.naturalLanguageInput,
           tags: draft.tags,
           categoryHint: (parsed.category || "general") as "abandonment" | "support" | "betrayal" | "success" | "failure" | "rejection" | "conflict" | "fatigue" | "uncertainty" | "general" | "auto",
+          occurredAt: draft.occurredAt,
         },
         followUpDecisionScenario: input.followUpScenario,
       });
@@ -179,7 +182,7 @@ export function buildEventStudioPreview(
   };
 
   return buildDto({
-    draftId: draft.sourceId || deterministicDraftId(draft.naturalLanguageInput, draft.tags),
+    draftId: draft.sourceId || deterministicDraftId(draft.naturalLanguageInput, draft.tags, draft.occurredAt),
     parsed: parsedSummary,
     impact: impactPreview,
     memory: buildMemoryPreviewFromSimulation(cloned, input.baselineState, parsed),
