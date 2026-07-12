@@ -40,7 +40,7 @@ describe("Repository release consistency", () => {
     expect(docs).not.toContain("不恢复用户可见前端");
   });
 
-  it("contains both V13 foundation lines", () => {
+  it("contains the V13 foundation and offline execution boundary", () => {
     const required = [
       "src/core/llmBoundary/llmBoundaryTypes.ts",
       "src/core/llmBoundary/llmBoundaryBuilders.ts",
@@ -48,6 +48,13 @@ describe("Repository release consistency", () => {
       "src/core/audit/determinismBoundaryAudit.ts",
       "src/core/audit/determinismAstScanner.ts",
       "src/core/deterministicHelpers.ts",
+      "src/core/llmBoundary/mockLlmProvider.ts",
+      "src/core/llmBoundary/llmOutputValidator.ts",
+      "src/core/llmBoundary/llmGroundingChecker.ts",
+      "src/core/llmBoundary/llmFallbackReplyGenerator.ts",
+      "src/core/llmBoundary/llmBoundaryService.ts",
+      "outputs/llm-boundary-harness/index.html",
+      "outputs/llm-boundary-harness/manifest.json",
     ];
     expect(required.filter((file) => !exists(file))).toEqual([]);
   });

@@ -1,6 +1,6 @@
 {
   "auditVersion": "13.5.0",
-  "auditedAt": "2026-07-10T00:44:06.766Z",
+  "auditedAt": "2026-07-12T12:05:32.755Z",
   "passed": true,
   "releaseReady": true,
   "summary": {
@@ -682,8 +682,8 @@
     {
       "functionName": "buildLLMBoundaryInstructions",
       "passed": true,
-      "run1": "\"LLM is at planned boundary only — not executed. | Do NOT generate final chat prose. | Do NOT mutate character state. | Do NOT invent events or personality claims. | Do NOT produce medical/psychologic",
-      "run2": "\"LLM is at planned boundary only — not executed. | Do NOT generate final chat prose. | Do NOT mutate character state. | Do NOT invent events or personality claims. | Do NOT produce medical/psychologic",
+      "run1": "\"LLM is restricted to the V13 language realization boundary. | Generate prose only from the structured reply plan. | Do NOT mutate character state. | Do NOT invent events or personality claims. | Do N",
+      "run2": "\"LLM is restricted to the V13 language realization boundary. | Generate prose only from the structured reply plan. | Do NOT mutate character state. | Do NOT invent events or personality claims. | Do N",
       "identical": true,
       "note": "LLM boundary instructions are static text"
     },

@@ -32,8 +32,8 @@ CharacterIdentity
 当前阶段：
 
 ```text
-CharacterOS — Core Kernel · Explorer Platform · Agent SDK · LLM Boundary Foundation
-V10/V11/V12 RC artifacts remain sealed; V13 integration hardening is in progress.
+CharacterOS — Core Kernel · Explorer Platform · Agent SDK · LLM Boundary
+V10/V11/V12 RC artifacts remain sealed; V13.8 offline Mock Provider Harness is complete.
 ```
 
 当前项目状态：
@@ -55,7 +55,7 @@ no server deployment  — 不做服务器部署
 
 ```text
 npm run build        tsc --noEmit
-npm test             178 files / 2408 tests / 0 failures
+npm test             180 files / 2447 tests / 0 failures
 npm run next:build   Explorer/MindSpace 页面 + API routes
 ```
 
@@ -391,6 +391,7 @@ npm run next:dev
 http://localhost:3000/           MindSpace 3D
 http://localhost:3000/mindspace  MindSpace 3D 独立入口
 outputs/characteros-explorer/    离线 Explorer artifact
+outputs/llm-boundary-harness/    离线 LLM Boundary 审计 Harness
 ```
 
 V0.9 新增心理动力状态面板：

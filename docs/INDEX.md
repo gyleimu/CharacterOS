@@ -12,6 +12,7 @@
 | [V13.5 AST Scanner](v13.5_ast_determinism_scanner_hardening_report.md) | Context-aware runtime nondeterminism scanner |
 | [V13.6 Branch Reconciliation](v13.6_branch_test_coverage_reconciliation_report.md) | LLM and determinism branches integrated into one release line |
 | [V13.7 LLM Boundary Integration](v13.7_llm_boundary_integration_qa_report.md) | Agent reply plan to safe offline LLM boundary preview |
+| [V13.8 Mock Provider Harness](v13.8_mock_provider_harness_report.md) | Offline provider, validation, grounding, fallback, and static audit artifact |
 
 ## V12 Agent SDK (Complete RC)
 
@@ -105,5 +106,5 @@
 
 ---
 
-**Current Line:** V13 integration hardening on top of V10/V11/V12 RCs
-**Last Updated:** 2026-07-10
+**Current Line:** V13.8 offline LLM Boundary closed loop on top of V10/V11/V12 RCs
+**Last Updated:** 2026-07-12

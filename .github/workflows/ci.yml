@@ -56,5 +56,8 @@ jobs:
       - name: Determinism Boundary
         run: npm run test:determinism
 
+      - name: LLM Boundary Harness
+        run: npm run export:llm-harness && npm run test:llm-boundary
+
       - name: Repository Release Consistency
         run: npm run test:repository

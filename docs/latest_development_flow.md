@@ -7,7 +7,7 @@
 V10 RC: 核心物理引擎稳定，12 个审计套件，7 个质量门，0 active warnings。
 V11 RC: Explorer 单角色探索平台，6 个模块，static artifact。
 V12 RC: Agent SDK，9 个模块，6 个 service methods，static harness。
-V13 已将 LLM Boundary foundation 与 Determinism Boundary hardening 收敛到同一集成分支。
+V13 已将 LLM Boundary foundation 与 Determinism Boundary hardening 收敛到同一集成分支。V13.8 已完成离线 Mock Provider、Output Validator、Grounding Checker、Deterministic Fallback 与静态 Harness。
 V12 是 SDK 接口层，不是聊天 UI。V20 Relationship Engine 未开始。
 
 后续开发以这份流程为准：
@@ -201,7 +201,7 @@ finalStateForCommit, commit preview, commit apply, commit audit, commit rollback
 ```text
 1. 保持现有 Character Physics Core 可运行。
 2. V10 Continuous Life 闭环稳定。
-3. 为"诗云式产品形态"做最小可用体验准备。
+3. 完成 V13.9 LLM Boundary QA / RC，不接真实模型 Provider。
 4. 保持 Explorer/MindSpace 只读，不继续用视觉包装替代核心真实性工作。
 5. 不做多角色、关系系统、世界模拟。
 6. 不继续堆 benchmark case。
@@ -222,8 +222,9 @@ finalStateForCommit, commit preview, commit apply, commit audit, commit rollback
 ## 当前版本
 
 ```text
-CharacterOS V10.29
-129 test files / 1363 tests / 0 failures
-26 API routes
-Build ✅ Test ✅ Next:build ✅ Benchmark V2.1 ✅
+CharacterOS V13.8 integration line
+V10 Core / V11 Explorer / V12 Agent SDK RC 保持封存
+27 API routes + MindSpace read-only surface + offline LLM Boundary Harness
+Build / Test / Next build / Core Reality / Unified Quality / Determinism 必须全部通过
+Next: V13.9 LLM Boundary QA / RC
 ```
