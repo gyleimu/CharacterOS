@@ -21,6 +21,7 @@ import type { CoordinateDriftResult } from "../drift/coordinateDrift";
 import type { EmotionState } from "../emotion/emotion";
 import { getEventCategoryPhysics } from "../event/categoryPhysics";
 import type { ExperienceEvent } from "../event/event";
+import { classifyEventCategory, resolveEventCategory } from "../event/eventCategoryClassifier";
 import type { EventImpactVector } from "../event/impactVector";
 import { syncClusterWithGalaxyMetrics } from "../galaxy/clusterMetrics";
 import { simulatePersonalityGalaxyStep, type PersonalityGalaxySnapshot } from "../galaxy/personalityGalaxyEngine";
@@ -137,38 +138,50 @@ export function createCharacterPhysicsState(params?: {
 
 export class CharacterPhysicsEngine {
   processEvent(state: CharacterPhysicsState, event: ExperienceEvent): PhysicsStepResult {
-    const impactScore = calculateEventImpactScore(event);
-    const emotion = inferEmotion(event, impactScore);
-    const category = event.category ?? classifyCategory(event.tags);
-    const particle = createParticleForEvent(event, category, emotion, impactScore);
+    const category = resolveEventCategory(event);
+    const resolvedEvent = event.category === category ? event : { ...event, category };
+    const impactScore = calculateEventImpactScore(resolvedEvent);
+    const emotion = inferEmotion(resolvedEvent, impactScore);
+    const particle = createParticleForEvent(
+      resolvedEvent,
+      category,
+      emotion,
+      impactScore,
+      nextOccurrenceId(`particle_${resolvedEvent.id}`, state.particles.map((item) => item.id)),
+    );
     const { cluster, memoryNode } = absorbEventIntoMemoryGalaxy({
       state,
-      event,
+      event: resolvedEvent,
       category,
       particle,
       impactScore,
       emotion
     });
-    const boundaryImpact = applyEventBoundaryImpact({ state, event, impactScore });
-    const proceduralActivations = updateProceduralRoutinesForEvent({ state, event });
-    const rewardResult = updateRewardForEvent({ state, event, category, proceduralActivations });
+    const boundaryImpact = applyEventBoundaryImpact({ state, event: resolvedEvent, impactScore });
+    const proceduralActivations = updateProceduralRoutinesForEvent({ state, event: resolvedEvent });
+    const rewardResult = updateRewardForEvent({ state, event: resolvedEvent, category, proceduralActivations });
     const timePerception = perceiveEventTime({
-      event,
+      event: resolvedEvent,
       emotion,
       meta: state.metaState,
       boundary: state.boundary,
       reward: state.rewardState
     });
-    const worldInterpretation = interpretEventWithCurrentBeliefs({ state, event, emotion, timePerception });
+    const worldInterpretation = interpretEventWithCurrentBeliefs({ state, event: resolvedEvent, emotion, timePerception });
     const attentionEvaluation = evaluateEventAttention({
-      event,
+      event: resolvedEvent,
       meta: state.metaState,
       boundary: state.boundary
     });
-    const { galaxyStep, coordinateDrift } = applyGalaxyDrift({ state, boundaryImpact });
+    const { galaxyStep, coordinateDrift } = applyGalaxyDrift({
+      state,
+      boundaryImpact,
+      category,
+      impactScore,
+    });
 
     return {
-      event,
+      event: resolvedEvent,
       emotion,
       impactScore,
       particle,
@@ -200,10 +213,11 @@ function createParticleForEvent(
   event: ExperienceEvent,
   category: string,
   emotion: EmotionState,
-  impactScore: ImpactScore
+  impactScore: ImpactScore,
+  particleId: string,
 ): ImpactParticle {
   return {
-    id: `particle_${event.id}`,
+    id: particleId,
     description: event.description,
     vector: impactVector(category, emotion, event),
     impactScore: impactScore.value,
@@ -227,12 +241,15 @@ function absorbEventIntoMemoryGalaxy(params: {
   params.state.particles.push(params.particle);
 
   const memoryNode = createMemoryNode({
+    id: params.particle.id.replace(/^particle_/, "memory_"),
     event: params.event,
     particle: params.particle,
     impactScore: params.impactScore,
     emotion: params.emotion,
     clusterId: absorbedCluster.id,
-    repetitionCount: absorbedCluster.age
+    // Each runtime event is already represented by its own MemoryNode.
+    // Repetition counts above 1 are reserved for imported aggregate memories.
+    repetitionCount: 1
   });
   params.state.memories.push(memoryNode);
   params.state.beliefStates = assimilateMemoryIntoBeliefs(params.state.beliefStates, memoryNode);
@@ -318,23 +335,23 @@ function interpretEventWithCurrentBeliefs(params: {
 function applyGalaxyDrift(params: {
   state: CharacterPhysicsState;
   boundaryImpact: BoundaryImpactResult;
+  category: string;
+  impactScore: ImpactScore;
 }): { galaxyStep: PersonalityGalaxySnapshot; coordinateDrift: CoordinateDriftResult } {
-  const learningRate = params.state.learningRate * params.boundaryImpact.driftMultiplier;
+  const activation = driftActivationForEvent(params.category, params.impactScore.value);
+  const learningRate = params.state.learningRate * params.boundaryImpact.driftMultiplier * activation.learningRateScale;
   const galaxyStep = simulatePersonalityGalaxyStep({
     corePosition: params.state.coordinate,
     velocity: params.state.velocity,
     clusters: [...params.state.clusters.values()],
     memories: params.state.memories,
-    learningRate
+    learningRate,
+    momentumAlpha: activation.momentumAlpha,
   });
-  const coordinateDrift: CoordinateDriftResult = {
-    before: galaxyStep.drift.before,
-    after: galaxyStep.drift.after,
-    totalForce: galaxyStep.totalForce,
-    learningRate
-  };
   params.state.velocity = galaxyStep.drift.nextVelocity;
-  params.state.coordinate = coordinateDrift.after;
+  params.state.coordinate = {
+    values: { ...galaxyStep.drift.after.values },
+  };
 
   // V10.72: apply trust repair nudge directly to coordinate AFTER galaxy drift.
   // This is a one-time position offset (not velocity), so it does not
@@ -347,8 +364,36 @@ function applyGalaxyDrift(params: {
     c.openness = clamp01(c.openness + nudge.openness);
   }
 
+  const coordinateDrift: CoordinateDriftResult = {
+    before: galaxyStep.drift.before,
+    after: params.state.coordinate,
+    totalForce: galaxyStep.totalForce,
+    learningRate
+  };
   params.state.personality = bigFiveFromCoordinate(params.state.coordinate);
   return { galaxyStep, coordinateDrift };
+}
+
+function driftActivationForEvent(
+  category: string,
+  impact: number,
+): { learningRateScale: number; momentumAlpha: number } {
+  if (category === "general") {
+    return {
+      learningRateScale: Math.min(0.08, Math.max(0.01, impact * 0.15)),
+      momentumAlpha: 0.35,
+    };
+  }
+  if (category === "fatigue") {
+    return { learningRateScale: 0.2, momentumAlpha: 0.5 };
+  }
+  if (category === "uncertainty") {
+    return { learningRateScale: 0.45, momentumAlpha: 0.68 };
+  }
+  return {
+    learningRateScale: 0.55 + Math.max(0, Math.min(1, impact)) * 0.45,
+    momentumAlpha: 0.82,
+  };
 }
 
 export function inferEmotion(event: ExperienceEvent, impactScore: ImpactScore): EmotionState {
@@ -358,6 +403,16 @@ export function inferEmotion(event: ExperienceEvent, impactScore: ImpactScore): 
       valence: event.emotionValence ?? valenceForEmotion(event.emotion),
       arousal: event.emotionArousal ?? arousalForEmotion(event.emotion),
       intensity: impactScore.value
+    };
+  }
+
+  const categoryTemplate = event.category ? getEventCategoryPhysics(event.category) : undefined;
+  if (categoryTemplate) {
+    return {
+      primary: categoryTemplate.emotion,
+      valence: valenceForEmotion(categoryTemplate.emotion),
+      arousal: arousalForEmotion(categoryTemplate.emotion),
+      intensity: impactScore.value,
     };
   }
 
@@ -372,11 +427,15 @@ export function inferEmotion(event: ExperienceEvent, impactScore: ImpactScore): 
 }
 
 export function classifyCategory(tags: string[]): string {
-  const tagSet = new Set(tags);
-  if (hasAny(tagSet, ["失联", "抛弃", "被抛弃", "等待"])) return "abandonment";
-  if (hasAny(tagSet, ["欺骗", "背叛"])) return "betrayal";
-  if (hasAny(tagSet, ["认可", "成功", "胜利", "晋升"])) return "success";
-  return "general";
+  return classifyEventCategory(tags.join(" ")).category;
+}
+
+function nextOccurrenceId(baseId: string, existingIds: string[]): string {
+  const existing = new Set(existingIds);
+  if (!existing.has(baseId)) return baseId;
+  let occurrence = 2;
+  while (existing.has(`${baseId}_${occurrence}`)) occurrence += 1;
+  return `${baseId}_${occurrence}`;
 }
 
 export function impactVector(

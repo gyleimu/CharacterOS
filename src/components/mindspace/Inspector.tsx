@@ -48,6 +48,8 @@ export const Inspector: FC<InspectorProps> = ({
   const selectedBehavior: SemanticBehavior | null =
     target?.type === "behavior" ? behaviors.find((b) => b.id === target.id) ?? null : null;
 
+  if (isOverview && !target) return null;
+
   return (
     <div className={`inspector-panel ${!isOverview ? "inspector-expanded" : ""}`}>
       <div className="inspector-glow-line" />

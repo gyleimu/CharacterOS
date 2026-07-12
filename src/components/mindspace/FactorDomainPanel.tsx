@@ -16,6 +16,7 @@ interface FactorDomainPanelProps {
   factor: SemanticFactor;
   selectedTarget: SelectedTarget | null;
   onSelectTarget: (target: SelectedTarget) => void;
+  onOpenTarget?: (target: SelectedTarget) => void;
 }
 
 export const FactorDomainPanel: FC<FactorDomainPanelProps> = ({
@@ -23,6 +24,7 @@ export const FactorDomainPanel: FC<FactorDomainPanelProps> = ({
   factor,
   selectedTarget,
   onSelectTarget,
+  onOpenTarget,
 }) => {
   const domain = useMemo(() => {
     const behaviorIds = new Set(factor.behaviorIds);
@@ -69,6 +71,7 @@ export const FactorDomainPanel: FC<FactorDomainPanelProps> = ({
           type="memory"
           color={factor.color}
           onSelectTarget={onSelectTarget}
+          onOpenTarget={onOpenTarget}
           renderItem={(memory) => (
             <>
               <b>{memory.summary}</b>
@@ -104,6 +107,7 @@ export const FactorDomainPanel: FC<FactorDomainPanelProps> = ({
           type="belief"
           color={factor.color}
           onSelectTarget={onSelectTarget}
+          onOpenTarget={onOpenTarget}
           renderItem={(belief) => (
             <>
               <b>{belief.text}</b>
@@ -122,6 +126,7 @@ export const FactorDomainPanel: FC<FactorDomainPanelProps> = ({
           type="need"
           color={factor.color}
           onSelectTarget={onSelectTarget}
+          onOpenTarget={onOpenTarget}
           renderItem={(need) => (
             <>
               <b>{need.zhName}</b>
@@ -140,6 +145,7 @@ export const FactorDomainPanel: FC<FactorDomainPanelProps> = ({
           type="behavior"
           color={factor.color}
           onSelectTarget={onSelectTarget}
+          onOpenTarget={onOpenTarget}
           renderItem={(behavior) => (
             <>
               <b>{behavior.zhName}</b>
@@ -168,6 +174,7 @@ function DomainColumn<T extends SemanticMemory | SemanticBelief | SemanticNeed |
   type,
   selectedKey,
   onSelectTarget,
+  onOpenTarget,
   renderItem,
 }: {
   label: string;
@@ -177,6 +184,7 @@ function DomainColumn<T extends SemanticMemory | SemanticBelief | SemanticNeed |
   color: string;
   selectedKey: string;
   onSelectTarget: (target: SelectedTarget) => void;
+  onOpenTarget: ((target: SelectedTarget) => void) | undefined;
   renderItem: (item: T) => ReactNode;
 }) {
   return (
@@ -186,16 +194,21 @@ function DomainColumn<T extends SemanticMemory | SemanticBelief | SemanticNeed |
         <span>{subtitle}</span>
       </div>
       <div className="factor-domain-card-stack">
-        {items.map((item) => (
-          <button
-            type="button"
-            key={item.id}
-            className={`factor-domain-card ${selectedKey === `${type}:${item.id}` ? "selected" : ""}`}
-            onClick={() => onSelectTarget({ type, id: item.id })}
-          >
-            {renderItem(item)}
-          </button>
-        ))}
+        {items.map((item) => {
+          const target: SelectedTarget = { type, id: item.id };
+          return (
+            <button
+              type="button"
+              key={item.id}
+              className={`factor-domain-card ${selectedKey === `${type}:${item.id}` ? "selected" : ""}`}
+              onClick={() => onSelectTarget(target)}
+              onDoubleClick={() => (onOpenTarget ?? onSelectTarget)(target)}
+              title="单击预览，双击进入第三层详情"
+            >
+              {renderItem(item)}
+            </button>
+          );
+        })}
       </div>
     </div>
   );

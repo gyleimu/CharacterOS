@@ -9,9 +9,11 @@ describe("V10.79 RC Documentation Seal", () => {
     expect(readme).toMatch(/V10.*RC|Release Candidate|V10\.78/);
   });
 
-  it("README mentions current test count", () => {
-    expect(readme).toContain("2163 tests");
-    expect(readme).toContain("170 files");
+  it("README documents the current verification commands without freezing historical counts", () => {
+    expect(readme).toContain("npm run build");
+    expect(readme).toContain("npm test");
+    expect(readme).toContain("npm run rc:verify");
+    expect(readme).toMatch(/npm test\s+(?:全量单元与审计测试|\d+ files \/ \d+ tests \/ 0 failures)/);
   });
 
   it("README states current version includes V10 RC and V11 RC", () => {

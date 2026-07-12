@@ -27,20 +27,22 @@ describe("V10.77 Known Warning Registry", () => {
 
     expect(result.matched).toHaveLength(1);
     expect(result.matched[0]!.matched.warningId).toBe("accumulation_betrayal_near_linear_growth");
-    expect(result.allowedWarnings).toHaveLength(1);
+    expect(result.allowedWarnings).toHaveLength(0);
     expect(result.activeWarnings).toHaveLength(0);
+    expect(result.resolvedWarningRegressions).toHaveLength(1);
     expect(result.unmatched).toHaveLength(0);
   });
 
-  it("allowed warning separated from active warnings", () => {
+  it("resolved warning regression is separated from unknown active warnings", () => {
     const warnings = [
       "betrayalAccumulation WARN: personality accumulation shows near-linear growth with no saturation (early-avg=0.0092, recent-avg=0.0216)",
       "some completely unknown new warning about memory corruption",
     ];
     const result = classifyWarnings(warnings);
 
-    expect(result.allowedWarnings).toHaveLength(1);
+    expect(result.allowedWarnings).toHaveLength(0);
     expect(result.activeWarnings).toHaveLength(1);
+    expect(result.resolvedWarningRegressions).toHaveLength(1);
     expect(result.unmatched).toHaveLength(1);
   });
 
@@ -70,9 +72,9 @@ describe("V10.77 Known Warning Registry", () => {
     ];
     const summary = getKnownWarningSummary(warnings);
 
-    expect(summary.allowedCount).toBe(1);
+    expect(summary.allowedCount).toBe(0);
     expect(summary.activeCount).toBe(1); // unknown → active
-    expect(summary.resolvedRegressions).toBe(1);
+    expect(summary.resolvedRegressions).toBe(2);
     expect(summary.unknownCount).toBe(1);
     expect(summary.totalCount).toBe(3);
   });
@@ -80,7 +82,7 @@ describe("V10.77 Known Warning Registry", () => {
   it("findWarning locates entry by id or pattern", () => {
     const byId = findWarning("accumulation_betrayal_near_linear_growth");
     expect(byId).toBeDefined();
-    expect(byId!.status).toBe("allowed");
+    expect(byId!.status).toBe("resolved");
 
     const byPattern = findWarning("betrayalAccumulation WARN: personality accumulation shows near-linear growth");
     expect(byPattern).toBeDefined();
@@ -137,8 +139,7 @@ describe("V10.77 Known Warning Registry", () => {
 
     // Gate should be PASS with 0 active warnings
     expect(gate.gateVerdict.level).toBe("PASS");
-    // The only remaining warning should be the allowed betrayal linear growth
-    expect(gate.knownWarningSummary.allowedCount).toBeGreaterThanOrEqual(0);
+    expect(gate.knownWarningSummary.allowedCount).toBe(0);
     expect(gate.knownWarningSummary.activeCount).toBe(0);
     // No failures
     expect(gate.failures).toHaveLength(0);

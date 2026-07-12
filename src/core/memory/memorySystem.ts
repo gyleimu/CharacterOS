@@ -6,6 +6,7 @@ import type { ExperienceEvent } from "../event/event";
 import type { MemoryNode } from "./memoryNode";
 
 export function createMemoryNode(params: {
+  id?: string;
   event: ExperienceEvent;
   particle: ImpactParticle;
   impactScore: ImpactScore;
@@ -15,7 +16,7 @@ export function createMemoryNode(params: {
   timeStamp?: string;
 }): MemoryNode {
   return {
-    id: `memory_${params.event.id}`,
+    id: params.id ?? `memory_${params.event.id}`,
     content: params.event.description,
     vector: params.particle.vector.delta,
     importance: params.impactScore.value,

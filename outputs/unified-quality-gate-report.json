@@ -1,6 +1,6 @@
 {
   "version": "10.75.0",
-  "generatedAt": "2026-07-10T00:13:58.000Z",
+  "generatedAt": "2026-07-10T00:44:04.834Z",
   "qualityVerdict": {
     "level": "PASS",
     "passed": true,
@@ -14,9 +14,7 @@
   "releaseReadiness": {
     "ready": true,
     "blockers": [],
-    "recommendations": [
-      "Known limitations exist — see reality gate report for details"
-    ]
+    "recommendations": []
   },
   "unifiedSummary": {
     "totalChecks": 17,
@@ -52,9 +50,7 @@
       "supportBoundarySafe": true,
       "neutralStable": true
     },
-    "warnings": [
-      "accumulation/betrayalAccumulation: betrayalAccumulation WARN: personality accumulation shows near-linear growth with no saturation (early-avg=0.0092, recent-avg=0.0216); decision surface withdrawal did not increase across repeated negative events"
-    ],
+    "warnings": [],
     "failures": []
   },
   "failures": [],

@@ -1,10 +1,24 @@
 # CharacterOS Documentation Index
 
-## V12 Agent SDK (Design Phase)
+## V13 LLM Boundary & Determinism
+
+| Doc | Description |
+|-----|-------------|
+| [V13.0 LLM Boundary Charter](v13.0_llm_boundary_adapter_design_charter.md) | LLM as replaceable language adapter, never state authority |
+| [V13.1 LLM Boundary DTOs](v13.1_llm_boundary_dto_types_report.md) | Safe deterministic boundary contracts |
+| [V13.2 Prompt Builder](v13.2_llm_boundary_prompt_builder_report.md) | Grounded prompt construction and redaction |
+| [V13.3 Determinism Hardening](v13.3_determinism_boundary_hardening_report.md) | Content-derived IDs and replay audit |
+| [V13.4 Metrics Reconciliation](v13.4_release_metrics_reconciliation_report.md) | Release metric consistency |
+| [V13.5 AST Scanner](v13.5_ast_determinism_scanner_hardening_report.md) | Context-aware runtime nondeterminism scanner |
+| [V13.6 Branch Reconciliation](v13.6_branch_test_coverage_reconciliation_report.md) | LLM and determinism branches integrated into one release line |
+| [V13.7 LLM Boundary Integration](v13.7_llm_boundary_integration_qa_report.md) | Agent reply plan to safe offline LLM boundary preview |
+
+## V12 Agent SDK (Complete RC)
 
 | Doc | Description |
 |-----|-------------|
 | [V12.0 Agent SDK Design Charter](v12.0_character_agent_sdk_design_charter.md) | Embeddable SDK architecture, 8 modules, safety model |
+| [V12.10 Agent SDK RC](v12.10_agent_sdk_release_candidate_report.md) | Agent SDK release candidate QA |
 
 ## V11 Explorer (Complete)
 
@@ -44,6 +58,7 @@
 | Doc | Description |
 |-----|-------------|
 | [Architecture Bible](architecture_bible.md) | System architecture constitution |
+| [Core Logic & Personality Drift Audit](core_logic_personality_drift_audit.md) | Core chain validity, fixed drift defects, residual risks, test strategy |
 | [Character Physics Upgrade Blueprint](character_physics_upgrade_blueprint.md) | Physics engine design |
 | [Core Polish Plan](core_polish_plan.md) | V3.7 polish roadmap |
 | [Parameter System](parameter_system.md) | Parameter evolution design |
@@ -90,5 +105,5 @@
 
 ---
 
-**Current Version:** V10.78 RC  
-**Last Updated:** 2026-07-02
+**Current Line:** V13 integration hardening on top of V10/V11/V12 RCs
+**Last Updated:** 2026-07-10

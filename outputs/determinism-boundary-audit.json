@@ -1,6 +1,6 @@
 {
   "auditVersion": "13.5.0",
-  "auditedAt": "2026-07-07T03:42:53.015Z",
+  "auditedAt": "2026-07-10T00:44:06.766Z",
   "passed": true,
   "releaseReady": true,
   "summary": {
@@ -378,13 +378,13 @@
     {
       "source": "new Date()",
       "file": "src/core/explorer/eventStudioApply.ts",
-      "line": 95,
+      "line": 100,
       "justification": "Audit entry appliedAt records actual application time — runtime record (explicitly allowed by V13.3 policy)"
     },
     {
       "source": "new Date()",
       "file": "src/core/explorer/eventStudioApply.ts",
-      "line": 95,
+      "line": 100,
       "justification": "Audit entry appliedAt records actual application time — runtime record (explicitly allowed by V13.3 policy)"
     },
     {
@@ -522,13 +522,13 @@
     {
       "source": "new Date()",
       "file": "src/core/memory/memorySystem.ts",
-      "line": 26,
+      "line": 27,
       "justification": "Memory creation records when memory was formed — operational"
     },
     {
       "source": "new Date()",
       "file": "src/core/memory/memorySystem.ts",
-      "line": 26,
+      "line": 27,
       "justification": "Memory creation records when memory was formed — operational"
     },
     {
@@ -674,8 +674,8 @@
     {
       "functionName": "buildAgentReplyPlan",
       "passed": true,
-      "run1": "{\"replyPlanId\":\"reply_3b9afe24\",\"tone\":\"cautious\",\"intent\":\"clarify_input\",\"groundedFacts\":[\"当前状态: 心理压力超载，急需恢复\",\"情绪状态: 恐惧主导，高度警觉\",\"压力水平: 心理压力超载 — 边界已破裂，急需恢复 (overflow)\",\"核心信念: 亲密关系并不可靠。 (强度: weak)\",\"核",
-      "run2": "{\"replyPlanId\":\"reply_3b9afe24\",\"tone\":\"cautious\",\"intent\":\"clarify_input\",\"groundedFacts\":[\"当前状态: 心理压力超载，急需恢复\",\"情绪状态: 恐惧主导，高度警觉\",\"压力水平: 心理压力超载 — 边界已破裂，急需恢复 (overflow)\",\"核心信念: 亲密关系并不可靠。 (强度: weak)\",\"核",
+      "run1": "{\"replyPlanId\":\"reply_49867c02\",\"tone\":\"cautious\",\"intent\":\"clarify_input\",\"groundedFacts\":[\"当前状态: 心理压力超载，急需恢复\",\"情绪状态: 恐惧主导，高度警觉\",\"压力水平: 心理压力超载 — 边界已破裂，急需恢复 (overflow)\",\"核心信念: 重要的人会突然离开；等待通常没有结果。 (强度:",
+      "run2": "{\"replyPlanId\":\"reply_49867c02\",\"tone\":\"cautious\",\"intent\":\"clarify_input\",\"groundedFacts\":[\"当前状态: 心理压力超载，急需恢复\",\"情绪状态: 恐惧主导，高度警觉\",\"压力水平: 心理压力超载 — 边界已破裂，急需恢复 (overflow)\",\"核心信念: 重要的人会突然离开；等待通常没有结果。 (强度:",
       "identical": true,
       "note": "Reply plan must be deterministic"
     },

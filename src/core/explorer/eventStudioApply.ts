@@ -124,7 +124,7 @@ export function applyEventStudioEvent(
     warnings,
     auditEntry,
     rollbackReference,
-    nextRequiredAction: "apply 已完成。如需回滚，请使用 rollback 功能（V11.4）。",
+    nextRequiredAction: "apply 已完成。rollbackReference 仅供审计定位；当前 Time Machine 不执行状态回滚。",
   };
 }
 

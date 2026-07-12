@@ -1,25 +1,21 @@
 {
   "version": "10.77.0",
-  "startedAt": "2026-07-10T00:13:56.470Z",
-  "completedAt": "2026-07-10T00:13:56.556Z",
+  "startedAt": "2026-07-10T00:44:03.605Z",
+  "completedAt": "2026-07-10T00:44:03.687Z",
   "gateVerdict": {
     "level": "PASS",
     "passed": true,
     "reasons": [
       "Reality Audit: 6P/0W/0F",
-      "Accumulation: betrayal=WARN, support=PASS, neutral=PASS",
+      "Accumulation: betrayal=PASS, support=PASS, neutral=PASS",
       "Coverage: PASS",
       "Decision responsiveness: PASS",
       "Explanation grounded: true",
       "Support boundary: safe",
       "Neutral stable: true"
     ],
-    "allowedWarnings": [
-      "betrayalAccumulation WARN: personality accumulation shows near-linear growth with no saturation (early-avg=0.0092, recent-avg=0.0216); decision surface withdrawal did not increase across repeated negative events"
-    ],
-    "knownLimitations": [
-      "V10.72: residual near-linear personality growth in repeated abandonment (documented)"
-    ]
+    "allowedWarnings": [],
+    "knownLimitations": []
   },
   "summary": {
     "totalChecks": 10,
@@ -35,25 +31,17 @@
     "neutralStable": true
   },
   "failures": [],
-  "warnings": [
-    {
-      "suite": "accumulation",
-      "caseId": "betrayalAccumulation",
-      "message": "betrayalAccumulation WARN: personality accumulation shows near-linear growth with no saturation (early-avg=0.0092, recent-avg=0.0216); decision surface withdrawal did not increase across repeated negative events"
-    }
-  ],
+  "warnings": [],
   "knownWarningSummary": {
     "activeCount": 0,
-    "allowedCount": 1,
+    "allowedCount": 0,
     "resolvedRegressions": 0,
     "unknownCount": 0,
-    "totalCount": 1
+    "totalCount": 0
   },
   "warningRegistry": {
     "activeWarnings": [],
-    "allowedWarnings": [
-      "betrayalAccumulation WARN: personality accumulation shows near-linear growth with no saturation (early-avg=0.0092, recent-avg=0.0216); decision surface withdrawal did not increase across repeated negative events"
-    ],
+    "allowedWarnings": [],
     "resolvedWarningRegressions": []
   },
   "regressionRisks": [
@@ -121,19 +109,19 @@
     },
     "longTermAccumulation": {
       "betrayalAccumulation": {
-        "verdict": "WARN",
-        "stepOneJumpRatio": 0.0623,
-        "saturationScore": 0.4085,
-        "trustDelta": -0.032
+        "verdict": "PASS",
+        "stepOneJumpRatio": 0.1299,
+        "saturationScore": 0.524,
+        "trustDelta": -0.0081
       },
       "supportAccumulation": {
         "verdict": "PASS",
-        "trustRepair": 0.0087,
-        "repairEffectiveness": 0.231
+        "trustRepair": 0.0096,
+        "repairEffectiveness": 0.27
       },
       "neutralAccumulation": {
         "verdict": "PASS",
-        "finalPersonalityDistance": 0.026
+        "finalPersonalityDistance": 0.0009
       }
     },
     "eventTypeCoverage": {
@@ -149,13 +137,7 @@
       }
     }
   },
-  "topWarnings": [
-    {
-      "suite": "accumulation",
-      "caseId": "betrayalAccumulation",
-      "message": "betrayalAccumulation WARN: personality accumulation shows near-linear growth with no saturation (early-avg=0.0092, recent-avg=0.0216); decision surface withdrawal did not increase across repeated negative events"
-    }
-  ],
+  "topWarnings": [],
   "metrics": {
     "totalChecks": 10,
     "passRate": "100.0%"

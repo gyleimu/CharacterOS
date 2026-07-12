@@ -1,6 +1,7 @@
 import { biologicalStressSensitivity, type BiologicalNature } from "../biological/nature";
 import type { ImpactScore } from "../benchmark/impact";
 import type { ExperienceEvent } from "../event/event";
+import { resolveEventCategory } from "../event/eventCategoryClassifier";
 import { clamp01, exponentialRecoveryRate, round4 } from "../parameters/parameterMath";
 import type { PersonalityCoordinate } from "../personality/coordinate";
 
@@ -68,7 +69,8 @@ export function applyBoundaryImpact(params: {
     sensitivity * 0.3;
   const relationshipPressure = params.event.relationshipWeight * 0.15 + params.event.expectationGap * 0.15;
 
-  const isPositiveSupport = params.event.category === "support" || params.event.category === "success";
+  const category = resolveEventCategory(params.event);
+  const isPositiveSupport = category === "support" || category === "success";
 
   let incomingStress: number;
   let stressLoad: number;
@@ -99,14 +101,22 @@ export function applyBoundaryImpact(params: {
     // Integrity slowly improves with safety evidence
     integrity = clamp01(params.boundary.integrity + safetySignal * 0.07);
   } else {
-    // Negative / neutral events: existing stress-based boundary impact
+    // Event categories do not all carry the same boundary threat. In
+    // particular, rule-fallback/general events must not accumulate trauma just
+    // because they were logged frequently.
+    const stressWeight = boundaryStressWeight(category, params.impactScore.value);
     incomingStress = round4(
       params.impactScore.value *
       (0.55 + vulnerability + relationshipPressure) *
-      (1 - params.boundary.resilience * 0.42)
+      (1 - params.boundary.resilience * 0.42) *
+      stressWeight
     );
     stressLoad = round4(params.boundary.stressLoad + incomingStress);
-    overflowAmount = Math.max(0, round4(stressLoad - params.boundary.capacity));
+    const overflowBefore = Math.max(0, params.boundary.stressLoad - params.boundary.capacity);
+    const overflowAfter = Math.max(0, stressLoad - params.boundary.capacity);
+    // Damage is caused by newly added overflow pressure. Reapplying the full
+    // historical overflow on every unrelated event produced quadratic cracks.
+    overflowAmount = Math.max(0, round4(overflowAfter - overflowBefore));
     cracks = round4(params.boundary.cracks + overflowAmount * 0.35);
     integrity = clamp01(params.boundary.integrity - overflowAmount * 0.18);
   }
@@ -172,7 +182,30 @@ export function recoverBoundary(boundary: PsychologicalBoundary, daysElapsed: nu
 export function driftMultiplierFor(boundary: PsychologicalBoundary): number {
   const strainRatio = boundary.capacity <= 0 ? 1 : boundary.stressLoad / boundary.capacity;
   const overflowPressure = Math.max(0, strainRatio - 1);
-  return round4(1 + overflowPressure * 0.45 + boundary.cracks * 0.08);
+  const saturatedOverflow = 1 - Math.exp(-overflowPressure);
+  const saturatedCracks = 1 - Math.exp(-Math.max(0, boundary.cracks));
+  return round4(1 + saturatedOverflow * 0.6 + saturatedCracks * 0.15);
+}
+
+function boundaryStressWeight(category: string, impact: number): number {
+  switch (category) {
+    case "general":
+      return impact <= 0.3 ? 0 : 0.12;
+    case "fatigue":
+      return 0.18;
+    case "uncertainty":
+      return 0.38;
+    case "failure":
+      return 0.62;
+    case "rejection":
+    case "conflict":
+      return 0.8;
+    case "abandonment":
+    case "betrayal":
+      return 1;
+    default:
+      return 0.5;
+  }
 }
 
 function phaseFor(stressLoad: number, capacity: number): BoundaryPhase {

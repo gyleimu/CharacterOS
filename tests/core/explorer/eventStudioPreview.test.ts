@@ -3,6 +3,8 @@ import { buildEventStudioPreview } from "../../../src/core/explorer/eventStudioP
 import { buildEventStudioDraft } from "../../../src/core/explorer/explorerDtoBuilders";
 import { createCharacterStateFromBlueprint, createLinFanBlueprint } from "../../../src/core/character/characterBlueprint";
 import { serializeCharacterPhysicsState } from "../../../src/core/physics/serialization";
+import { createCharacterPhysicsState } from "../../../src/core/physics/physicsEngine";
+import { neutralCoordinate } from "../../../src/core/personality/coordinate";
 
 const relationshipScenario = {
   id: "preview_test_scenario",
@@ -98,6 +100,23 @@ describe("V11.2 Event Studio Preview Core", () => {
     expect(preview.decisionPreview.likelyStrategyShift.length).toBeGreaterThan(0);
     // Memory preview should indicate new memory
     expect(preview.memoryPreview.willCreateMemory).toBe(true);
+  });
+
+  it("full_preview derives need changes from simulated state", () => {
+    const neutralBaseline = createCharacterPhysicsState({ coordinate: neutralCoordinate() });
+    const draft = buildEventStudioDraft({
+      naturalLanguageInput: "最信任的人隐瞒事实并背叛了承诺。",
+      tags: ["背叛", "欺骗", "亲密关系"],
+    });
+
+    const preview = buildEventStudioPreview({
+      draft,
+      baselineState: neutralBaseline,
+      followUpScenario: relationshipScenario,
+      previewMode: "full_preview",
+    });
+
+    expect(preview.needPreview.likelyActivatedNeeds.length).toBeGreaterThan(0);
   });
 
   // ── Baseline Immutability ──

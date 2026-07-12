@@ -25,6 +25,7 @@ import type {
 } from "./explorerTypes";
 import { buildEventStudioPreview as buildDto, buildCharacterStateSurfaceFromState } from "./explorerDtoBuilders";
 import { deterministicDraftId } from "../deterministicHelpers";
+import { deriveNeedDeficiencies } from "../need/needDeficiency";
 
 export type PreviewMode = "parse_only" | "impact_preview" | "full_preview";
 
@@ -106,7 +107,7 @@ export function buildEventStudioPreview(
     });
   }
 
-  // ── Impact-only mode: include belief/need preview stubs ──
+  // ── Impact-only mode: include explicit heuristic estimates ──
   if (mode === "impact_preview") {
     const beliefPreview = buildBeliefStub(parsed);
     const needPreview = buildNeedStub(parsed);
@@ -183,7 +184,7 @@ export function buildEventStudioPreview(
     impact: impactPreview,
     memory: buildMemoryPreviewFromSimulation(cloned, input.baselineState, parsed),
     belief: buildBeliefFromSimulation(cloned, input.baselineState),
-    need: { likelyActivatedNeeds: [], likelyDeactivatedNeeds: [] }, // Needs require DerivedState
+    need: buildNeedFromSimulation(cloned, input.baselineState),
     personality: personalityDelta,
     decision: decisionPreview,
     auditWarnings,
@@ -237,7 +238,7 @@ function buildMemoryPreviewFromSimulation(
   };
 }
 
-// ── Belief / Need / Personality stubs ──
+// ── Impact-only heuristic estimates ──
 
 function buildBeliefStub(parsed: ReturnType<typeof parseExperienceEvent>): BeliefPreviewType {
   const category = parsed.category ?? "general";
@@ -337,6 +338,33 @@ function buildBeliefFromSimulation(
     likelyStrengthenedBeliefs: strengthened.slice(0, 3).map((b) => b.content),
     likelyWeakenedBeliefs: weakened.slice(0, 3).map((b) => b.content),
   };
+}
+
+function buildNeedFromSimulation(
+  after: CharacterPhysicsState,
+  before: CharacterPhysicsState,
+): NeedPreviewType {
+  const beforeNeeds = deriveNeedDeficiencies({
+    coordinate: before.coordinate,
+    beliefs: before.beliefStates,
+    clusters: [...before.clusters.values()],
+  });
+  const afterNeeds = deriveNeedDeficiencies({
+    coordinate: after.coordinate,
+    beliefs: after.beliefStates,
+    clusters: [...after.clusters.values()],
+  });
+  const beforeById = new Map(beforeNeeds.map((need) => [need.id, need]));
+  const afterById = new Map(afterNeeds.map((need) => [need.id, need]));
+
+  const likelyActivatedNeeds = afterNeeds
+    .filter((need) => need.intensity > (beforeById.get(need.id)?.intensity ?? 0) + 0.01)
+    .map((need) => need.name);
+  const likelyDeactivatedNeeds = beforeNeeds
+    .filter((need) => (afterById.get(need.id)?.intensity ?? 0) < need.intensity - 0.01)
+    .map((need) => need.name);
+
+  return { likelyActivatedNeeds, likelyDeactivatedNeeds };
 }
 
 // ── Helpers ──

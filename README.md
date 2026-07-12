@@ -32,17 +32,18 @@ CharacterIdentity
 当前阶段：
 
 ```text
-CharacterOS — V10 Core Kernel RC · V11 Explorer Platform RC · V12 Agent SDK RC
-Tests: 2163 (170 files) · Gates: All PASS · Modules: 6 Explorer + 9 Agent SDK + 12 Audit
+CharacterOS — Core Kernel · Explorer Platform · Agent SDK · LLM Boundary Foundation
+V10/V11/V12 RC artifacts remain sealed; V13 integration hardening is in progress.
 ```
 
 当前项目状态：
 
 ```text
-API-only              — 无用户可见网页
-single-character      — 单角色内核，不做多角色
-no frontend           — Dashboard 和可视化已移除
-no 3D                 — 不做 3D 星云
+headless core         — Core 不依赖 React、Next.js 或 Three.js
+Explorer              — 单角色状态、事件、解释与历史观察面
+MindSpace 3D          — 只读高级观察器，不参与核心状态写入
+Agent / LLM boundary  — 可嵌入接口层，默认不调用真实 LLM
+single-character      — 单角色内核，不做多角色关系网络
 no multi-character    — 不做关系网络（V20 未开始）
 no world simulation   — 不做世界模拟
 no autonomous scheduler — 不做自主调度
@@ -54,8 +55,8 @@ no server deployment  — 不做服务器部署
 
 ```text
 npm run build        tsc --noEmit
-npm test             170 files / 2163 tests / 0 failures
-npm run next:build   27 API routes
+npm test             178 files / 2408 tests / 0 failures
+npm run next:build   Explorer/MindSpace 页面 + API routes
 ```
 
 当前质量门状态：
@@ -66,6 +67,7 @@ Unified Quality Gate      PASS   (releaseReady=true)
 Quality Trend             STABLE (0 regression flags)
 Known Warning Registry    0 active / 1 allowed / 0 regressed
 Benchmark V2.1            6/6 passed (100%)
+Determinism Boundary      PASS
 ```
 
 V10 RC Verdict: **PASS** ✅
@@ -103,7 +105,7 @@ docs/homeostasis_system.md
 docs/recovery_system.md
 ```
 
-短期主线重新收敛到 Character Physics Core：先完善数据结构、纯逻辑、测试和必要 API。用户可见网页、Dashboard 和可视化入口已经移除；核心逻辑稳定前不再继续做任何可视化。
+短期主线仍以 Character Physics Core 为中心：先完善数据结构、纯逻辑、测试和必要 API。Explorer 与 MindSpace 是 Core 之上的只读观察面，不得反向依赖或修改核心状态。
 
 主项目方向采用 TypeScript Core 优先。Python 原型保留为算法实验和行为参考。
 
@@ -371,7 +373,7 @@ npm run demo:trace
 npm run demo:service
 ```
 
-Next.js 当前只保留 API routes，不提供用户可见网页：
+Next.js 同时承载本地 Explorer/MindSpace 观察面与 API routes：
 
 ```bash
 npm run next:build
@@ -381,6 +383,14 @@ npm run next:build
 
 ```bash
 npm run next:dev
+```
+
+本地访问：
+
+```text
+http://localhost:3000/           MindSpace 3D
+http://localhost:3000/mindspace  MindSpace 3D 独立入口
+outputs/characteros-explorer/    离线 Explorer artifact
 ```
 
 V0.9 新增心理动力状态面板：
@@ -406,7 +416,7 @@ DerivedCharacterState
 -> personality-consistency rationale
 ```
 
-人格星系不再提供 2D/3D 可视化视图。核心物理状态仍然保存在 `PersonalityCoordinate`、`ImpactParticle`、`ImpactCluster` 和 `state.galaxy` 中，并通过测试、API 响应和 trace replay 观察。
+人格星系核心状态保存在 `PersonalityCoordinate`、`ImpactParticle`、`ImpactCluster` 和 `state.galaxy` 中，并通过测试、API、trace replay 以及只读 MindSpace 3D 观察。可视化不得成为核心计算或写入状态的来源。
 
 V2 Galaxy 快照包含：
 

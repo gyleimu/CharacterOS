@@ -72,6 +72,23 @@ This distinction matters.
 
 `simulation/runner.ts` replays physics transitions. It does not automatically emit a final behavior decision unless a caller derives the state after replay.
 
+## Product And Adapter Boundaries
+
+```text
+CharacterOS Core (headless, deterministic-first)
+├── Physics / Memory / Belief / Need / Decision
+├── Reality and quality audits
+├── Explorer service contracts
+└── Agent / LLM boundary contracts
+
+Product surfaces
+├── Explorer static artifact
+├── MindSpace 3D read-only advanced observer
+└── API routes
+```
+
+React, Next.js and Three.js belong to product surfaces. They must not be imported by `src/core/` and they have no direct state mutation authority. MindSpace visualizes semantic projections; it is not the source of personality physics values.
+
 ## Character Is Not The LLM
 
 The LLM is not the character.

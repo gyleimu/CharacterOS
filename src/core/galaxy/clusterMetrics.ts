@@ -27,7 +27,12 @@ export function calculateGalaxyClusterMetrics(
 
   const mass = round4(
     clusterMemories.reduce((sum, memory) => {
-      return sum + memory.importance * Math.max(1, memory.repetitionCount);
+      // Imported/seeded memories may summarize repeated experiences, while
+      // runtime events are represented by one MemoryNode per occurrence.
+      // Recency keeps old memories influential without giving them permanent
+      // full-strength gravity.
+      const recencyWeight = 0.25 + Math.max(0, Math.min(1, memory.recency)) * 0.75;
+      return sum + memory.importance * Math.max(1, memory.repetitionCount) * recencyWeight;
     }, 0)
   );
   const variance = round4(calculateVariance(cluster.centerCoordinate, clusterMemories));

@@ -12,7 +12,8 @@
     "test:reality": "tsx scripts/run-core-reality-gate.ts",
     "test:trend": "tsx scripts/run-quality-trend-baseline.ts",
     "test:determinism": "tsx scripts/run-determinism-boundary-audit.ts",
-    "rc:verify": "tsx scripts/run-core-reality-gate.ts && tsx scripts/run-unified-quality-gate.ts && tsx scripts/run-quality-trend-baseline.ts && tsx scripts/run-determinism-boundary-audit.ts",
+    "test:repository": "vitest run tests/repository/repositoryReleaseConsistency.test.ts",
+    "rc:verify": "tsx scripts/run-core-reality-gate.ts && tsx scripts/run-unified-quality-gate.ts && tsx scripts/run-quality-trend-baseline.ts && tsx scripts/run-determinism-boundary-audit.ts && vitest run tests/repository/repositoryReleaseConsistency.test.ts",
     "demo:physics": "tsx src/core/demo/physicsDemo.ts",
     "demo:simulation": "tsx src/core/demo/simulationDemo.ts",
     "demo:trace": "tsx src/core/demo/traceReplayDemo.ts",
@@ -29,8 +30,11 @@
     "vitest": "^3.2.0"
   },
   "dependencies": {
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.6.1",
     "next": "^16.2.9",
     "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "react-dom": "^19.2.7",
+    "three": "^0.185.1"
   }
 }

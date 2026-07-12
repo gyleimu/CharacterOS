@@ -1,7 +1,7 @@
 import type { ImpactCluster } from "../cluster/impactCluster";
 import { clamp01, round4 } from "../parameters/parameterMath";
 import { BASE_PERSONALITY_KEYS } from "../personality/dimensions";
-import { coordinateDistance, zeroCoordinateDelta, type PersonalityCoordinate } from "../personality/coordinate";
+import { zeroCoordinateDelta, type PersonalityCoordinate } from "../personality/coordinate";
 
 export interface ClusterForce {
   clusterId: string;
@@ -32,13 +32,13 @@ export function calculateClusterForce(params: {
   minDistance?: number;
   maxMagnitude?: number;
 }): ClusterForce {
-  const gravitationalConstant = params.gravitationalConstant ?? 0.08;
-  const minDistance = params.minDistance ?? 0.08;
+  const gravitationalConstant = params.gravitationalConstant ?? 0.04;
   const maxMagnitude = params.maxMagnitude ?? 0.35;
-  const distance = Math.max(
-    minDistance,
-    coordinateDistance(params.corePosition, params.cluster.centerCoordinate)
-  );
+  // centerCoordinate is currently a directional impact vector, not an
+  // absolute location in personality space. Using the core-to-vector distance
+  // mixed coordinate frames and made identical events baseline-dependent.
+  // Keep a neutral trace distance until a real clusterPosition is introduced.
+  const distance = 1;
   const densityFactor = 0.72 + clamp01(params.cluster.density) * 0.28;
   // V10.72: use sqrt-saturated mass so repeated similar events have diminishing marginal force
   const effectiveMass = saturatedMass(params.cluster.mass);
@@ -46,8 +46,7 @@ export function calculateClusterForce(params: {
     gravitationalConstant *
     effectiveMass *
     Math.max(params.cluster.stability, 0.05) *
-    densityFactor /
-    (distance ** 2);
+    densityFactor;
   const magnitude = round4(Math.min(maxMagnitude, rawMagnitude));
   const vector = zeroCoordinateDelta();
 

@@ -294,7 +294,7 @@ export function runCoreRealityRegressionGate(config: GateConfig = {}): CoreReali
   const knownWarningSummary = getKnownWarningSummary(rawWarningMessages);
 
   // ── Compute summary ──
-  const suiteWarnings = warningRegistry.activeWarnings.length;
+  const suiteWarnings = warningRegistry.activeWarnings.length + warningRegistry.resolvedWarningRegressions.length;
 
   const suiteFails = realityAudit.summary.fail +
     (betrayalAccumulation.accumulationVerdict.level === "FAIL" ? 1 : 0) +
@@ -320,9 +320,9 @@ export function runCoreRealityRegressionGate(config: GateConfig = {}): CoreReali
 
   // ── Gate verdict ──
   const gateFailures = failures.length > 0;
-  // V10.77: only active (unknown/unmatched) warnings count toward WARN verdict.
-  // Allowed warnings are documented and do not block release.
-  const activeWarningCount = warningRegistry.activeWarnings.length;
+  // Active/unknown warnings and resolved warnings that reappear both block a
+  // PASS verdict. Only explicitly allowed warnings are non-blocking.
+  const activeWarningCount = warningRegistry.activeWarnings.length + warningRegistry.resolvedWarningRegressions.length;
   const gateWarnings = activeWarningCount > 0;
   const level: GateVerdictLevel = gateFailures ? "FAIL" : gateWarnings ? "WARN" : "PASS";
 
@@ -343,7 +343,7 @@ export function runCoreRealityRegressionGate(config: GateConfig = {}): CoreReali
       `Support boundary: ${summary.supportBoundarySafe ? "safe" : "REGRESSION"}`,
       `Neutral stable: ${summary.neutralStable}`,
     ],
-    allowedWarnings: warnings.map((w) => w.message),
+    allowedWarnings: warningRegistry.allowedWarnings,
     knownLimitations,
   };
 
