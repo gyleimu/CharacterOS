@@ -5,6 +5,7 @@
 | Doc | Description |
 |-----|-------------|
 | [Core Calibration & Durability Roadmap](core_calibration_durability_roadmap.md) | LLM safety, temporal semantics, model calibration, durable state, and dependency governance |
+| [Personality Dynamics Scientific Model](personality_dynamics_scientific_model_design.md) | Research-backed trait-state separation, TESSERA evidence, attractor dynamics, consolidation, and validation plan |
 | [Dependency Security Policy](dependency_security_policy.md) | High/critical CI blocking, moderate risk registry, and compatible upgrade policy |
 
 ## Temporal Semantics

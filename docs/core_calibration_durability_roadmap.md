@@ -9,6 +9,7 @@
 -> 时间语义正确
 -> 人格参数可校准
 -> 状态持久化可靠
+-> Trait-State 人格动力学可验证
 -> 依赖与发布持续治理
 ```
 
@@ -22,6 +23,7 @@
 | Temporal Semantics | 解除事件次数与人格速度的错误绑定 | V13 RC 封存 | ✅ 已完成：elapsed time、事件密度、恢复窗口进入核心积分，独立 Gate PASS |
 | Model Calibration | 建立可复现的人格轨迹校准体系 | 时间语义稳定 | ✅ 已完成：Golden trajectory、参数注册表、敏感性和属性测试 |
 | Durable State | 建立可重放的持久化边界 | 状态 schema 稳定 | Event Store、事务、版本冲突、幂等与快照恢复 |
+| Personality Dynamics Shadow Model | 分离长期 trait、瞬时 state、context 与 consolidation | Durable State 可保存完整动力状态 | TESSERA episode、evidence accumulator、逐维度 attractor、shadow gate |
 | Provider Evaluation | 评估真实语言模型 Adapter | 前述质量门全部通过 | Provider 可替换、断网可用、无诊断和无越权写回 |
 
 ## V13.9 LLM Boundary QA / RC
@@ -129,6 +131,27 @@ Immutable Event Log
 - 崩溃恢复后重放结果必须与提交前指纹一致。
 
 单机产品优先使用 SQLite。正式多实例部署前再增加 PostgreSQL Adapter，不提前引入分布式复杂度。
+
+Durable State 的 schema 必须为 [`personality_dynamics_scientific_model_design.md`](personality_dynamics_scientific_model_design.md) 预留 `PersonalityDynamicsState`、TESSERA episode、context profile 和 evidence accumulator。当前 `coordinate` 先兼容映射为 `traitBaseline`，新动力模型只能以 shadow mode 运行，不能未经纵向校准直接替换现有 drift。
+
+## Personality Dynamics Shadow Model
+
+状态：**设计完成，等待 Durable State 基础后实现**。
+
+核心顺序：
+
+```text
+Trait-State separation
+-> TESSERA episode
+-> context-specific state distribution
+-> evidence accumulator
+-> consolidation gate
+-> per-dimension attractor dynamics
+-> shadow comparison
+-> calibrated decision integration
+```
+
+不得通过继续放大单事件 learning rate 来改善“人格变化可见性”。短期 emotion、fatigue、boundary 和 need 优先改变 state expression；只有跨时间、可接地、方向一致的证据才能缓慢移动 trait baseline。
 
 ## LLM Grounding 后续升级
 

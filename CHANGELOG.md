@@ -1,5 +1,12 @@
 # Changelog
 
+## Personality Dynamics Scientific Design
+
+- Defined a research-backed Trait-State architecture using state distributions, per-dimension attractors, context profiles, and explicit uncertainty
+- Mapped Event, Belief, Emotion, Boundary, Life Context, Decision, Time Machine, and the existing coordinate model into TESSERA episodes and evidence consolidation
+- Required Durable State to persist engine semantics, dynamics state, evidence accumulators, and replay metadata before the shadow model can run
+- Added a phased shadow-mode migration and release gate; no current physics behavior was changed from literature alone
+
 ## Model Calibration Core
 
 - Added immutable versioned Model Parameter Registry with 54 governed numeric parameters and stable fingerprints

@@ -15,7 +15,7 @@ CharacterOS — V10 Core Kernel RC + V11 Explorer RC + V12 Agent SDK RC + V13 LL
 Temporal Semantics + Model Calibration 已完成 · Gates: All PASS · Active warnings: 0
 ```
 
-当前核心路线已从产品表面转入真实性和耐久性治理。V10-V13 RC 保持封存；时间语义和模型校准已进入统一质量门。下一步进入 Durable State：Event Log、事务快照、幂等和版本冲突处理。
+当前核心路线已从产品表面转入真实性和耐久性治理。V10-V13 RC 保持封存；时间语义和模型校准已进入统一质量门。基于 Whole Trait Theory、TESSERA、PersDyn 和 Latent State-Trait Theory 的人格动力学方案已经完成，明确把长期 trait、瞬时 state、context profile、uncertainty 和 consolidation evidence 分开。下一步仍先进入 Durable State：Event Log、事务快照、幂等和版本冲突处理；随后以 shadow mode 实现新动力模型，不直接替换现有 drift。
 
 ## V10 完成内容概览
 

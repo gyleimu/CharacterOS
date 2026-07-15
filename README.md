@@ -102,6 +102,8 @@ docs/character_physics_upgrade_blueprint.md
 
 参数与稳态系统文档：
 
+- [人格动力学科学模型设计](docs/personality_dynamics_scientific_model_design.md)
+
 ```text
 docs/parameter_system.md
 docs/parameter_evolution.md
