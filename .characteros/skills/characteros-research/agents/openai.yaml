@@ -1,0 +1,4 @@
+interface:
+  display_name: "CharacterOS Research"
+  short_description: "Research CharacterOS models with primary evidence and tests."
+  default_prompt: "Use $characteros-research to evaluate this CharacterOS model question with primary evidence."

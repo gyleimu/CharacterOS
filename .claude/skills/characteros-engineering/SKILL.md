@@ -14,6 +14,4 @@ Load only the references needed for the task:
 - Test planning or verification: `../../../.characteros/skills/characteros-engineering/testing-rules.md`
 - Pre-commit self-review: `../../../.characteros/skills/characteros-engineering/review-checklist.md`
 
-Use `$characteros-review` for independent code or architecture review. Use `$characteros-research` for paper review, evidence synthesis, or scientific-model proposals.
-
-Treat the canonical `.characteros` directory as the single source of truth. Do not duplicate its rules here.
+Use `$characteros-review` for independent review and `$characteros-research` for evidence or scientific-model work. Treat `.characteros` as the single source of truth.

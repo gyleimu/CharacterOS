@@ -1,0 +1,4 @@
+interface:
+  display_name: "CharacterOS Review"
+  short_description: "Review CharacterOS architecture, behavior, risks, and tests."
+  default_prompt: "Use $characteros-review to perform a findings-first CharacterOS code and architecture review."

@@ -1,6 +1,6 @@
 ---
 name: characteros-engineering
-description: Enforce CharacterOS architecture, psychological-domain invariants, deterministic state evolution, migration safety, code review, and test gates. Use for implementation, refactoring, debugging, review, calibration, persistence, simulation, Explorer, Agent SDK, LLM boundary, or release work in the CharacterOS repository.
+description: Enforce CharacterOS architecture, psychological-domain invariants, deterministic state evolution, migration safety, and test gates. Use for implementation, refactoring, debugging, calibration, persistence, simulation, Explorer, Agent SDK, LLM boundary, or release changes in the CharacterOS repository.
 ---
 
 # CharacterOS Engineering
@@ -15,9 +15,11 @@ Before changing code:
 2. Read `architecture.md` for dependency and mutation boundaries.
 3. Read `domain-model.md` for the psychological model involved.
 4. Read `testing-rules.md` before selecting verification commands.
-5. For reviews, also read `review-checklist.md`.
+5. Read `review-checklist.md` for implementation self-review before completion.
 
 Use `docs/personality_dynamics_scientific_model_design.md` when work touches personality drift, accumulation, trait/state separation, recovery, or calibration.
+
+Use `$characteros-review` for an independent review or boundary audit. Use `$characteros-research` before proposing evidence-based psychological dynamics, calibration hypotheses, or paper-derived model changes.
 
 ## Preserve The Runtime Model
 

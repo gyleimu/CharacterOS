@@ -1,6 +1,12 @@
 # CharacterOS Repository Instructions
 
-Use the repo skill `$characteros-engineering` for implementation, refactoring, debugging, review, calibration, persistence, simulation, Explorer/MindSpace, Agent SDK, LLM boundary, and release work.
+Use the project skills by responsibility:
+
+- `$characteros-engineering`: implementation, refactoring, debugging, calibration, persistence, simulation, Explorer/MindSpace, Agent SDK, LLM boundary, and release changes.
+- `$characteros-review`: code review, architecture or boundary audit, regression analysis, release readiness, and post-fix verification. Default to read-only.
+- `$characteros-research`: paper review, evidence synthesis, scientific-model design, parameter hypotheses, and benchmark research. Default to read-only.
+
+For evidence-driven core work, use the sequence `research -> engineering -> review`. Do not let research findings or review output bypass the engineering write boundary.
 
 Read these active guides before core changes:
 
