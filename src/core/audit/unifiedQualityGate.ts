@@ -9,6 +9,7 @@ import { firstReplayBenchmarkFixtures } from "../benchmark/fixtures/firstReplayF
 import { runCoreRealityRegressionGate, type CoreRealityGateResult, type GateConfig } from "./coreRealityRegressionGate";
 import { runDeterminismBoundaryAudit, type DeterminismBoundaryAuditResult } from "./determinismBoundaryAudit";
 import { runTemporalSemanticsAudit, type TemporalSemanticsAuditResult } from "./temporalSemanticsAudit";
+import { runModelCalibrationAudit, type ModelCalibrationAuditResult } from "./modelCalibrationAudit";
 
 export type QualityVerdictLevel = "PASS" | "WARN" | "FAIL";
 
@@ -27,6 +28,8 @@ export interface UnifiedQualityGateConfig {
   skipDeterminism?: boolean;
   /** Whether to skip temporal semantics audit (for faster iterations). Default false. */
   skipTemporalSemantics?: boolean;
+  /** Whether to skip model calibration (for faster iterations). Default false. */
+  skipModelCalibration?: boolean;
 }
 
 export interface BenchmarkQualitySummary {
@@ -53,6 +56,7 @@ export interface UnifiedQualityGateResult {
   realityGateResult: CoreRealityGateResult;
   determinismAuditResult: DeterminismBoundaryAuditResult | null;
   temporalSemanticsAuditResult: TemporalSemanticsAuditResult | null;
+  modelCalibrationAuditResult: ModelCalibrationAuditResult | null;
   unifiedSummary: {
     totalChecks: number;
     passed: number;
@@ -62,6 +66,7 @@ export interface UnifiedQualityGateResult {
     realityGatePassed: boolean;
     determinismPassed: boolean;
     temporalSemanticsPassed: boolean;
+    modelCalibrationPassed: boolean;
     overallPassed: boolean;
   };
   qualityVerdict: {
@@ -167,6 +172,22 @@ export function runUnifiedQualityGate(
     allReasons.push("Temporal Semantics: SKIPPED");
   }
 
+  // ── Model Calibration Audit ──
+  let modelCalibrationAuditResult: ModelCalibrationAuditResult | null = null;
+  if (!cfg.skipModelCalibration) {
+    modelCalibrationAuditResult = runModelCalibrationAudit();
+    if (!modelCalibrationAuditResult.gateVerdict.passed) {
+      allFailures.push(
+        ...modelCalibrationAuditResult.failures.map((failure) => `[calibration] ${failure}`),
+      );
+    }
+    allReasons.push(
+      `Model Calibration: ${modelCalibrationAuditResult.gateVerdict.level} (${modelCalibrationAuditResult.summary.passedAssertions}/${modelCalibrationAuditResult.summary.totalAssertions} assertions)`,
+    );
+  } else {
+    allReasons.push("Model Calibration: SKIPPED");
+  }
+
   // ── Combined verdict ──
   const benchmarkPassed = benchmarkSummary ? benchmarkSummary.verdict !== "FAIL" : true;
   const realityGatePassed = realityGateResult.gateVerdict.passed;
@@ -174,17 +195,22 @@ export function runUnifiedQualityGate(
   const temporalSemanticsPassed = temporalSemanticsAuditResult
     ? temporalSemanticsAuditResult.gateVerdict.passed
     : true;
+  const modelCalibrationPassed = modelCalibrationAuditResult
+    ? modelCalibrationAuditResult.gateVerdict.passed
+    : true;
 
   const totalChecks =
     (benchmarkSummary?.total ?? 0) +
     realityGateResult.summary.totalChecks +
     (determinismAuditResult ? 1 : 0) +
-    (temporalSemanticsAuditResult ? temporalSemanticsAuditResult.summary.totalCases : 0);
+    (temporalSemanticsAuditResult ? temporalSemanticsAuditResult.summary.totalCases : 0) +
+    (modelCalibrationAuditResult ? modelCalibrationAuditResult.summary.totalAssertions : 0);
   const passedChecks =
     (benchmarkSummary?.passed ?? 0) +
     realityGateResult.summary.passed +
     (determinismAuditResult?.passed ? 1 : 0) +
-    (temporalSemanticsAuditResult?.summary.passedCases ?? 0);
+    (temporalSemanticsAuditResult?.summary.passedCases ?? 0) +
+    (modelCalibrationAuditResult?.summary.passedAssertions ?? 0);
   const warnedChecks =
     (benchmarkSummary ? (benchmarkSummary.verdict === "WARN" ? 1 : 0) : 0) +
     realityGateResult.summary.warned +
@@ -193,7 +219,10 @@ export function runUnifiedQualityGate(
     (benchmarkSummary?.failed ?? 0) +
     realityGateResult.summary.failed +
     (determinismAuditResult && !determinismAuditResult.passed ? 1 : 0) +
-    (temporalSemanticsAuditResult?.summary.failedCases ?? 0);
+    (temporalSemanticsAuditResult?.summary.failedCases ?? 0) +
+    (modelCalibrationAuditResult
+      ? modelCalibrationAuditResult.summary.totalAssertions - modelCalibrationAuditResult.summary.passedAssertions
+      : 0);
 
   const level: QualityVerdictLevel =
     allFailures.length > 0 ? "FAIL" :
@@ -215,6 +244,9 @@ export function runUnifiedQualityGate(
   }
   if (!temporalSemanticsPassed) {
     blockers.push("Temporal semantics audit has failures — event timing and recovery must pass before release");
+  }
+  if (!modelCalibrationPassed) {
+    blockers.push("Model calibration audit has failures — trajectories and parameter sensitivity must pass before release");
   }
   if (allFailures.length > 0) {
     blockers.push(`${allFailures.length} unified failures detected`);
@@ -264,6 +296,7 @@ export function runUnifiedQualityGate(
     { id: "risk_benchmark_coverage_gap", description: "Benchmark category coverage dropping", severity: "medium", guardedBy: "benchmark.coveredCategories" },
     { id: "risk_determinism_drift", description: "Non-deterministic defaults introduced into core paths", severity: "high", guardedBy: "determinismBoundaryAudit.forbiddenPatternFindings" },
     { id: "risk_temporal_semantics_regression", description: "Event concentration, recovery, or ordering semantics regress", severity: "high", guardedBy: "temporalSemanticsAudit.gateVerdict" },
+    { id: "risk_model_calibration_regression", description: "Parameter changes reverse directions or destabilize long trajectories", severity: "high", guardedBy: "modelCalibrationAudit.gateVerdict" },
   ];
 
   return {
@@ -278,6 +311,7 @@ export function runUnifiedQualityGate(
     realityGateResult,
     determinismAuditResult,
     temporalSemanticsAuditResult,
+    modelCalibrationAuditResult,
     unifiedSummary: {
       totalChecks,
       passed: passedChecks,
@@ -287,6 +321,7 @@ export function runUnifiedQualityGate(
       realityGatePassed,
       determinismPassed,
       temporalSemanticsPassed,
+      modelCalibrationPassed,
       overallPassed: allFailures.length === 0,
     },
     qualityVerdict: {
@@ -374,6 +409,7 @@ function normalizeUnifiedConfig(config: UnifiedQualityGateConfig): Required<Unif
     skipBenchmark: config.skipBenchmark ?? false,
     skipDeterminism: config.skipDeterminism ?? false,
     skipTemporalSemantics: config.skipTemporalSemantics ?? false,
+    skipModelCalibration: config.skipModelCalibration ?? false,
   };
 }
 

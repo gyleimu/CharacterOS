@@ -1,6 +1,5 @@
 import { BASE_PERSONALITY_KEYS } from "../personality/dimensions";
-import { addCoordinateDelta, zeroCoordinateDelta, type PersonalityCoordinate } from "../personality/coordinate";
-import { round4 } from "../parameters/parameterMath";
+import { zeroCoordinateDelta, type PersonalityCoordinate } from "../personality/coordinate";
 import type { PersonalityCore } from "./personalityCore";
 
 export interface MomentumDriftResult {
@@ -22,7 +21,10 @@ export function applyMomentumDrift(core: PersonalityCore, force: PersonalityCoor
     );
   }
 
-  const after = addCoordinateDelta(core.position, nextVelocity.values, 1);
+  const after: PersonalityCoordinate = { values: { ...core.position.values } };
+  for (const key of BASE_PERSONALITY_KEYS) {
+    after.values[key] = clamp01Precise(core.position.values[key] + nextVelocity.values[key]);
+  }
   return {
     before: core.position,
     after,
@@ -33,7 +35,15 @@ export function applyMomentumDrift(core: PersonalityCore, force: PersonalityCoor
 }
 
 function clampSigned(value: number, limit: number): number {
-  if (value > limit) return round4(limit);
-  if (value < -limit) return round4(-limit);
-  return round4(value);
+  if (value > limit) return round8(limit);
+  if (value < -limit) return round8(-limit);
+  return round8(value);
+}
+
+function clamp01Precise(value: number): number {
+  return Math.max(0, Math.min(1, round8(value)));
+}
+
+function round8(value: number): number {
+  return Math.round(value * 100_000_000) / 100_000_000;
 }

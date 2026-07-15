@@ -182,6 +182,7 @@ function computeFingerprint(state: CharacterPhysicsState): string {
     state.temporal.recentEvents.slice(-8).map((record) => (
       `${record.signature}:${record.occurredAt}:${record.densityScale.toFixed(4)}`
     )).join(","),
+    state.parameterSetVersion,
   ];
   let hash = 0;
   const str = parts.join("|");

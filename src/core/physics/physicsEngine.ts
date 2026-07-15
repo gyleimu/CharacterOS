@@ -2,6 +2,13 @@ import { assimilateMemoryIntoBeliefs } from "../belief/beliefEvolution";
 import type { BeliefState } from "../belief/beliefState";
 import { calculateImpactScore, impactScore as createImpactScore, type ImpactScore } from "../benchmark/impact";
 import { clamp01, round4 } from "../parameters/parameterMath";
+import {
+  CURRENT_MODEL_PARAMETER_SET_VERSION,
+  getCurrentModelParameterSet,
+  getModelParameterSet,
+  type ModelParameterSet,
+  type PersonalityModelParameters,
+} from "../parameters/modelParameterRegistry";
 import { defaultBiologicalNature, type BiologicalNature } from "../biological/nature";
 import { defaultBoredomState, type BoredomState } from "../boredom/boredomSystem";
 import type { CharacterIdentity } from "../character/characterBlueprint";
@@ -85,6 +92,7 @@ export interface CharacterPhysicsState {
   homeostasisState: HomeostasisState;
   boredomState: BoredomState;
   temporal: CharacterTemporalState;
+  parameterSetVersion: string;
   learningRate: number;
 }
 
@@ -122,8 +130,18 @@ export function createCharacterPhysicsState(params?: {
   homeostasisState?: HomeostasisState;
   boredomState?: BoredomState;
   temporal?: CharacterTemporalState;
+  parameterSet?: ModelParameterSet;
+  parameterSetVersion?: string;
   learningRate?: number;
 }): CharacterPhysicsState {
+  const parameterSetVersion =
+    params?.parameterSetVersion ?? params?.parameterSet?.version ?? CURRENT_MODEL_PARAMETER_SET_VERSION;
+  const parameterSet = params?.parameterSet ?? getModelParameterSet(parameterSetVersion);
+  if (parameterSet.version !== parameterSetVersion) {
+    throw new Error(
+      `Requested parameter set ${parameterSetVersion} does not match provided set ${parameterSet.version}`,
+    );
+  }
   const coordinate =
     params?.coordinate ?? (params?.personality ? coordinateFromBigFive(params.personality) : neutralCoordinate());
   return {
@@ -135,7 +153,7 @@ export function createCharacterPhysicsState(params?: {
     },
     metaState: params?.metaState ?? defaultMetaState(),
     biologicalNature: params?.biologicalNature ?? defaultBiologicalNature(),
-    boundary: params?.boundary ?? createPsychologicalBoundary(),
+    boundary: params?.boundary ?? createPsychologicalBoundary({}, parameterSet.boundary),
     coordinate,
     velocity: params?.velocity ?? zeroCoordinateDelta(),
     personality: params?.personality ?? bigFiveFromCoordinate(coordinate),
@@ -147,13 +165,21 @@ export function createCharacterPhysicsState(params?: {
     rewardState: params?.rewardState ?? defaultRewardState(),
     homeostasisState: params?.homeostasisState ?? defaultHomeostasisState(),
     boredomState: params?.boredomState ?? defaultBoredomState(),
-    temporal: createCharacterTemporalState(params?.temporal),
-    learningRate: params?.learningRate ?? 0.03
+    temporal: createCharacterTemporalState(params?.temporal, parameterSet.temporal),
+    parameterSetVersion,
+    learningRate: params?.learningRate ?? parameterSet.personality.defaultLearningRate
   };
 }
 
 export class CharacterPhysicsEngine {
+  readonly parameterSet: ModelParameterSet | null;
+
+  constructor(params: { parameterSet?: ModelParameterSet } = {}) {
+    this.parameterSet = params.parameterSet ?? null;
+  }
+
   processEvent(state: CharacterPhysicsState, event: ExperienceEvent): PhysicsStepResult {
+    const parameterSet = this.resolveParameterSet(state);
     const category = resolveEventCategory(event);
     const resolvedEvent = event.category === category ? event : { ...event, category };
     const rawImpactScore = calculateEventImpactScore(resolvedEvent);
@@ -162,8 +188,9 @@ export class CharacterPhysicsEngine {
       event: resolvedEvent,
       category,
       rawImpactValue: rawImpactScore.value,
+      parameters: parameterSet.temporal,
     });
-    const temporalRecovery = applyElapsedTimeRecovery(state, temporalPlan);
+    const temporalRecovery = applyElapsedTimeRecovery(state, temporalPlan, parameterSet);
     const temporalEvent = eventWithResolvedTime(resolvedEvent, temporalPlan);
     const impactScore = createImpactScore(temporalPlan.effectiveImpactValue);
     const emotion = inferEmotion(temporalEvent, impactScore);
@@ -180,9 +207,10 @@ export class CharacterPhysicsEngine {
       category,
       particle,
       impactScore,
-      emotion
+      emotion,
+      parameterSet,
     });
-    const boundaryImpact = applyEventBoundaryImpact({ state, event: temporalEvent, impactScore });
+    const boundaryImpact = applyEventBoundaryImpact({ state, event: temporalEvent, impactScore, parameterSet });
     const proceduralActivations = updateProceduralRoutinesForEvent({ state, event: temporalEvent });
     const rewardResult = updateRewardForEvent({ state, event: temporalEvent, category, proceduralActivations });
     const timePerception = perceiveEventTime({
@@ -203,15 +231,19 @@ export class CharacterPhysicsEngine {
       boundaryImpact,
       category,
       impactScore,
+      parameterSet,
     });
     state.temporal = commitEventTemporalState({
       temporal: state.temporal,
       event: temporalEvent,
       category,
       plan: temporalPlan,
+      parameters: parameterSet.temporal,
     });
     const temporalSemantics: EventTemporalTrace = {
       ...temporalPlan,
+      parameterSetVersion: parameterSet.version,
+      parameterSetFingerprint: parameterSet.fingerprint,
       recovery: temporalRecovery,
       clockAfter: state.temporal.lastProcessedAt,
       processedEventCountAfter: state.temporal.processedEventCount,
@@ -234,6 +266,18 @@ export class CharacterPhysicsEngine {
       attentionEvaluation,
       temporalSemantics,
     };
+  }
+
+  private resolveParameterSet(state: CharacterPhysicsState): ModelParameterSet {
+    if (this.parameterSet) {
+      if (state.parameterSetVersion !== this.parameterSet.version) {
+        throw new Error(
+          `Character state parameter set ${state.parameterSetVersion} does not match engine set ${this.parameterSet.version}`,
+        );
+      }
+      return this.parameterSet;
+    }
+    return getModelParameterSet(state.parameterSetVersion);
   }
 }
 
@@ -281,6 +325,7 @@ function absorbEventIntoMemoryGalaxy(params: {
   particle: ImpactParticle;
   impactScore: ImpactScore;
   emotion: EmotionState;
+  parameterSet: ModelParameterSet;
 }): { cluster: ImpactCluster; memoryNode: MemoryNode } {
   const existingCluster =
     params.state.clusters.get(params.category) ?? createImpactCluster(`cluster_${params.category}`, params.category);
@@ -302,7 +347,11 @@ function absorbEventIntoMemoryGalaxy(params: {
   });
   params.state.memories.push(memoryNode);
   params.state.beliefStates = assimilateMemoryIntoBeliefs(params.state.beliefStates, memoryNode);
-  const cluster = syncClusterWithGalaxyMetrics(absorbedCluster, params.state.memories);
+  const cluster = syncClusterWithGalaxyMetrics(
+    absorbedCluster,
+    params.state.memories,
+    params.parameterSet.memory,
+  );
   params.state.clusters.set(params.category, cluster);
   return { cluster, memoryNode };
 }
@@ -310,16 +359,17 @@ function absorbEventIntoMemoryGalaxy(params: {
 function applyElapsedTimeRecovery(
   state: CharacterPhysicsState,
   plan: EventTemporalPlan,
+  parameterSet: ModelParameterSet,
 ): EventTemporalRecoverySummary {
   const before = captureTemporalRecoveryState(state);
-  const retention = personalityVelocityRetention(plan.elapsedDaysApplied);
+  const retention = personalityVelocityRetention(plan.elapsedDaysApplied, parameterSet.temporal);
 
   if (plan.elapsedDaysApplied > 0) {
-    runContinuousTick(state, { daysElapsed: plan.elapsedDaysApplied });
-    state.clusters = syncClustersWithGalaxyMetrics(state.clusters, state.memories);
+    runContinuousTick(state, { daysElapsed: plan.elapsedDaysApplied, modelParameters: parameterSet });
+    state.clusters = syncClustersWithGalaxyMetrics(state.clusters, state.memories, parameterSet.memory);
     const velocity = zeroCoordinateDelta();
     for (const key of BASE_PERSONALITY_KEYS) {
-      velocity.values[key] = round4(state.velocity.values[key] * retention);
+      velocity.values[key] = round8(state.velocity.values[key] * retention);
     }
     state.velocity = velocity;
   }
@@ -363,13 +413,15 @@ function applyEventBoundaryImpact(params: {
   state: CharacterPhysicsState;
   event: ExperienceEvent;
   impactScore: ImpactScore;
+  parameterSet: ModelParameterSet;
 }): BoundaryImpactResult {
   const boundaryImpact = applyBoundaryImpact({
     boundary: params.state.boundary,
     nature: params.state.biologicalNature,
     coordinate: params.state.coordinate,
     event: params.event,
-    impactScore: params.impactScore
+    impactScore: params.impactScore,
+    parameters: params.parameterSet.boundary,
   });
   params.state.boundary = boundaryImpact.after;
   return boundaryImpact;
@@ -438,8 +490,13 @@ function applyGalaxyDrift(params: {
   boundaryImpact: BoundaryImpactResult;
   category: string;
   impactScore: ImpactScore;
+  parameterSet: ModelParameterSet;
 }): { galaxyStep: PersonalityGalaxySnapshot; coordinateDrift: CoordinateDriftResult } {
-  const activation = driftActivationForEvent(params.category, params.impactScore.value);
+  const activation = driftActivationForEvent(
+    params.category,
+    params.impactScore.value,
+    params.parameterSet.personality,
+  );
   const learningRate = params.state.learningRate * params.boundaryImpact.driftMultiplier * activation.learningRateScale;
   const galaxyStep = simulatePersonalityGalaxyStep({
     corePosition: params.state.coordinate,
@@ -448,6 +505,7 @@ function applyGalaxyDrift(params: {
     memories: params.state.memories,
     learningRate,
     momentumAlpha: activation.momentumAlpha,
+    memoryParameters: params.parameterSet.memory,
   });
   params.state.velocity = galaxyStep.drift.nextVelocity;
   params.state.coordinate = {
@@ -478,22 +536,34 @@ function applyGalaxyDrift(params: {
 function driftActivationForEvent(
   category: string,
   impact: number,
+  parameters: PersonalityModelParameters = getCurrentModelParameterSet().personality,
 ): { learningRateScale: number; momentumAlpha: number } {
   if (category === "general") {
     return {
-      learningRateScale: Math.min(0.08, Math.max(0.01, impact * 0.15)),
-      momentumAlpha: 0.35,
+      learningRateScale: Math.min(
+        parameters.generalLearningMax,
+        Math.max(parameters.generalLearningMin, impact * parameters.generalImpactScale),
+      ),
+      momentumAlpha: parameters.generalMomentum,
     };
   }
   if (category === "fatigue") {
-    return { learningRateScale: 0.2, momentumAlpha: 0.5 };
+    return {
+      learningRateScale: parameters.fatigueLearningScale,
+      momentumAlpha: parameters.fatigueMomentum,
+    };
   }
   if (category === "uncertainty") {
-    return { learningRateScale: 0.45, momentumAlpha: 0.68 };
+    return {
+      learningRateScale: parameters.uncertaintyLearningScale,
+      momentumAlpha: parameters.uncertaintyMomentum,
+    };
   }
   return {
-    learningRateScale: 0.55 + Math.max(0, Math.min(1, impact)) * 0.45,
-    momentumAlpha: 0.82,
+    learningRateScale:
+      parameters.standardLearningBase +
+      Math.max(0, Math.min(1, impact)) * parameters.standardImpactScale,
+    momentumAlpha: parameters.standardMomentum,
   };
 }
 
@@ -597,6 +667,10 @@ function valenceForEmotion(emotion: string): number {
   // V10.73: fatigue is mildly negative
   if (emotion === "fatigue") return -0.3;
   return -0.2;
+}
+
+function round8(value: number): number {
+  return Math.round(value * 100_000_000) / 100_000_000;
 }
 
 function arousalForEmotion(emotion: string): number {

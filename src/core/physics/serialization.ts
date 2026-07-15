@@ -14,6 +14,10 @@ import { deriveCharacterState, type DerivedCharacterState } from "../state/deriv
 import { createCharacterPhysicsState, type CharacterPhysicsState } from "./physicsEngine";
 import type { CharacterIdentity } from "../character/characterBlueprint";
 import type { CharacterTemporalState } from "../time/eventTemporalSemantics";
+import {
+  LEGACY_MODEL_PARAMETER_SET_VERSION,
+  getModelParameterSet,
+} from "../parameters/modelParameterRegistry";
 
 export interface SerializedImpactCluster {
   id: string;
@@ -44,6 +48,7 @@ export interface SerializedCharacterPhysicsState {
   homeostasisState?: HomeostasisState;
   boredomState?: BoredomState;
   temporal?: CharacterTemporalState;
+  parameterSetVersion?: string;
   learningRate: number;
   derived: DerivedCharacterState;
   galaxy: PersonalityGalaxySnapshot;
@@ -69,6 +74,7 @@ export function serializeCharacterPhysicsState(
     homeostasisState: state.homeostasisState,
     boredomState: state.boredomState,
     temporal: state.temporal,
+    parameterSetVersion: state.parameterSetVersion,
     learningRate: state.learningRate,
     derived: deriveCharacterState(state),
     galaxy: simulatePersonalityGalaxyStep({
@@ -76,7 +82,8 @@ export function serializeCharacterPhysicsState(
       velocity: state.velocity,
       clusters: [...state.clusters.values()],
       memories: state.memories,
-      learningRate: state.learningRate
+      learningRate: state.learningRate,
+      memoryParameters: getModelParameterSet(state.parameterSetVersion).memory,
     })
   };
 }
@@ -88,6 +95,7 @@ export function deserializeCharacterPhysicsState(
     ...(serialized.identity ? { identity: serialized.identity } : {}),
     coordinate: serialized.coordinate,
     personality: serialized.personality,
+    parameterSetVersion: serialized.parameterSetVersion ?? LEGACY_MODEL_PARAMETER_SET_VERSION,
     learningRate: serialized.learningRate
   };
   if (serialized.biologicalNature) {

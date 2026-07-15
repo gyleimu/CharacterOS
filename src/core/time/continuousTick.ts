@@ -16,6 +16,10 @@ import { recoverRewardBaseline, type RewardState } from "../reward/rewardSystem"
 import { applyHomeostasis, type HomeostasisTrace } from "../homeostasis/homeostasis";
 import { average, clamp, clamp01 } from "../parameters/parameterMath";
 import {
+  getModelParameterSet,
+  type ModelParameterSet,
+} from "../parameters/modelParameterRegistry";
+import {
   parameterNetworkStateFromCharacter,
   propagateParameterNetwork,
   type ParameterNetworkTrace
@@ -64,6 +68,7 @@ export interface ContinuousTickOptions {
   deepThinkingThreshold?: number;
   fatigue?: number;
   sleepDebt?: number;
+  modelParameters?: ModelParameterSet;
 }
 
 export type ContinuousTickPhaseName =
@@ -172,7 +177,13 @@ export function runContinuousTick(
   // ═══════════════════════════════════════════════════════════════════
   // Phase 1: snapshot — capture pre-tick baselines before any mutation.
   // ═══════════════════════════════════════════════════════════════════
-  const normalizedOptions = normalizeContinuousTickOptions(options);
+  const modelParameters = options.modelParameters ?? getModelParameterSet(state.parameterSetVersion);
+  if (modelParameters.version !== state.parameterSetVersion) {
+    throw new Error(
+      `Character state parameter set ${state.parameterSetVersion} does not match tick set ${modelParameters.version}`,
+    );
+  }
+  const normalizedOptions = normalizeContinuousTickOptions(options, modelParameters);
   const temporalClockBefore = state.temporal.lastProcessedAt;
   const daysElapsed = normalizedOptions.daysElapsed;
   const baseMemoryDecayRate = normalizedOptions.memoryDecayRate;
@@ -218,7 +229,7 @@ export function runContinuousTick(
   state.memories = memoriesBefore.map((memory) => decayMemory(memory, daysElapsed, memoryDecayRate));
   state.proceduralRoutines = proceduralRoutinesBefore.map((routine) => decayProceduralRoutine(routine, daysElapsed));
   state.rewardState = recoverRewardBaseline(state.rewardState, daysElapsed);
-  state.boundary = recoverBoundary(state.boundary, daysElapsed);
+  state.boundary = recoverBoundary(state.boundary, daysElapsed, modelParameters.boundary);
   state.metaState = metaDriftResult.trace.after;
   // V5.2-V5.4: Build subprocess traces (instrumentation only — no behavior change)
   const memoryDecaySubProcess = buildMemoryDecaySubProcessTrace({
@@ -428,7 +439,7 @@ export function runContinuousTick(
     reasons: timePerception.reasons
   });
 
-  state.temporal = advanceTemporalStateByDays(state.temporal, daysElapsed);
+  state.temporal = advanceTemporalStateByDays(state.temporal, daysElapsed, modelParameters.temporal);
 
   return {
     daysElapsed,
@@ -470,12 +481,15 @@ export function runContinuousTick(
   };
 }
 
-function normalizeContinuousTickOptions(options: ContinuousTickOptions): Required<
+function normalizeContinuousTickOptions(
+  options: ContinuousTickOptions,
+  modelParameters: ModelParameterSet,
+): Required<
   Pick<ContinuousTickOptions, "daysElapsed" | "memoryDecayRate" | "deepThinkingThreshold">
 > & Pick<ContinuousTickOptions, "fatigue" | "sleepDebt"> {
   return {
-    daysElapsed: clamp(options.daysElapsed ?? 1, 0, 3650),
-    memoryDecayRate: clamp(options.memoryDecayRate ?? 0.02, 0, 0.2),
+    daysElapsed: clamp(options.daysElapsed ?? 1, 0, modelParameters.temporal.maxEventRecoveryDays),
+    memoryDecayRate: clamp(options.memoryDecayRate ?? modelParameters.memory.defaultDecayRate, 0, 0.2),
     deepThinkingThreshold: clamp01(options.deepThinkingThreshold ?? 0.72),
     ...(options.fatigue !== undefined ? { fatigue: clamp01(options.fatigue) } : {}),
     ...(options.sleepDebt !== undefined ? { sleepDebt: clamp01(options.sleepDebt) } : {})

@@ -1,5 +1,10 @@
 import { BASE_PERSONALITY_KEYS, type PersonalityDimensionKey } from "../personality/dimensions";
 import type { CharacterPhysicsState } from "../physics/physicsEngine";
+import {
+  getModelParameterSet,
+  hasModelParameterSet,
+  validateModelParameterSet,
+} from "../parameters/modelParameterRegistry";
 
 export type StateIntegritySeverity = "error" | "warning";
 
@@ -29,6 +34,7 @@ export function inspectCharacterStateIntegrity(state: CharacterPhysicsState): St
   checkCoordinate("coordinate", state.coordinate.values, issues);
   checkVelocity(state, issues);
   checkScalar("learningRate", state.learningRate, issues, { min: 0, max: 1 });
+  checkParameterSet(state, issues);
   checkTemporalState(state, issues);
 
   const particleIds = collectUniqueIds(
@@ -125,8 +131,26 @@ function checkVelocity(state: CharacterPhysicsState, issues: StateIntegrityIssue
   }
 }
 
+function checkParameterSet(state: CharacterPhysicsState, issues: StateIntegrityIssue[]): void {
+  if (!state.parameterSetVersion) {
+    addIssue(issues, "error", "parameterSetVersion", "parameter set version must be non-empty");
+    return;
+  }
+  if (!hasModelParameterSet(state.parameterSetVersion)) {
+    addIssue(issues, "error", "parameterSetVersion", `unknown parameter set: ${state.parameterSetVersion}`);
+    return;
+  }
+  const validation = validateModelParameterSet(getModelParameterSet(state.parameterSetVersion));
+  for (const issue of validation.issues) {
+    addIssue(issues, "error", `parameterSet.${issue.path}`, issue.message);
+  }
+}
+
 function checkTemporalState(state: CharacterPhysicsState, issues: StateIntegrityIssue[]): void {
   const temporal = state.temporal;
+  const minimumDensityScale = hasModelParameterSet(state.parameterSetVersion)
+    ? getModelParameterSet(state.parameterSetVersion).temporal.minimumDensityScale
+    : 0;
   checkScalar("temporal.totalElapsedDays", temporal.totalElapsedDays, issues, { min: 0 });
   checkScalar("temporal.processedEventCount", temporal.processedEventCount, issues, { min: 0 });
   checkScalar("temporal.timedEventCount", temporal.timedEventCount, issues, { min: 0 });
@@ -162,7 +186,7 @@ function checkTemporalState(state: CharacterPhysicsState, issues: StateIntegrity
     temporalSequences.add(record.sequence);
     checkScalar(`${path}.rawImpact`, record.rawImpact, issues, { min: 0, max: 1 });
     checkScalar(`${path}.effectiveImpact`, record.effectiveImpact, issues, { min: 0, max: 1 });
-    checkScalar(`${path}.densityScale`, record.densityScale, issues, { min: 0.35, max: 1 });
+    checkScalar(`${path}.densityScale`, record.densityScale, issues, { min: minimumDensityScale, max: 1 });
     if (record.effectiveImpact > record.rawImpact) {
       addIssue(issues, "error", `${path}.effectiveImpact`, "effective impact cannot exceed raw impact");
     }

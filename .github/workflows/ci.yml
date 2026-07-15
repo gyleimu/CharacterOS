@@ -62,6 +62,9 @@ jobs:
       - name: Temporal Semantics Audit
         run: npm run test:temporal
 
+      - name: Model Calibration Audit
+        run: npm run test:calibration
+
       - name: LLM Boundary Harness
         run: npm run export:llm-harness && npm run test:llm-boundary
 

@@ -12,6 +12,7 @@
 | Doc | Description |
 |-----|-------------|
 | [Temporal Semantics Core Report](v14.0_temporal_semantics_report.md) | Event clock, density saturation, elapsed-time recovery, ordering safety, replay audit, and residual calibration risks |
+| [Model Calibration Report](v14.1_model_calibration_report.md) | Versioned parameters, Golden Trajectory, properties, metamorphic checks, sensitivity, and repair asymmetry |
 
 ## V13 LLM Boundary & Determinism
 

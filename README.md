@@ -32,8 +32,8 @@ CharacterIdentity
 当前阶段：
 
 ```text
-CharacterOS — Core Kernel · Explorer Platform · Agent SDK · LLM Boundary · Temporal Semantics
-V10/V11/V12 RC artifacts remain sealed; V13.9 Mock-only LLM Boundary RC and the Temporal Semantics core stage are complete.
+CharacterOS — Core Kernel · Explorer Platform · Agent SDK · LLM Boundary · Temporal Semantics · Model Calibration
+V10/V11/V12 RC artifacts remain sealed; V13.9 Mock-only LLM Boundary RC, Temporal Semantics, and Model Calibration are complete.
 ```
 
 当前项目状态：
@@ -55,7 +55,7 @@ no server deployment  — 不做服务器部署
 
 ```text
 npm run build        tsc --noEmit
-npm test             186 files / 2535 tests / 0 failures
+npm test             188 files / 2572 tests / 0 failures
 npm run next:build   Explorer/MindSpace 页面 + API routes
 ```
 
@@ -69,6 +69,7 @@ Known Warning Registry    0 active / 1 allowed / 0 regressed
 Benchmark V2.1            6/6 passed (100%)
 Determinism Boundary      PASS
 Temporal Semantics Gate   PASS   (7/7 cases, 21/21 assertions)
+Model Calibration Gate    PASS   (160/160 trajectories, 640 scenario projections, 914/914 assertions)
 LLM Boundary Quality Gate PASS   (18/18, 0 unsafe deliveries)
 Dependency Security       0 high / 0 critical
 ```
@@ -110,7 +111,7 @@ docs/recovery_system.md
 
 短期主线仍以 Character Physics Core 为中心：先完善数据结构、纯逻辑、测试和必要 API。Explorer 与 MindSpace 是 Core 之上的只读观察面，不得反向依赖或修改核心状态。
 
-当前事件积分已经使用显式时间语义：带时间戳事件会先执行事件间恢复，再应用 24 小时密度饱和后的有效 impact；人格 velocity 使用 14 天半衰期。下一阶段是版本化 Parameter Registry 与 Golden Trajectory 校准，不继续扩张 UI。
+当前事件积分已经使用显式时间语义：带时间戳事件会先执行事件间恢复，再应用密度饱和后的有效 impact；人格 velocity 按版本化半衰期衰减。54 个关键参数已进入 Parameter Registry，并由 Golden Trajectory、属性、Metamorphic、敏感性和 repair asymmetry 审计保护。下一阶段是 Durable State / Event Store，不继续扩张 UI。
 
 主项目方向采用 TypeScript Core 优先。Python 原型保留为算法实验和行为参考。
 

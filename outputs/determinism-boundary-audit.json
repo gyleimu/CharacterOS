@@ -1,6 +1,6 @@
 {
   "auditVersion": "13.5.0",
-  "auditedAt": "2026-07-12T18:08:35.503Z",
+  "auditedAt": "2026-07-15T13:04:52.819Z",
   "passed": true,
   "releaseReady": true,
   "summary": {
@@ -132,25 +132,25 @@
     {
       "source": "new Date()",
       "file": "src/core/audit/unifiedQualityGate.ts",
-      "line": 87,
+      "line": 92,
       "justification": "Gate/report generatedAt/completedAt uses real time — runtime report"
     },
     {
       "source": "new Date()",
       "file": "src/core/audit/unifiedQualityGate.ts",
-      "line": 87,
+      "line": 92,
       "justification": "Gate/report generatedAt/completedAt uses real time — runtime report"
     },
     {
       "source": "new Date()",
       "file": "src/core/audit/unifiedQualityGate.ts",
-      "line": 272,
+      "line": 305,
       "justification": "Gate/report generatedAt/completedAt uses real time — runtime report"
     },
     {
       "source": "new Date()",
       "file": "src/core/audit/unifiedQualityGate.ts",
-      "line": 272,
+      "line": 305,
       "justification": "Gate/report generatedAt/completedAt uses real time — runtime report"
     },
     {

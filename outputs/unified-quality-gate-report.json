@@ -1,6 +1,6 @@
 {
   "version": "10.75.0",
-  "generatedAt": "2026-07-12T18:08:33.466Z",
+  "generatedAt": "2026-07-15T13:04:49.909Z",
   "qualityVerdict": {
     "level": "PASS",
     "passed": true,
@@ -8,7 +8,8 @@
       "Benchmark: 6/6 passed (100%), 0 failed",
       "Reality Gate: PASS (10/10 checks)",
       "Determinism Audit: PASS (0 forbidden, 10/10 replay)",
-      "Temporal Semantics: PASS (7/7 cases)"
+      "Temporal Semantics: PASS (7/7 cases)",
+      "Model Calibration: PASS (914/914 assertions)"
     ],
     "allowedWarnings": []
   },
@@ -18,14 +19,15 @@
     "recommendations": []
   },
   "unifiedSummary": {
-    "totalChecks": 24,
-    "passed": 24,
+    "totalChecks": 938,
+    "passed": 938,
     "warned": 0,
     "failed": 0,
     "benchmarkPassed": true,
     "realityGatePassed": true,
     "determinismPassed": true,
     "temporalSemanticsPassed": true,
+    "modelCalibrationPassed": true,
     "overallPassed": true
   },
   "benchmark": {
@@ -63,6 +65,24 @@
       "failedCases": 0,
       "totalAssertions": 21,
       "passedAssertions": 21
+    },
+    "failures": []
+  },
+  "modelCalibration": {
+    "verdict": "PASS",
+    "parameterSetVersion": "model-calibration-v1.0.0",
+    "summary": {
+      "trajectoryCount": 160,
+      "scenarioProjectionCount": 640,
+      "passedTrajectories": 160,
+      "failedTrajectories": 0,
+      "relevantScenarioResponseRate": 0.8935,
+      "categoryDecisionCoveragePassed": 10,
+      "propertySequencesPassed": 16,
+      "metamorphicChecksPassed": 5,
+      "sensitivityChecksPassed": 7,
+      "totalAssertions": 914,
+      "passedAssertions": 914
     },
     "failures": []
   },
@@ -140,6 +160,12 @@
       "description": "Event concentration, recovery, or ordering semantics regress",
       "severity": "high",
       "guardedBy": "temporalSemanticsAudit.gateVerdict"
+    },
+    {
+      "id": "risk_model_calibration_regression",
+      "description": "Parameter changes reverse directions or destabilize long trajectories",
+      "severity": "high",
+      "guardedBy": "modelCalibrationAudit.gateVerdict"
     }
   ],
   "thresholds": {

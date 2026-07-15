@@ -1,3 +1,5 @@
+import { hasModelParameterSet } from "../parameters/modelParameterRegistry";
+
 export interface CharacterExportValidationResult {
   valid: boolean;
   errors: string[];
@@ -175,6 +177,13 @@ function validateSerializedState(value: unknown, path: string, errors: string[])
     });
   }
   if (typeof value.learningRate !== "number") errors.push(`${path}.learningRate must be a number`);
+  if (value.parameterSetVersion !== undefined) {
+    if (typeof value.parameterSetVersion !== "string" || !value.parameterSetVersion) {
+      errors.push(`${path}.parameterSetVersion must be a non-empty string if present`);
+    } else if (!hasModelParameterSet(value.parameterSetVersion)) {
+      errors.push(`${path}.parameterSetVersion references an unknown model parameter set`);
+    }
+  }
   if (!isRecord(value.derived)) errors.push(`${path}.derived must be an object`);
   if (!isRecord(value.galaxy)) errors.push(`${path}.galaxy must be an object`);
 }

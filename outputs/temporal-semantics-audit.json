@@ -93,8 +93,8 @@
           "id": "slow_channel_differs",
           "description": "Final personality coordinates retain a non-zero timing effect.",
           "passed": true,
-          "actual": 0.0004,
-          "expected": "> 0.0001"
+          "actual": 0.0001,
+          "expected": ">= 0.0001"
         },
         {
           "id": "transient_state_differs",
@@ -107,8 +107,8 @@
       "metrics": {
         "denseDose": 2.8724,
         "spacedDose": 4.34,
-        "finalDistance": 0.0004,
-        "boundaryDifference": 0.2952,
+        "finalDistance": 0.0001,
+        "boundaryDifference": 0.2953,
         "clusterMassDifference": 0.8514
       },
       "passed": true,
@@ -151,7 +151,7 @@
           "description": "Personality velocity loses momentum.",
           "passed": true,
           "actual": 0.0002,
-          "expected": "< 0.0004"
+          "expected": "< 0.0005"
         }
       ],
       "metrics": {
@@ -162,7 +162,7 @@
         "recencyAfter": 0.7871,
         "massBefore": 0.868,
         "massAfter": 0.7294,
-        "velocityBefore": 0.0004,
+        "velocityBefore": 0.0005,
         "velocityAfter": 0.0002
       },
       "passed": true,
@@ -242,7 +242,7 @@
       ],
       "metrics": {
         "identical": true,
-        "serializedLength": 18093
+        "serializedLength": 18355
       },
       "passed": true,
       "failures": []

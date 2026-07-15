@@ -13,6 +13,7 @@ describe("V10.75 Unified Quality Gate", { timeout: 30000 }, () => {
     expect(gate.realityGateResult).toBeDefined();
     expect(gate.realityGateResult.suites.realityAudit).toBeDefined();
     expect(gate.temporalSemanticsAuditResult).toBeDefined();
+    expect(gate.modelCalibrationAuditResult).toBeDefined();
   });
 
   it("passes when benchmark pass and reality gate has only allowed WARN", () => {
@@ -20,6 +21,7 @@ describe("V10.75 Unified Quality Gate", { timeout: 30000 }, () => {
     expect(gate.unifiedSummary.benchmarkPassed).toBe(true);
     expect(gate.unifiedSummary.realityGatePassed).toBe(true);
     expect(gate.unifiedSummary.temporalSemanticsPassed).toBe(true);
+    expect(gate.unifiedSummary.modelCalibrationPassed).toBe(true);
     expect(gate.qualityVerdict.passed).toBe(true);
     expect(gate.failures).toHaveLength(0);
   });
@@ -170,5 +172,20 @@ describe("V10.75 Unified Quality Gate", { timeout: 30000 }, () => {
     });
     expect(skipped.temporalSemanticsAuditResult).toBeNull();
     expect(skipped.unifiedSummary.temporalSemanticsPassed).toBe(true);
+  });
+
+  it("includes model calibration and supports explicitly skipping it", () => {
+    expect(gate.modelCalibrationAuditResult?.gateVerdict.level).toBe("PASS");
+    expect(gate.modelCalibrationAuditResult?.summary.trajectoryCount).toBe(160);
+    expect(gate.unifiedSummary.totalChecks).toBeGreaterThanOrEqual(
+      gate.modelCalibrationAuditResult?.summary.totalAssertions ?? 0,
+    );
+    expect(gate.unifiedSummary.failed).toBe(0);
+    const skipped = runUnifiedQualityGate({
+      skipDeterminism: true,
+      skipModelCalibration: true,
+    });
+    expect(skipped.modelCalibrationAuditResult).toBeNull();
+    expect(skipped.unifiedSummary.modelCalibrationPassed).toBe(true);
   });
 });

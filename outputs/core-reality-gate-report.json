@@ -1,7 +1,7 @@
 {
   "version": "10.77.0",
-  "startedAt": "2026-07-12T18:08:32.214Z",
-  "completedAt": "2026-07-12T18:08:32.304Z",
+  "startedAt": "2026-07-15T13:04:47.691Z",
+  "completedAt": "2026-07-15T13:04:47.791Z",
   "gateVerdict": {
     "level": "PASS",
     "passed": true,
@@ -110,18 +110,18 @@
     "longTermAccumulation": {
       "betrayalAccumulation": {
         "verdict": "PASS",
-        "stepOneJumpRatio": 0.1299,
-        "saturationScore": 0.524,
-        "trustDelta": -0.0081
+        "stepOneJumpRatio": 0.1364,
+        "saturationScore": 0.5225,
+        "trustDelta": -0.0079
       },
       "supportAccumulation": {
         "verdict": "PASS",
-        "trustRepair": 0.0096,
-        "repairEffectiveness": 0.27
+        "trustRepair": 0.0094,
+        "repairEffectiveness": 0.267
       },
       "neutralAccumulation": {
         "verdict": "PASS",
-        "finalPersonalityDistance": 0.0009
+        "finalPersonalityDistance": 0.0011
       }
     },
     "eventTypeCoverage": {

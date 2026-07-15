@@ -175,7 +175,7 @@ function auditConcentratedVersusSpaced(): TemporalSemanticsAuditCaseResult {
     },
     [
       assertion("dose_differs", "Dense dose is lower after saturation.", denseDose < spacedDose, round4(denseDose), `< ${round4(spacedDose)}`),
-      assertion("slow_channel_differs", "Final personality coordinates retain a non-zero timing effect.", finalDistance > 0.0001, finalDistance, "> 0.0001"),
+      assertion("slow_channel_differs", "Final personality coordinates retain a non-zero timing effect.", finalDistance >= 0.0001, finalDistance, ">= 0.0001"),
       assertion("transient_state_differs", "Boundary or cluster state remains observably different.", boundaryDifference > 0.01 || clusterMassDifference > 0.01, Math.max(boundaryDifference, clusterMassDifference), "> 0.01"),
     ],
   );

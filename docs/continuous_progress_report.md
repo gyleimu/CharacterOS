@@ -11,11 +11,11 @@ CharacterOS V1.0 (单角色心理动力闭环)
 经过 V2 Personality Galaxy、V3 Infrastructure Hardening、V4-V5 Temporal Process、V6 Benchmark、V7-V8 Mind Graph、V9 Character Editor、V10 Continuous Life，推进到：
 
 ```text
-CharacterOS — V10 Core Kernel RC + V11 Explorer Platform RC
-Tests: 1973 / 159 files / 0 failures · Gates: All PASS · Active warnings: 0
+CharacterOS — V10 Core Kernel RC + V11 Explorer RC + V12 Agent SDK RC + V13 LLM Boundary RC
+Temporal Semantics + Model Calibration 已完成 · Gates: All PASS · Active warnings: 0
 ```
 
-当前处于 V10+V11 双 RC 稳定期。V10 核心物理引擎和 V11 Explorer 探索平台均已封存。下一步进入 V12 Character Agent SDK 或 V11.13 post-RC hardening。
+当前核心路线已从产品表面转入真实性和耐久性治理。V10-V13 RC 保持封存；时间语义和模型校准已进入统一质量门。下一步进入 Durable State：Event Log、事务快照、幂等和版本冲突处理。
 
 ## V10 完成内容概览
 
@@ -210,13 +210,13 @@ Commit 闭环（preview → apply → rollback，指纹验证，审计追踪）
 
 ## 建议下一阶段
 
-V10.29: Longitudinal Commit Lifecycle QA & Documentation Sync（当前阶段）
-- 文档同步到 V10.28/V10.29
-- 增加 commit lifecycle QA 测试
-- 真实验证全部通过
+Durable State / Event Store（当前下一阶段）：
 
-后续方向：
-- V10.30+: 保持 V10 stable，为"诗云式产品形态"做最小可用体验准备
-- V11: Explainability expansion（charter 已存在）
-- 不做多角色、关系系统、世界模拟、3D/UI 大工程
-- 不继续堆 benchmark case
+- 定义统一 `CharacterStateRepository` 合同。
+- Immutable Event Log 作为事实来源，Snapshot 只做加速缓存。
+- 每次写入使用 `expectedVersion` 和 `idempotencyKey`。
+- Event、Audit、State、Snapshot 在同一事务边界提交。
+- 参数集版本随事件与快照持久化，崩溃恢复后重放指纹必须一致。
+- 单机优先 SQLite，不提前引入 PostgreSQL 或分布式系统。
+
+继续禁止多角色、关系系统、世界模拟和用 UI 扩张替代核心可靠性工作。

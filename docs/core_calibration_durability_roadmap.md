@@ -20,7 +20,7 @@
 |------|------|----------|----------|
 | V13.9 | LLM Boundary QA / RC | V13.8 离线闭环通过 | 独立质量门、对抗集、RC manifest、0 unsafe delivery |
 | Temporal Semantics | 解除事件次数与人格速度的错误绑定 | V13 RC 封存 | ✅ 已完成：elapsed time、事件密度、恢复窗口进入核心积分，独立 Gate PASS |
-| Model Calibration | 建立可复现的人格轨迹校准体系 | 时间语义稳定 | Golden trajectory、参数注册表、敏感性和属性测试 |
+| Model Calibration | 建立可复现的人格轨迹校准体系 | 时间语义稳定 | ✅ 已完成：Golden trajectory、参数注册表、敏感性和属性测试 |
 | Durable State | 建立可重放的持久化边界 | 状态 schema 稳定 | Event Store、事务、版本冲突、幂等与快照恢复 |
 | Provider Evaluation | 评估真实语言模型 Adapter | 前述质量门全部通过 | Provider 可替换、断网可用、无诊断和无越权写回 |
 
@@ -72,7 +72,7 @@ active warnings = 0
 
 ## Model Calibration
 
-状态：**下一阶段**。第一步先建立版本化参数注册表，再建立 Golden Trajectory；不允许反过来用 fixture 倒逼散落 magic number。
+状态：**已完成**。实现、修复和数值验收见 [`v14.1_model_calibration_report.md`](v14.1_model_calibration_report.md)。当前 54 个关键参数已进入版本化注册表，160/160 Golden Trajectory、640 个场景投影、10/10 类别决策覆盖、16/16 属性序列、5/5 Metamorphic、7/7 敏感性检查和 914/914 断言通过。
 
 ### Golden Trajectory
 
@@ -102,9 +102,11 @@ x relationship / study / social / action 场景
 - Repair asymmetry：破坏、修复和 scar retention 的长期比例必须显式定义。
 - Out-of-sample fixture：校准时未使用的事件组合也必须保持方向与边界一致。
 
-当前参数只能称为工程校准，不能声称具有心理学或临床实证效度。
+当前参数只能称为工程校准，不能声称具有心理学或临床实证效度。下一阶段是 Durable State；参数版本必须随 Event Log 和 Snapshot 持久化。
 
 ## Durable State
+
+状态：**下一阶段**。
 
 建议采用 Event Sourcing：
 
@@ -123,7 +125,7 @@ Immutable Event Log
 - 每次 apply 使用 expected version，发现版本冲突必须拒绝覆盖。
 - Event、State、Audit 与 Snapshot 必须在同一事务边界提交。
 - 每次写入必须带 idempotency key，重复请求不能重复应用事件。
-- state schema、event schema 与 parameter set 都必须版本化并支持迁移。
+- state schema、event schema、parameter set 与 engine semantics 都必须版本化并支持迁移。
 - 崩溃恢复后重放结果必须与提交前指纹一致。
 
 单机产品优先使用 SQLite。正式多实例部署前再增加 PostgreSQL Adapter，不提前引入分布式复杂度。

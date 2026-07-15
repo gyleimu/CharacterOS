@@ -22,6 +22,7 @@ npm run test:quality   # Unified Quality Gate (benchmark + reality)
 npm run test:trend     # Quality Trend Baseline
 npm run test:determinism # Determinism Boundary Audit
 npm run test:temporal  # Temporal Semantics Audit
+npm run test:calibration # Model Calibration Audit
 npm run test:llm-quality # LLM Boundary Quality Gate
 npm run test:security  # Dependency Security Gate (high/critical)
 npm run rc:verify      # All gates (RC verification)
@@ -37,13 +38,15 @@ Any core logic change must pass:
 - **LLM Boundary Quality Gate**: PASS, 0 unsafe deliveries, 0 replay failures
 - **Dependency Security Gate**: 0 high/critical; moderate findings must be registered
 - **Temporal Semantics Audit**: PASS; concentration, recovery, ordering and replay checks all pass
+- **Model Calibration Audit**: PASS; registry, 160 trajectories, properties, metamorphic checks, sensitivity and repair asymmetry all pass
 
 ## Adding New Event Types
 
 1. Add category physics in `src/core/event/categoryPhysics.ts`
 2. Add keywords in `src/core/event/eventParser.ts`
 3. Add to `EventTypeCoverageAudit` fixtures
-4. Run `npm test` to verify
+4. Add/update its Golden Trajectory direction and scenario relevance profile
+5. Run `npm run test:calibration` and `npm test` to verify
 
 ## Adding New Audit Checks
 

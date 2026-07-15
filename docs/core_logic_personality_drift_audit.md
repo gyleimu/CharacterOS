@@ -92,9 +92,9 @@ Event
 
 ## 仍需保留的模型边界
 
-### 事件步与真实时间已完成核心解耦，参数仍需校准
+### 事件步与真实时间已完成核心解耦，参数已进入版本化工程校准
 
-事件时间、24 小时密度饱和、事件间 recovery/decay、velocity 半衰期与乱序保护已经进入 `processEvent()`。因此“记录得越勤，人格变化越快”的线性风险已被解除。剩余风险是 24 小时窗口、0.35 饱和下限与 14 天半衰期仍属于工程先验，需要 Golden Trajectory 和敏感性分析校准。
+事件时间、24 小时密度饱和、事件间 recovery/decay、velocity 半衰期与乱序保护已经进入 `processEvent()`。54 个时间、记忆、边界和人格关键参数已进入不可变版本化注册表，并由 160 条 Golden Trajectory、640 个场景投影和 7 个敏感性探针约束。因此“记录得越勤，人格变化越快”和“参数改动无来源”两类主要风险已解除。
 
 ### 参数具有工程可解释性，不代表心理学实证效度
 
@@ -104,15 +104,15 @@ Event
 
 `stressLoad` 是累计压力量而不是百分比，因此核心层允许大于 1。对外 surface 必须使用 bounded signal。后续可以增加 normalized reserve/capacity ratio，但不应直接破坏原始审计量。
 
-### Recency floor 仍需数据校准
+### Recency floor 已被工程轨迹约束，仍需真实数据校准
 
-陈旧记忆当前保留 25% 的最低 active mass，避免历史被完全抹除。这个比例是工程先验，未来应通过长时间跨度 fixture 和目标人物轨迹校准。
+陈旧记忆当前保留 25% 的最低 active mass，避免历史被完全抹除。该参数已进入注册表，并通过 1/5/20/100 事件轨迹、长期 repair asymmetry 和 ±10% 敏感性检查；但它仍是工程先验，未来需要真实长期观察数据进行外部校准。
 
 ## 后续测试建议
 
-1. 引入属性测试，随机生成合法事件序列，持续验证有限值、坐标范围、ID 唯一和状态序列化往返。
+1. 持续扩展属性测试的 seed 和序列长度，当前 16 个 seed × 30 events 已验证有限值、坐标范围、ID 唯一和确定性回放。
 2. 持续运行 Temporal Semantics Gate：集中/分散事件、恢复、中性稳定、乱序保护和确定性回放不得回归。
-3. 为每类事件建立 golden trajectory，不只检查方向，也检查 1、5、20、100 步的合理区间。
-4. 增加 metamorphic tests：改变无关字段不应改变人格漂移，改变 category relevance 才应改变目标通道。
-5. 增加正负事件修复不对称测试，明确破坏、修复与 scar retention 的长期比例。
-6. 增加 clean-clone CI 与浏览器 smoke test，保证 Core、Explorer、MindSpace 和 Agent 边界在全新安装环境下同时成立。
+3. 保持 10 类事件 × 4 baseline × 1/5/20/100 步 Golden Trajectory 全通过；新增类别必须先进入该矩阵。
+4. 持续扩展 metamorphic tests；当前无关措辞、tag 顺序、类别方向、时间剂量和 baseline 分化已覆盖。
+5. 保持 repair asymmetry 显式验收；当前 trust damage 0.0399、repair 0.0191、scar retention 0.5209。
+6. 下一阶段增加 Event Store crash recovery、expectedVersion 冲突和 idempotency 属性测试。

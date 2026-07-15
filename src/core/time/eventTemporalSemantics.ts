@@ -1,16 +1,19 @@
 import type { ExperienceEvent } from "../event/event";
 import { deterministicId } from "../deterministicHelpers";
 import { clamp01, round4 } from "../parameters/parameterMath";
+import {
+  getCurrentModelParameterSet,
+  type TemporalModelParameters,
+} from "../parameters/modelParameterRegistry";
 
 export const UNKNOWN_EVENT_OCCURRED_AT = "1970-01-01T00:00:00.000Z";
-export const EVENT_DENSITY_WINDOW_HOURS = 24;
-export const EVENT_HISTORY_RETENTION_DAYS = 90;
-export const MAX_EVENT_RECOVERY_DAYS = 3650;
-export const PERSONALITY_VELOCITY_HALF_LIFE_DAYS = 14;
+export const EVENT_DENSITY_WINDOW_HOURS = getCurrentModelParameterSet().temporal.eventDensityWindowHours;
+export const EVENT_HISTORY_RETENTION_DAYS = getCurrentModelParameterSet().temporal.eventHistoryRetentionDays;
+export const MAX_EVENT_RECOVERY_DAYS = getCurrentModelParameterSet().temporal.maxEventRecoveryDays;
+export const PERSONALITY_VELOCITY_HALF_LIFE_DAYS = getCurrentModelParameterSet().temporal.personalityVelocityHalfLifeDays;
 
 const DAY_MS = 86_400_000;
 const HOUR_MS = 3_600_000;
-const MAX_RECENT_TEMPORAL_EVENTS = 256;
 
 export type EventTemporalMode =
   | "legacy_untimed"
@@ -82,6 +85,8 @@ export interface EventTemporalRecoverySummary {
 }
 
 export interface EventTemporalTrace extends EventTemporalPlan {
+  readonly parameterSetVersion: string;
+  readonly parameterSetFingerprint: string;
   readonly recovery: EventTemporalRecoverySummary;
   readonly clockAfter: string | null;
   readonly processedEventCountAfter: number;
@@ -89,12 +94,13 @@ export interface EventTemporalTrace extends EventTemporalPlan {
 
 export function createCharacterTemporalState(
   params: Partial<CharacterTemporalState> = {},
+  parameters: TemporalModelParameters = getCurrentModelParameterSet().temporal,
 ): CharacterTemporalState {
   const lastProcessedAt = normalizeStoredTimestamp(params.lastProcessedAt);
   const recentEvents = (params.recentEvents ?? [])
     .flatMap((record) => normalizeRecord(record))
     .sort((left, right) => left.sequence - right.sequence)
-    .slice(-MAX_RECENT_TEMPORAL_EVENTS);
+    .slice(-parameters.maxRecentTemporalEvents);
   const maxRecentSequence = recentEvents.reduce((max, record) => Math.max(max, record.sequence), 0);
   const timedEventCount = Math.max(
     recentEvents.length,
@@ -120,8 +126,10 @@ export function planEventTemporalSemantics(params: {
   category: string;
   rawImpactValue: number;
   densityWindowHours?: number;
+  parameters?: TemporalModelParameters;
 }): EventTemporalPlan {
-  const temporal = createCharacterTemporalState(params.temporal);
+  const parameters = params.parameters ?? getCurrentModelParameterSet().temporal;
+  const temporal = createCharacterTemporalState(params.temporal, parameters);
   const warnings: EventTemporalWarning[] = [];
   const provided = normalizeProvidedTimestamp(params.event.occurredAt);
   let resolvedOccurredAt: string | null = null;
@@ -154,11 +162,11 @@ export function planEventTemporalSemantics(params: {
     } else if (elapsedDaysRaw === 0 && mode !== "invalid_timestamp" && mode !== "inherited_clock") {
       mode = "same_time";
     }
-    elapsedDaysApplied = Math.max(0, Math.min(MAX_EVENT_RECOVERY_DAYS, elapsedDaysRaw));
-    if (elapsedDaysRaw > MAX_EVENT_RECOVERY_DAYS) warnings.push("recovery_interval_clamped");
+    elapsedDaysApplied = Math.max(0, Math.min(parameters.maxEventRecoveryDays, elapsedDaysRaw));
+    if (elapsedDaysRaw > parameters.maxEventRecoveryDays) warnings.push("recovery_interval_clamped");
   }
 
-  const densityWindowHours = Math.max(1, finiteOr(params.densityWindowHours, EVENT_DENSITY_WINDOW_HOURS));
+  const densityWindowHours = Math.max(1, finiteOr(params.densityWindowHours, parameters.eventDensityWindowHours));
   const eventSignature = buildEventTemporalSignature(params.event, params.category);
   const nearby = resolvedOccurredAt
     ? temporal.recentEvents.filter((record) => {
@@ -169,8 +177,10 @@ export function planEventTemporalSemantics(params: {
   const sameEventCountInWindow = nearby.filter((record) => record.signature === eventSignature).length;
   const sameCategoryCountInWindow = nearby.filter((record) => record.category === params.category).length;
   const otherCategoryPressure = Math.max(0, sameCategoryCountInWindow - sameEventCountInWindow);
-  const densityPressure = sameEventCountInWindow * 0.9 + otherCategoryPressure * 0.15;
-  const densityScale = round4(Math.max(0.35, 1 / Math.sqrt(1 + densityPressure)));
+  const densityPressure =
+    sameEventCountInWindow * parameters.repeatDensityPressureWeight +
+    otherCategoryPressure * parameters.categoryDensityPressureWeight;
+  const densityScale = round4(Math.max(parameters.minimumDensityScale, 1 / Math.sqrt(1 + densityPressure)));
   const rawImpactValue = round4(clamp01(params.rawImpactValue));
   const effectiveImpactValue = round4(rawImpactValue * densityScale);
   const accumulatedImpactInWindowBefore = round4(
@@ -207,8 +217,10 @@ export function commitEventTemporalState(params: {
   event: ExperienceEvent;
   category: string;
   plan: EventTemporalPlan;
+  parameters?: TemporalModelParameters;
 }): CharacterTemporalState {
-  const temporal = createCharacterTemporalState(params.temporal);
+  const parameters = params.parameters ?? getCurrentModelParameterSet().temporal;
+  const temporal = createCharacterTemporalState(params.temporal, parameters);
   const sequence = temporal.processedEventCount + 1;
   let lastProcessedAt = temporal.lastProcessedAt;
   if (
@@ -240,16 +252,17 @@ export function commitEventTemporalState(params: {
     lastProcessedAt,
     processedEventCount: sequence,
     timedEventCount: temporal.timedEventCount + (params.plan.resolvedOccurredAt ? 1 : 0),
-    recentEvents: pruneRecentEvents(recentEvents, lastProcessedAt),
+    recentEvents: pruneRecentEvents(recentEvents, lastProcessedAt, parameters),
   };
 }
 
 export function advanceTemporalStateByDays(
   temporalInput: CharacterTemporalState,
   daysElapsed: number,
+  parameters: TemporalModelParameters = getCurrentModelParameterSet().temporal,
 ): CharacterTemporalState {
-  const temporal = createCharacterTemporalState(temporalInput);
-  const appliedDays = Math.max(0, Math.min(MAX_EVENT_RECOVERY_DAYS, finiteOr(daysElapsed, 0)));
+  const temporal = createCharacterTemporalState(temporalInput, parameters);
+  const appliedDays = Math.max(0, Math.min(parameters.maxEventRecoveryDays, finiteOr(daysElapsed, 0)));
   if (appliedDays === 0) return temporal;
   const lastProcessedAt = temporal.lastProcessedAt
     ? new Date(Date.parse(temporal.lastProcessedAt) + appliedDays * DAY_MS).toISOString()
@@ -258,13 +271,16 @@ export function advanceTemporalStateByDays(
     ...temporal,
     lastProcessedAt,
     totalElapsedDays: round8(temporal.totalElapsedDays + appliedDays),
-    recentEvents: pruneRecentEvents(temporal.recentEvents, lastProcessedAt),
+    recentEvents: pruneRecentEvents(temporal.recentEvents, lastProcessedAt, parameters),
   };
 }
 
-export function personalityVelocityRetention(daysElapsed: number): number {
+export function personalityVelocityRetention(
+  daysElapsed: number,
+  parameters: TemporalModelParameters = getCurrentModelParameterSet().temporal,
+): number {
   const days = Math.max(0, finiteOr(daysElapsed, 0));
-  return round8(Math.exp((-Math.LN2 * days) / PERSONALITY_VELOCITY_HALF_LIFE_DAYS));
+  return round8(Math.exp((-Math.LN2 * days) / parameters.personalityVelocityHalfLifeDays));
 }
 
 export function buildEventTemporalSignature(
@@ -283,11 +299,14 @@ export function buildEventTemporalSignature(
 function pruneRecentEvents(
   records: TemporalEventRecord[],
   clock: string | null,
+  parameters: TemporalModelParameters,
 ): TemporalEventRecord[] {
-  const cutoff = clock ? Date.parse(clock) - EVENT_HISTORY_RETENTION_DAYS * DAY_MS : Number.NEGATIVE_INFINITY;
+  const cutoff = clock
+    ? Date.parse(clock) - parameters.eventHistoryRetentionDays * DAY_MS
+    : Number.NEGATIVE_INFINITY;
   return records
     .filter((record) => Date.parse(record.occurredAt) >= cutoff)
-    .slice(-MAX_RECENT_TEMPORAL_EVENTS);
+    .slice(-parameters.maxRecentTemporalEvents);
 }
 
 function normalizeRecord(record: TemporalEventRecord): TemporalEventRecord[] {

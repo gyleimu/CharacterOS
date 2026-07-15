@@ -2,6 +2,7 @@ import type { ImpactCluster } from "../cluster/impactCluster";
 import type { MemoryNode } from "../memory/memoryNode";
 import type { PersonalityCoordinate } from "../personality/coordinate";
 import { calculateGalaxyClusterMetrics, type GalaxyClusterMetrics } from "./clusterMetrics";
+import type { MemoryModelParameters } from "../parameters/modelParameterRegistry";
 import { applyMomentumDrift, type MomentumDriftResult } from "./momentumDrift";
 import { createPersonalityCore } from "./personalityCore";
 import { calculateClusterForce, sumClusterForces, type ClusterForce } from "./potentialField";
@@ -24,6 +25,7 @@ export function simulatePersonalityGalaxyStep(params: {
   velocity?: PersonalityCoordinate;
   learningRate?: number;
   momentumAlpha?: number;
+  memoryParameters?: MemoryModelParameters;
 }): PersonalityGalaxySnapshot {
   const coreParams: Parameters<typeof createPersonalityCore>[0] = {
     position: params.corePosition
@@ -41,7 +43,7 @@ export function simulatePersonalityGalaxyStep(params: {
   const clusterMetrics = params.clusters.map((cluster) => ({
     clusterId: cluster.id,
     category: cluster.category,
-    metrics: calculateGalaxyClusterMetrics(cluster, params.memories)
+    metrics: calculateGalaxyClusterMetrics(cluster, params.memories, params.memoryParameters)
   }));
   const adjustedClusters = params.clusters.map((cluster) => {
     const metrics = clusterMetrics.find((item) => item.clusterId === cluster.id)?.metrics;

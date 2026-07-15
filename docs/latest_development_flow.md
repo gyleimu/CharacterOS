@@ -206,7 +206,7 @@ finalStateForCommit, commit preview, commit apply, commit audit, commit rollback
 2. V10 Continuous Life 闭环稳定。
 3. V13.9 LLM Boundary RC 保持封存，不接真实模型 Provider。
 4. Temporal Semantics 保持 7/7 cases、21/21 assertions 全通过。
-5. 下一阶段只做 Parameter Registry、Golden Trajectory、敏感性与属性测试。
+5. Model Calibration 已完成；下一阶段只做 Durable State / Event Store 可靠性。
 6. 保持 Explorer/MindSpace 只读，不继续用视觉包装替代核心真实性工作。
 7. 不做多角色、关系系统、世界模拟。
 8. 不继续堆无校准目标的 benchmark case。
@@ -218,12 +218,12 @@ finalStateForCommit, commit preview, commit apply, commit audit, commit rollback
 ```text
 V13.9 LLM Boundary QA / RC
 -> Temporal Semantics (complete)
--> Parameter Registry + Golden Trajectory (next)
--> Event Store + Transactional Snapshot
+-> Parameter Registry + Golden Trajectory (complete)
+-> Event Store + Transactional Snapshot (next)
 -> Real Provider Evaluation
 ```
 
-Temporal Semantics 已解除“事件调用次数直接替代 elapsed time”的主要风险。下一步必须把散落参数收敛到版本化注册表，并用轨迹合理区间校准，不能声称当前工程系数具有心理学实证效度。
+Temporal Semantics 与 Model Calibration 已完成：关键参数进入版本化注册表，轨迹、属性、变形关系、敏感性和 repair asymmetry 均进入质量门。下一步必须建立 Event Log、expected version、idempotency 与原子 Snapshot 提交；仍不能声称当前工程系数具有心理学实证效度。
 
 真实 Provider 的进入门槛是：0 unsafe delivery、0 ungrounded delivery、0 mutation/writeback authority、断网时 deterministic fallback 可用。持久化的进入门槛是 Event Log 可重放、写入幂等、expected version 冲突可检测、Snapshot 可验证。
 
@@ -241,9 +241,9 @@ Temporal Semantics 已解除“事件调用次数直接替代 elapsed time”的
 ## 当前版本
 
 ```text
-CharacterOS Temporal Semantics core stage complete on top of V13.9 Mock-only LLM Boundary RC
+CharacterOS Temporal Semantics + Model Calibration core stages complete on top of V13.9 Mock-only LLM Boundary RC
 V10 Core / V11 Explorer / V12 Agent SDK RC 保持封存
 27 API routes + MindSpace read-only surface + offline LLM Boundary Harness
-Build / Test / Next build / Core Reality / Unified Quality / Determinism / Temporal / LLM Quality 必须全部通过
-Next: Versioned Parameter Registry + Golden Trajectory
+Build / Test / Next build / Core Reality / Unified Quality / Determinism / Temporal / Model Calibration / LLM Quality 必须全部通过
+Next: Durable State / Event Store + Transactional Snapshot
 ```

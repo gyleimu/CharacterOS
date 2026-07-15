@@ -1,5 +1,18 @@
 # Changelog
 
+## Model Calibration Core
+
+- Added immutable versioned Model Parameter Registry with 54 governed numeric parameters and stable fingerprints
+- Added per-category decision responsiveness and five-event overreaction guards so aggregate calibration cannot hide a weak event channel
+- Stamped CharacterPhysicsState, serialization, temporal trace, and longitudinal commit fingerprints with parameter-set version
+- Added 160 Golden Trajectories across 10 categories, 4 baselines, and 4 horizons, plus 640 decision scenario projections
+- Added deterministic generated-sequence properties, metamorphic checks, +/-10% sensitivity probes, and explicit repair asymmetry
+- Fixed four-decimal personality integration dead zone by retaining eight-decimal internal velocity/coordinate precision
+- Fixed long-term positive evidence repair so trust/fear learning continues after boundary stress reaches a calm state
+- Fixed Galaxy cluster metric recomputation bypassing calibration memory parameters
+- Added Model Calibration Gate to Unified Quality Gate, CI, and `rc:verify`
+- Engineering calibration is not psychological or clinical validation
+
 ## Temporal Semantics Core
 
 - Added persistent logical event clock and backward-compatible state serialization
@@ -9,7 +22,7 @@
 - Added canonical event timestamps, out-of-order protection, and inherited-clock safeguards
 - Exposed temporal trace through physics results, API DTOs, simulation snapshots, and Event Studio
 - Added 7-case / 21-assertion Temporal Semantics Audit and integrated it into CI and unified quality gates
-- Current timing constants remain engineering priors pending Golden Trajectory calibration
+- Timing constants remain engineering priors, now versioned and guarded by Golden Trajectory and sensitivity checks
 
 ## V13 LLM Boundary RC
 

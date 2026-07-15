@@ -1,6 +1,6 @@
 # Unified Quality Gate Report — V10.75
 
-**Generated:** 2026-07-12T18:08:33.466Z
+**Generated:** 2026-07-15T13:04:49.909Z
 **Quality Verdict:** **PASS**
 **Release Ready:** ✅ Yes
 
@@ -11,8 +11,9 @@
 | Benchmark | ✅ |
 | Reality Gate | ✅ |
 | Temporal Semantics | ✅ |
-| Total Checks | 24 |
-| Passed | 24 |
+| Model Calibration | ✅ |
+| Total Checks | 938 |
+| Passed | 938 |
 | Warned | 0 |
 | Failed | 0 |
 | Overall | ✅ |
@@ -22,6 +23,14 @@
 - **Verdict:** PASS
 - **Cases:** 7/7
 - **Assertions:** 21/21
+
+## Model Calibration
+
+- **Verdict:** PASS
+- **Parameter set:** model-calibration-v1.0.0
+- **Trajectories:** 160/160
+- **Scenario projections:** 640
+- **Sensitivity checks:** 7/7
 
 ## Benchmark V2.1
 
