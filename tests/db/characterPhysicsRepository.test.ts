@@ -1,4 +1,4 @@
-import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -7,6 +7,7 @@ import {
   FileCharacterPhysicsRepository,
   InMemoryCharacterPhysicsRepository
 } from "../../src/db/repositories/characterPhysicsRepository";
+import { RepositoryFileError } from "../../src/db/repositories/jsonFileStore";
 
 describe("InMemoryCharacterPhysicsRepository", () => {
   it("stores, returns, deletes, and clears character physics states", () => {
@@ -46,16 +47,43 @@ describe("InMemoryCharacterPhysicsRepository", () => {
 });
 
 describe("FileCharacterPhysicsRepository", () => {
-  it("falls back to an empty store when the JSON file is corrupt", () => {
+  it("distinguishes a missing store from a corrupted store", () => {
+    const dir = mkdtempSync(join(tmpdir(), "characteros-state-"));
+    const filePath = join(dir, "states.json");
+    try {
+      const repository = new FileCharacterPhysicsRepository(filePath);
+      expect(repository.get("lin_fan")).toBeUndefined();
+
+      writeFileSync(filePath, "{ bad json", "utf8");
+      expectCorrupted(() => repository.get("lin_fan"));
+      expect(readFileSync(filePath, "utf8")).toBe("{ bad json");
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("fails closed when a write is attempted against a corrupt store", () => {
     const dir = mkdtempSync(join(tmpdir(), "characteros-state-"));
     const filePath = join(dir, "states.json");
     try {
       writeFileSync(filePath, "{ bad json", "utf8");
       const repository = new FileCharacterPhysicsRepository(filePath);
 
-      expect(repository.get("lin_fan")).toBeUndefined();
+      expectCorrupted(() => repository.set("lin_fan", createCharacterPhysicsState()));
+      expect(readFileSync(filePath, "utf8")).toBe("{ bad json");
     } finally {
       rmSync(dir, { recursive: true, force: true });
     }
   });
 });
+
+function expectCorrupted(action: () => unknown): void {
+  let caught: unknown;
+  try {
+    action();
+  } catch (error) {
+    caught = error;
+  }
+  expect(caught).toBeInstanceOf(RepositoryFileError);
+  expect((caught as RepositoryFileError).code).toBe("CORRUPTED");
+}

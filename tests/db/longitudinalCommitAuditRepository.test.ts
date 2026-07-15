@@ -1,4 +1,4 @@
-import { mkdtempSync, readdirSync, rmSync, writeFileSync } from "node:fs";
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -10,6 +10,7 @@ import {
   FileLongitudinalCommitAuditRepository,
   InMemoryLongitudinalCommitAuditRepository,
 } from "../../src/db/repositories/longitudinalCommitAuditRepository";
+import { RepositoryFileError } from "../../src/db/repositories/jsonFileStore";
 
 function digest(value: string) {
   return {
@@ -131,17 +132,28 @@ describe("FileLongitudinalCommitAuditRepository", () => {
     }
   });
 
-  it("preserves a corrupt JSON file before falling back to an empty store", () => {
+  it("throws CORRUPTED without moving or replacing the corrupt audit file", () => {
     const dir = mkdtempSync(join(tmpdir(), "characteros-longcommit-"));
     const filePath = join(dir, "audit.json");
     try {
       writeFileSync(filePath, "{ bad json", "utf8");
       const repository = new FileLongitudinalCommitAuditRepository(filePath);
 
-      expect(repository.list("lin_fan")).toHaveLength(0);
-      expect(readdirSync(dir).some((name) => name.startsWith("audit.json.corrupt-"))).toBe(true);
+      expectCorrupted(() => repository.list("lin_fan"));
+      expect(readFileSync(filePath, "utf8")).toBe("{ bad json");
     } finally {
       rmSync(dir, { recursive: true, force: true });
     }
   });
 });
+
+function expectCorrupted(action: () => unknown): void {
+  let caught: unknown;
+  try {
+    action();
+  } catch (error) {
+    caught = error;
+  }
+  expect(caught).toBeInstanceOf(RepositoryFileError);
+  expect((caught as RepositoryFileError).code).toBe("CORRUPTED");
+}

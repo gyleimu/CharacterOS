@@ -1,14 +1,13 @@
-import {
-  existsSync,
-  mkdirSync,
-  readFileSync,
-  renameSync,
-  unlinkSync,
-  writeFileSync
-} from "node:fs";
-import { dirname, resolve } from "node:path";
+import { resolve } from "node:path";
 import type { CharacterImportTransitionHistoryEntry } from "../../core/export/characterImportTransitionHistory";
 import { withRepositoryFileLock } from "./fileLock";
+import {
+  readJsonObjectFile,
+  removeJsonObjectFileAndBackup,
+  writeJsonObjectFileAtomically,
+} from "./jsonFileStore";
+
+const REPOSITORY_LABEL = "character import transition history";
 
 export interface CharacterImportTransitionHistoryRepository {
   list(characterId: string): CharacterImportTransitionHistoryEntry[];
@@ -60,7 +59,7 @@ implements CharacterImportTransitionHistoryRepository {
   clear(characterId?: string): void {
     this.withFileLock(() => {
       if (!characterId) {
-        if (existsSync(this.filePath)) unlinkSync(this.filePath);
+        removeJsonObjectFileAndBackup({ filePath: this.filePath, repositoryLabel: REPOSITORY_LABEL });
         return;
       }
       const store = this.readStore();
@@ -70,32 +69,25 @@ implements CharacterImportTransitionHistoryRepository {
   }
 
   private readStore(): SerializedImportTransitionHistoryStore {
-    if (!existsSync(this.filePath)) return {};
-    try {
-      return JSON.parse(readFileSync(this.filePath, "utf8")) as SerializedImportTransitionHistoryStore;
-    } catch {
-      return {};
-    }
+    const result = readJsonObjectFile<SerializedImportTransitionHistoryStore>({
+      filePath: this.filePath,
+      repositoryLabel: REPOSITORY_LABEL,
+    });
+    return result.status === "not_found" ? {} : result.value;
   }
 
   private writeStore(store: SerializedImportTransitionHistoryStore): void {
-    mkdirSync(dirname(this.filePath), { recursive: true });
-    const content = `${JSON.stringify(store, null, 2)}\n`;
-    const tempPath = `${this.filePath}.tmp-${process.pid}-${Date.now()}-${Math.random().toString(16).slice(2)}`;
-    writeFileSync(tempPath, content, "utf8");
-    try {
-      if (existsSync(this.filePath)) unlinkSync(this.filePath);
-      renameSync(tempPath, this.filePath);
-    } catch {
-      writeFileSync(this.filePath, content, "utf8");
-      if (existsSync(tempPath)) unlinkSync(tempPath);
-    }
+    writeJsonObjectFileAtomically({
+      filePath: this.filePath,
+      repositoryLabel: REPOSITORY_LABEL,
+      value: store,
+    });
   }
 
   private withFileLock(action: () => void): void {
     withRepositoryFileLock({
       filePath: this.filePath,
-      lockLabel: "character import transition history",
+      lockLabel: REPOSITORY_LABEL,
       action
     });
   }

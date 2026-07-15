@@ -1,17 +1,16 @@
-import {
-  existsSync,
-  mkdirSync,
-  readFileSync,
-  renameSync,
-  unlinkSync,
-  writeFileSync,
-} from "node:fs";
-import { dirname, resolve } from "node:path";
+import { resolve } from "node:path";
 import {
   findLongitudinalCommitAuditBySimulationId,
   type LongitudinalCommitAuditEntry,
 } from "../../core/life/longitudinalCommitAudit";
 import { withRepositoryFileLock } from "./fileLock";
+import {
+  readJsonObjectFile,
+  removeJsonObjectFileAndBackup,
+  writeJsonObjectFileAtomically,
+} from "./jsonFileStore";
+
+const REPOSITORY_LABEL = "longitudinal commit audit";
 
 export interface LongitudinalCommitAuditRepository {
   list(characterId: string): LongitudinalCommitAuditEntry[];
@@ -114,7 +113,7 @@ export class FileLongitudinalCommitAuditRepository implements LongitudinalCommit
   clear(characterId?: string): void {
     this.withFileLock(() => {
       if (!characterId) {
-        if (existsSync(this.filePath)) unlinkSync(this.filePath);
+        removeJsonObjectFileAndBackup({ filePath: this.filePath, repositoryLabel: REPOSITORY_LABEL });
         return;
       }
       const store = this.readStore();
@@ -124,42 +123,25 @@ export class FileLongitudinalCommitAuditRepository implements LongitudinalCommit
   }
 
   private readStore(): SerializedLongitudinalCommitAuditStore {
-    if (!existsSync(this.filePath)) return {};
-    try {
-      return JSON.parse(readFileSync(this.filePath, "utf8")) as SerializedLongitudinalCommitAuditStore;
-    } catch (error) {
-      const corruptPath = `${this.filePath}.corrupt-${Date.now()}`;
-      try {
-        renameSync(this.filePath, corruptPath);
-      } catch {
-        throw new Error(
-          `Could not read longitudinal commit audit store and failed to preserve corrupt file: ${
-            error instanceof Error ? error.message : "unknown parse error"
-          }`
-        );
-      }
-      return {};
-    }
+    const result = readJsonObjectFile<SerializedLongitudinalCommitAuditStore>({
+      filePath: this.filePath,
+      repositoryLabel: REPOSITORY_LABEL,
+    });
+    return result.status === "not_found" ? {} : result.value;
   }
 
   private writeStore(store: SerializedLongitudinalCommitAuditStore): void {
-    mkdirSync(dirname(this.filePath), { recursive: true });
-    const content = `${JSON.stringify(store, null, 2)}\n`;
-    const tempPath = `${this.filePath}.tmp-${process.pid}-${Date.now()}-${Math.random().toString(16).slice(2)}`;
-    writeFileSync(tempPath, content, "utf8");
-    try {
-      if (existsSync(this.filePath)) unlinkSync(this.filePath);
-      renameSync(tempPath, this.filePath);
-    } catch {
-      writeFileSync(this.filePath, content, "utf8");
-      if (existsSync(tempPath)) unlinkSync(tempPath);
-    }
+    writeJsonObjectFileAtomically({
+      filePath: this.filePath,
+      repositoryLabel: REPOSITORY_LABEL,
+      value: store,
+    });
   }
 
   private withFileLock<T>(action: () => T): T {
     return withRepositoryFileLock({
       filePath: this.filePath,
-      lockLabel: "longitudinal commit audit",
+      lockLabel: REPOSITORY_LABEL,
       action,
     });
   }

@@ -1,9 +1,10 @@
-import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { createParameterAdjustmentHistoryEntry } from "../../src/core/parameters/parameterAdjustmentHistory";
 import { FileParameterAdjustmentHistoryRepository } from "../../src/db/repositories/parameterAdjustmentHistoryRepository";
+import { RepositoryFileError } from "../../src/db/repositories/jsonFileStore";
 
 describe("FileParameterAdjustmentHistoryRepository", () => {
   it("persists adjustment history entries by character id", () => {
@@ -60,16 +61,28 @@ describe("FileParameterAdjustmentHistoryRepository", () => {
     }
   });
 
-  it("falls back to an empty store when the JSON file is corrupt", () => {
+  it("throws CORRUPTED and preserves the file when JSON is invalid", () => {
     const dir = mkdtempSync(join(tmpdir(), "characteros-history-"));
     const filePath = join(dir, "history.json");
     try {
       writeFileSync(filePath, "{ bad json", "utf8");
       const repository = new FileParameterAdjustmentHistoryRepository(filePath);
 
-      expect(repository.list("lin_fan")).toHaveLength(0);
+      expectCorrupted(() => repository.list("lin_fan"));
+      expect(readFileSync(filePath, "utf8")).toBe("{ bad json");
     } finally {
       rmSync(dir, { recursive: true, force: true });
     }
   });
 });
+
+function expectCorrupted(action: () => unknown): void {
+  let caught: unknown;
+  try {
+    action();
+  } catch (error) {
+    caught = error;
+  }
+  expect(caught).toBeInstanceOf(RepositoryFileError);
+  expect((caught as RepositoryFileError).code).toBe("CORRUPTED");
+}

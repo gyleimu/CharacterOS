@@ -1,12 +1,4 @@
-import {
-  existsSync,
-  mkdirSync,
-  readFileSync,
-  renameSync,
-  unlinkSync,
-  writeFileSync
-} from "node:fs";
-import { dirname, resolve } from "node:path";
+import { resolve } from "node:path";
 import {
   deserializeCharacterPhysicsState,
   serializeCharacterPhysicsState,
@@ -14,6 +6,13 @@ import {
 } from "../../core/physics/serialization";
 import type { CharacterPhysicsState } from "../../core/physics/physicsEngine";
 import { withRepositoryFileLock } from "./fileLock";
+import {
+  readJsonObjectFile,
+  removeJsonObjectFileAndBackup,
+  writeJsonObjectFileAtomically,
+} from "./jsonFileStore";
+
+const REPOSITORY_LABEL = "character physics state";
 
 export interface CharacterPhysicsRepository {
   get(characterId: string): CharacterPhysicsState | undefined;
@@ -99,39 +98,30 @@ export class FileCharacterPhysicsRepository implements CharacterPhysicsRepositor
 
   clear(): void {
     this.withFileLock(() => {
-      if (existsSync(this.filePath)) {
-        unlinkSync(this.filePath);
-      }
+      removeJsonObjectFileAndBackup({ filePath: this.filePath, repositoryLabel: REPOSITORY_LABEL });
     });
   }
 
   private readStore(): SerializedStateStore {
-    if (!existsSync(this.filePath)) return {};
-    try {
-      return JSON.parse(readFileSync(this.filePath, "utf8")) as SerializedStateStore;
-    } catch {
-      return {};
-    }
+    const result = readJsonObjectFile<SerializedStateStore>({
+      filePath: this.filePath,
+      repositoryLabel: REPOSITORY_LABEL,
+    });
+    return result.status === "not_found" ? {} : result.value;
   }
 
   private writeStore(store: SerializedStateStore): void {
-    mkdirSync(dirname(this.filePath), { recursive: true });
-    const content = `${JSON.stringify(store, null, 2)}\n`;
-    const tempPath = `${this.filePath}.tmp-${process.pid}-${Date.now()}-${Math.random().toString(16).slice(2)}`;
-    writeFileSync(tempPath, content, "utf8");
-    try {
-      if (existsSync(this.filePath)) unlinkSync(this.filePath);
-      renameSync(tempPath, this.filePath);
-    } catch {
-      writeFileSync(this.filePath, content, "utf8");
-      if (existsSync(tempPath)) unlinkSync(tempPath);
-    }
+    writeJsonObjectFileAtomically({
+      filePath: this.filePath,
+      repositoryLabel: REPOSITORY_LABEL,
+      value: store,
+    });
   }
 
   private withFileLock<T>(action: () => T): T {
     return withRepositoryFileLock({
       filePath: this.filePath,
-      lockLabel: "character physics state",
+      lockLabel: REPOSITORY_LABEL,
       action
     });
   }

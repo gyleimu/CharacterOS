@@ -1,14 +1,13 @@
-import {
-  existsSync,
-  mkdirSync,
-  readFileSync,
-  renameSync,
-  unlinkSync,
-  writeFileSync
-} from "node:fs";
-import { dirname, resolve } from "node:path";
+import { resolve } from "node:path";
 import type { ParameterAdjustmentHistoryEntry } from "../../core/parameters/parameterAdjustmentHistory";
 import { withRepositoryFileLock } from "./fileLock";
+import {
+  readJsonObjectFile,
+  removeJsonObjectFileAndBackup,
+  writeJsonObjectFileAtomically,
+} from "./jsonFileStore";
+
+const REPOSITORY_LABEL = "parameter adjustment history";
 
 export interface ParameterAdjustmentHistoryRepository {
   list(characterId: string): ParameterAdjustmentHistoryEntry[];
@@ -72,7 +71,7 @@ export class FileParameterAdjustmentHistoryRepository implements ParameterAdjust
   clear(characterId?: string): void {
     this.withFileLock(() => {
       if (!characterId) {
-        if (existsSync(this.filePath)) unlinkSync(this.filePath);
+        removeJsonObjectFileAndBackup({ filePath: this.filePath, repositoryLabel: REPOSITORY_LABEL });
         return;
       }
       const store = this.readStore();
@@ -82,32 +81,25 @@ export class FileParameterAdjustmentHistoryRepository implements ParameterAdjust
   }
 
   private readStore(): SerializedHistoryStore {
-    if (!existsSync(this.filePath)) return {};
-    try {
-      return JSON.parse(readFileSync(this.filePath, "utf8")) as SerializedHistoryStore;
-    } catch {
-      return {};
-    }
+    const result = readJsonObjectFile<SerializedHistoryStore>({
+      filePath: this.filePath,
+      repositoryLabel: REPOSITORY_LABEL,
+    });
+    return result.status === "not_found" ? {} : result.value;
   }
 
   private writeStore(store: SerializedHistoryStore): void {
-    mkdirSync(dirname(this.filePath), { recursive: true });
-    const content = `${JSON.stringify(store, null, 2)}\n`;
-    const tempPath = `${this.filePath}.tmp-${process.pid}-${Date.now()}-${Math.random().toString(16).slice(2)}`;
-    writeFileSync(tempPath, content, "utf8");
-    try {
-      if (existsSync(this.filePath)) unlinkSync(this.filePath);
-      renameSync(tempPath, this.filePath);
-    } catch {
-      writeFileSync(this.filePath, content, "utf8");
-      if (existsSync(tempPath)) unlinkSync(tempPath);
-    }
+    writeJsonObjectFileAtomically({
+      filePath: this.filePath,
+      repositoryLabel: REPOSITORY_LABEL,
+      value: store,
+    });
   }
 
   private withFileLock(action: () => void): void {
     withRepositoryFileLock({
       filePath: this.filePath,
-      lockLabel: "parameter adjustment history",
+      lockLabel: REPOSITORY_LABEL,
       action
     });
   }
