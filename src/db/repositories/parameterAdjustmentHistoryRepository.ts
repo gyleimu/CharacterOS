@@ -1,6 +1,6 @@
 import { resolve } from "node:path";
 import type { ParameterAdjustmentHistoryEntry } from "../../core/parameters/parameterAdjustmentHistory";
-import type { DurableRepositoryKind } from "./durableJsonEnvelope";
+import { getDurableRepositorySpec } from "./durableRepositoryRegistry";
 import { withRepositoryFileLock } from "./fileLock";
 import {
   readJsonObjectFile,
@@ -9,8 +9,9 @@ import {
 } from "./jsonFileStore";
 
 const REPOSITORY_LABEL = "parameter adjustment history";
-const REPOSITORY_KIND: DurableRepositoryKind = "parameter-adjustment-history";
-const SCHEMA_VERSION = 1;
+const REPOSITORY_SPEC = getDurableRepositorySpec("parameter-adjustment-history");
+const REPOSITORY_KIND = REPOSITORY_SPEC.repositoryKind;
+const SCHEMA_VERSION = REPOSITORY_SPEC.schemaVersion;
 
 export interface ParameterAdjustmentHistoryRepository {
   list(characterId: string): ParameterAdjustmentHistoryEntry[];

@@ -3,7 +3,7 @@ import {
   findLongitudinalCommitAuditBySimulationId,
   type LongitudinalCommitAuditEntry,
 } from "../../core/life/longitudinalCommitAudit";
-import type { DurableRepositoryKind } from "./durableJsonEnvelope";
+import { getDurableRepositorySpec } from "./durableRepositoryRegistry";
 import { withRepositoryFileLock } from "./fileLock";
 import {
   readJsonObjectFile,
@@ -12,8 +12,9 @@ import {
 } from "./jsonFileStore";
 
 const REPOSITORY_LABEL = "longitudinal commit audit";
-const REPOSITORY_KIND: DurableRepositoryKind = "longitudinal-commit-audit";
-const SCHEMA_VERSION = 1;
+const REPOSITORY_SPEC = getDurableRepositorySpec("longitudinal-commit-audit");
+const REPOSITORY_KIND = REPOSITORY_SPEC.repositoryKind;
+const SCHEMA_VERSION = REPOSITORY_SPEC.schemaVersion;
 
 export interface LongitudinalCommitAuditRepository {
   list(characterId: string): LongitudinalCommitAuditEntry[];

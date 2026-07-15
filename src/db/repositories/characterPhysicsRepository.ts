@@ -5,7 +5,7 @@ import {
   type SerializedCharacterPhysicsState
 } from "../../core/physics/serialization";
 import type { CharacterPhysicsState } from "../../core/physics/physicsEngine";
-import type { DurableRepositoryKind } from "./durableJsonEnvelope";
+import { getDurableRepositorySpec } from "./durableRepositoryRegistry";
 import { withRepositoryFileLock } from "./fileLock";
 import {
   readJsonObjectFile,
@@ -14,8 +14,9 @@ import {
 } from "./jsonFileStore";
 
 const REPOSITORY_LABEL = "character physics state";
-const REPOSITORY_KIND: DurableRepositoryKind = "character-physics";
-const SCHEMA_VERSION = 1;
+const REPOSITORY_SPEC = getDurableRepositorySpec("character-physics");
+const REPOSITORY_KIND = REPOSITORY_SPEC.repositoryKind;
+const SCHEMA_VERSION = REPOSITORY_SPEC.schemaVersion;
 
 export interface CharacterPhysicsRepository {
   get(characterId: string): CharacterPhysicsState | undefined;

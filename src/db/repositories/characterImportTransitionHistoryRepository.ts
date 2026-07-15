@@ -1,6 +1,6 @@
 import { resolve } from "node:path";
 import type { CharacterImportTransitionHistoryEntry } from "../../core/export/characterImportTransitionHistory";
-import type { DurableRepositoryKind } from "./durableJsonEnvelope";
+import { getDurableRepositorySpec } from "./durableRepositoryRegistry";
 import { withRepositoryFileLock } from "./fileLock";
 import {
   readJsonObjectFile,
@@ -9,8 +9,9 @@ import {
 } from "./jsonFileStore";
 
 const REPOSITORY_LABEL = "character import transition history";
-const REPOSITORY_KIND: DurableRepositoryKind = "character-import-transition-history";
-const SCHEMA_VERSION = 1;
+const REPOSITORY_SPEC = getDurableRepositorySpec("character-import-transition-history");
+const REPOSITORY_KIND = REPOSITORY_SPEC.repositoryKind;
+const SCHEMA_VERSION = REPOSITORY_SPEC.schemaVersion;
 
 export interface CharacterImportTransitionHistoryRepository {
   list(characterId: string): CharacterImportTransitionHistoryEntry[];
