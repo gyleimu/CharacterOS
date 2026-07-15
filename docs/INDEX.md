@@ -8,6 +8,14 @@
 | [Personality Dynamics Scientific Model](personality_dynamics_scientific_model_design.md) | Research-backed trait-state separation, TESSERA evidence, attractor dynamics, consolidation, and validation plan |
 | [Dependency Security Policy](dependency_security_policy.md) | High/critical CI blocking, moderate risk registry, and compatible upgrade policy |
 
+## AI Engineering Workflow
+
+| Doc | Description |
+|-----|-------------|
+| [AI Engineering Guide](AI_ENGINEERING_GUIDE.md) | Codex, MCP, skill, architecture, review, testing, and safety workflow |
+| [AI Development Environment Report](characteros_ai_development_environment_report.md) | Environment inventory, installed MCPs, gaps, and recommendations |
+| [AI Engineering Ready Report](characteros_ai_engineering_ready_report.md) | Final verification status, skill paths, MCP evidence, and follow-up |
+
 ## Temporal Semantics
 
 | Doc | Description |

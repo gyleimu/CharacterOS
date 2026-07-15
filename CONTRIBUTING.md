@@ -1,5 +1,9 @@
 # Contributing to CharacterOS
 
+## AI-Assisted Development
+
+Read [docs/AI_ENGINEERING_GUIDE.md](docs/AI_ENGINEERING_GUIDE.md) and follow the repository skill `$characteros-engineering`. The root `AGENTS.md` contains the always-on boundaries. Core behavior changes require architecture analysis, risk classification, migration/replay consideration, and unit + regression + benchmark + audit evidence.
+
 ## Before Making Changes
 
 1. Run the full test suite: `npm test`
