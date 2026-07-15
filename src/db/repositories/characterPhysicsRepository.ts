@@ -5,6 +5,7 @@ import {
   type SerializedCharacterPhysicsState
 } from "../../core/physics/serialization";
 import type { CharacterPhysicsState } from "../../core/physics/physicsEngine";
+import type { DurableRepositoryKind } from "./durableJsonEnvelope";
 import { withRepositoryFileLock } from "./fileLock";
 import {
   readJsonObjectFile,
@@ -13,6 +14,8 @@ import {
 } from "./jsonFileStore";
 
 const REPOSITORY_LABEL = "character physics state";
+const REPOSITORY_KIND: DurableRepositoryKind = "character-physics";
+const SCHEMA_VERSION = 1;
 
 export interface CharacterPhysicsRepository {
   get(characterId: string): CharacterPhysicsState | undefined;
@@ -98,7 +101,12 @@ export class FileCharacterPhysicsRepository implements CharacterPhysicsRepositor
 
   clear(): void {
     this.withFileLock(() => {
-      removeJsonObjectFileAndBackup({ filePath: this.filePath, repositoryLabel: REPOSITORY_LABEL });
+      removeJsonObjectFileAndBackup({
+        filePath: this.filePath,
+        repositoryLabel: REPOSITORY_LABEL,
+        repositoryKind: REPOSITORY_KIND,
+        schemaVersion: SCHEMA_VERSION,
+      });
     });
   }
 
@@ -106,6 +114,8 @@ export class FileCharacterPhysicsRepository implements CharacterPhysicsRepositor
     const result = readJsonObjectFile<SerializedStateStore>({
       filePath: this.filePath,
       repositoryLabel: REPOSITORY_LABEL,
+      repositoryKind: REPOSITORY_KIND,
+      schemaVersion: SCHEMA_VERSION,
     });
     return result.status === "not_found" ? {} : result.value;
   }
@@ -114,6 +124,8 @@ export class FileCharacterPhysicsRepository implements CharacterPhysicsRepositor
     writeJsonObjectFileAtomically({
       filePath: this.filePath,
       repositoryLabel: REPOSITORY_LABEL,
+      repositoryKind: REPOSITORY_KIND,
+      schemaVersion: SCHEMA_VERSION,
       value: store,
     });
   }

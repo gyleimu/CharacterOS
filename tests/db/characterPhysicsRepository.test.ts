@@ -3,6 +3,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { createCharacterPhysicsState } from "../../src/core/physics/physicsEngine";
+import { serializeCharacterPhysicsState } from "../../src/core/physics/serialization";
 import {
   FileCharacterPhysicsRepository,
   InMemoryCharacterPhysicsRepository
@@ -33,6 +34,14 @@ describe("InMemoryCharacterPhysicsRepository", () => {
       const state = createCharacterPhysicsState();
 
       repository.set("lin_fan", state);
+
+      expect(JSON.parse(readFileSync(filePath, "utf8"))).toMatchObject({
+        format: "characteros.durable-json",
+        envelopeVersion: 1,
+        repositoryKind: "character-physics",
+        schemaVersion: 1,
+        payload: { lin_fan: serializeCharacterPhysicsState(state) },
+      });
 
       const reloaded = new FileCharacterPhysicsRepository(filePath).get("lin_fan");
       expect(reloaded?.coordinate.values.trust).toBe(state.coordinate.values.trust);
@@ -71,6 +80,23 @@ describe("FileCharacterPhysicsRepository", () => {
 
       expectCorrupted(() => repository.set("lin_fan", createCharacterPhysicsState()));
       expect(readFileSync(filePath, "utf8")).toBe("{ bad json");
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("reads legacy-v0 state without rewriting it", () => {
+    const dir = mkdtempSync(join(tmpdir(), "characteros-state-"));
+    const filePath = join(dir, "states.json");
+    try {
+      const state = createCharacterPhysicsState();
+      const legacy = `${JSON.stringify({ lin_fan: serializeCharacterPhysicsState(state) }, null, 2)}\n`;
+      writeFileSync(filePath, legacy, "utf8");
+
+      const reloaded = new FileCharacterPhysicsRepository(filePath).get("lin_fan");
+
+      expect(reloaded?.coordinate.values.trust).toBe(state.coordinate.values.trust);
+      expect(readFileSync(filePath, "utf8")).toBe(legacy);
     } finally {
       rmSync(dir, { recursive: true, force: true });
     }

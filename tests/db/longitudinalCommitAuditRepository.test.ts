@@ -104,6 +104,14 @@ describe("FileLongitudinalCommitAuditRepository", () => {
       const repository = new FileLongitudinalCommitAuditRepository(filePath);
       repository.append(entry());
 
+      expect(JSON.parse(readFileSync(filePath, "utf8"))).toMatchObject({
+        format: "characteros.durable-json",
+        envelopeVersion: 1,
+        repositoryKind: "longitudinal-commit-audit",
+        schemaVersion: 1,
+        payload: { lin_fan: [entry()] },
+      });
+
       const reloaded = new FileLongitudinalCommitAuditRepository(filePath);
       expect(reloaded.list("lin_fan")).toHaveLength(1);
       expect(reloaded.getBySimulationId("lin_fan", "longsim-1")?.generatedMemoryIds)
@@ -141,6 +149,21 @@ describe("FileLongitudinalCommitAuditRepository", () => {
 
       expectCorrupted(() => repository.list("lin_fan"));
       expect(readFileSync(filePath, "utf8")).toBe("{ bad json");
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("reads legacy-v0 audit history without rewriting it", () => {
+    const dir = mkdtempSync(join(tmpdir(), "characteros-longcommit-"));
+    const filePath = join(dir, "audit.json");
+    try {
+      const legacy = `${JSON.stringify({ lin_fan: [entry()] }, null, 2)}\n`;
+      writeFileSync(filePath, legacy, "utf8");
+
+      const repository = new FileLongitudinalCommitAuditRepository(filePath);
+      expect(repository.list("lin_fan")).toEqual([entry()]);
+      expect(readFileSync(filePath, "utf8")).toBe(legacy);
     } finally {
       rmSync(dir, { recursive: true, force: true });
     }

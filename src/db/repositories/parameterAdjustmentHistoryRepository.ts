@@ -1,5 +1,6 @@
 import { resolve } from "node:path";
 import type { ParameterAdjustmentHistoryEntry } from "../../core/parameters/parameterAdjustmentHistory";
+import type { DurableRepositoryKind } from "./durableJsonEnvelope";
 import { withRepositoryFileLock } from "./fileLock";
 import {
   readJsonObjectFile,
@@ -8,6 +9,8 @@ import {
 } from "./jsonFileStore";
 
 const REPOSITORY_LABEL = "parameter adjustment history";
+const REPOSITORY_KIND: DurableRepositoryKind = "parameter-adjustment-history";
+const SCHEMA_VERSION = 1;
 
 export interface ParameterAdjustmentHistoryRepository {
   list(characterId: string): ParameterAdjustmentHistoryEntry[];
@@ -71,7 +74,12 @@ export class FileParameterAdjustmentHistoryRepository implements ParameterAdjust
   clear(characterId?: string): void {
     this.withFileLock(() => {
       if (!characterId) {
-        removeJsonObjectFileAndBackup({ filePath: this.filePath, repositoryLabel: REPOSITORY_LABEL });
+        removeJsonObjectFileAndBackup({
+          filePath: this.filePath,
+          repositoryLabel: REPOSITORY_LABEL,
+          repositoryKind: REPOSITORY_KIND,
+          schemaVersion: SCHEMA_VERSION,
+        });
         return;
       }
       const store = this.readStore();
@@ -84,6 +92,8 @@ export class FileParameterAdjustmentHistoryRepository implements ParameterAdjust
     const result = readJsonObjectFile<SerializedHistoryStore>({
       filePath: this.filePath,
       repositoryLabel: REPOSITORY_LABEL,
+      repositoryKind: REPOSITORY_KIND,
+      schemaVersion: SCHEMA_VERSION,
     });
     return result.status === "not_found" ? {} : result.value;
   }
@@ -92,6 +102,8 @@ export class FileParameterAdjustmentHistoryRepository implements ParameterAdjust
     writeJsonObjectFileAtomically({
       filePath: this.filePath,
       repositoryLabel: REPOSITORY_LABEL,
+      repositoryKind: REPOSITORY_KIND,
+      schemaVersion: SCHEMA_VERSION,
       value: store,
     });
   }

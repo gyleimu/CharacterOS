@@ -1,5 +1,6 @@
 import { resolve } from "node:path";
 import type { CharacterImportTransitionHistoryEntry } from "../../core/export/characterImportTransitionHistory";
+import type { DurableRepositoryKind } from "./durableJsonEnvelope";
 import { withRepositoryFileLock } from "./fileLock";
 import {
   readJsonObjectFile,
@@ -8,6 +9,8 @@ import {
 } from "./jsonFileStore";
 
 const REPOSITORY_LABEL = "character import transition history";
+const REPOSITORY_KIND: DurableRepositoryKind = "character-import-transition-history";
+const SCHEMA_VERSION = 1;
 
 export interface CharacterImportTransitionHistoryRepository {
   list(characterId: string): CharacterImportTransitionHistoryEntry[];
@@ -59,7 +62,12 @@ implements CharacterImportTransitionHistoryRepository {
   clear(characterId?: string): void {
     this.withFileLock(() => {
       if (!characterId) {
-        removeJsonObjectFileAndBackup({ filePath: this.filePath, repositoryLabel: REPOSITORY_LABEL });
+        removeJsonObjectFileAndBackup({
+          filePath: this.filePath,
+          repositoryLabel: REPOSITORY_LABEL,
+          repositoryKind: REPOSITORY_KIND,
+          schemaVersion: SCHEMA_VERSION,
+        });
         return;
       }
       const store = this.readStore();
@@ -72,6 +80,8 @@ implements CharacterImportTransitionHistoryRepository {
     const result = readJsonObjectFile<SerializedImportTransitionHistoryStore>({
       filePath: this.filePath,
       repositoryLabel: REPOSITORY_LABEL,
+      repositoryKind: REPOSITORY_KIND,
+      schemaVersion: SCHEMA_VERSION,
     });
     return result.status === "not_found" ? {} : result.value;
   }
@@ -80,6 +90,8 @@ implements CharacterImportTransitionHistoryRepository {
     writeJsonObjectFileAtomically({
       filePath: this.filePath,
       repositoryLabel: REPOSITORY_LABEL,
+      repositoryKind: REPOSITORY_KIND,
+      schemaVersion: SCHEMA_VERSION,
       value: store,
     });
   }

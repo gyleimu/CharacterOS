@@ -53,6 +53,46 @@ describe("CharacterPhysicsService durable-state corruption regression", () => {
       rmSync(dir, { recursive: true, force: true });
     }
   });
+
+  it("rejects checksum-tampered state before reads, event processing, or reset side effects", () => {
+    const dir = mkdtempSync(join(tmpdir(), "characteros-service-checksum-"));
+    const filePath = join(dir, "physics_states.json");
+    try {
+      const repository = new FileCharacterPhysicsRepository(filePath);
+      const adjustmentHistory = new InMemoryParameterAdjustmentHistoryRepository();
+      const importHistory = new InMemoryCharacterImportTransitionHistoryRepository();
+      const longitudinalAudit = new InMemoryLongitudinalCommitAuditRepository();
+      const service = new InMemoryCharacterPhysicsService(
+        repository,
+        adjustmentHistory,
+        importHistory,
+        longitudinalAudit,
+      );
+      service.getState("lin_fan");
+
+      const envelope = JSON.parse(readFileSync(filePath, "utf8")) as {
+        payload: { lin_fan: { learningRate: number } };
+      };
+      envelope.payload.lin_fan.learningRate += 0.01;
+      const tamperedBytes = JSON.stringify(envelope);
+      writeFileSync(filePath, tamperedBytes, "utf8");
+
+      const adjustmentClear = vi.spyOn(adjustmentHistory, "clear");
+      const importClear = vi.spyOn(importHistory, "clear");
+      const auditClear = vi.spyOn(longitudinalAudit, "clear");
+
+      expectCorrupted(() => service.getState("lin_fan"));
+      expectCorrupted(() => service.processEvent("lin_fan", EVENT));
+      expectCorrupted(() => service.resetCharacter("lin_fan"));
+
+      expect(readFileSync(filePath, "utf8")).toBe(tamperedBytes);
+      expect(adjustmentClear).not.toHaveBeenCalled();
+      expect(importClear).not.toHaveBeenCalled();
+      expect(auditClear).not.toHaveBeenCalled();
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
 });
 
 function expectCorrupted(action: () => unknown): void {

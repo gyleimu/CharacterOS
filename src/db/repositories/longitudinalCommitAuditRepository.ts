@@ -3,6 +3,7 @@ import {
   findLongitudinalCommitAuditBySimulationId,
   type LongitudinalCommitAuditEntry,
 } from "../../core/life/longitudinalCommitAudit";
+import type { DurableRepositoryKind } from "./durableJsonEnvelope";
 import { withRepositoryFileLock } from "./fileLock";
 import {
   readJsonObjectFile,
@@ -11,6 +12,8 @@ import {
 } from "./jsonFileStore";
 
 const REPOSITORY_LABEL = "longitudinal commit audit";
+const REPOSITORY_KIND: DurableRepositoryKind = "longitudinal-commit-audit";
+const SCHEMA_VERSION = 1;
 
 export interface LongitudinalCommitAuditRepository {
   list(characterId: string): LongitudinalCommitAuditEntry[];
@@ -113,7 +116,12 @@ export class FileLongitudinalCommitAuditRepository implements LongitudinalCommit
   clear(characterId?: string): void {
     this.withFileLock(() => {
       if (!characterId) {
-        removeJsonObjectFileAndBackup({ filePath: this.filePath, repositoryLabel: REPOSITORY_LABEL });
+        removeJsonObjectFileAndBackup({
+          filePath: this.filePath,
+          repositoryLabel: REPOSITORY_LABEL,
+          repositoryKind: REPOSITORY_KIND,
+          schemaVersion: SCHEMA_VERSION,
+        });
         return;
       }
       const store = this.readStore();
@@ -126,6 +134,8 @@ export class FileLongitudinalCommitAuditRepository implements LongitudinalCommit
     const result = readJsonObjectFile<SerializedLongitudinalCommitAuditStore>({
       filePath: this.filePath,
       repositoryLabel: REPOSITORY_LABEL,
+      repositoryKind: REPOSITORY_KIND,
+      schemaVersion: SCHEMA_VERSION,
     });
     return result.status === "not_found" ? {} : result.value;
   }
@@ -134,6 +144,8 @@ export class FileLongitudinalCommitAuditRepository implements LongitudinalCommit
     writeJsonObjectFileAtomically({
       filePath: this.filePath,
       repositoryLabel: REPOSITORY_LABEL,
+      repositoryKind: REPOSITORY_KIND,
+      schemaVersion: SCHEMA_VERSION,
       value: store,
     });
   }

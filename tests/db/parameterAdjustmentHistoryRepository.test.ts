@@ -26,6 +26,14 @@ describe("FileParameterAdjustmentHistoryRepository", () => {
 
       repository.append(entry);
 
+      expect(JSON.parse(readFileSync(filePath, "utf8"))).toMatchObject({
+        format: "characteros.durable-json",
+        envelopeVersion: 1,
+        repositoryKind: "parameter-adjustment-history",
+        schemaVersion: 1,
+        payload: { lin_fan: [entry] },
+      });
+
       expect(new FileParameterAdjustmentHistoryRepository(filePath).list("lin_fan")).toHaveLength(1);
       expect(repository.list("other")).toHaveLength(0);
     } finally {
@@ -70,6 +78,31 @@ describe("FileParameterAdjustmentHistoryRepository", () => {
 
       expectCorrupted(() => repository.list("lin_fan"));
       expect(readFileSync(filePath, "utf8")).toBe("{ bad json");
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("reads legacy-v0 history without rewriting it", () => {
+    const dir = mkdtempSync(join(tmpdir(), "characteros-history-"));
+    const filePath = join(dir, "history.json");
+    try {
+      const entry = createParameterAdjustmentHistoryEntry({
+        characterId: "lin_fan",
+        action: "apply",
+        createdAt: "2026-06-20T00:00:00.000Z",
+        trace: {
+          status: "applied",
+          snapshotId: "snapshot_legacy",
+          appliedOperations: [],
+          reasons: ["legacy compatibility"],
+        },
+      });
+      const legacy = `${JSON.stringify({ lin_fan: [entry] }, null, 2)}\n`;
+      writeFileSync(filePath, legacy, "utf8");
+
+      expect(new FileParameterAdjustmentHistoryRepository(filePath).list("lin_fan")).toEqual([entry]);
+      expect(readFileSync(filePath, "utf8")).toBe(legacy);
     } finally {
       rmSync(dir, { recursive: true, force: true });
     }
