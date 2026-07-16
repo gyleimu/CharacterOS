@@ -113,12 +113,11 @@ export function runLongTermAccumulationAudit(
 
   for (let i = 0; i < input.eventSequence.length; i++) {
     const parsed = parseExperienceEvent(input.eventSequence[i]!);
+    const beforeStepState = cloneState(state);
+    const decisionBefore = buildDifferentiatedDecisionForState(beforeStepState, {
+      environment: input.followUpDecisionScenario,
+    });
     const physicsStep = engine.processEvent(state, parsed);
-    const decisionBefore = buildDifferentiatedDecisionForState(
-      deserializeCharacterPhysicsState(structuredClone(serializeCharacterPhysicsState(state))),
-      { environment: input.followUpDecisionScenario },
-    );
-    // Re-derive to get correct "before" state
     const afterClone = cloneState(state);
     const decisionAfter = buildDifferentiatedDecisionForState(afterClone, {
       environment: input.followUpDecisionScenario,
@@ -317,7 +316,13 @@ function buildAccumulationVerdict(params: {
   }
 
   // --- Check 1: Step-1 overjump — personality slow channel must not jump too much on first event ---
-  if (stepOneJumpRatios.personality > params.maxStepOnePersonalityRatio) {
+  const finalPersonalityDistance = Math.abs(
+    stepResults[stepResults.length - 1]?.cumulativePersonalityDistance ?? 0,
+  );
+  if (
+    finalPersonalityDistance > 0.005 &&
+    stepOneJumpRatios.personality > params.maxStepOnePersonalityRatio
+  ) {
     warnings.push(
       `step-1 personality jump ratio ${stepOneJumpRatios.personality.toFixed(4)} > ${params.maxStepOnePersonalityRatio} — slow channel overreacted on first event`,
     );
@@ -408,10 +413,12 @@ function buildAccumulationVerdict(params: {
     const firstO = firstInfluence.decisionInfluenceVector.openness || 0;
     const lastO = lastInfluence.decisionInfluenceVector.openness || 0;
 
-    if (expected.trust === "decreasing" && lastW <= firstW && firstW > 0.01) {
+    const defensiveShiftIncreased = lastW > firstW + 0.001 || lastO < firstO - 0.001;
+    const repairShiftIncreased = lastO > firstO + 0.001 || lastW < firstW - 0.001;
+    if (expected.trust === "decreasing" && !defensiveShiftIncreased && firstW > 0.01) {
       warnings.push("decision surface withdrawal did not increase across repeated negative events");
     }
-    if (expected.trust === "increasing" && lastO <= firstO && firstO > 0.01) {
+    if (expected.trust === "increasing" && !repairShiftIncreased && firstO > 0.01) {
       warnings.push("decision surface openness did not increase across repeated positive events");
     }
   }

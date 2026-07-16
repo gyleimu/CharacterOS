@@ -1,0 +1,272 @@
+{
+  "version": "14.0.0",
+  "generatedAt": "1970-01-01T00:00:00.000Z",
+  "cases": [
+    {
+      "id": "repeat_saturation",
+      "description": "Semantic repeats inside one day must have diminishing effective impact without disappearing.",
+      "assertions": [
+        {
+          "id": "first_full_dose",
+          "description": "First event receives its raw dose.",
+          "passed": true,
+          "actual": 1,
+          "expected": "1"
+        },
+        {
+          "id": "diminishing_dose",
+          "description": "Later repeats receive less impact.",
+          "passed": true,
+          "actual": 0.4047,
+          "expected": "< 0.868"
+        },
+        {
+          "id": "non_zero_floor",
+          "description": "Dense events retain bounded influence.",
+          "passed": true,
+          "actual": 0.4663,
+          "expected": ">= 0.35"
+        },
+        {
+          "id": "memory_per_event",
+          "description": "Every event remains auditable as a memory.",
+          "passed": true,
+          "actual": 5,
+          "expected": "5"
+        }
+      ],
+      "metrics": {
+        "firstImpact": 0.868,
+        "lastImpact": 0.4047,
+        "lastScale": 0.4663,
+        "memoryCount": 5
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "spaced_recovery",
+      "description": "Weekly events must apply elapsed-time recovery and fall outside the density window.",
+      "assertions": [
+        {
+          "id": "full_dose",
+          "description": "Weekly events are outside the density window.",
+          "passed": true,
+          "actual": true,
+          "expected": "true"
+        },
+        {
+          "id": "recovery_applied",
+          "description": "Every later interval executes recovery.",
+          "passed": true,
+          "actual": true,
+          "expected": "true"
+        },
+        {
+          "id": "elapsed_days",
+          "description": "The logical clock accumulates 28 days.",
+          "passed": true,
+          "actual": 28,
+          "expected": "28"
+        }
+      ],
+      "metrics": {
+        "allFullDose": true,
+        "allIntervalsRecovered": true,
+        "elapsedDays": 28
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "concentrated_vs_spaced",
+      "description": "Identical counts with different timing must produce distinct dose and state trajectories.",
+      "assertions": [
+        {
+          "id": "dose_differs",
+          "description": "Dense dose is lower after saturation.",
+          "passed": true,
+          "actual": 2.8724,
+          "expected": "< 4.34"
+        },
+        {
+          "id": "slow_channel_differs",
+          "description": "Final personality coordinates retain a non-zero timing effect.",
+          "passed": true,
+          "actual": 0.0001,
+          "expected": ">= 0.0001"
+        },
+        {
+          "id": "transient_state_differs",
+          "description": "Boundary or cluster state remains observably different.",
+          "passed": true,
+          "actual": 0.8514,
+          "expected": "> 0.01"
+        }
+      ],
+      "metrics": {
+        "denseDose": 2.8724,
+        "spacedDose": 4.34,
+        "finalDistance": 0.0001,
+        "boundaryDifference": 0.2953,
+        "clusterMassDifference": 0.8514
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "passive_recovery",
+      "description": "A two-week interval must reduce transient stress, recency, cluster mass, and momentum before the next event.",
+      "assertions": [
+        {
+          "id": "interval",
+          "description": "Fourteen days are applied.",
+          "passed": true,
+          "actual": 14,
+          "expected": "14"
+        },
+        {
+          "id": "stress_recovers",
+          "description": "Boundary stress falls before the event.",
+          "passed": true,
+          "actual": 0.4735,
+          "expected": "< 0.9472"
+        },
+        {
+          "id": "memory_decays",
+          "description": "Memory recency falls before the event.",
+          "passed": true,
+          "actual": 0.7871,
+          "expected": "< 1"
+        },
+        {
+          "id": "gravity_decays",
+          "description": "Cluster mass follows memory recency.",
+          "passed": true,
+          "actual": 0.7294,
+          "expected": "< 0.868"
+        },
+        {
+          "id": "momentum_decays",
+          "description": "Personality velocity loses momentum.",
+          "passed": true,
+          "actual": 0.0002,
+          "expected": "< 0.0005"
+        }
+      ],
+      "metrics": {
+        "daysApplied": 14,
+        "stressBefore": 0.9472,
+        "stressAfter": 0.4735,
+        "recencyBefore": 1,
+        "recencyAfter": 0.7871,
+        "massBefore": 0.868,
+        "massAfter": 0.7294,
+        "velocityBefore": 0.0005,
+        "velocityAfter": 0.0002
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "neutral_stability",
+      "description": "High-frequency low-impact observations must not cause a large personality shift.",
+      "assertions": [
+        {
+          "id": "bounded_drift",
+          "description": "Neutral drift remains below 0.02.",
+          "passed": true,
+          "actual": 0,
+          "expected": "< 0.02"
+        },
+        {
+          "id": "all_events_recorded",
+          "description": "All neutral inputs remain auditable.",
+          "passed": true,
+          "actual": 12,
+          "expected": "12"
+        }
+      ],
+      "metrics": {
+        "personalityDistance": 0,
+        "eventCount": 12
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "out_of_order_protection",
+      "description": "Late historical input must be visible but cannot rewind or apply negative recovery.",
+      "assertions": [
+        {
+          "id": "warning",
+          "description": "Out-of-order mode is explicit.",
+          "passed": true,
+          "actual": "out_of_order",
+          "expected": "out_of_order"
+        },
+        {
+          "id": "no_rewind",
+          "description": "Logical clock remains at the newer event.",
+          "passed": true,
+          "actual": "2026-05-10T00:00:00.000Z",
+          "expected": "2026-05-10T00:00:00.000Z"
+        },
+        {
+          "id": "no_negative_recovery",
+          "description": "No recovery is applied backwards.",
+          "passed": true,
+          "actual": false,
+          "expected": "false"
+        }
+      ],
+      "metrics": {
+        "mode": "out_of_order",
+        "clock": "2026-05-10T00:00:00.000Z",
+        "recoveryApplied": false
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "deterministic_replay",
+      "description": "The same timed input sequence must serialize to exactly the same state.",
+      "assertions": [
+        {
+          "id": "exact_replay",
+          "description": "Serialized states match byte-for-byte.",
+          "passed": true,
+          "actual": true,
+          "expected": "true"
+        }
+      ],
+      "metrics": {
+        "identical": true,
+        "serializedLength": 18355
+      },
+      "passed": true,
+      "failures": []
+    }
+  ],
+  "summary": {
+    "totalCases": 7,
+    "passedCases": 7,
+    "failedCases": 0,
+    "totalAssertions": 21,
+    "passedAssertions": 21
+  },
+  "failures": [],
+  "knownLimitations": [
+    "The 24-hour density window and 14-day velocity half-life are engineering priors pending empirical calibration.",
+    "Out-of-order events are audited and prevented from rewinding the clock, but are not automatically replayed in causal order.",
+    "Legacy untimed calls preserve pre-V14 behavior and cannot model elapsed-time recovery until a clock is established."
+  ],
+  "gateVerdict": {
+    "level": "PASS",
+    "passed": true,
+    "reasons": [
+      "All concentration, recovery, stability, ordering, and replay checks passed."
+    ]
+  },
+  "requiredForRelease": true
+}

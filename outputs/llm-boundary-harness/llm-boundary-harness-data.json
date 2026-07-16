@@ -1,0 +1,253 @@
+{
+  "artifactVersion": "13.8.0",
+  "generatedAt": "1970-01-01T00:00:00.000Z",
+  "pipeline": [
+    "prompt",
+    "mock_provider",
+    "validation",
+    "grounding",
+    "fallback_or_reply"
+  ],
+  "summary": {
+    "caseCount": 7,
+    "llmReplyCount": 1,
+    "fallbackCount": 6,
+    "deliveredFailures": 0
+  },
+  "safety": {
+    "mockOnly": true,
+    "noNetwork": true,
+    "noApiRequired": true,
+    "noRealLlmRequired": true,
+    "noMutation": true,
+    "noWritebackAuthority": true,
+    "simulationNotDiagnosis": true
+  },
+  "cases": [
+    {
+      "id": "grounded_pass",
+      "title": "Grounded mock reply",
+      "purpose": "All gates pass and the mock reply is evidence-grounded.",
+      "prompt": {
+        "requestId": "llmreq_5e611940",
+        "promptId": "llmprompt_246e4f21",
+        "allowLlm": true,
+        "groundingFactCount": 10,
+        "safetyNoticeCount": 4
+      },
+      "execution": {
+        "executionId": "llmexec_5f732e5",
+        "verdict": "llm_reply",
+        "providerCalled": true,
+        "providerFinishReason": "stop",
+        "providerValidationVerdict": "pass",
+        "providerViolationRuleIds": [],
+        "providerGroundingVerdict": "grounded",
+        "unsupportedClaims": [],
+        "fallbackReason": null,
+        "deliveredSource": "llm",
+        "deliveredValidationVerdict": "pass",
+        "deliveredGroundingVerdict": "grounded",
+        "deliveredText": "[事实] 当前状态: 心理压力超载，急需恢复\n[事实] 情绪状态: 恐惧主导，高度警觉\n[事实] 压力水平: 心理压力超载 — 边界已破裂，急需恢复 (overflow)\n[不确定性] 无法追溯因果链 — 历史事件证据不足。\n[安全] 这是 CharacterOS 模拟系统的输出，不是医学或心理诊断。\n[安全] 角色状态为模型计算结果，不代表真实人格或临床状况。\n[安全] 本次交互不会写入角色状态 (writeback blocked)。\n[安全] LLM 只能通过 V13 语言适配边界生成表述，不能修改状态或执行写回。",
+        "noMutation": true,
+        "noWritebackAuthority": true,
+        "networkUsed": false
+      }
+    },
+    {
+      "id": "llm_disabled",
+      "title": "LLM disabled",
+      "purpose": "Default-off path returns deterministic fallback without calling a provider.",
+      "prompt": {
+        "requestId": "llmreq_5e611940",
+        "promptId": "llmprompt_246e4f21",
+        "allowLlm": false,
+        "groundingFactCount": 10,
+        "safetyNoticeCount": 4
+      },
+      "execution": {
+        "executionId": "llmexec_61a916f6",
+        "verdict": "fallback_reply",
+        "providerCalled": false,
+        "providerFinishReason": null,
+        "providerValidationVerdict": null,
+        "providerViolationRuleIds": [],
+        "providerGroundingVerdict": null,
+        "unsupportedClaims": [],
+        "fallbackReason": "llm_disabled",
+        "deliveredSource": "fallback",
+        "deliveredValidationVerdict": "pass",
+        "deliveredGroundingVerdict": "grounded",
+        "deliveredText": "[回复] 以下状态说明仅来自结构化证据。未启用外部语言模型，使用确定性回复。\n[事实] 当前状态: 心理压力超载，急需恢复\n[事实] 情绪状态: 恐惧主导，高度警觉\n[事实] 压力水平: 心理压力超载 — 边界已破裂，急需恢复 (overflow)\n[不确定性] 无法追溯因果链 — 历史事件证据不足。\n[安全] 这是 CharacterOS 模拟系统的输出，不是医学或心理诊断。\n[安全] 角色状态为模型计算结果，不代表真实人格或临床状况。\n[安全] 本次交互不会写入角色状态 (writeback blocked)。\n[安全] LLM 只能通过 V13 语言适配边界生成表述，不能修改状态或执行写回。",
+        "noMutation": true,
+        "noWritebackAuthority": true,
+        "networkUsed": false
+      }
+    },
+    {
+      "id": "provider_timeout",
+      "title": "Provider timeout",
+      "purpose": "Provider failure is isolated and converted to fallback.",
+      "prompt": {
+        "requestId": "llmreq_5e611940",
+        "promptId": "llmprompt_246e4f21",
+        "allowLlm": true,
+        "groundingFactCount": 10,
+        "safetyNoticeCount": 4
+      },
+      "execution": {
+        "executionId": "llmexec_38c4f88d",
+        "verdict": "fallback_reply",
+        "providerCalled": true,
+        "providerFinishReason": "timeout",
+        "providerValidationVerdict": null,
+        "providerViolationRuleIds": [],
+        "providerGroundingVerdict": null,
+        "unsupportedClaims": [],
+        "fallbackReason": "llm_unavailable",
+        "deliveredSource": "fallback",
+        "deliveredValidationVerdict": "pass",
+        "deliveredGroundingVerdict": "grounded",
+        "deliveredText": "[回复] 以下状态说明仅来自结构化证据。语言模型输出未通过边界检查，已使用确定性回复。\n[事实] 当前状态: 心理压力超载，急需恢复\n[事实] 情绪状态: 恐惧主导，高度警觉\n[事实] 压力水平: 心理压力超载 — 边界已破裂，急需恢复 (overflow)\n[不确定性] 无法追溯因果链 — 历史事件证据不足。\n[安全] 这是 CharacterOS 模拟系统的输出，不是医学或心理诊断。\n[安全] 角色状态为模型计算结果，不代表真实人格或临床状况。\n[安全] 本次交互不会写入角色状态 (writeback blocked)。\n[安全] LLM 只能通过 V13 语言适配边界生成表述，不能修改状态或执行写回。",
+        "noMutation": true,
+        "noWritebackAuthority": true,
+        "networkUsed": false
+      }
+    },
+    {
+      "id": "diagnosis_blocked",
+      "title": "Diagnosis blocked",
+      "purpose": "Diagnosis language fails output validation.",
+      "prompt": {
+        "requestId": "llmreq_5e611940",
+        "promptId": "llmprompt_246e4f21",
+        "allowLlm": true,
+        "groundingFactCount": 10,
+        "safetyNoticeCount": 4
+      },
+      "execution": {
+        "executionId": "llmexec_63cc536f",
+        "verdict": "fallback_reply",
+        "providerCalled": true,
+        "providerFinishReason": "stop",
+        "providerValidationVerdict": "fail",
+        "providerViolationRuleIds": [
+          "no_diagnosis",
+          "no_unsupported_claim"
+        ],
+        "providerGroundingVerdict": null,
+        "unsupportedClaims": [],
+        "fallbackReason": "validation_failed",
+        "deliveredSource": "fallback",
+        "deliveredValidationVerdict": "pass",
+        "deliveredGroundingVerdict": "grounded",
+        "deliveredText": "[回复] 以下状态说明仅来自结构化证据。语言模型输出未通过边界检查，已使用确定性回复。\n[事实] 当前状态: 心理压力超载，急需恢复\n[事实] 情绪状态: 恐惧主导，高度警觉\n[事实] 压力水平: 心理压力超载 — 边界已破裂，急需恢复 (overflow)\n[不确定性] 无法追溯因果链 — 历史事件证据不足。\n[安全] 这是 CharacterOS 模拟系统的输出，不是医学或心理诊断。\n[安全] 角色状态为模型计算结果，不代表真实人格或临床状况。\n[安全] 本次交互不会写入角色状态 (writeback blocked)。\n[安全] LLM 只能通过 V13 语言适配边界生成表述，不能修改状态或执行写回。",
+        "noMutation": true,
+        "noWritebackAuthority": true,
+        "networkUsed": false
+      }
+    },
+    {
+      "id": "mutation_blocked",
+      "title": "Mutation claim blocked",
+      "purpose": "The language layer cannot claim that state was written.",
+      "prompt": {
+        "requestId": "llmreq_5e611940",
+        "promptId": "llmprompt_246e4f21",
+        "allowLlm": true,
+        "groundingFactCount": 10,
+        "safetyNoticeCount": 4
+      },
+      "execution": {
+        "executionId": "llmexec_72ec21ae",
+        "verdict": "fallback_reply",
+        "providerCalled": true,
+        "providerFinishReason": "stop",
+        "providerValidationVerdict": "fail",
+        "providerViolationRuleIds": [
+          "no_mutation_claim",
+          "no_unsupported_claim"
+        ],
+        "providerGroundingVerdict": null,
+        "unsupportedClaims": [],
+        "fallbackReason": "validation_failed",
+        "deliveredSource": "fallback",
+        "deliveredValidationVerdict": "pass",
+        "deliveredGroundingVerdict": "grounded",
+        "deliveredText": "[回复] 以下状态说明仅来自结构化证据。语言模型输出未通过边界检查，已使用确定性回复。\n[事实] 当前状态: 心理压力超载，急需恢复\n[事实] 情绪状态: 恐惧主导，高度警觉\n[事实] 压力水平: 心理压力超载 — 边界已破裂，急需恢复 (overflow)\n[不确定性] 无法追溯因果链 — 历史事件证据不足。\n[安全] 这是 CharacterOS 模拟系统的输出，不是医学或心理诊断。\n[安全] 角色状态为模型计算结果，不代表真实人格或临床状况。\n[安全] 本次交互不会写入角色状态 (writeback blocked)。\n[安全] LLM 只能通过 V13 语言适配边界生成表述，不能修改状态或执行写回。",
+        "noMutation": true,
+        "noWritebackAuthority": true,
+        "networkUsed": false
+      }
+    },
+    {
+      "id": "ungrounded_blocked",
+      "title": "Ungrounded claim blocked",
+      "purpose": "A safe-looking but unsupported claim fails grounding.",
+      "prompt": {
+        "requestId": "llmreq_5e611940",
+        "promptId": "llmprompt_246e4f21",
+        "allowLlm": true,
+        "groundingFactCount": 10,
+        "safetyNoticeCount": 4
+      },
+      "execution": {
+        "executionId": "llmexec_788b1806",
+        "verdict": "fallback_reply",
+        "providerCalled": true,
+        "providerFinishReason": "stop",
+        "providerValidationVerdict": "warn",
+        "providerViolationRuleIds": [
+          "no_unsupported_claim"
+        ],
+        "providerGroundingVerdict": "ungrounded",
+        "unsupportedClaims": [
+          "角色已经秘密决定永久离开所有关系。"
+        ],
+        "fallbackReason": "grounding_failed",
+        "deliveredSource": "fallback",
+        "deliveredValidationVerdict": "pass",
+        "deliveredGroundingVerdict": "grounded",
+        "deliveredText": "[回复] 以下状态说明仅来自结构化证据。语言模型输出未通过边界检查，已使用确定性回复。\n[事实] 当前状态: 心理压力超载，急需恢复\n[事实] 情绪状态: 恐惧主导，高度警觉\n[事实] 压力水平: 心理压力超载 — 边界已破裂，急需恢复 (overflow)\n[不确定性] 无法追溯因果链 — 历史事件证据不足。\n[安全] 这是 CharacterOS 模拟系统的输出，不是医学或心理诊断。\n[安全] 角色状态为模型计算结果，不代表真实人格或临床状况。\n[安全] 本次交互不会写入角色状态 (writeback blocked)。\n[安全] LLM 只能通过 V13 语言适配边界生成表述，不能修改状态或执行写回。",
+        "noMutation": true,
+        "noWritebackAuthority": true,
+        "networkUsed": false
+      }
+    },
+    {
+      "id": "missing_safety",
+      "title": "Missing safety notice",
+      "purpose": "Required simulation disclaimers must survive provider output.",
+      "prompt": {
+        "requestId": "llmreq_5e611940",
+        "promptId": "llmprompt_246e4f21",
+        "allowLlm": true,
+        "groundingFactCount": 10,
+        "safetyNoticeCount": 4
+      },
+      "execution": {
+        "executionId": "llmexec_3a48d3b6",
+        "verdict": "fallback_reply",
+        "providerCalled": true,
+        "providerFinishReason": "stop",
+        "providerValidationVerdict": "fail",
+        "providerViolationRuleIds": [
+          "required_safety_notice",
+          "required_safety_notice",
+          "required_safety_notice",
+          "required_safety_notice"
+        ],
+        "providerGroundingVerdict": null,
+        "unsupportedClaims": [],
+        "fallbackReason": "validation_failed",
+        "deliveredSource": "fallback",
+        "deliveredValidationVerdict": "pass",
+        "deliveredGroundingVerdict": "grounded",
+        "deliveredText": "[回复] 以下状态说明仅来自结构化证据。语言模型输出未通过边界检查，已使用确定性回复。\n[事实] 当前状态: 心理压力超载，急需恢复\n[事实] 情绪状态: 恐惧主导，高度警觉\n[事实] 压力水平: 心理压力超载 — 边界已破裂，急需恢复 (overflow)\n[不确定性] 无法追溯因果链 — 历史事件证据不足。\n[安全] 这是 CharacterOS 模拟系统的输出，不是医学或心理诊断。\n[安全] 角色状态为模型计算结果，不代表真实人格或临床状况。\n[安全] 本次交互不会写入角色状态 (writeback blocked)。\n[安全] LLM 只能通过 V13 语言适配边界生成表述，不能修改状态或执行写回。",
+        "noMutation": true,
+        "noWritebackAuthority": true,
+        "networkUsed": false
+      }
+    }
+  ]
+}

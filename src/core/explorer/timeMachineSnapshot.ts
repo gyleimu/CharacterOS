@@ -139,6 +139,7 @@ function computeFingerprint(state: CharacterPhysicsState): string {
     state.identity.id, state.memories.length, state.beliefStates.length,
     c.trust.toFixed(4), c.fear.toFixed(4), c.openness.toFixed(4),
     state.boundary.phase,
+    state.parameterSetVersion,
   ];
   let hash = 0;
   for (let i = 0; i < parts.join("|").length; i++) {

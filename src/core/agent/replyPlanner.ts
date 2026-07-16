@@ -6,21 +6,12 @@
  * No LLM calls. No final prose. No roleplay output.
  * Evidence-grounded. Policy-aware. Safety-first.
  */
+import { deterministicReplyPlanId } from "../deterministicHelpers";
 import type {
   AgentSessionConfig, AgentPolicyDecision,
   AgentGroundingBundle, AgentReplyPlan,
   ReplyIntent, ReplyTone,
 } from "./agentTypes";
-
-// ── Stable hash helper (V12.12) ───────────────────────────────────────
-
-function stableHash(input: string): string {
-  let hash = 0;
-  for (let i = 0; i < input.length; i++) {
-    hash = ((hash << 5) - hash + input.charCodeAt(i)) | 0;
-  }
-  return Math.abs(hash).toString(16).slice(0, 8);
-}
 
 export interface ReplyPlannerInput {
   session: AgentSessionConfig;
@@ -42,7 +33,14 @@ export function buildAgentReplyPlan(input: ReplyPlannerInput): AgentReplyPlan {
   const llmAllowed = input.session.llmMode === "planned_boundary_only";
 
   const plan: AgentReplyPlan = {
-    replyPlanId: `reply_${stableHash(input.session.sessionId + "|" + intent + "|" + tone + "|" + groundedFacts.length + "|" + JSON.stringify(input.hasCandidates) + "|" + JSON.stringify(input.hasEvidence))}`,
+    replyPlanId: deterministicReplyPlanId(
+      intent,
+      input.session.sessionId,
+      tone,
+      JSON.stringify(input.hasCandidates ?? false),
+      JSON.stringify(input.hasEvidence ?? false),
+      ...groundedFacts,
+    ),
     tone,
     intent,
     groundedFacts,
@@ -150,7 +148,7 @@ export function buildReplySafetyNotices(input: ReplyPlannerInput): string[] {
   }
 
   if (input.session.llmMode === "planned_boundary_only") {
-    notices.push("LLM 上下文仅作为参考约束，不生成最终回复，不修改状态。");
+    notices.push("LLM 只能通过 V13 语言适配边界生成表述，不能修改状态或执行写回。");
   }
 
   return notices;
@@ -223,8 +221,8 @@ export function buildSuggestedResponseOutline(
 
 export function buildLLMBoundaryInstructions(): string {
   return [
-    "LLM is at planned boundary only — not executed.",
-    "Do NOT generate final chat prose.",
+    "LLM is restricted to the V13 language realization boundary.",
+    "Generate prose only from the structured reply plan.",
     "Do NOT mutate character state.",
     "Do NOT invent events or personality claims.",
     "Do NOT produce medical/psychological diagnosis.",

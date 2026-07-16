@@ -62,6 +62,7 @@ export interface ImpactCalibrationAuditResult {
   domainRelevanceScore: number;
   baselineStabilityScore: number;
   resilienceBufferScore: number;
+  needHeadroomScore: number;
   repetitionScore: number;
   emotionalIntensityScore: number;
   channelImpactAllocation: Record<ImpactCalibrationChannel, number>;
@@ -93,6 +94,7 @@ export function runImpactCalibrationAudit(input: ImpactCalibrationAuditInput): I
   const domainRelevanceScore = estimateDomainRelevance(input);
   const baselineStabilityScore = estimateBaselineStability(input);
   const resilienceBufferScore = estimateResilienceBuffer(input, baselineStabilityScore);
+  const needHeadroomScore = estimateNeedHeadroom(input);
   const repetitionScore = estimateRepetition(input);
   const emotionalIntensityScore = round4(clamp01(input.emotionDelta.intensity || input.parsedEvent.intensity));
   const category = input.parsedEvent.category ?? "general";
@@ -104,6 +106,7 @@ export function runImpactCalibrationAudit(input: ImpactCalibrationAuditInput): I
     repetitionScore,
     emotionalIntensityScore,
     category,
+    needHeadroomScore,
   });
   const expectedDeltaRange = buildExpectedRanges(channelImpactAllocation, category);
   const actualDeltaByChannel = measureActualDeltas(input);
@@ -122,6 +125,7 @@ export function runImpactCalibrationAudit(input: ImpactCalibrationAuditInput): I
     domainRelevanceScore,
     baselineStabilityScore,
     resilienceBufferScore,
+    needHeadroomScore,
     repetitionScore,
     emotionalIntensityScore,
     channelImpactAllocation,
@@ -188,6 +192,13 @@ function estimateResilienceBuffer(input: ImpactCalibrationAuditInput, stability:
   return round4(clamp01(stability * 0.62 + (1 - stress) * 0.2 + (input.beforeState.coordinate.trust > 0.6 ? 0.12 : 0)));
 }
 
+function estimateNeedHeadroom(input: ImpactCalibrationAuditInput): number {
+  const c = input.beforeState.coordinate;
+  return round4(clamp01(
+    (c.trust + (1 - c.fear) + (1 - c.attachment) + (1 - c.control)) / 4,
+  ));
+}
+
 function estimateRepetition(input: ImpactCalibrationAuditInput): number {
   const memory = input.memoryDelta[0];
   const text = `${memory?.id ?? ""} ${memory?.after ?? ""} ${input.parsedEvent.tags.join(" ")}`;
@@ -203,6 +214,7 @@ function allocateChannelImpact(params: {
   repetitionScore: number;
   emotionalIntensityScore: number;
   category: string;
+  needHeadroomScore: number;
 }): Record<ImpactCalibrationChannel, number> {
   const fast = params.eventSeverityScore;
   const relevance = params.domainRelevanceScore;
@@ -210,10 +222,11 @@ function allocateChannelImpact(params: {
   const repeated = params.repetitionScore;
   const positive = params.category === "support" || params.category === "success";
   const personalityBase = fast * relevance * (0.2 + repeated * 0.55) * (1 - buffer * 0.55);
+  const negativeNeedResponse = 0.08 + params.needHeadroomScore * 0.6;
   return {
     memoryImpact: round4(clamp01(fast * 0.92 + params.emotionalIntensityScore * 0.08)),
     emotionDelta: round4(clamp01(params.emotionalIntensityScore * 0.9 + fast * 0.1)),
-    needDelta: round4(clamp01(fast * relevance * (positive ? 0.04 : 0.62))),
+    needDelta: round4(clamp01(fast * relevance * (positive ? 0.04 : negativeNeedResponse))),
     boundaryDelta: round4(clamp01(fast * relevance * (positive ? 0.14 : 0.58) * (1 - buffer * 0.25))),
     beliefDelta: round4(clamp01(fast * relevance * (0.32 + repeated * 0.22))),
     personalityCoordinateDelta: round4(clamp01(personalityBase)),

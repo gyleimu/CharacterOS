@@ -1,29 +1,33 @@
 {
   "version": "10.75.0",
-  "generatedAt": "2026-07-03T18:47:32.136Z",
+  "generatedAt": "2026-07-15T13:04:49.909Z",
   "qualityVerdict": {
     "level": "PASS",
     "passed": true,
     "reasons": [
       "Benchmark: 6/6 passed (100%), 0 failed",
-      "Reality Gate: PASS (10/10 checks)"
+      "Reality Gate: PASS (10/10 checks)",
+      "Determinism Audit: PASS (0 forbidden, 10/10 replay)",
+      "Temporal Semantics: PASS (7/7 cases)",
+      "Model Calibration: PASS (914/914 assertions)"
     ],
     "allowedWarnings": []
   },
   "releaseReadiness": {
     "ready": true,
     "blockers": [],
-    "recommendations": [
-      "Known limitations exist — see reality gate report for details"
-    ]
+    "recommendations": []
   },
   "unifiedSummary": {
-    "totalChecks": 16,
-    "passed": 16,
+    "totalChecks": 938,
+    "passed": 938,
     "warned": 0,
     "failed": 0,
     "benchmarkPassed": true,
     "realityGatePassed": true,
+    "determinismPassed": true,
+    "temporalSemanticsPassed": true,
+    "modelCalibrationPassed": true,
     "overallPassed": true
   },
   "benchmark": {
@@ -50,9 +54,36 @@
       "supportBoundarySafe": true,
       "neutralStable": true
     },
-    "warnings": [
-      "accumulation/betrayalAccumulation: betrayalAccumulation WARN: personality accumulation shows near-linear growth with no saturation (early-avg=0.0092, recent-avg=0.0216); decision surface withdrawal did not increase across repeated negative events"
-    ],
+    "warnings": [],
+    "failures": []
+  },
+  "temporalSemantics": {
+    "verdict": "PASS",
+    "summary": {
+      "totalCases": 7,
+      "passedCases": 7,
+      "failedCases": 0,
+      "totalAssertions": 21,
+      "passedAssertions": 21
+    },
+    "failures": []
+  },
+  "modelCalibration": {
+    "verdict": "PASS",
+    "parameterSetVersion": "model-calibration-v1.0.0",
+    "summary": {
+      "trajectoryCount": 160,
+      "scenarioProjectionCount": 640,
+      "passedTrajectories": 160,
+      "failedTrajectories": 0,
+      "relevantScenarioResponseRate": 0.8935,
+      "categoryDecisionCoveragePassed": 10,
+      "propertySequencesPassed": 16,
+      "metamorphicChecksPassed": 5,
+      "sensitivityChecksPassed": 7,
+      "totalAssertions": 914,
+      "passedAssertions": 914
+    },
     "failures": []
   },
   "failures": [],
@@ -117,6 +148,24 @@
       "description": "Benchmark category coverage dropping",
       "severity": "medium",
       "guardedBy": "benchmark.coveredCategories"
+    },
+    {
+      "id": "risk_determinism_drift",
+      "description": "Non-deterministic defaults introduced into core paths",
+      "severity": "high",
+      "guardedBy": "determinismBoundaryAudit.forbiddenPatternFindings"
+    },
+    {
+      "id": "risk_temporal_semantics_regression",
+      "description": "Event concentration, recovery, or ordering semantics regress",
+      "severity": "high",
+      "guardedBy": "temporalSemanticsAudit.gateVerdict"
+    },
+    {
+      "id": "risk_model_calibration_regression",
+      "description": "Parameter changes reverse directions or destabilize long trajectories",
+      "severity": "high",
+      "guardedBy": "modelCalibrationAudit.gateVerdict"
     }
   ],
   "thresholds": {

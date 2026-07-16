@@ -1,6 +1,10 @@
 import type { ImpactCluster } from "../cluster/impactCluster";
 import type { MemoryNode } from "../memory/memoryNode";
 import { round4 } from "../parameters/parameterMath";
+import {
+  getCurrentModelParameterSet,
+  type MemoryModelParameters,
+} from "../parameters/modelParameterRegistry";
 import { BASE_PERSONALITY_KEYS } from "../personality/dimensions";
 import type { PersonalityCoordinate } from "../personality/coordinate";
 
@@ -13,7 +17,8 @@ export interface GalaxyClusterMetrics {
 
 export function calculateGalaxyClusterMetrics(
   cluster: ImpactCluster,
-  memories: MemoryNode[]
+  memories: MemoryNode[],
+  parameters: MemoryModelParameters = getCurrentModelParameterSet().memory,
 ): GalaxyClusterMetrics {
   const clusterMemories = memories.filter((memory) => memory.clusterId === cluster.id);
   if (!clusterMemories.length) {
@@ -27,7 +32,14 @@ export function calculateGalaxyClusterMetrics(
 
   const mass = round4(
     clusterMemories.reduce((sum, memory) => {
-      return sum + memory.importance * Math.max(1, memory.repetitionCount);
+      // Imported/seeded memories may summarize repeated experiences, while
+      // runtime events are represented by one MemoryNode per occurrence.
+      // Recency keeps old memories influential without giving them permanent
+      // full-strength gravity.
+      const recencyWeight =
+        parameters.recencyFloor +
+        Math.max(0, Math.min(1, memory.recency)) * parameters.recencyDynamicWeight;
+      return sum + memory.importance * Math.max(1, memory.repetitionCount) * recencyWeight;
     }, 0)
   );
   const variance = round4(calculateVariance(cluster.centerCoordinate, clusterMemories));
@@ -44,9 +56,10 @@ export function calculateGalaxyClusterMetrics(
 
 export function syncClusterWithGalaxyMetrics(
   cluster: ImpactCluster,
-  memories: MemoryNode[]
+  memories: MemoryNode[],
+  parameters: MemoryModelParameters = getCurrentModelParameterSet().memory,
 ): ImpactCluster {
-  const metrics = calculateGalaxyClusterMetrics(cluster, memories);
+  const metrics = calculateGalaxyClusterMetrics(cluster, memories, parameters);
   return {
     ...cluster,
     mass: metrics.mass,
@@ -57,12 +70,13 @@ export function syncClusterWithGalaxyMetrics(
 
 export function syncClustersWithGalaxyMetrics(
   clusters: Map<string, ImpactCluster>,
-  memories: MemoryNode[]
+  memories: MemoryNode[],
+  parameters: MemoryModelParameters = getCurrentModelParameterSet().memory,
 ): Map<string, ImpactCluster> {
   return new Map(
     [...clusters.entries()].map(([category, cluster]) => [
       category,
-      syncClusterWithGalaxyMetrics(cluster, memories)
+      syncClusterWithGalaxyMetrics(cluster, memories, parameters)
     ])
   );
 }

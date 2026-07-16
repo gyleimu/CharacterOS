@@ -24,6 +24,8 @@ import type {
   DecisionPreview,
 } from "./explorerTypes";
 import { buildEventStudioPreview as buildDto, buildCharacterStateSurfaceFromState } from "./explorerDtoBuilders";
+import { deterministicDraftId } from "../deterministicHelpers";
+import { deriveNeedDeficiencies } from "../need/needDeficiency";
 
 export type PreviewMode = "parse_only" | "impact_preview" | "full_preview";
 
@@ -59,6 +61,7 @@ export function buildEventStudioPreview(
   const parseInput: Parameters<typeof parseExperienceEvent>[0] = {
     description: draft.naturalLanguageInput,
     categoryHint: "auto",
+    occurredAt: draft.occurredAt,
   };
   if (draft.tags.length > 0) parseInput.tags = draft.tags;
   const parsed = parseExperienceEvent(parseInput);
@@ -92,7 +95,7 @@ export function buildEventStudioPreview(
   // ── Parse-only mode: stop here ──
   if (mode === "parse_only") {
     return buildDto({
-      draftId: draft.sourceId || `draft_${Date.now()}`,
+      draftId: draft.sourceId || deterministicDraftId(draft.naturalLanguageInput, draft.tags, draft.occurredAt),
       parsed: parsedSummary,
       impact: impactPreview,
       memory: memoryPreview,
@@ -105,14 +108,14 @@ export function buildEventStudioPreview(
     });
   }
 
-  // ── Impact-only mode: include belief/need preview stubs ──
+  // ── Impact-only mode: include explicit heuristic estimates ──
   if (mode === "impact_preview") {
     const beliefPreview = buildBeliefStub(parsed);
     const needPreview = buildNeedStub(parsed);
     const personalityPreview = buildPersonalityStub(parsed);
 
     return buildDto({
-      draftId: draft.sourceId || `draft_${Date.now()}`,
+      draftId: draft.sourceId || deterministicDraftId(draft.naturalLanguageInput, draft.tags, draft.occurredAt),
       parsed: parsedSummary,
       impact: impactPreview,
       memory: memoryPreview,
@@ -131,21 +134,23 @@ export function buildEventStudioPreview(
 
   // Apply repeated events on clone
   for (let i = 0; i < draft.repetitionCount; i++) {
-    engine.processEvent(cloned, parsed);
+    const step = engine.processEvent(cloned, parsed);
+    warnings.push(...step.temporalSemantics.warnings.map((warning) => `Temporal Semantics: ${warning}`));
   }
 
   // Run reality audit on clone
-  let auditWarnings: string[] = [...warnings];
+  let auditWarnings: string[] = [...new Set(warnings)];
   if (input.followUpScenario) {
     try {
       const audit = runRealityAudit({
-        id: `preview_${draft.sourceId || Date.now()}`,
+        id: `preview_${draft.sourceId || deterministicDraftId(draft.naturalLanguageInput, draft.tags, draft.occurredAt)}`,
         label: `Preview: ${draft.naturalLanguageInput.slice(0, 40)}`,
         baselineState: input.baselineState,
         eventInput: {
           description: draft.naturalLanguageInput,
           tags: draft.tags,
           categoryHint: (parsed.category || "general") as "abandonment" | "support" | "betrayal" | "success" | "failure" | "rejection" | "conflict" | "fatigue" | "uncertainty" | "general" | "auto",
+          occurredAt: draft.occurredAt,
         },
         followUpDecisionScenario: input.followUpScenario,
       });
@@ -177,12 +182,12 @@ export function buildEventStudioPreview(
   };
 
   return buildDto({
-    draftId: draft.sourceId || `draft_${Date.now()}`,
+    draftId: draft.sourceId || deterministicDraftId(draft.naturalLanguageInput, draft.tags, draft.occurredAt),
     parsed: parsedSummary,
     impact: impactPreview,
     memory: buildMemoryPreviewFromSimulation(cloned, input.baselineState, parsed),
     belief: buildBeliefFromSimulation(cloned, input.baselineState),
-    need: { likelyActivatedNeeds: [], likelyDeactivatedNeeds: [] }, // Needs require DerivedState
+    need: buildNeedFromSimulation(cloned, input.baselineState),
     personality: personalityDelta,
     decision: decisionPreview,
     auditWarnings,
@@ -236,7 +241,7 @@ function buildMemoryPreviewFromSimulation(
   };
 }
 
-// ── Belief / Need / Personality stubs ──
+// ── Impact-only heuristic estimates ──
 
 function buildBeliefStub(parsed: ReturnType<typeof parseExperienceEvent>): BeliefPreviewType {
   const category = parsed.category ?? "general";
@@ -336,6 +341,33 @@ function buildBeliefFromSimulation(
     likelyStrengthenedBeliefs: strengthened.slice(0, 3).map((b) => b.content),
     likelyWeakenedBeliefs: weakened.slice(0, 3).map((b) => b.content),
   };
+}
+
+function buildNeedFromSimulation(
+  after: CharacterPhysicsState,
+  before: CharacterPhysicsState,
+): NeedPreviewType {
+  const beforeNeeds = deriveNeedDeficiencies({
+    coordinate: before.coordinate,
+    beliefs: before.beliefStates,
+    clusters: [...before.clusters.values()],
+  });
+  const afterNeeds = deriveNeedDeficiencies({
+    coordinate: after.coordinate,
+    beliefs: after.beliefStates,
+    clusters: [...after.clusters.values()],
+  });
+  const beforeById = new Map(beforeNeeds.map((need) => [need.id, need]));
+  const afterById = new Map(afterNeeds.map((need) => [need.id, need]));
+
+  const likelyActivatedNeeds = afterNeeds
+    .filter((need) => need.intensity > (beforeById.get(need.id)?.intensity ?? 0) + 0.01)
+    .map((need) => need.name);
+  const likelyDeactivatedNeeds = beforeNeeds
+    .filter((need) => (afterById.get(need.id)?.intensity ?? 0) < need.intensity - 0.01)
+    .map((need) => need.name);
+
+  return { likelyActivatedNeeds, likelyDeactivatedNeeds };
 }
 
 // ── Helpers ──

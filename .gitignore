@@ -13,6 +13,8 @@ prisma/dev.db-journal
 outputs/*.png
 outputs/*headless-profile*/
 outputs/chrome-headless*/
+.playwright-mcp/
+playwright-smoke-*.png
 
 # Demo backups (ephemeral)
 outputs/characteros-demo-backup-*/

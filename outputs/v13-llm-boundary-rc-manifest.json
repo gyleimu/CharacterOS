@@ -1,0 +1,147 @@
+{
+  "manifestVersion": "1.0.0",
+  "rcVersion": "V13.9",
+  "rcVerdict": "PASS",
+  "generatedAt": "1970-01-01T00:00:00.000Z",
+  "releaseReady": true,
+  "modules": {
+    "llmBoundaryDto": {
+      "status": "stable",
+      "noRawState": true
+    },
+    "promptBuilder": {
+      "status": "stable",
+      "redaction": true
+    },
+    "mockProvider": {
+      "status": "stable",
+      "networkAllowed": false
+    },
+    "outputValidator": {
+      "status": "stable",
+      "failClosed": true
+    },
+    "groundingChecker": {
+      "status": "stable",
+      "evidenceRequired": true
+    },
+    "deterministicFallback": {
+      "status": "stable",
+      "revalidated": true
+    },
+    "boundaryService": {
+      "status": "stable",
+      "noMutation": true
+    },
+    "staticHarness": {
+      "status": "stable",
+      "caseCount": 7
+    },
+    "qualityGate": {
+      "status": "stable",
+      "caseCount": 18
+    }
+  },
+  "qualityGate": {
+    "summary": {
+      "total": 18,
+      "passed": 18,
+      "failed": 0,
+      "unsafeDeliveries": 0,
+      "replayFailures": 0,
+      "mutationFailures": 0,
+      "networkViolations": 0,
+      "uniqueExecutionIds": true,
+      "riskCategoriesCovered": 7
+    },
+    "verdict": {
+      "level": "PASS",
+      "passed": true,
+      "reasons": [
+        "All LLM boundary success, failure, adversarial, replay, and authority checks passed."
+      ]
+    },
+    "riskCoverage": [
+      "default-off LLM policy",
+      "provider timeout and provider error",
+      "empty and truncated output",
+      "diagnosis and mutation claims",
+      "missing safety notices",
+      "ungrounded and mixed claims",
+      "label spoofing",
+      "provider request identity mismatch",
+      "secret-bearing provider exception",
+      "unsafe source preflight",
+      "non-mock provider rejection",
+      "network-enabled config rejection",
+      "over-certainty rejection",
+      "deterministic replay and immutable input"
+    ]
+  },
+  "artifact": {
+    "path": "outputs/llm-boundary-harness",
+    "selfContained": true,
+    "files": [
+      {
+        "path": "outputs/llm-boundary-harness/index.html",
+        "sha256": "3f71fc9dd1ddfa20cf10ef0d1a3e8247e7f8f1aa491f3548919b4442cce14668"
+      },
+      {
+        "path": "outputs/llm-boundary-harness/llm-boundary-harness-data.json",
+        "sha256": "b69ca488bc137613f495f4a6699c2c49ed60d3eeccd91283157726541d30ffa3"
+      },
+      {
+        "path": "outputs/llm-boundary-harness/manifest.json",
+        "sha256": "39b9cbeea0a7897718c99c98ef9ef98db9a62d056999cec649c5383dc7299595"
+      },
+      {
+        "path": "outputs/llm-boundary-harness/README.md",
+        "sha256": "39b4705e627e585577f7929780affcf11dc5f19f7e56fe831e24e47454163f39"
+      }
+    ]
+  },
+  "dependencySecurity": {
+    "critical": 0,
+    "high": 0,
+    "moderate": 2,
+    "low": 1,
+    "total": 3,
+    "releaseBlocking": 0
+  },
+  "safetyBoundaries": {
+    "mockOnly": true,
+    "noNetwork": true,
+    "noRealProvider": true,
+    "allowLlmDefaultFalse": true,
+    "noRawState": true,
+    "noMutation": true,
+    "noWritebackAuthority": true,
+    "providerInputFrozen": true,
+    "diagnosisBlocked": true,
+    "unsupportedClaimsBlocked": true,
+    "finalFallbackRevalidated": true,
+    "simulationNotDiagnosis": true
+  },
+  "releaseBoundary": {
+    "singleCharacterOnly": true,
+    "realProviderDeferred": true,
+    "temporalSemanticsNext": true,
+    "multiCharacterProhibited": true,
+    "v20NotStarted": true
+  },
+  "knownLimitations": [
+    "Grounding remains conservative lexical/rule matching, not semantic entailment.",
+    "Only the deterministic mock provider is release-enabled.",
+    "Streaming, token budgets, telemetry, and real provider credentials remain out of scope."
+  ],
+  "sourceReports": [
+    "docs/v13.0_llm_boundary_adapter_design_charter.md",
+    "docs/v13.1_llm_boundary_dto_types_report.md",
+    "docs/v13.2_llm_boundary_prompt_builder_report.md",
+    "docs/v13.7_llm_boundary_integration_qa_report.md",
+    "docs/v13.8_mock_provider_harness_report.md",
+    "docs/v13.9_llm_boundary_quality_gate_rc_report.md",
+    "docs/core_calibration_durability_roadmap.md",
+    "docs/dependency_security_policy.md"
+  ]
+}

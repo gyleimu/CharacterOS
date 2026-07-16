@@ -216,26 +216,37 @@ export interface BuildLlmProviderResponseParams {
 export function buildLlmProviderResponse(
   params: BuildLlmProviderResponseParams,
 ): LlmProviderResponse {
-  const responseId = `llmresp_${stableHash(params.providerId + "|" + params.requestId + "|" + params.rawText.slice(0, 100))}`;
+  const finishReason = params.finishReason ?? "stop";
+  const error = sanitizeError(params.error);
+  const responseId = `llmresp_${stableHash([
+    params.providerId,
+    params.requestId,
+    finishReason,
+    error ?? "",
+    params.rawText,
+  ].join("|"))}`;
 
   return {
     responseId,
     providerId: params.providerId,
     requestId: params.requestId,
     rawText: params.rawText,
-    finishReason: params.finishReason ?? "stop",
+    finishReason,
     usage: params.usage ?? null,
     latencyMs: params.latencyMs ?? null,
     providerWarnings: params.providerWarnings ?? [],
-    error: sanitizeError(params.error),
+    error,
   };
 }
 
 /** Sanitize error messages — strip anything that could leak internal state */
 function sanitizeError(error: string | null | undefined): string | null {
   if (!error) return null;
-  // Truncate to reasonable length
-  return error.slice(0, 500);
+  return error
+    .replace(/\bsk-(?:ant|proj|or)-[A-Za-z0-9_-]+/gi, "[REDACTED_SECRET]")
+    .replace(/(?:api[_\s]?key|access[_\s]?token|authorization|password)\s*[:=]\s*\S+/gi, "[REDACTED_SECRET]")
+    .replace(/particleIds?|driftMultiplier|biologicalNature|homeostasisState|metaState|rawState|personalityCoordinate/gi, "[REDACTED_INTERNAL]")
+    .slice(0, 500);
 }
 
 // ── 5. LLM Output Validation Result Builder ──────────────────────────

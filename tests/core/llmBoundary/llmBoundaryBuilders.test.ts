@@ -98,6 +98,30 @@ describe("V13.1 LLM Boundary Builders", () => {
       expect(r1.responseId).toBe(r2.responseId);
     });
 
+    it("LlmProviderResponse — hashes the complete response outcome", () => {
+      const prefix = "x".repeat(120);
+      const first = buildLlmProviderResponse({
+        providerId: "mock",
+        requestId: "request",
+        rawText: `${prefix}first`,
+      });
+      const second = buildLlmProviderResponse({
+        providerId: "mock",
+        requestId: "request",
+        rawText: `${prefix}second`,
+      });
+      const failed = buildLlmProviderResponse({
+        providerId: "mock",
+        requestId: "request",
+        rawText: `${prefix}first`,
+        finishReason: "error",
+        error: "provider failed",
+      });
+
+      expect(first.responseId).not.toBe(second.responseId);
+      expect(first.responseId).not.toBe(failed.responseId);
+    });
+
     it("AgentNaturalLanguageReply — same text produces same replyId", () => {
       const r1 = buildAgentNaturalLanguageReply({ requestId: "r1", text: "你好" });
       const r2 = buildAgentNaturalLanguageReply({ requestId: "r1", text: "你好" });

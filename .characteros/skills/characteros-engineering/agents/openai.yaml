@@ -1,0 +1,4 @@
+interface:
+  display_name: "CharacterOS Engineering"
+  short_description: "Guard architecture, domain invariants, tests, and audits."
+  default_prompt: "Use $characteros-engineering to analyze this CharacterOS task before changing code."

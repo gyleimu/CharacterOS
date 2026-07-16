@@ -46,6 +46,8 @@ describe("InMemoryCharacterPhysicsService", () => {
 
     expect(linFan.memories).toHaveLength(1);
     expect(other.memories).toHaveLength(0);
+    expect(linFan.identity.id).toBe("lin_fan");
+    expect(other.identity.id).toBe("other_character");
   });
 
   it("returns a defensive copy of character state", () => {
@@ -79,6 +81,7 @@ describe("InMemoryCharacterPhysicsService", () => {
 
     service.resetCharacter("lin_fan", { seedInitialExperiences: true });
 
+    expect(service.getState("lin_fan").identity.id).toBe("lin_fan");
     expect(service.getState("lin_fan").identity.name).toBe("林凡");
     expect(service.getState("lin_fan").memories).toHaveLength(3);
     expect(service.getState("lin_fan").clusters.get("abandonment")?.age).toBe(2);

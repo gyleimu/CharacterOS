@@ -508,6 +508,8 @@ function projectStateForFingerprint(state: CharacterPhysicsState): unknown {
       age: cluster.age,
       particleIds: cluster.particleIds,
     })),
+    temporal: state.temporal,
+    parameterSetVersion: state.parameterSetVersion,
     learningRate: state.learningRate,
   } satisfies Record<keyof CharacterPhysicsState, unknown>;
   return projection;

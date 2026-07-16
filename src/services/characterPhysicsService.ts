@@ -174,7 +174,7 @@ export class InMemoryCharacterPhysicsService implements CharacterPhysicsService 
     const normalizedEvent = { ...event, tags: normalizeTags(event.tags) };
     let result: PhysicsStepResult | undefined;
     this.repository.update(characterId, (existing) => {
-      const state = existing ?? createDefaultState();
+      const state = existing ?? createDefaultState(characterId);
       result = this.engine.processEvent(state, normalizedEvent);
       return state;
     });
@@ -193,7 +193,7 @@ export class InMemoryCharacterPhysicsService implements CharacterPhysicsService 
     }));
     let result: SimulationResult | undefined;
     this.repository.update(characterId, (existing) => {
-      const state = existing ?? createDefaultState();
+      const state = existing ?? createDefaultState(characterId);
       result = runEventSequence({
         state,
         events: normalizedEvents,
@@ -209,7 +209,7 @@ export class InMemoryCharacterPhysicsService implements CharacterPhysicsService 
   tickCharacter(characterId: string, options: ContinuousTickOptions = {}): ContinuousTickTrace {
     let trace: ContinuousTickTrace | undefined;
     this.repository.update(characterId, (existing) => {
-      const state = existing ?? createDefaultState();
+      const state = existing ?? createDefaultState(characterId);
       trace = runContinuousTick(state, options);
       return state;
     });
@@ -240,7 +240,7 @@ export class InMemoryCharacterPhysicsService implements CharacterPhysicsService 
     }
     let trace: ParameterAdjustmentApplyTrace | undefined;
     this.repository.update(characterId, (existing) => {
-      const state = existing ?? createDefaultState();
+      const state = existing ?? createDefaultState(characterId);
       const result = applyParameterAdjustmentPatch({ state, patch, snapshot });
       trace = result.trace;
       return result.trace.status === "applied" ? result.state : state;
@@ -270,7 +270,7 @@ export class InMemoryCharacterPhysicsService implements CharacterPhysicsService 
   ): ParameterAdjustmentApplyTrace {
     let trace: ParameterAdjustmentApplyTrace | undefined;
     this.repository.update(characterId, (existing) => {
-      const state = existing ?? createDefaultState();
+      const state = existing ?? createDefaultState(characterId);
       const result = rollbackParameterAdjustmentPatch({ state, snapshot });
       trace = result.trace;
       return result.trace.status === "applied" ? result.state : state;
@@ -499,7 +499,7 @@ export class InMemoryCharacterPhysicsService implements CharacterPhysicsService 
   }
 
   resetCharacter(characterId: string, options: ResetCharacterOptions = {}): CharacterPhysicsState {
-    const state = createDefaultState(options);
+    const state = createDefaultState(characterId, options);
     this.repository.set(characterId, state);
     this.adjustmentHistoryRepository.clear(characterId);
     this.importTransitionHistoryRepository.clear(characterId);
@@ -762,8 +762,18 @@ export class InMemoryCharacterPhysicsService implements CharacterPhysicsService 
   }
 }
 
-export function createDefaultState(options: ResetCharacterOptions = {}): CharacterPhysicsState {
-  return createCharacterStateFromBlueprint(createLinFanBlueprint(), {
+export function createDefaultState(
+  characterId: string,
+  options: ResetCharacterOptions = {},
+): CharacterPhysicsState {
+  const blueprint = createLinFanBlueprint();
+  return createCharacterStateFromBlueprint({
+    ...blueprint,
+    identity: {
+      ...blueprint.identity,
+      id: characterId,
+    },
+  }, {
     seedInitialExperiences: options.seedInitialExperiences ?? false
   });
 }

@@ -46,17 +46,15 @@ const KNOWN_WARNINGS: KnownWarning[] = [
     warningId: "accumulation_betrayal_near_linear_growth",
     sourceSuite: "accumulation",
     severity: "medium",
-    status: "allowed",
+    status: "resolved",
     firstSeenVersion: "10.72.0",
+    resolvedVersion: "13.integration-hardening",
     rationale:
-      "V10.72 sqrt mass saturation reduces but does not fully eliminate near-linear " +
-      "personality distance growth when cluster mass is amplified by seeded experiences. " +
-      "The absolute personality drift (0.097 over 5 events) is gradual and directionally " +
-      "correct. This is a documented limitation of the galaxy force model — full saturation " +
-      "would require additional mass damping mechanics.",
+      "Runtime events now create one MemoryNode with repetitionCount=1, preventing cumulative " +
+      "cluster age from being counted once per memory. Cluster force no longer mixes absolute " +
+      "core coordinates with directional impact vectors, and boundary amplification saturates.",
     recommendedFix:
-      "Future: add cluster mass damping (e.g., mass decay over time) or more aggressive " +
-      "saturation functions. Not urgent — current behavior is within acceptable bounds.",
+      "Resolved. Keep the long-horizon accumulation and unique-memory regression tests active.",
     matchingPattern: "betrayalAccumulation WARN: personality accumulation shows near-linear growth",
   },
   {

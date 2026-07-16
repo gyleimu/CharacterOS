@@ -53,6 +53,7 @@ export function toProcessEventResponse(
     timePerception: result.timePerception,
     worldInterpretation: result.worldInterpretation,
     attentionEvaluation: result.attentionEvaluation,
+    temporalSemantics: result.temporalSemantics,
     state: serializeCharacterPhysicsState(service.getState(characterId))
   };
 }

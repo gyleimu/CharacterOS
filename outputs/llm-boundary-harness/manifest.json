@@ -1,0 +1,16 @@
+{
+  "artifactVersion": "13.8.0",
+  "readOnly": true,
+  "mockOnly": true,
+  "noNetwork": true,
+  "noApiRequired": true,
+  "noRealLlmRequired": true,
+  "noMutation": true,
+  "noWritebackAuthority": true,
+  "files": [
+    "index.html",
+    "llm-boundary-harness-data.json",
+    "manifest.json",
+    "README.md"
+  ]
+}

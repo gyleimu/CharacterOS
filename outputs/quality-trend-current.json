@@ -1,6 +1,6 @@
 {
   "trendVersion": "10.76.0",
-  "comparedAt": "2026-07-03T18:47:32.655Z",
+  "comparedAt": "2026-07-15T13:04:52.035Z",
   "hasBaseline": true,
   "trendVerdict": "STABLE",
   "verdictDelta": "PASS → PASS",
@@ -8,7 +8,7 @@
   "failureDelta": 0,
   "current": {
     "version": "10.75.0",
-    "capturedAt": "2026-07-03T18:47:32.653Z",
+    "capturedAt": "2026-07-15T13:04:52.034Z",
     "qualityVerdict": "PASS",
     "releaseReady": true,
     "failureCount": 0,
@@ -19,7 +19,7 @@
     "realityAuditPass": 1,
     "realityAuditWarn": 0,
     "realityAuditFail": 0,
-    "accumulationBetrayalVerdict": "WARN",
+    "accumulationBetrayalVerdict": "PASS",
     "accumulationSupportVerdict": "PASS",
     "accumulationNeutralVerdict": "PASS",
     "coverageVerdict": "PASS",

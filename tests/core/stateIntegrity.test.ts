@@ -56,4 +56,38 @@ describe("character state integrity", () => {
     expect(report.issues.map((issue) => issue.path)).toContain("proceduralRoutines[0].strength");
     expect(report.issues.find((issue) => issue.path === "proceduralRoutines[0].cueTags")?.severity).toBe("warning");
   });
+
+  it("detects corrupted temporal counters and impact records", () => {
+    const state = createCharacterStateFromBlueprint(createLinFanBlueprint());
+    state.temporal = {
+      lastProcessedAt: "invalid",
+      totalElapsedDays: -1,
+      processedEventCount: 0.5,
+      timedEventCount: 2,
+      recentEvents: [{
+        sequence: 3,
+        eventId: "event",
+        signature: "general|event",
+        category: "general",
+        occurredAt: "invalid",
+        rawImpact: 0.2,
+        effectiveImpact: 0.4,
+        densityScale: 0.1,
+      }],
+    };
+
+    const report = inspectCharacterStateIntegrity(state);
+
+    expect(report.valid).toBe(false);
+    expect(report.issues.map((issue) => issue.path)).toEqual(expect.arrayContaining([
+      "temporal.totalElapsedDays",
+      "temporal.processedEventCount",
+      "temporal.timedEventCount",
+      "temporal.lastProcessedAt",
+      "temporal.recentEvents[0].sequence",
+      "temporal.recentEvents[0].occurredAt",
+      "temporal.recentEvents[0].densityScale",
+      "temporal.recentEvents[0].effectiveImpact",
+    ]));
+  });
 });

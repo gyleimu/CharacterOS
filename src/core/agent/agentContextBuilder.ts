@@ -171,7 +171,7 @@ export function buildContextSafetyNotices(
     notices.push({
       code: "LLM_BOUNDARY_ONLY",
       severity: "info",
-      message: "LLM 仅为 planned boundary — 不执行，不修改状态，不生成最终回复。",
+      message: "LLM 仅能通过 V13 语言适配边界生成表述，不修改状态或执行写回。",
       appliesTo: "llm",
       recoverable: true,
     });

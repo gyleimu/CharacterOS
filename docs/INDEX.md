@@ -1,10 +1,49 @@
 # CharacterOS Documentation Index
 
-## V12 Agent SDK (Design Phase)
+## Active Core Roadmap
+
+| Doc | Description |
+|-----|-------------|
+| [Core Calibration & Durability Roadmap](core_calibration_durability_roadmap.md) | LLM safety, temporal semantics, model calibration, durable state, and dependency governance |
+| [Personality Dynamics Scientific Model](personality_dynamics_scientific_model_design.md) | Research-backed trait-state separation, TESSERA evidence, attractor dynamics, consolidation, and validation plan |
+| [Dependency Security Policy](dependency_security_policy.md) | High/critical CI blocking, moderate risk registry, and compatible upgrade policy |
+
+## AI Engineering Workflow
+
+| Doc | Description |
+|-----|-------------|
+| [AI Engineering Guide](AI_ENGINEERING_GUIDE.md) | Codex, MCP, skill, architecture, review, testing, and safety workflow |
+| [AI Development Environment Report](characteros_ai_development_environment_report.md) | Environment inventory, installed MCPs, gaps, and recommendations |
+| [AI Engineering Ready Report](characteros_ai_engineering_ready_report.md) | Final verification status, skill paths, MCP evidence, and follow-up |
+
+## Temporal Semantics
+
+| Doc | Description |
+|-----|-------------|
+| [Temporal Semantics Core Report](v14.0_temporal_semantics_report.md) | Event clock, density saturation, elapsed-time recovery, ordering safety, replay audit, and residual calibration risks |
+| [Model Calibration Report](v14.1_model_calibration_report.md) | Versioned parameters, Golden Trajectory, properties, metamorphic checks, sensitivity, and repair asymmetry |
+
+## V13 LLM Boundary & Determinism
+
+| Doc | Description |
+|-----|-------------|
+| [V13.0 LLM Boundary Charter](v13.0_llm_boundary_adapter_design_charter.md) | LLM as replaceable language adapter, never state authority |
+| [V13.1 LLM Boundary DTOs](v13.1_llm_boundary_dto_types_report.md) | Safe deterministic boundary contracts |
+| [V13.2 Prompt Builder](v13.2_llm_boundary_prompt_builder_report.md) | Grounded prompt construction and redaction |
+| [V13.3 Determinism Hardening](v13.3_determinism_boundary_hardening_report.md) | Content-derived IDs and replay audit |
+| [V13.4 Metrics Reconciliation](v13.4_release_metrics_reconciliation_report.md) | Release metric consistency |
+| [V13.5 AST Scanner](v13.5_ast_determinism_scanner_hardening_report.md) | Context-aware runtime nondeterminism scanner |
+| [V13.6 Branch Reconciliation](v13.6_branch_test_coverage_reconciliation_report.md) | LLM and determinism branches integrated into one release line |
+| [V13.7 LLM Boundary Integration](v13.7_llm_boundary_integration_qa_report.md) | Agent reply plan to safe offline LLM boundary preview |
+| [V13.8 Mock Provider Harness](v13.8_mock_provider_harness_report.md) | Offline provider, validation, grounding, fallback, and static audit artifact |
+| [V13.9 LLM Boundary QA / RC](v13.9_llm_boundary_quality_gate_rc_report.md) | 18-case quality gate, adversarial replay, artifact seal, and Mock-only RC |
+
+## V12 Agent SDK (Complete RC)
 
 | Doc | Description |
 |-----|-------------|
 | [V12.0 Agent SDK Design Charter](v12.0_character_agent_sdk_design_charter.md) | Embeddable SDK architecture, 8 modules, safety model |
+| [V12.10 Agent SDK RC](v12.10_agent_sdk_release_candidate_report.md) | Agent SDK release candidate QA |
 
 ## V11 Explorer (Complete)
 
@@ -44,6 +83,7 @@
 | Doc | Description |
 |-----|-------------|
 | [Architecture Bible](architecture_bible.md) | System architecture constitution |
+| [Core Logic & Personality Drift Audit](core_logic_personality_drift_audit.md) | Core chain validity, fixed drift defects, residual risks, test strategy |
 | [Character Physics Upgrade Blueprint](character_physics_upgrade_blueprint.md) | Physics engine design |
 | [Core Polish Plan](core_polish_plan.md) | V3.7 polish roadmap |
 | [Parameter System](parameter_system.md) | Parameter evolution design |
@@ -90,5 +130,5 @@
 
 ---
 
-**Current Version:** V10.78 RC  
-**Last Updated:** 2026-07-02
+**Current Line:** Temporal Semantics core complete on top of V13.9 Mock-only LLM Boundary RC
+**Last Updated:** 2026-07-13

@@ -1,7 +1,12 @@
 import { biologicalStressSensitivity, type BiologicalNature } from "../biological/nature";
 import type { ImpactScore } from "../benchmark/impact";
 import type { ExperienceEvent } from "../event/event";
+import { resolveEventCategory } from "../event/eventCategoryClassifier";
 import { clamp01, exponentialRecoveryRate, round4 } from "../parameters/parameterMath";
+import {
+  getCurrentModelParameterSet,
+  type BoundaryModelParameters,
+} from "../parameters/modelParameterRegistry";
 import type { PersonalityCoordinate } from "../personality/coordinate";
 
 export type BoundaryPhase = "stable" | "strained" | "overflow";
@@ -27,7 +32,10 @@ export interface BoundaryImpactResult {
   repairNudge: { trust: number; fear: number; openness: number };
 }
 
-export function createPsychologicalBoundary(params: Partial<PsychologicalBoundary> = {}): PsychologicalBoundary {
+export function createPsychologicalBoundary(
+  params: Partial<PsychologicalBoundary> = {},
+  parameters: BoundaryModelParameters = getCurrentModelParameterSet().boundary,
+): PsychologicalBoundary {
   const boundary: PsychologicalBoundary = {
     capacity: params.capacity ?? 0.72,
     resilience: params.resilience ?? 0.52,
@@ -39,7 +47,7 @@ export function createPsychologicalBoundary(params: Partial<PsychologicalBoundar
     phase: params.phase ?? "stable"
   };
 
-  return normalizeBoundary(boundary);
+  return normalizeBoundary(boundary, parameters);
 }
 
 export function linFanPsychologicalBoundary(): PsychologicalBoundary {
@@ -58,7 +66,9 @@ export function applyBoundaryImpact(params: {
   coordinate: PersonalityCoordinate;
   event: ExperienceEvent;
   impactScore: ImpactScore;
+  parameters?: BoundaryModelParameters;
 }): BoundaryImpactResult {
+  const parameters = params.parameters ?? getCurrentModelParameterSet().boundary;
   const before = { ...params.boundary };
   const sensitivity = biologicalStressSensitivity(params.nature);
   const vulnerability =
@@ -68,7 +78,8 @@ export function applyBoundaryImpact(params: {
     sensitivity * 0.3;
   const relationshipPressure = params.event.relationshipWeight * 0.15 + params.event.expectationGap * 0.15;
 
-  const isPositiveSupport = params.event.category === "support" || params.event.category === "success";
+  const category = resolveEventCategory(params.event);
+  const isPositiveSupport = category === "support" || category === "success";
 
   let incomingStress: number;
   let stressLoad: number;
@@ -86,32 +97,43 @@ export function applyBoundaryImpact(params: {
     const strainRatio = params.boundary.stressLoad / Math.max(0.01, params.boundary.capacity);
     safetySignal = round4(
       params.impactScore.value *
-      Math.min(strainRatio, 1.8) *
-      0.28
+      Math.min(strainRatio, parameters.positiveStrainRatioCap) *
+      parameters.positiveSafetyImpactScale
     );
     // Stress relief: negative incomingStress reduces the load
-    incomingStress = round4(-safetySignal * (0.7 + params.boundary.resilience * 0.4));
+    incomingStress = round4(-safetySignal * (
+      parameters.positiveReliefBase +
+      params.boundary.resilience * parameters.positiveReliefResilienceWeight
+    ));
     stressLoad = round4(Math.max(0, params.boundary.stressLoad + incomingStress));
     // Positive events do not create overflow or new cracks;
     // they may heal a small amount of existing cracks
     overflowAmount = 0;
-    cracks = round4(Math.max(0, params.boundary.cracks - safetySignal * 0.15));
+    cracks = round4(Math.max(0, params.boundary.cracks - safetySignal * parameters.positiveCrackRepairRate));
     // Integrity slowly improves with safety evidence
-    integrity = clamp01(params.boundary.integrity + safetySignal * 0.07);
+    integrity = clamp01(params.boundary.integrity + safetySignal * parameters.positiveIntegrityRepairRate);
   } else {
-    // Negative / neutral events: existing stress-based boundary impact
+    // Event categories do not all carry the same boundary threat. In
+    // particular, rule-fallback/general events must not accumulate trauma just
+    // because they were logged frequently.
+    const stressWeight = boundaryStressWeight(category, params.impactScore.value, parameters);
     incomingStress = round4(
       params.impactScore.value *
-      (0.55 + vulnerability + relationshipPressure) *
-      (1 - params.boundary.resilience * 0.42)
+      (parameters.negativeStressBase + vulnerability + relationshipPressure) *
+      (1 - params.boundary.resilience * parameters.negativeResilienceProtection) *
+      stressWeight
     );
     stressLoad = round4(params.boundary.stressLoad + incomingStress);
-    overflowAmount = Math.max(0, round4(stressLoad - params.boundary.capacity));
-    cracks = round4(params.boundary.cracks + overflowAmount * 0.35);
-    integrity = clamp01(params.boundary.integrity - overflowAmount * 0.18);
+    const overflowBefore = Math.max(0, params.boundary.stressLoad - params.boundary.capacity);
+    const overflowAfter = Math.max(0, stressLoad - params.boundary.capacity);
+    // Damage is caused by newly added overflow pressure. Reapplying the full
+    // historical overflow on every unrelated event produced quadratic cracks.
+    overflowAmount = Math.max(0, round4(overflowAfter - overflowBefore));
+    cracks = round4(params.boundary.cracks + overflowAmount * parameters.overflowCrackRate);
+    integrity = clamp01(params.boundary.integrity - overflowAmount * parameters.overflowIntegrityDamageRate);
   }
 
-  const phase = phaseFor(stressLoad, params.boundary.capacity);
+  const phase = phaseFor(stressLoad, params.boundary.capacity, parameters);
   const after = normalizeBoundary({
     ...params.boundary,
     stressLoad,
@@ -119,7 +141,7 @@ export function applyBoundaryImpact(params: {
     integrity,
     overflowCount: params.boundary.overflowCount + (overflowAmount > 0 ? 1 : 0),
     phase
-  });
+  }, parameters);
 
   // V10.72: compute repair nudge from boundary safety.
   // When boundary stress decreases (positive events), this provides a small
@@ -127,22 +149,29 @@ export function applyBoundaryImpact(params: {
   // trust deficit. Lower trust → more repair room. Higher trust → near saturation.
   // Coefficients are deliberately small — repair should be visible over repeated
   // events (5+), not overpower negative drift in 1-2 steps.
+  // Stress relief naturally approaches zero once the boundary is calm, but
+  // positive evidence must still be able to repair trust/fear slowly. Keep
+  // that learning signal bounded by event impact instead of tying it entirely
+  // to current stress load.
+  const repairSignal = isPositiveSupport
+    ? Math.max(safetySignal, params.impactScore.value * parameters.positiveSafetyImpactScale)
+    : 0;
   const repairNudge = isPositiveSupport
     ? {
         trust: round4(
-          safetySignal *
-          Math.max(0, 0.85 - params.coordinate.values.trust) *
-          0.012,
+          repairSignal *
+          Math.max(0, parameters.repairTrustTarget - params.coordinate.values.trust) *
+          parameters.repairTrustRate,
         ),
         fear: round4(
-          -safetySignal *
+          -repairSignal *
           params.coordinate.values.fear *
-          0.008,
+          parameters.repairFearRate,
         ),
         openness: round4(
-          safetySignal *
-          Math.max(0, 0.7 - params.coordinate.values.openness) *
-          0.006,
+          repairSignal *
+          Math.max(0, parameters.repairOpennessTarget - params.coordinate.values.openness) *
+          parameters.repairOpennessRate,
         ),
       }
     : { trust: 0, fear: 0, openness: 0 };
@@ -152,40 +181,71 @@ export function applyBoundaryImpact(params: {
     after,
     incomingStress,
     overflowAmount,
-    driftMultiplier: driftMultiplierFor(after),
+    driftMultiplier: driftMultiplierFor(after, parameters),
     repairNudge,
   };
 }
 
-export function recoverBoundary(boundary: PsychologicalBoundary, daysElapsed: number): PsychologicalBoundary {
-  if (daysElapsed <= 0) return normalizeBoundary(boundary);
+export function recoverBoundary(
+  boundary: PsychologicalBoundary,
+  daysElapsed: number,
+  parameters: BoundaryModelParameters = getCurrentModelParameterSet().boundary,
+): PsychologicalBoundary {
+  if (daysElapsed <= 0) return normalizeBoundary(boundary, parameters);
   const recovery = exponentialRecoveryRate(boundary.recoveryRate, daysElapsed);
   return normalizeBoundary({
     ...boundary,
     stressLoad: round4(boundary.stressLoad * (1 - recovery)),
-    cracks: round4(boundary.cracks * (1 - recovery * 0.35)),
-    integrity: clamp01(boundary.integrity + recovery * 0.12),
-    phase: phaseFor(boundary.stressLoad * (1 - recovery), boundary.capacity)
-  });
+    cracks: round4(boundary.cracks * (1 - recovery * parameters.recoveryCrackRate)),
+    integrity: clamp01(boundary.integrity + recovery * parameters.recoveryIntegrityRate),
+    phase: phaseFor(boundary.stressLoad * (1 - recovery), boundary.capacity, parameters)
+  }, parameters);
 }
 
-export function driftMultiplierFor(boundary: PsychologicalBoundary): number {
+export function driftMultiplierFor(
+  boundary: PsychologicalBoundary,
+  parameters: BoundaryModelParameters = getCurrentModelParameterSet().boundary,
+): number {
   const strainRatio = boundary.capacity <= 0 ? 1 : boundary.stressLoad / boundary.capacity;
   const overflowPressure = Math.max(0, strainRatio - 1);
-  return round4(1 + overflowPressure * 0.45 + boundary.cracks * 0.08);
+  const saturatedOverflow = 1 - Math.exp(-overflowPressure);
+  const saturatedCracks = 1 - Math.exp(-Math.max(0, boundary.cracks));
+  return round4(
+    1 +
+    saturatedOverflow * parameters.driftOverflowWeight +
+    saturatedCracks * parameters.driftCrackWeight,
+  );
 }
 
-function phaseFor(stressLoad: number, capacity: number): BoundaryPhase {
+function boundaryStressWeight(
+  category: string,
+  impact: number,
+  parameters: BoundaryModelParameters,
+): number {
+  if (category === "general" && impact <= 0.3) return 0;
+  return parameters.stressWeightByCategory[category]
+    ?? parameters.stressWeightByCategory.fallback
+    ?? 0.5;
+}
+
+function phaseFor(
+  stressLoad: number,
+  capacity: number,
+  parameters: BoundaryModelParameters,
+): BoundaryPhase {
   if (stressLoad > capacity) {
     return "overflow";
   }
-  if (stressLoad >= capacity * 0.7) {
+  if (stressLoad >= capacity * parameters.strainedCapacityRatio) {
     return "strained";
   }
   return "stable";
 }
 
-function normalizeBoundary(boundary: PsychologicalBoundary): PsychologicalBoundary {
+function normalizeBoundary(
+  boundary: PsychologicalBoundary,
+  parameters: BoundaryModelParameters = getCurrentModelParameterSet().boundary,
+): PsychologicalBoundary {
   const capacity = clamp01(boundary.capacity);
   const stressLoad = Math.max(0, round4(boundary.stressLoad));
   return {
@@ -196,6 +256,6 @@ function normalizeBoundary(boundary: PsychologicalBoundary): PsychologicalBounda
     stressLoad,
     cracks: Math.max(0, round4(boundary.cracks)),
     overflowCount: Math.max(0, Math.floor(boundary.overflowCount)),
-    phase: phaseFor(stressLoad, capacity)
+    phase: phaseFor(stressLoad, capacity, parameters)
   };
 }

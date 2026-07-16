@@ -1,14 +1,18 @@
-import {
-  existsSync,
-  mkdirSync,
-  readFileSync,
-  renameSync,
-  unlinkSync,
-  writeFileSync
-} from "node:fs";
-import { dirname, resolve } from "node:path";
+import { resolve } from "node:path";
 import type { CharacterImportTransitionHistoryEntry } from "../../core/export/characterImportTransitionHistory";
+import { getDurableRepositorySpec } from "./durableRepositoryRegistry";
 import { withRepositoryFileLock } from "./fileLock";
+import {
+  readJsonObjectFile,
+  removeJsonObjectFileAndBackup,
+  writeJsonObjectFileAtomically,
+  type RepositoryPersistenceIntent,
+} from "./jsonFileStore";
+
+const REPOSITORY_LABEL = "character import transition history";
+const REPOSITORY_SPEC = getDurableRepositorySpec("character-import-transition-history");
+const REPOSITORY_KIND = REPOSITORY_SPEC.repositoryKind;
+const SCHEMA_VERSION = REPOSITORY_SPEC.schemaVersion;
 
 export interface CharacterImportTransitionHistoryRepository {
   list(characterId: string): CharacterImportTransitionHistoryEntry[];
@@ -53,49 +57,58 @@ implements CharacterImportTransitionHistoryRepository {
     this.withFileLock(() => {
       const store = this.readStore();
       store[entry.characterId] = [...(store[entry.characterId] ?? []), entry];
-      this.writeStore(store);
+      this.writeStore(store, "validated-write");
     });
   }
 
   clear(characterId?: string): void {
     this.withFileLock(() => {
       if (!characterId) {
-        if (existsSync(this.filePath)) unlinkSync(this.filePath);
+        removeJsonObjectFileAndBackup({
+          filePath: this.filePath,
+          repositoryLabel: REPOSITORY_LABEL,
+          repositoryKind: REPOSITORY_KIND,
+          schemaVersion: SCHEMA_VERSION,
+          persistenceIntent: "destructive-clear",
+        });
         return;
       }
       const store = this.readStore();
       delete store[characterId];
-      this.writeStore(store);
+      this.writeStore(store, "destructive-clear");
     });
   }
 
   private readStore(): SerializedImportTransitionHistoryStore {
-    if (!existsSync(this.filePath)) return {};
-    try {
-      return JSON.parse(readFileSync(this.filePath, "utf8")) as SerializedImportTransitionHistoryStore;
-    } catch {
-      return {};
-    }
+    const result = readJsonObjectFile<SerializedImportTransitionHistoryStore>({
+      filePath: this.filePath,
+      repositoryLabel: REPOSITORY_LABEL,
+      repositoryKind: REPOSITORY_KIND,
+      schemaVersion: SCHEMA_VERSION,
+      repositorySpec: REPOSITORY_SPEC,
+    });
+    return result.status === "not_found" ? {} : result.value;
   }
 
-  private writeStore(store: SerializedImportTransitionHistoryStore): void {
-    mkdirSync(dirname(this.filePath), { recursive: true });
-    const content = `${JSON.stringify(store, null, 2)}\n`;
-    const tempPath = `${this.filePath}.tmp-${process.pid}-${Date.now()}-${Math.random().toString(16).slice(2)}`;
-    writeFileSync(tempPath, content, "utf8");
-    try {
-      if (existsSync(this.filePath)) unlinkSync(this.filePath);
-      renameSync(tempPath, this.filePath);
-    } catch {
-      writeFileSync(this.filePath, content, "utf8");
-      if (existsSync(tempPath)) unlinkSync(tempPath);
-    }
+  private writeStore(
+    store: SerializedImportTransitionHistoryStore,
+    persistenceIntent: RepositoryPersistenceIntent,
+  ): void {
+    writeJsonObjectFileAtomically({
+      filePath: this.filePath,
+      repositoryLabel: REPOSITORY_LABEL,
+      repositoryKind: REPOSITORY_KIND,
+      schemaVersion: SCHEMA_VERSION,
+      repositorySpec: REPOSITORY_SPEC,
+      persistenceIntent,
+      value: store,
+    });
   }
 
   private withFileLock(action: () => void): void {
     withRepositoryFileLock({
       filePath: this.filePath,
-      lockLabel: "character import transition history",
+      lockLabel: REPOSITORY_LABEL,
       action
     });
   }

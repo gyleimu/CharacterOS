@@ -1,5 +1,47 @@
 # Changelog
 
+## Personality Dynamics Scientific Design
+
+- Defined a research-backed Trait-State architecture using state distributions, per-dimension attractors, context profiles, and explicit uncertainty
+- Mapped Event, Belief, Emotion, Boundary, Life Context, Decision, Time Machine, and the existing coordinate model into TESSERA episodes and evidence consolidation
+- Required Durable State to persist engine semantics, dynamics state, evidence accumulators, and replay metadata before the shadow model can run
+- Added a phased shadow-mode migration and release gate; no current physics behavior was changed from literature alone
+
+## Model Calibration Core
+
+- Added immutable versioned Model Parameter Registry with 54 governed numeric parameters and stable fingerprints
+- Added per-category decision responsiveness and five-event overreaction guards so aggregate calibration cannot hide a weak event channel
+- Stamped CharacterPhysicsState, serialization, temporal trace, and longitudinal commit fingerprints with parameter-set version
+- Added 160 Golden Trajectories across 10 categories, 4 baselines, and 4 horizons, plus 640 decision scenario projections
+- Added deterministic generated-sequence properties, metamorphic checks, +/-10% sensitivity probes, and explicit repair asymmetry
+- Fixed four-decimal personality integration dead zone by retaining eight-decimal internal velocity/coordinate precision
+- Fixed long-term positive evidence repair so trust/fear learning continues after boundary stress reaches a calm state
+- Fixed Galaxy cluster metric recomputation bypassing calibration memory parameters
+- Added Model Calibration Gate to Unified Quality Gate, CI, and `rc:verify`
+- Engineering calibration is not psychological or clinical validation
+
+## Temporal Semantics Core
+
+- Added persistent logical event clock and backward-compatible state serialization
+- Added elapsed-time recovery before each forward-timed event
+- Added 24-hour semantic repeat saturation with a bounded non-zero impact floor
+- Added 14-day personality velocity half-life and post-decay cluster metric synchronization
+- Added canonical event timestamps, out-of-order protection, and inherited-clock safeguards
+- Exposed temporal trace through physics results, API DTOs, simulation snapshots, and Event Studio
+- Added 7-case / 21-assertion Temporal Semantics Audit and integrated it into CI and unified quality gates
+- Timing constants remain engineering priors, now versioned and guarded by Golden Trajectory and sensitivity checks
+
+## V13 LLM Boundary RC
+
+- Safe prompt boundary backed by mediated Agent grounding data
+- Deterministic Mock Provider with no network or real credentials
+- Output validation for diagnosis, mutation, raw state, secrets, truncation, certainty, and safety notices
+- Evidence grounding with unsupported-claim rejection and deterministic fallback
+- 18-case LLM Boundary Quality Gate with deterministic double replay
+- SHA-256 sealed offline Harness and V13 RC manifest
+- Dependency security policy and reviewed risk registry
+- Real providers remain explicitly deferred
+
 ## V10 RC (V10.78)
 
 ### Core Reality Audit Suite (V10.67–V10.78)

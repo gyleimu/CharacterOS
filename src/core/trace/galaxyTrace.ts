@@ -1,6 +1,7 @@
 import type { BoundaryImpactResult } from "../boundary/psychologicalBoundary";
 import type { PersonalityCoordinate } from "../personality/coordinate";
 import type { PhysicsStepResult } from "../physics/physicsEngine";
+import type { EventTemporalTrace } from "../time/eventTemporalSemantics";
 
 export interface GalaxyStepTrace {
   forces: Array<{
@@ -31,6 +32,7 @@ export interface PhysicsStepTrace {
   impactScore: number;
   boundaryImpact: BoundaryImpactResult;
   galaxyTrace: GalaxyStepTrace;
+  temporalSemantics: EventTemporalTrace;
 }
 
 export function toGalaxyStepTrace(result: PhysicsStepResult): GalaxyStepTrace {
@@ -64,6 +66,7 @@ export function toPhysicsStepTrace(result: PhysicsStepResult): PhysicsStepTrace 
     category: result.particle.category,
     impactScore: result.impactScore.value,
     boundaryImpact: result.boundaryImpact,
-    galaxyTrace: toGalaxyStepTrace(result)
+    galaxyTrace: toGalaxyStepTrace(result),
+    temporalSemantics: result.temporalSemantics,
   };
 }

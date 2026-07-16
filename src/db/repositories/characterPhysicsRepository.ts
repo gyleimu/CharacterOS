@@ -1,19 +1,23 @@
-import {
-  existsSync,
-  mkdirSync,
-  readFileSync,
-  renameSync,
-  unlinkSync,
-  writeFileSync
-} from "node:fs";
-import { dirname, resolve } from "node:path";
+import { resolve } from "node:path";
 import {
   deserializeCharacterPhysicsState,
   serializeCharacterPhysicsState,
   type SerializedCharacterPhysicsState
 } from "../../core/physics/serialization";
 import type { CharacterPhysicsState } from "../../core/physics/physicsEngine";
+import { getDurableRepositorySpec } from "./durableRepositoryRegistry";
 import { withRepositoryFileLock } from "./fileLock";
+import {
+  readJsonObjectFile,
+  removeJsonObjectFileAndBackup,
+  writeJsonObjectFileAtomically,
+  type RepositoryPersistenceIntent,
+} from "./jsonFileStore";
+
+const REPOSITORY_LABEL = "character physics state";
+const REPOSITORY_SPEC = getDurableRepositorySpec("character-physics");
+const REPOSITORY_KIND = REPOSITORY_SPEC.repositoryKind;
+const SCHEMA_VERSION = REPOSITORY_SPEC.schemaVersion;
 
 export interface CharacterPhysicsRepository {
   get(characterId: string): CharacterPhysicsState | undefined;
@@ -71,7 +75,7 @@ export class FileCharacterPhysicsRepository implements CharacterPhysicsRepositor
     this.withFileLock(() => {
       const store = this.readStore();
       store[characterId] = serializeCharacterPhysicsState(state);
-      this.writeStore(store);
+      this.writeStore(store, "validated-write");
     });
   }
 
@@ -84,7 +88,7 @@ export class FileCharacterPhysicsRepository implements CharacterPhysicsRepositor
       const current = store[characterId] ? deserializeCharacterPhysicsState(store[characterId]) : undefined;
       const nextState = updater(current);
       store[characterId] = serializeCharacterPhysicsState(nextState);
-      this.writeStore(store);
+      this.writeStore(store, "validated-write");
       return nextState;
     });
   }
@@ -93,45 +97,52 @@ export class FileCharacterPhysicsRepository implements CharacterPhysicsRepositor
     this.withFileLock(() => {
       const store = this.readStore();
       delete store[characterId];
-      this.writeStore(store);
+      this.writeStore(store, "destructive-delete");
     });
   }
 
   clear(): void {
     this.withFileLock(() => {
-      if (existsSync(this.filePath)) {
-        unlinkSync(this.filePath);
-      }
+      removeJsonObjectFileAndBackup({
+        filePath: this.filePath,
+        repositoryLabel: REPOSITORY_LABEL,
+        repositoryKind: REPOSITORY_KIND,
+        schemaVersion: SCHEMA_VERSION,
+        persistenceIntent: "destructive-clear",
+      });
     });
   }
 
   private readStore(): SerializedStateStore {
-    if (!existsSync(this.filePath)) return {};
-    try {
-      return JSON.parse(readFileSync(this.filePath, "utf8")) as SerializedStateStore;
-    } catch {
-      return {};
-    }
+    const result = readJsonObjectFile<SerializedStateStore>({
+      filePath: this.filePath,
+      repositoryLabel: REPOSITORY_LABEL,
+      repositoryKind: REPOSITORY_KIND,
+      schemaVersion: SCHEMA_VERSION,
+      repositorySpec: REPOSITORY_SPEC,
+    });
+    return result.status === "not_found" ? {} : result.value;
   }
 
-  private writeStore(store: SerializedStateStore): void {
-    mkdirSync(dirname(this.filePath), { recursive: true });
-    const content = `${JSON.stringify(store, null, 2)}\n`;
-    const tempPath = `${this.filePath}.tmp-${process.pid}-${Date.now()}-${Math.random().toString(16).slice(2)}`;
-    writeFileSync(tempPath, content, "utf8");
-    try {
-      if (existsSync(this.filePath)) unlinkSync(this.filePath);
-      renameSync(tempPath, this.filePath);
-    } catch {
-      writeFileSync(this.filePath, content, "utf8");
-      if (existsSync(tempPath)) unlinkSync(tempPath);
-    }
+  private writeStore(
+    store: SerializedStateStore,
+    persistenceIntent: RepositoryPersistenceIntent,
+  ): void {
+    writeJsonObjectFileAtomically({
+      filePath: this.filePath,
+      repositoryLabel: REPOSITORY_LABEL,
+      repositoryKind: REPOSITORY_KIND,
+      schemaVersion: SCHEMA_VERSION,
+      repositorySpec: REPOSITORY_SPEC,
+      persistenceIntent,
+      value: store,
+    });
   }
 
   private withFileLock<T>(action: () => T): T {
     return withRepositoryFileLock({
       filePath: this.filePath,
-      lockLabel: "character physics state",
+      lockLabel: REPOSITORY_LABEL,
       action
     });
   }

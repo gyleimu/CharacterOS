@@ -1,5 +1,10 @@
 import { BASE_PERSONALITY_KEYS, type PersonalityDimensionKey } from "../personality/dimensions";
 import type { CharacterPhysicsState } from "../physics/physicsEngine";
+import {
+  getModelParameterSet,
+  hasModelParameterSet,
+  validateModelParameterSet,
+} from "../parameters/modelParameterRegistry";
 
 export type StateIntegritySeverity = "error" | "warning";
 
@@ -29,6 +34,8 @@ export function inspectCharacterStateIntegrity(state: CharacterPhysicsState): St
   checkCoordinate("coordinate", state.coordinate.values, issues);
   checkVelocity(state, issues);
   checkScalar("learningRate", state.learningRate, issues, { min: 0, max: 1 });
+  checkParameterSet(state, issues);
+  checkTemporalState(state, issues);
 
   const particleIds = collectUniqueIds(
     state.particles.map((particle) => particle.id),
@@ -122,6 +129,68 @@ function checkVelocity(state: CharacterPhysicsState, issues: StateIntegrityIssue
       addIssue(issues, "error", `velocity.${key}`, "velocity value must be finite");
     }
   }
+}
+
+function checkParameterSet(state: CharacterPhysicsState, issues: StateIntegrityIssue[]): void {
+  if (!state.parameterSetVersion) {
+    addIssue(issues, "error", "parameterSetVersion", "parameter set version must be non-empty");
+    return;
+  }
+  if (!hasModelParameterSet(state.parameterSetVersion)) {
+    addIssue(issues, "error", "parameterSetVersion", `unknown parameter set: ${state.parameterSetVersion}`);
+    return;
+  }
+  const validation = validateModelParameterSet(getModelParameterSet(state.parameterSetVersion));
+  for (const issue of validation.issues) {
+    addIssue(issues, "error", `parameterSet.${issue.path}`, issue.message);
+  }
+}
+
+function checkTemporalState(state: CharacterPhysicsState, issues: StateIntegrityIssue[]): void {
+  const temporal = state.temporal;
+  const minimumDensityScale = hasModelParameterSet(state.parameterSetVersion)
+    ? getModelParameterSet(state.parameterSetVersion).temporal.minimumDensityScale
+    : 0;
+  checkScalar("temporal.totalElapsedDays", temporal.totalElapsedDays, issues, { min: 0 });
+  checkScalar("temporal.processedEventCount", temporal.processedEventCount, issues, { min: 0 });
+  checkScalar("temporal.timedEventCount", temporal.timedEventCount, issues, { min: 0 });
+  if (!Number.isInteger(temporal.processedEventCount)) {
+    addIssue(issues, "error", "temporal.processedEventCount", "processed event count must be an integer");
+  }
+  if (!Number.isInteger(temporal.timedEventCount)) {
+    addIssue(issues, "error", "temporal.timedEventCount", "timed event count must be an integer");
+  }
+  if (temporal.timedEventCount > temporal.processedEventCount) {
+    addIssue(issues, "error", "temporal.timedEventCount", "timed event count cannot exceed processed count");
+  }
+  if (temporal.recentEvents.length > temporal.timedEventCount) {
+    addIssue(issues, "error", "temporal.recentEvents", "recent timed events cannot exceed timed event count");
+  }
+  if (temporal.lastProcessedAt && !Number.isFinite(Date.parse(temporal.lastProcessedAt))) {
+    addIssue(issues, "error", "temporal.lastProcessedAt", "temporal clock must be a valid timestamp");
+  }
+  const temporalSequences = new Set<number>();
+  temporal.recentEvents.forEach((record, index) => {
+    const path = `temporal.recentEvents[${index}]`;
+    if (!record.eventId) addIssue(issues, "error", `${path}.eventId`, "event id must be non-empty");
+    if (!record.category) addIssue(issues, "error", `${path}.category`, "category must be non-empty");
+    if (!Number.isFinite(Date.parse(record.occurredAt))) {
+      addIssue(issues, "error", `${path}.occurredAt`, "event time must be valid");
+    }
+    if (!Number.isInteger(record.sequence) || record.sequence < 1 || record.sequence > temporal.processedEventCount) {
+      addIssue(issues, "error", `${path}.sequence`, "event sequence must reference a processed event");
+    }
+    if (temporalSequences.has(record.sequence)) {
+      addIssue(issues, "error", `${path}.sequence`, "temporal event sequence must be unique");
+    }
+    temporalSequences.add(record.sequence);
+    checkScalar(`${path}.rawImpact`, record.rawImpact, issues, { min: 0, max: 1 });
+    checkScalar(`${path}.effectiveImpact`, record.effectiveImpact, issues, { min: 0, max: 1 });
+    checkScalar(`${path}.densityScale`, record.densityScale, issues, { min: minimumDensityScale, max: 1 });
+    if (record.effectiveImpact > record.rawImpact) {
+      addIssue(issues, "error", `${path}.effectiveImpact`, "effective impact cannot exceed raw impact");
+    }
+  });
 }
 
 function checkCoordinate(

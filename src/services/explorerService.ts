@@ -13,6 +13,7 @@ import { buildExplainabilityTimeline } from "../core/explorer/explainabilityTime
 import { buildTimeMachineSnapshot, buildTimeMachineTimeline } from "../core/explorer/timeMachineSnapshot";
 import { buildTimeMachineRestoreView } from "../core/explorer/timeMachineRestoreView";
 import { buildExplorerManifest, buildMindGalaxyEmbed } from "../core/explorer/explorerDtoBuilders";
+import { deterministicDraftId } from "../core/deterministicHelpers";
 import type {
   EventStudioDraft, EventStudioPreview, EventStudioApplyResult,
   TimeMachineSnapshot, TimeMachineTimeline, TimeMachineRestoreView,
@@ -57,7 +58,14 @@ export function previewEvent(
   options?: { previewMode?: "parse_only" | "impact_preview" | "full_preview" },
 ): EventStudioPreviewResponse {
   const state = getOrCreateState(characterId);
-  const fullDraft = buildEventStudioDraft({ ...draft, sourceId: draft.sourceId ?? `draft_${Date.now()}` });
+  const fullDraft = buildEventStudioDraft({
+    ...draft,
+    sourceId: draft.sourceId ?? deterministicDraftId(
+      draft.naturalLanguageInput ?? "",
+      draft.tags,
+      draft.occurredAt,
+    ),
+  });
 
   const relationshipScenario = {
     id: "explorer_service_scenario",

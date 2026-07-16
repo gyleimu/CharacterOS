@@ -1,4 +1,5 @@
-import { mkdtempSync, readdirSync, rmSync, writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -10,12 +11,17 @@ import {
   FileLongitudinalCommitAuditRepository,
   InMemoryLongitudinalCommitAuditRepository,
 } from "../../src/db/repositories/longitudinalCommitAuditRepository";
+import {
+  createDurableJsonEnvelope,
+  serializeDurableJsonEnvelope,
+} from "../../src/db/repositories/durableJsonEnvelope";
+import { RepositoryFileError } from "../../src/db/repositories/jsonFileStore";
 
 function digest(value: string) {
   return {
     algorithm: "sha256" as const,
     canonicalization: "characteros-longitudinal-json-v1" as const,
-    value,
+    value: createHash("sha256").update(value).digest("hex"),
   };
 }
 
@@ -103,6 +109,14 @@ describe("FileLongitudinalCommitAuditRepository", () => {
       const repository = new FileLongitudinalCommitAuditRepository(filePath);
       repository.append(entry());
 
+      expect(JSON.parse(readFileSync(filePath, "utf8"))).toMatchObject({
+        format: "characteros.durable-json",
+        envelopeVersion: 1,
+        repositoryKind: "longitudinal-commit-audit",
+        schemaVersion: 1,
+        payload: { lin_fan: [entry()] },
+      });
+
       const reloaded = new FileLongitudinalCommitAuditRepository(filePath);
       expect(reloaded.list("lin_fan")).toHaveLength(1);
       expect(reloaded.getBySimulationId("lin_fan", "longsim-1")?.generatedMemoryIds)
@@ -131,17 +145,85 @@ describe("FileLongitudinalCommitAuditRepository", () => {
     }
   });
 
-  it("preserves a corrupt JSON file before falling back to an empty store", () => {
+  it("throws CORRUPTED without moving or replacing the corrupt audit file", () => {
     const dir = mkdtempSync(join(tmpdir(), "characteros-longcommit-"));
     const filePath = join(dir, "audit.json");
     try {
       writeFileSync(filePath, "{ bad json", "utf8");
       const repository = new FileLongitudinalCommitAuditRepository(filePath);
 
-      expect(repository.list("lin_fan")).toHaveLength(0);
-      expect(readdirSync(dir).some((name) => name.startsWith("audit.json.corrupt-"))).toBe(true);
+      expectCorrupted(() => repository.list("lin_fan"));
+      expect(readFileSync(filePath, "utf8")).toBe("{ bad json");
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("reads legacy-v0 audit history without rewriting it", () => {
+    const dir = mkdtempSync(join(tmpdir(), "characteros-longcommit-"));
+    const filePath = join(dir, "audit.json");
+    try {
+      const legacy = `${JSON.stringify({ lin_fan: [entry()] }, null, 2)}\n`;
+      writeFileSync(filePath, legacy, "utf8");
+
+      const repository = new FileLongitudinalCommitAuditRepository(filePath);
+      expect(repository.list("lin_fan")).toEqual([entry()]);
+      expect(readFileSync(filePath, "utf8")).toBe(legacy);
+      expect(existsSync(`${filePath}.bak`)).toBe(false);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("rejects a checksum-valid envelope with a structurally invalid payload without changing history", () => {
+    const dir = mkdtempSync(join(tmpdir(), "characteros-longcommit-"));
+    const filePath = join(dir, "audit.json");
+    try {
+      const bytes = writeEnvelope(filePath, { lin_fan: "not-an-entry-array" });
+      const repository = new FileLongitudinalCommitAuditRepository(filePath);
+
+      expectCorrupted(() => repository.list("lin_fan"));
+      expect(readFileSync(filePath, "utf8")).toBe(bytes);
+      expect(existsSync(`${filePath}.bak`)).toBe(false);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("rejects domain-invalid history before clear can mutate persisted bytes", () => {
+    const dir = mkdtempSync(join(tmpdir(), "characteros-longcommit-"));
+    const filePath = join(dir, "audit.json");
+    try {
+      const bytes = writeEnvelope(filePath, { other_character: [entry()] });
+      const repository = new FileLongitudinalCommitAuditRepository(filePath);
+
+      expectCorrupted(() => repository.clear("other_character"));
+      expect(readFileSync(filePath, "utf8")).toBe(bytes);
+      expect(existsSync(`${filePath}.bak`)).toBe(false);
     } finally {
       rmSync(dir, { recursive: true, force: true });
     }
   });
 });
+
+function writeEnvelope(filePath: string, payload: Record<string, unknown>): string {
+  const envelope = createDurableJsonEnvelope({
+    repositoryKind: "longitudinal-commit-audit",
+    schemaVersion: 1,
+    payload,
+  });
+  const bytes = `${serializeDurableJsonEnvelope(envelope)}\n`;
+  writeFileSync(filePath, bytes, "utf8");
+  return bytes;
+}
+
+function expectCorrupted(action: () => unknown): void {
+  let caught: unknown;
+  try {
+    action();
+  } catch (error) {
+    caught = error;
+  }
+  expect(caught).toBeInstanceOf(RepositoryFileError);
+  expect((caught as RepositoryFileError).code).toBe("CORRUPTED");
+}

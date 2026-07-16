@@ -20,6 +20,7 @@ import type { ParameterAdjustmentSnapshotTrace } from "../core/parameters/parame
 import type { ProceduralActivation } from "../core/procedural/proceduralMemory";
 import type { RewardResult } from "../core/reward/rewardSystem";
 import type { TimePerceptionTrace } from "../core/time/timePerception";
+import type { EventTemporalTrace } from "../core/time/eventTemporalSemantics";
 import type { WorldModelInterpretation } from "../core/worldmodel/worldModel";
 import type { AttentionEvaluation } from "../core/attention/attentionSystem";
 import type { CharacterExportPackageSummary } from "../core/export/characterExportValidation";
@@ -54,6 +55,7 @@ export interface ProcessEventResponse {
   worldInterpretation: WorldModelInterpretation;
   /** Per-event attention evaluation — diagnostic only, does NOT modify personality. */
   attentionEvaluation: AttentionEvaluation;
+  temporalSemantics: EventTemporalTrace;
   state: SerializedCharacterPhysicsState;
 }
 

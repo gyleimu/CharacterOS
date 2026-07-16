@@ -18,7 +18,7 @@ import type {
   EventStudioApplyOptions,
   EventStudioAuditEntry,
 } from "./explorerTypes";
-import { buildCharacterStateSurfaceFromState } from "./explorerDtoBuilders";
+import { deterministicAuditId } from "../deterministicHelpers";
 
 const DEFAULT_CONFIRMATION = "apply";
 
@@ -48,6 +48,8 @@ export function applyEventStudioEvent(
 
   // ── Stale Preview Gate ──
   const beforeFingerprint = computeFingerprint(input.baselineState);
+  const beforeCoordinate = { ...input.baselineState.coordinate.values };
+  const beforeBoundaryPhase = input.baselineState.boundary.phase;
   if (input.preview.requiresConfirmation) {
     // For full preview, verify the draft hasn't changed
     if (input.draft.status !== "previewed") {
@@ -65,6 +67,7 @@ export function applyEventStudioEvent(
     description: input.draft.naturalLanguageInput,
     tags: input.draft.tags.length > 0 ? input.draft.tags : undefined,
     categoryHint: "auto",
+    occurredAt: input.draft.occurredAt,
   } as Parameters<typeof parseExperienceEvent>[0]);
 
   const engine = new CharacterPhysicsEngine();
@@ -73,16 +76,27 @@ export function applyEventStudioEvent(
   for (let i = 0; i < input.draft.repetitionCount; i++) {
     const step = engine.processEvent(targetState, parsed);
     lastMemoryId = step.memoryNode.id;
+    warnings.push(...step.temporalSemantics.warnings.map((warning) => `Temporal Semantics: ${warning}`));
   }
 
+  const uniqueWarnings = [...new Set(warnings)];
+
   const afterFingerprint = computeFingerprint(targetState);
-  const surface = buildCharacterStateSurfaceFromState(targetState);
-  const baselineSurface = buildCharacterStateSurfaceFromState(input.baselineState);
 
   // ── Build audit entry ──
   const auditId = opts.auditSeed
     ? `audit_${opts.auditSeed}`
-    : `audit_${computeAuditFingerprint(input.actorId, input.draft.sourceId, input.confirmation, beforeFingerprint, input.preview.parsedEvent)}`;
+    : deterministicAuditId(computeAuditFingerprint(
+      input.actorId,
+      input.draft.sourceId || input.preview.draftId,
+      input.confirmation,
+      beforeFingerprint,
+      {
+        parsedEvent: input.preview.parsedEvent,
+        occurredAt: input.draft.occurredAt,
+        repetitionCount: input.draft.repetitionCount,
+      },
+    ));
 
   const auditEntry: EventStudioAuditEntry = {
     auditId,
@@ -94,13 +108,13 @@ export function applyEventStudioEvent(
     beforeFingerprint,
     afterFingerprint,
     parsedEventSummary: input.preview.parsedEvent,
-    stateDeltaSummary: `trust: ${input.baselineState.coordinate.values.trust.toFixed(3)}→${targetState.coordinate.values.trust.toFixed(3)}, `
-      + `fear: ${input.baselineState.coordinate.values.fear.toFixed(3)}→${targetState.coordinate.values.fear.toFixed(3)}, `
-      + `boundary: ${input.baselineState.boundary.phase}→${targetState.boundary.phase}`,
+    stateDeltaSummary: `trust: ${beforeCoordinate.trust.toFixed(3)}→${targetState.coordinate.values.trust.toFixed(3)}, `
+      + `fear: ${beforeCoordinate.fear.toFixed(3)}→${targetState.coordinate.values.fear.toFixed(3)}, `
+      + `boundary: ${beforeBoundaryPhase}→${targetState.boundary.phase}`,
     realityAuditVerdict: input.preview.realityAuditPreview.expectedVerdict,
     confirmationProvided: true,
     rollbackReference: `rollback:${auditId}:before:${beforeFingerprint}`,
-    warnings: [...warnings],
+    warnings: uniqueWarnings,
   };
 
   const rollbackReference = `rollback:${auditId}:before:${beforeFingerprint}`;
@@ -114,10 +128,10 @@ export function applyEventStudioEvent(
     appliedMemoryId: lastMemoryId,
     stateDeltaSummary: auditEntry.stateDeltaSummary,
     realityAuditVerdict: input.preview.realityAuditPreview.expectedVerdict,
-    warnings,
+    warnings: uniqueWarnings,
     auditEntry,
     rollbackReference,
-    nextRequiredAction: "apply 已完成。如需回滚，请使用 rollback 功能（V11.4）。",
+    nextRequiredAction: "apply 已完成。rollbackReference 仅供审计定位；当前 Time Machine 不执行状态回滚。",
   };
 }
 
@@ -161,6 +175,14 @@ function computeFingerprint(state: CharacterPhysicsState): string {
     b.stressLoad.toFixed(4),
     b.integrity.toFixed(4),
     b.phase,
+    state.temporal.lastProcessedAt ?? "untimed",
+    state.temporal.totalElapsedDays.toFixed(6),
+    state.temporal.processedEventCount,
+    state.temporal.timedEventCount,
+    state.temporal.recentEvents.slice(-8).map((record) => (
+      `${record.signature}:${record.occurredAt}:${record.densityScale.toFixed(4)}`
+    )).join(","),
+    state.parameterSetVersion,
   ];
   let hash = 0;
   const str = parts.join("|");
