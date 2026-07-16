@@ -6,6 +6,7 @@ import {
   readJsonObjectFile,
   removeJsonObjectFileAndBackup,
   writeJsonObjectFileAtomically,
+  type RepositoryPersistenceIntent,
 } from "./jsonFileStore";
 
 const REPOSITORY_LABEL = "parameter adjustment history";
@@ -60,7 +61,7 @@ export class FileParameterAdjustmentHistoryRepository implements ParameterAdjust
     this.withFileLock(() => {
       const store = this.readStore();
       store[entry.characterId] = [...(store[entry.characterId] ?? []), entry];
-      this.writeStore(store);
+      this.writeStore(store, "validated-write");
     });
   }
 
@@ -68,7 +69,7 @@ export class FileParameterAdjustmentHistoryRepository implements ParameterAdjust
     this.withFileLock(() => {
       const store = this.readStore();
       store[characterId] = entries.map((entry) => ({ ...entry, characterId }));
-      this.writeStore(store);
+      this.writeStore(store, "validated-write");
     });
   }
 
@@ -80,12 +81,13 @@ export class FileParameterAdjustmentHistoryRepository implements ParameterAdjust
           repositoryLabel: REPOSITORY_LABEL,
           repositoryKind: REPOSITORY_KIND,
           schemaVersion: SCHEMA_VERSION,
+          persistenceIntent: "destructive-clear",
         });
         return;
       }
       const store = this.readStore();
       delete store[characterId];
-      this.writeStore(store);
+      this.writeStore(store, "destructive-clear");
     });
   }
 
@@ -100,12 +102,17 @@ export class FileParameterAdjustmentHistoryRepository implements ParameterAdjust
     return result.status === "not_found" ? {} : result.value;
   }
 
-  private writeStore(store: SerializedHistoryStore): void {
+  private writeStore(
+    store: SerializedHistoryStore,
+    persistenceIntent: RepositoryPersistenceIntent,
+  ): void {
     writeJsonObjectFileAtomically({
       filePath: this.filePath,
       repositoryLabel: REPOSITORY_LABEL,
       repositoryKind: REPOSITORY_KIND,
       schemaVersion: SCHEMA_VERSION,
+      repositorySpec: REPOSITORY_SPEC,
+      persistenceIntent,
       value: store,
     });
   }

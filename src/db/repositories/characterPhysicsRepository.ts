@@ -11,6 +11,7 @@ import {
   readJsonObjectFile,
   removeJsonObjectFileAndBackup,
   writeJsonObjectFileAtomically,
+  type RepositoryPersistenceIntent,
 } from "./jsonFileStore";
 
 const REPOSITORY_LABEL = "character physics state";
@@ -74,7 +75,7 @@ export class FileCharacterPhysicsRepository implements CharacterPhysicsRepositor
     this.withFileLock(() => {
       const store = this.readStore();
       store[characterId] = serializeCharacterPhysicsState(state);
-      this.writeStore(store);
+      this.writeStore(store, "validated-write");
     });
   }
 
@@ -87,7 +88,7 @@ export class FileCharacterPhysicsRepository implements CharacterPhysicsRepositor
       const current = store[characterId] ? deserializeCharacterPhysicsState(store[characterId]) : undefined;
       const nextState = updater(current);
       store[characterId] = serializeCharacterPhysicsState(nextState);
-      this.writeStore(store);
+      this.writeStore(store, "validated-write");
       return nextState;
     });
   }
@@ -96,7 +97,7 @@ export class FileCharacterPhysicsRepository implements CharacterPhysicsRepositor
     this.withFileLock(() => {
       const store = this.readStore();
       delete store[characterId];
-      this.writeStore(store);
+      this.writeStore(store, "destructive-delete");
     });
   }
 
@@ -107,6 +108,7 @@ export class FileCharacterPhysicsRepository implements CharacterPhysicsRepositor
         repositoryLabel: REPOSITORY_LABEL,
         repositoryKind: REPOSITORY_KIND,
         schemaVersion: SCHEMA_VERSION,
+        persistenceIntent: "destructive-clear",
       });
     });
   }
@@ -122,12 +124,17 @@ export class FileCharacterPhysicsRepository implements CharacterPhysicsRepositor
     return result.status === "not_found" ? {} : result.value;
   }
 
-  private writeStore(store: SerializedStateStore): void {
+  private writeStore(
+    store: SerializedStateStore,
+    persistenceIntent: RepositoryPersistenceIntent,
+  ): void {
     writeJsonObjectFileAtomically({
       filePath: this.filePath,
       repositoryLabel: REPOSITORY_LABEL,
       repositoryKind: REPOSITORY_KIND,
       schemaVersion: SCHEMA_VERSION,
+      repositorySpec: REPOSITORY_SPEC,
+      persistenceIntent,
       value: store,
     });
   }

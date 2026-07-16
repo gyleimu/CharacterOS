@@ -9,6 +9,7 @@ import {
   readJsonObjectFile,
   removeJsonObjectFileAndBackup,
   writeJsonObjectFileAtomically,
+  type RepositoryPersistenceIntent,
 } from "./jsonFileStore";
 
 const REPOSITORY_LABEL = "longitudinal commit audit";
@@ -92,7 +93,7 @@ export class FileLongitudinalCommitAuditRepository implements LongitudinalCommit
     this.withFileLock(() => {
       const store = this.readStore();
       store[entry.characterId] = [...(store[entry.characterId] ?? []), entry];
-      this.writeStore(store);
+      this.writeStore(store, "validated-write");
     });
   }
 
@@ -109,7 +110,7 @@ export class FileLongitudinalCommitAuditRepository implements LongitudinalCommit
       const next = { ...updater(entries[index]!), characterId };
       entries[index] = next;
       store[characterId] = entries;
-      this.writeStore(store);
+      this.writeStore(store, "validated-write");
       return next;
     });
   }
@@ -122,12 +123,13 @@ export class FileLongitudinalCommitAuditRepository implements LongitudinalCommit
           repositoryLabel: REPOSITORY_LABEL,
           repositoryKind: REPOSITORY_KIND,
           schemaVersion: SCHEMA_VERSION,
+          persistenceIntent: "destructive-clear",
         });
         return;
       }
       const store = this.readStore();
       delete store[characterId];
-      this.writeStore(store);
+      this.writeStore(store, "destructive-clear");
     });
   }
 
@@ -142,12 +144,17 @@ export class FileLongitudinalCommitAuditRepository implements LongitudinalCommit
     return result.status === "not_found" ? {} : result.value;
   }
 
-  private writeStore(store: SerializedLongitudinalCommitAuditStore): void {
+  private writeStore(
+    store: SerializedLongitudinalCommitAuditStore,
+    persistenceIntent: RepositoryPersistenceIntent,
+  ): void {
     writeJsonObjectFileAtomically({
       filePath: this.filePath,
       repositoryLabel: REPOSITORY_LABEL,
       repositoryKind: REPOSITORY_KIND,
       schemaVersion: SCHEMA_VERSION,
+      repositorySpec: REPOSITORY_SPEC,
+      persistenceIntent,
       value: store,
     });
   }

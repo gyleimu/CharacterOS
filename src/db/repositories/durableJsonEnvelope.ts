@@ -13,7 +13,11 @@ export const DURABLE_REPOSITORY_KINDS = [
 ] as const;
 
 export type DurableRepositoryKind = typeof DURABLE_REPOSITORY_KINDS[number];
-export type DurableStateIncidentType = "CORRUPTED" | "MIGRATION_REQUIRED" | "IO_ERROR";
+export type DurableStateIncidentType =
+  | "CORRUPTED"
+  | "MIGRATION_REQUIRED"
+  | "IO_ERROR"
+  | "WRITE_VALIDATION_FAILED";
 
 export interface DurableJsonChecksum {
   readonly algorithm: typeof DURABLE_JSON_CHECKSUM_ALGORITHM;

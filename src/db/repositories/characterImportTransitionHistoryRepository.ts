@@ -6,6 +6,7 @@ import {
   readJsonObjectFile,
   removeJsonObjectFileAndBackup,
   writeJsonObjectFileAtomically,
+  type RepositoryPersistenceIntent,
 } from "./jsonFileStore";
 
 const REPOSITORY_LABEL = "character import transition history";
@@ -56,7 +57,7 @@ implements CharacterImportTransitionHistoryRepository {
     this.withFileLock(() => {
       const store = this.readStore();
       store[entry.characterId] = [...(store[entry.characterId] ?? []), entry];
-      this.writeStore(store);
+      this.writeStore(store, "validated-write");
     });
   }
 
@@ -68,12 +69,13 @@ implements CharacterImportTransitionHistoryRepository {
           repositoryLabel: REPOSITORY_LABEL,
           repositoryKind: REPOSITORY_KIND,
           schemaVersion: SCHEMA_VERSION,
+          persistenceIntent: "destructive-clear",
         });
         return;
       }
       const store = this.readStore();
       delete store[characterId];
-      this.writeStore(store);
+      this.writeStore(store, "destructive-clear");
     });
   }
 
@@ -88,12 +90,17 @@ implements CharacterImportTransitionHistoryRepository {
     return result.status === "not_found" ? {} : result.value;
   }
 
-  private writeStore(store: SerializedImportTransitionHistoryStore): void {
+  private writeStore(
+    store: SerializedImportTransitionHistoryStore,
+    persistenceIntent: RepositoryPersistenceIntent,
+  ): void {
     writeJsonObjectFileAtomically({
       filePath: this.filePath,
       repositoryLabel: REPOSITORY_LABEL,
       repositoryKind: REPOSITORY_KIND,
       schemaVersion: SCHEMA_VERSION,
+      repositorySpec: REPOSITORY_SPEC,
+      persistenceIntent,
       value: store,
     });
   }

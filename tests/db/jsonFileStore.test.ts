@@ -9,10 +9,12 @@ import {
   RepositoryFileError,
   writeJsonObjectFileAtomically,
 } from "../../src/db/repositories/jsonFileStore";
+import type { RepositoryValidationSpec } from "../../src/db/repositories/durableValidationTypes";
 
 const LABEL = "test repository";
 const REPOSITORY_KIND = "character-physics" as const;
 const SCHEMA_VERSION = 1;
+const TEST_REPOSITORY_SPEC = createTestRepositorySpec(SCHEMA_VERSION);
 
 describe("jsonFileStore", () => {
   it("returns an explicit NOT_FOUND result for a genuinely missing file", () => {
@@ -102,6 +104,7 @@ describe("jsonFileStore", () => {
         repositoryLabel: LABEL,
         repositoryKind: REPOSITORY_KIND,
         schemaVersion: SCHEMA_VERSION,
+        persistenceIntent: "destructive-clear",
       });
 
       expect(readStore(filePath).status).toBe("not_found");
@@ -181,6 +184,8 @@ describe("jsonFileStore", () => {
         repositoryLabel: LABEL,
         repositoryKind: REPOSITORY_KIND,
         schemaVersion: 2,
+        repositorySpec: createTestRepositorySpec(2),
+        persistenceIntent: "validated-write",
         value: { version: 1 },
       });
       const original = readFileSync(filePath, "utf8");
@@ -208,8 +213,19 @@ function writeStore<T extends Record<string, unknown>>(filePath: string, value: 
     repositoryLabel: LABEL,
     repositoryKind: REPOSITORY_KIND,
     schemaVersion: SCHEMA_VERSION,
+    repositorySpec: TEST_REPOSITORY_SPEC,
+    persistenceIntent: "validated-write",
     value,
   });
+}
+
+function createTestRepositorySpec(schemaVersion: number): RepositoryValidationSpec {
+  return {
+    repositoryKind: REPOSITORY_KIND,
+    schemaVersion,
+    validatePayload: () => ({ valid: true, issues: [] }),
+    inspectDomainIntegrity: () => ({ valid: true, issues: [] }),
+  };
 }
 
 function withTempFile(action: (filePath: string) => void): void {

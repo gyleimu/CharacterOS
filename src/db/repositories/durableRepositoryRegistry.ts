@@ -14,14 +14,10 @@ import {
   validateLongitudinalCommitAuditPayload,
   validateParameterAdjustmentHistoryPayload,
 } from "./durablePayloadValidators";
-import type { DurableValidationResult } from "./durableValidationTypes";
+import type { RepositoryValidationSpec } from "./durableValidationTypes";
 
-export interface DurableRepositorySpec {
-  readonly repositoryKind: DurableRepositoryKind;
-  readonly schemaVersion: number;
+export interface DurableRepositorySpec extends RepositoryValidationSpec {
   readonly legacySchemaVersions: readonly number[];
-  readonly validatePayload: (value: unknown) => DurableValidationResult;
-  readonly inspectDomainIntegrity: (value: unknown) => DurableValidationResult;
 }
 
 const LEGACY_V0 = Object.freeze([0] as const);

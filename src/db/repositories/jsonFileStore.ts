@@ -12,6 +12,7 @@ import {
 } from "node:fs";
 import { dirname } from "node:path";
 import {
+  canonicalizeJson,
   createDurableJsonEnvelope,
   createDurableStateIncidentId,
   decodeDurableJsonDocument,
@@ -20,9 +21,19 @@ import {
   type DurableJsonChecksum,
   type DurableRepositoryKind,
 } from "./durableJsonEnvelope";
-import type { DurableValidationResult } from "./durableValidationTypes";
+import {
+  REPOSITORY_READ_VALIDATION_POLICY,
+  REPOSITORY_WRITE_VALIDATION_POLICY,
+  type DurableValidationResult,
+  type RepositoryValidationPolicy,
+  type RepositoryValidationSpec,
+} from "./durableValidationTypes";
 
-export type RepositoryFileErrorCode = "CORRUPTED" | "MIGRATION_REQUIRED" | "IO_ERROR";
+export type RepositoryFileErrorCode =
+  | "CORRUPTED"
+  | "MIGRATION_REQUIRED"
+  | "IO_ERROR"
+  | "WRITE_VALIDATION_FAILED";
 
 export interface RepositoryFileNotFound {
   readonly status: "not_found";
@@ -42,16 +53,44 @@ export interface RepositoryFileFound<T> {
 
 export type RepositoryFileReadResult<T> = RepositoryFileNotFound | RepositoryFileFound<T>;
 
-export interface RepositoryReadValidationSpec {
-  readonly validatePayload: (value: unknown) => DurableValidationResult;
-  readonly inspectDomainIntegrity: (value: unknown) => DurableValidationResult;
+export type RepositoryPersistenceIntent =
+  | "validated-write"
+  | "destructive-delete"
+  | "destructive-clear";
+
+export type RepositoryWriteFileTarget = "temp" | "backup-temp";
+export type RepositoryWriteReplaceTarget = "backup" | "primary";
+
+/**
+ * @internal Narrow fault-injection seam for filesystem verification tests.
+ * Production repositories must omit this argument and use the Node.js defaults.
+ */
+export interface RepositoryFileStoreWriteHooks {
+  readonly fsyncFile?: (
+    fileDescriptor: number,
+    target: RepositoryWriteFileTarget,
+    filePath: string,
+  ) => void;
+  readonly replaceFile?: (
+    sourcePath: string,
+    destinationPath: string,
+    target: RepositoryWriteReplaceTarget,
+  ) => void;
+  readonly afterFsync?: (
+    target: RepositoryWriteFileTarget,
+    filePath: string,
+  ) => void;
+  readonly afterReplace?: (
+    target: RepositoryWriteReplaceTarget,
+    destinationPath: string,
+  ) => void;
 }
 
 export class RepositoryFileError extends Error {
   readonly code: RepositoryFileErrorCode;
   readonly filePath: string;
   readonly repositoryKind: DurableRepositoryKind;
-  readonly operation: "read" | "serialize" | "write" | "replace" | "remove";
+  readonly operation: "read" | "validate" | "serialize" | "write" | "replace" | "remove";
   readonly recoverySnapshotAvailable: boolean;
   readonly incidentId: string;
   readonly checksum?: {
@@ -100,7 +139,7 @@ export function readJsonObjectFile<T extends Record<string, unknown>>(params: {
   repositoryLabel: string;
   repositoryKind: DurableRepositoryKind;
   schemaVersion: number;
-  repositorySpec?: RepositoryReadValidationSpec;
+  repositorySpec?: RepositoryValidationSpec;
 }): RepositoryFileReadResult<T> {
   let raw: string;
   try {
@@ -186,54 +225,125 @@ export function readJsonObjectFile<T extends Record<string, unknown>>(params: {
 function assertRepositoryReadPayloadValid(params: DurableJsonFileParams & {
   readonly payload: unknown;
   readonly raw: string;
-  readonly repositorySpec?: RepositoryReadValidationSpec;
+  readonly repositorySpec?: RepositoryValidationSpec;
 }): void {
   if (!params.repositorySpec) return;
 
-  assertValidationStage({
+  const failure = findRepositoryValidationFailure({
+    payload: params.payload,
+    repositorySpec: params.repositorySpec,
+    policy: REPOSITORY_READ_VALIDATION_POLICY,
+  });
+  if (!failure) return;
+
+  throw corruptedError({
     ...params,
+    message: failure.message,
+    raw: params.raw,
+  });
+}
+
+function assertRepositoryWritePayloadValid(params: DurableJsonFileParams & {
+  readonly payload: unknown;
+  readonly repositorySpec: RepositoryValidationSpec;
+}): void {
+  if (
+    params.repositorySpec.repositoryKind !== params.repositoryKind
+    || params.repositorySpec.schemaVersion !== params.schemaVersion
+  ) {
+    throw writeValidationError({
+      ...params,
+      message: "repository validation spec does not match the target repository",
+      failureSignature: [
+        "repository-spec-mismatch",
+        params.repositoryKind,
+        String(params.schemaVersion),
+        params.repositorySpec.repositoryKind,
+        String(params.repositorySpec.schemaVersion),
+        fingerprintOutgoingPayload(params.payload),
+      ].join(":"),
+    });
+  }
+
+  const failure = findRepositoryValidationFailure({
+    payload: params.payload,
+    repositorySpec: params.repositorySpec,
+    policy: REPOSITORY_WRITE_VALIDATION_POLICY,
+  });
+  if (!failure) return;
+
+  throw writeValidationError({
+    ...params,
+    message: failure.message,
+    failureSignature: `${failure.signature}|payload:${fingerprintOutgoingPayload(params.payload)}`,
+  });
+}
+
+function findRepositoryValidationFailure(params: {
+  readonly payload: unknown;
+  readonly repositorySpec: RepositoryValidationSpec;
+  readonly policy: RepositoryValidationPolicy;
+}): RepositoryValidationFailure | undefined {
+  return inspectValidationStage({
+    payload: params.payload,
+    policy: params.policy,
     stage: "payload validation",
     inspect: params.repositorySpec.validatePayload,
-  });
-  assertValidationStage({
-    ...params,
+  }) ?? inspectValidationStage({
+    payload: params.payload,
+    policy: params.policy,
     stage: "domain integrity inspection",
     inspect: params.repositorySpec.inspectDomainIntegrity,
   });
 }
 
-function assertValidationStage(params: DurableJsonFileParams & {
+function inspectValidationStage(params: {
   readonly payload: unknown;
-  readonly raw: string;
+  readonly policy: RepositoryValidationPolicy;
   readonly stage: string;
   readonly inspect: (value: unknown) => DurableValidationResult;
-}): void {
+}): RepositoryValidationFailure | undefined {
   let result: DurableValidationResult;
   try {
     result = params.inspect(params.payload);
   } catch {
-    throw corruptedError({
-      ...params,
-      message: `${params.stage} could not inspect persisted data`,
-      raw: params.raw,
-    });
+    return {
+      message: `${params.stage} could not inspect ${params.policy.mode === "read" ? "persisted" : "outgoing"} data`,
+      signature: `${params.policy.mode}:${params.stage}:inspection-failed`,
+    };
   }
 
-  const blockingIssues = result.issues.filter((issue) => issue.severity !== "WARNING");
-  if (result.valid && blockingIssues.length === 0) return;
-
-  const issueSummary = blockingIssues
+  const blockingIssues = result.issues
+    .filter((issue) => params.policy.blockingSeverities.includes(issue.severity))
     .map((issue) => `${issue.severity}:${issue.code}@${issue.path}`)
-    .sort()
-    .slice(0, 5)
-    .join(", ");
-  throw corruptedError({
-    ...params,
+    .sort();
+  if (result.valid && blockingIssues.length === 0) return undefined;
+
+  const issueSummary = blockingIssues.slice(0, 5).join(", ");
+  return {
     message: issueSummary.length > 0
       ? `${params.stage} failed (${issueSummary})`
       : `${params.stage} returned an invalid result without a blocking issue`,
-    raw: params.raw,
-  });
+    signature: [
+      params.policy.mode,
+      params.stage,
+      result.valid ? "reported-valid" : "reported-invalid",
+      ...(blockingIssues.length > 0 ? blockingIssues : ["no-blocking-issue"]),
+    ].join("|"),
+  };
+}
+
+interface RepositoryValidationFailure {
+  readonly message: string;
+  readonly signature: string;
+}
+
+function fingerprintOutgoingPayload(value: unknown): string {
+  try {
+    return fingerprintDurableJsonObservation(canonicalizeJson(value));
+  } catch {
+    return fingerprintDurableJsonObservation(Object.prototype.toString.call(value));
+  }
 }
 
 export function writeJsonObjectFileAtomically<T extends Record<string, unknown>>(params: {
@@ -241,8 +351,15 @@ export function writeJsonObjectFileAtomically<T extends Record<string, unknown>>
   repositoryLabel: string;
   repositoryKind: DurableRepositoryKind;
   schemaVersion: number;
+  repositorySpec: RepositoryValidationSpec;
+  persistenceIntent: RepositoryPersistenceIntent;
   value: T;
-}): void {
+}, writeHooks?: RepositoryFileStoreWriteHooks): void {
+  assertRepositoryWritePayloadValid({
+    ...params,
+    payload: params.value,
+  });
+
   let content: string;
   try {
     const envelope = createDurableJsonEnvelope({
@@ -269,15 +386,16 @@ export function writeJsonObjectFileAtomically<T extends Record<string, unknown>>
   try {
     const current = readJsonObjectFile<T>(params);
 
-    writeSyncedFile(tempPath, content, params);
+    writeSyncedFile(tempPath, content, params, "temp", writeHooks);
     assertValidJsonObjectFile(tempPath, params);
 
     const recoveryContent = current.status === "found" ? current.raw : content;
-    writeSyncedFile(backupTempPath, recoveryContent, params);
+    writeSyncedFile(backupTempPath, recoveryContent, params, "backup-temp", writeHooks);
     assertValidJsonObjectFile(backupTempPath, params);
-    replaceFile(backupTempPath, backupPath, params);
+    replaceFile(backupTempPath, backupPath, params, "backup", writeHooks);
+    assertValidJsonObjectFile(backupPath, params);
 
-    replaceFile(tempPath, params.filePath, params);
+    replaceFile(tempPath, params.filePath, params, "primary", writeHooks);
     assertValidJsonObjectFile(params.filePath, params);
     syncDirectoryBestEffort(dirname(params.filePath));
   } finally {
@@ -291,6 +409,7 @@ export function removeJsonObjectFileAndBackup(params: {
   repositoryLabel: string;
   repositoryKind: DurableRepositoryKind;
   schemaVersion: number;
+  persistenceIntent: "destructive-clear";
 }): void {
   removeFileIfPresent(getRepositoryBackupPath(params.filePath), params);
   removeFileIfPresent(params.filePath, params);
@@ -300,12 +419,19 @@ function writeSyncedFile(
   filePath: string,
   content: string,
   params: DurableJsonFileParams,
+  target: RepositoryWriteFileTarget,
+  writeHooks?: RepositoryFileStoreWriteHooks,
 ): void {
   let handle: number | undefined;
   try {
     handle = openSync(filePath, "wx", 0o600);
     writeFileSync(handle, content, "utf8");
-    fsyncSync(handle);
+    if (writeHooks?.fsyncFile) {
+      writeHooks.fsyncFile(handle, target, filePath);
+    } else {
+      fsyncSync(handle);
+    }
+    writeHooks?.afterFsync?.(target, filePath);
   } catch (error) {
     throw ioError(params, "write", error);
   } finally {
@@ -317,20 +443,31 @@ function replaceFile(
   sourcePath: string,
   destinationPath: string,
   params: DurableJsonFileParams,
+  target: RepositoryWriteReplaceTarget,
+  writeHooks?: RepositoryFileStoreWriteHooks,
 ): void {
   try {
-    renameSync(sourcePath, destinationPath);
+    if (writeHooks?.replaceFile) {
+      writeHooks.replaceFile(sourcePath, destinationPath, target);
+    } else {
+      renameSync(sourcePath, destinationPath);
+    }
+    writeHooks?.afterReplace?.(target, destinationPath);
   } catch (error) {
     throw ioError(params, "replace", error);
   }
 }
 
-function assertValidJsonObjectFile(filePath: string, params: DurableJsonFileParams): void {
+function assertValidJsonObjectFile(
+  filePath: string,
+  params: DurableJsonFileParams & { readonly repositorySpec: RepositoryValidationSpec },
+): void {
   readJsonObjectFile<Record<string, unknown>>({
     filePath,
     repositoryLabel: params.repositoryLabel,
     repositoryKind: params.repositoryKind,
     schemaVersion: params.schemaVersion,
+    repositorySpec: params.repositorySpec,
   });
 }
 
@@ -408,6 +545,23 @@ function migrationRequiredError(params: {
     message: params.message,
     recoverySnapshotAvailable: hasValidRecoverySnapshot(params),
     observationFingerprint: fingerprintDurableJsonObservation(params.raw),
+  });
+}
+
+function writeValidationError(params: DurableJsonFileParams & {
+  readonly message: string;
+  readonly failureSignature: string;
+}): RepositoryFileError {
+  return new RepositoryFileError({
+    code: "WRITE_VALIDATION_FAILED",
+    repositoryLabel: params.repositoryLabel,
+    filePath: params.filePath,
+    repositoryKind: params.repositoryKind,
+    operation: "validate",
+    message: params.message,
+    observationFingerprint: fingerprintDurableJsonObservation(
+      `write-validation:${params.failureSignature}`,
+    ),
   });
 }
 

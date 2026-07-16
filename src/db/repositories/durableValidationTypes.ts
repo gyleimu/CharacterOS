@@ -1,3 +1,5 @@
+import type { DurableRepositoryKind } from "./durableJsonEnvelope";
+
 export type DurableValidationSeverity = "CRITICAL" | "ERROR" | "WARNING";
 
 export interface DurableValidationIssue {
@@ -11,6 +13,36 @@ export interface DurableValidationResult {
   readonly valid: boolean;
   readonly issues: readonly DurableValidationIssue[];
 }
+
+export interface RepositoryValidationSpec {
+  readonly repositoryKind: DurableRepositoryKind;
+  readonly schemaVersion: number;
+  readonly validatePayload: (value: unknown) => DurableValidationResult;
+  readonly inspectDomainIntegrity: (value: unknown) => DurableValidationResult;
+}
+
+export interface RepositoryValidationPolicy {
+  readonly mode: "read" | "write";
+  readonly blockingSeverities: readonly DurableValidationSeverity[];
+  readonly allowWarnings: true;
+}
+
+const BLOCKING_VALIDATION_SEVERITIES = Object.freeze([
+  "CRITICAL",
+  "ERROR",
+] as const satisfies readonly DurableValidationSeverity[]);
+
+export const REPOSITORY_READ_VALIDATION_POLICY: RepositoryValidationPolicy = Object.freeze({
+  mode: "read",
+  blockingSeverities: BLOCKING_VALIDATION_SEVERITIES,
+  allowWarnings: true,
+});
+
+export const REPOSITORY_WRITE_VALIDATION_POLICY: RepositoryValidationPolicy = Object.freeze({
+  mode: "write",
+  blockingSeverities: BLOCKING_VALIDATION_SEVERITIES,
+  allowWarnings: true,
+});
 
 const SEVERITY_ORDER: Readonly<Record<DurableValidationSeverity, number>> = {
   CRITICAL: 0,
