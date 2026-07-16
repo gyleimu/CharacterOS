@@ -9,6 +9,10 @@ import {
   InMemoryCharacterPhysicsRepository
 } from "../../src/db/repositories/characterPhysicsRepository";
 import { RepositoryFileError } from "../../src/db/repositories/jsonFileStore";
+import {
+  createDurableJsonEnvelope,
+  serializeDurableJsonEnvelope,
+} from "../../src/db/repositories/durableJsonEnvelope";
 
 describe("InMemoryCharacterPhysicsRepository", () => {
   it("stores, returns, deletes, and clears character physics states", () => {
@@ -31,7 +35,7 @@ describe("InMemoryCharacterPhysicsRepository", () => {
     const filePath = join(dir, "physics_states.json");
     try {
       const repository = new FileCharacterPhysicsRepository(filePath);
-      const state = createCharacterPhysicsState();
+      const state = createStateForRepositoryKey("lin_fan");
 
       repository.set("lin_fan", state);
 
@@ -89,7 +93,7 @@ describe("FileCharacterPhysicsRepository", () => {
     const dir = mkdtempSync(join(tmpdir(), "characteros-state-"));
     const filePath = join(dir, "states.json");
     try {
-      const state = createCharacterPhysicsState();
+      const state = createStateForRepositoryKey("lin_fan");
       const legacy = `${JSON.stringify({ lin_fan: serializeCharacterPhysicsState(state) }, null, 2)}\n`;
       writeFileSync(filePath, legacy, "utf8");
 
@@ -101,7 +105,81 @@ describe("FileCharacterPhysicsRepository", () => {
       rmSync(dir, { recursive: true, force: true });
     }
   });
+
+  it("rejects a checksum-valid envelope with a structurally invalid payload", () => {
+    const dir = mkdtempSync(join(tmpdir(), "characteros-state-"));
+    const filePath = join(dir, "states.json");
+    try {
+      const bytes = writeEnvelope(filePath, {
+        lin_fan: { coordinate: null },
+      });
+
+      expectCorrupted(() => new FileCharacterPhysicsRepository(filePath).get("lin_fan"));
+      expect(readFileSync(filePath, "utf8")).toBe(bytes);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("rejects a structurally valid payload that violates domain integrity", () => {
+    const dir = mkdtempSync(join(tmpdir(), "characteros-state-"));
+    const filePath = join(dir, "states.json");
+    try {
+      const serialized = serializeCharacterPhysicsState(createStateForRepositoryKey("different-character"));
+      const bytes = writeEnvelope(filePath, { lin_fan: serialized });
+
+      expectCorrupted(() => new FileCharacterPhysicsRepository(filePath).get("lin_fan"));
+      expect(readFileSync(filePath, "utf8")).toBe(bytes);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("allows domain warnings without mutating the stored bytes", () => {
+    const dir = mkdtempSync(join(tmpdir(), "characteros-state-"));
+    const filePath = join(dir, "states.json");
+    try {
+      const serialized = serializeCharacterPhysicsState(createStateForRepositoryKey("lin_fan"));
+      serialized.proceduralRoutines = [{
+        id: "warning-routine",
+        cueTags: [],
+        action: "wait",
+        strength: 0.4,
+        repetitionCount: 1,
+      }];
+      const bytes = writeEnvelope(filePath, { lin_fan: serialized });
+
+      const state = new FileCharacterPhysicsRepository(filePath).get("lin_fan");
+
+      expect(state?.proceduralRoutines).toHaveLength(1);
+      expect(readFileSync(filePath, "utf8")).toBe(bytes);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
 });
+
+function writeEnvelope(filePath: string, payload: Record<string, unknown>): string {
+  const envelope = createDurableJsonEnvelope({
+    repositoryKind: "character-physics",
+    schemaVersion: 1,
+    payload,
+  });
+  const bytes = `${serializeDurableJsonEnvelope(envelope)}\n`;
+  writeFileSync(filePath, bytes, "utf8");
+  return bytes;
+}
+
+function createStateForRepositoryKey(characterId: string) {
+  return createCharacterPhysicsState({
+    identity: {
+      id: characterId,
+      name: "Repository Test Character",
+      description: "Character fixture with an identity matching its repository key.",
+      tags: ["test"],
+    },
+  });
+}
 
 function expectCorrupted(action: () => unknown): void {
   let caught: unknown;

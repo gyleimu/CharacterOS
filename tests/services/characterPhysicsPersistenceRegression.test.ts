@@ -6,6 +6,10 @@ import type { ExperienceEvent } from "../../src/core/event/event";
 import { InMemoryCharacterImportTransitionHistoryRepository } from "../../src/db/repositories/characterImportTransitionHistoryRepository";
 import { FileCharacterPhysicsRepository } from "../../src/db/repositories/characterPhysicsRepository";
 import { RepositoryFileError } from "../../src/db/repositories/jsonFileStore";
+import {
+  createDurableJsonEnvelope,
+  serializeDurableJsonEnvelope,
+} from "../../src/db/repositories/durableJsonEnvelope";
 import { InMemoryLongitudinalCommitAuditRepository } from "../../src/db/repositories/longitudinalCommitAuditRepository";
 import { InMemoryParameterAdjustmentHistoryRepository } from "../../src/db/repositories/parameterAdjustmentHistoryRepository";
 import { InMemoryCharacterPhysicsService } from "../../src/services/characterPhysicsService";
@@ -86,6 +90,44 @@ describe("CharacterPhysicsService durable-state corruption regression", () => {
       expectCorrupted(() => service.resetCharacter("lin_fan"));
 
       expect(readFileSync(filePath, "utf8")).toBe(tamperedBytes);
+      expect(adjustmentClear).not.toHaveBeenCalled();
+      expect(importClear).not.toHaveBeenCalled();
+      expect(auditClear).not.toHaveBeenCalled();
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("blocks checksum-valid invalid payloads before they reach Character Physics Core", () => {
+    const dir = mkdtempSync(join(tmpdir(), "characteros-service-invalid-payload-"));
+    const filePath = join(dir, "physics_states.json");
+    try {
+      const envelope = createDurableJsonEnvelope({
+        repositoryKind: "character-physics",
+        schemaVersion: 1,
+        payload: { lin_fan: { coordinate: null } },
+      });
+      const invalidBytes = `${serializeDurableJsonEnvelope(envelope)}\n`;
+      writeFileSync(filePath, invalidBytes, "utf8");
+
+      const adjustmentHistory = new InMemoryParameterAdjustmentHistoryRepository();
+      const importHistory = new InMemoryCharacterImportTransitionHistoryRepository();
+      const longitudinalAudit = new InMemoryLongitudinalCommitAuditRepository();
+      const adjustmentClear = vi.spyOn(adjustmentHistory, "clear");
+      const importClear = vi.spyOn(importHistory, "clear");
+      const auditClear = vi.spyOn(longitudinalAudit, "clear");
+      const service = new InMemoryCharacterPhysicsService(
+        new FileCharacterPhysicsRepository(filePath),
+        adjustmentHistory,
+        importHistory,
+        longitudinalAudit,
+      );
+
+      expectCorrupted(() => service.getState("lin_fan"));
+      expectCorrupted(() => service.processEvent("lin_fan", EVENT));
+      expectCorrupted(() => service.resetCharacter("lin_fan"));
+
+      expect(readFileSync(filePath, "utf8")).toBe(invalidBytes);
       expect(adjustmentClear).not.toHaveBeenCalled();
       expect(importClear).not.toHaveBeenCalled();
       expect(auditClear).not.toHaveBeenCalled();

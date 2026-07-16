@@ -20,6 +20,7 @@ import {
   type DurableJsonChecksum,
   type DurableRepositoryKind,
 } from "./durableJsonEnvelope";
+import type { DurableValidationResult } from "./durableValidationTypes";
 
 export type RepositoryFileErrorCode = "CORRUPTED" | "MIGRATION_REQUIRED" | "IO_ERROR";
 
@@ -40,6 +41,11 @@ export interface RepositoryFileFound<T> {
 }
 
 export type RepositoryFileReadResult<T> = RepositoryFileNotFound | RepositoryFileFound<T>;
+
+export interface RepositoryReadValidationSpec {
+  readonly validatePayload: (value: unknown) => DurableValidationResult;
+  readonly inspectDomainIntegrity: (value: unknown) => DurableValidationResult;
+}
 
 export class RepositoryFileError extends Error {
   readonly code: RepositoryFileErrorCode;
@@ -94,6 +100,7 @@ export function readJsonObjectFile<T extends Record<string, unknown>>(params: {
   repositoryLabel: string;
   repositoryKind: DurableRepositoryKind;
   schemaVersion: number;
+  repositorySpec?: RepositoryReadValidationSpec;
 }): RepositoryFileReadResult<T> {
   let raw: string;
   try {
@@ -146,6 +153,11 @@ export function readJsonObjectFile<T extends Record<string, unknown>>(params: {
     throw migrationRequiredError({ ...params, message: decoded.reason, raw });
   }
   if (decoded.status === "legacy-v0") {
+    assertRepositoryReadPayloadValid({
+      ...params,
+      payload: decoded.payload,
+      raw,
+    });
     return {
       status: "found",
       value: decoded.payload,
@@ -155,6 +167,11 @@ export function readJsonObjectFile<T extends Record<string, unknown>>(params: {
       schemaVersion: 0,
     };
   }
+  assertRepositoryReadPayloadValid({
+    ...params,
+    payload: decoded.envelope.payload,
+    raw,
+  });
   return {
     status: "found",
     value: decoded.envelope.payload,
@@ -164,6 +181,59 @@ export function readJsonObjectFile<T extends Record<string, unknown>>(params: {
     schemaVersion: decoded.envelope.schemaVersion,
     checksum: decoded.envelope.checksum,
   };
+}
+
+function assertRepositoryReadPayloadValid(params: DurableJsonFileParams & {
+  readonly payload: unknown;
+  readonly raw: string;
+  readonly repositorySpec?: RepositoryReadValidationSpec;
+}): void {
+  if (!params.repositorySpec) return;
+
+  assertValidationStage({
+    ...params,
+    stage: "payload validation",
+    inspect: params.repositorySpec.validatePayload,
+  });
+  assertValidationStage({
+    ...params,
+    stage: "domain integrity inspection",
+    inspect: params.repositorySpec.inspectDomainIntegrity,
+  });
+}
+
+function assertValidationStage(params: DurableJsonFileParams & {
+  readonly payload: unknown;
+  readonly raw: string;
+  readonly stage: string;
+  readonly inspect: (value: unknown) => DurableValidationResult;
+}): void {
+  let result: DurableValidationResult;
+  try {
+    result = params.inspect(params.payload);
+  } catch {
+    throw corruptedError({
+      ...params,
+      message: `${params.stage} could not inspect persisted data`,
+      raw: params.raw,
+    });
+  }
+
+  const blockingIssues = result.issues.filter((issue) => issue.severity !== "WARNING");
+  if (result.valid && blockingIssues.length === 0) return;
+
+  const issueSummary = blockingIssues
+    .map((issue) => `${issue.severity}:${issue.code}@${issue.path}`)
+    .sort()
+    .slice(0, 5)
+    .join(", ");
+  throw corruptedError({
+    ...params,
+    message: issueSummary.length > 0
+      ? `${params.stage} failed (${issueSummary})`
+      : `${params.stage} returned an invalid result without a blocking issue`,
+    raw: params.raw,
+  });
 }
 
 export function writeJsonObjectFileAtomically<T extends Record<string, unknown>>(params: {
