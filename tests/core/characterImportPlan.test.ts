@@ -169,7 +169,7 @@ function validPackage(params: {
 }): CharacterPhysicsExportResponse {
   const stabilityRisk = params.stabilityRisk ?? "low";
   const governanceRecommendation = params.governanceRecommendation ?? "allow";
-  const state = createDefaultState({
+  const state = createDefaultState(params.characterId, {
     seedInitialExperiences: params.seedInitialExperiences ?? false
   });
   const pkg: CharacterPhysicsExportResponse = {

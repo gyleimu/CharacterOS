@@ -13,7 +13,7 @@ import {
 } from "../../helpers/longitudinalCommitTestUtils";
 
 function appliedAudit(characterId = "rollback-core-char") {
-  const baseState = createDefaultState();
+  const baseState = createDefaultState(characterId);
   const finalState = cloneWithGeneratedMemory(baseState, "life-core-rollback-1");
   const handoff = buildLongitudinalCommitHandoff(characterId, baseState, finalState);
   return {

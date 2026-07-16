@@ -86,7 +86,7 @@ describe("character export validation", () => {
 });
 
 function validPackage(): CharacterPhysicsExportResponse {
-  const state = createDefaultState();
+  const state = createDefaultState("lin_fan");
   const pkg: CharacterPhysicsExportResponse = {
     exportedAt: "2026-06-21T00:00:00.000Z",
     characterId: "lin_fan",

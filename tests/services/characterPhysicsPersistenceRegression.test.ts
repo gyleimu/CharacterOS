@@ -26,6 +26,28 @@ const EVENT: ExperienceEvent = {
 };
 
 describe("CharacterPhysicsService durable-state corruption regression", () => {
+  it("persists a caller-provided non-default character id without an identity mismatch", () => {
+    const dir = mkdtempSync(join(tmpdir(), "characteros-service-identity-"));
+    const filePath = join(dir, "physics_states.json");
+    try {
+      const service = new InMemoryCharacterPhysicsService(
+        new FileCharacterPhysicsRepository(filePath),
+        new InMemoryParameterAdjustmentHistoryRepository(),
+        new InMemoryCharacterImportTransitionHistoryRepository(),
+        new InMemoryLongitudinalCommitAuditRepository(),
+      );
+
+      const created = service.getState("custom_character");
+      const reloaded = new FileCharacterPhysicsRepository(filePath).get("custom_character");
+
+      expect(created.identity.id).toBe("custom_character");
+      expect(created.identity.name).toBe("林凡");
+      expect(reloaded?.identity.id).toBe("custom_character");
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
   it("does not auto-reset, process an event, or clear histories after state corruption", () => {
     const dir = mkdtempSync(join(tmpdir(), "characteros-service-corruption-"));
     const filePath = join(dir, "physics_states.json");

@@ -83,6 +83,7 @@ implements CharacterImportTransitionHistoryRepository {
       repositoryLabel: REPOSITORY_LABEL,
       repositoryKind: REPOSITORY_KIND,
       schemaVersion: SCHEMA_VERSION,
+      repositorySpec: REPOSITORY_SPEC,
     });
     return result.status === "not_found" ? {} : result.value;
   }
