@@ -1,15 +1,29 @@
+import { randomUUID } from "node:crypto";
 import {
   closeSync,
   existsSync,
+  fsyncSync,
   mkdirSync,
   openSync,
   readFileSync,
   rmSync,
+  rmdirSync,
   statSync,
   unlinkSync,
   writeSync
 } from "node:fs";
 import { dirname } from "node:path";
+
+interface RepositoryFileLockLease {
+  readonly handle: number;
+  readonly ownerToken: string;
+}
+
+interface RepositoryFileLockOwner {
+  readonly pid: number;
+  readonly createdAt: string;
+  readonly ownerToken: string;
+}
 
 export function withRepositoryFileLock<T>(params: {
   filePath: string;
@@ -18,42 +32,86 @@ export function withRepositoryFileLock<T>(params: {
 }): T {
   const lockPath = `${params.filePath}.lock`;
   mkdirSync(dirname(params.filePath), { recursive: true });
-  let lockHandle: number | undefined;
+  let lease: RepositoryFileLockLease | undefined;
   try {
-    lockHandle = acquireLock(lockPath, params.lockLabel);
+    lease = acquireLock(lockPath, params.lockLabel);
     return params.action();
   } finally {
-    if (lockHandle !== undefined) closeSync(lockHandle);
-    releaseLock(lockPath);
+    if (lease !== undefined) releaseLock(lockPath, params.lockLabel, lease);
   }
 }
 
-function acquireLock(lockPath: string, lockLabel: string): number {
+function acquireLock(lockPath: string, lockLabel: string): RepositoryFileLockLease {
   for (let attempt = 0; attempt < 400; attempt += 1) {
     try {
       mkdirSync(lockPath);
-      const lockHandle = openSync(`${lockPath}/owner`, "w");
-      writeSync(lockHandle, JSON.stringify({
-        pid: process.pid,
-        createdAt: new Date().toISOString()
-      }));
-      return lockHandle;
-    } catch {
+    } catch (error) {
+      if (!isNodeError(error) || error.code !== "EEXIST") {
+        throw new Error(`Could not create ${lockLabel} repository file lock: ${lockPath}`, { cause: error });
+      }
       cleanupStaleLock(lockPath);
       sleepSync(5);
+      continue;
+    }
+
+    const ownerToken = randomUUID();
+    let lockHandle: number | undefined;
+    try {
+      lockHandle = openSync(`${lockPath}/owner`, "wx");
+      writeSync(lockHandle, JSON.stringify({
+        pid: process.pid,
+        createdAt: new Date().toISOString(),
+        ownerToken,
+      } satisfies RepositoryFileLockOwner));
+      fsyncSync(lockHandle);
+      return { handle: lockHandle, ownerToken };
+    } catch (error) {
+      if (lockHandle !== undefined) closeHandleBestEffort(lockHandle);
+      cleanupFailedAcquisition(lockPath, ownerToken);
+      throw new Error(`Could not initialize ${lockLabel} repository file lock: ${lockPath}`, { cause: error });
     }
   }
   throw new Error(`Could not acquire ${lockLabel} repository file lock: ${lockPath}`);
 }
 
-function releaseLock(lockPath: string): void {
-  retry(() => {
-    const ownerPath = `${lockPath}/owner`;
-    if (existsSync(ownerPath)) unlinkSync(ownerPath);
-  });
-  retry(() => {
-    if (existsSync(lockPath)) rmSync(lockPath, { recursive: true, force: true });
-  });
+function releaseLock(
+  lockPath: string,
+  lockLabel: string,
+  lease: RepositoryFileLockLease,
+): void {
+  try {
+    closeSync(lease.handle);
+  } catch (error) {
+    throw new Error(`Could not close ${lockLabel} repository file lock handle: ${lockPath}`, { cause: error });
+  }
+
+  const ownerPath = `${lockPath}/owner`;
+  const owner = readLockOwner(ownerPath);
+  if (owner?.pid !== process.pid || owner.ownerToken !== lease.ownerToken) {
+    throw new Error(`Refusing to release ${lockLabel} repository file lock with mismatched ownership: ${lockPath}`);
+  }
+
+  retryOrThrow(
+    () => unlinkSync(ownerPath),
+    `Could not remove ${lockLabel} repository file lock owner: ${ownerPath}`,
+  );
+  retryOrThrow(
+    () => rmdirSync(lockPath),
+    `Could not remove ${lockLabel} repository file lock directory: ${lockPath}`,
+  );
+}
+
+function cleanupFailedAcquisition(lockPath: string, ownerToken: string): void {
+  if (!existsSync(lockPath)) return;
+  const ownerPath = `${lockPath}/owner`;
+  if (!existsSync(ownerPath)) {
+    retry(() => rmSync(lockPath, { recursive: true, force: true }), 10);
+    return;
+  }
+  const owner = readLockOwner(ownerPath);
+  if (owner?.pid === process.pid && owner.ownerToken === ownerToken) {
+    retry(() => rmSync(lockPath, { recursive: true, force: true }), 10);
+  }
 }
 
 function cleanupStaleLock(lockPath: string): void {
@@ -86,6 +144,28 @@ function isOwnerProcessStale(ownerPath: string): boolean {
   }
 }
 
+function readLockOwner(ownerPath: string): RepositoryFileLockOwner | undefined {
+  try {
+    const owner = JSON.parse(readFileSync(ownerPath, "utf8")) as Partial<RepositoryFileLockOwner>;
+    if (
+      typeof owner.pid !== "number"
+      || owner.pid <= 0
+      || typeof owner.createdAt !== "string"
+      || typeof owner.ownerToken !== "string"
+      || owner.ownerToken.length === 0
+    ) {
+      return undefined;
+    }
+    return {
+      pid: owner.pid,
+      createdAt: owner.createdAt,
+      ownerToken: owner.ownerToken,
+    };
+  } catch {
+    return undefined;
+  }
+}
+
 function isNodeError(error: unknown): error is NodeJS.ErrnoException {
   return typeof error === "object" && error !== null && "code" in error;
 }
@@ -106,6 +186,28 @@ function retry(action: () => void, attempts = 20): void {
     } catch {
       sleepSync(5);
     }
+  }
+}
+
+function retryOrThrow(action: () => void, message: string, attempts = 20): void {
+  let lastError: unknown;
+  for (let attempt = 0; attempt < attempts; attempt += 1) {
+    try {
+      action();
+      return;
+    } catch (error) {
+      lastError = error;
+      sleepSync(5);
+    }
+  }
+  throw new Error(message, { cause: lastError });
+}
+
+function closeHandleBestEffort(handle: number): void {
+  try {
+    closeSync(handle);
+  } catch {
+    // The incomplete acquisition remains fail-closed and can be cleaned as stale later.
   }
 }
 
