@@ -83,3 +83,21 @@ The active engineering direction is [Core Calibration & Durability](docs/core_ca
 - [Documentation index](docs/INDEX.md)
 - [Contributing and quality gates](CONTRIBUTING.md)
 - [Change log](CHANGELOG.md)
+
+
+
+## AI Development
+
+CharacterOS was developed with assistance from OpenAI Codex and GPT-5.6.
+
+Codex was used for:
+- Repository analysis and code navigation
+- Architecture implementation assistance
+- Test generation and validation
+- Hackathon demo isolation and integration
+
+GPT-5.6 was used for:
+- System design discussions
+- Technical review
+- Debugging assistance
+- Refining project documentation and presentation
