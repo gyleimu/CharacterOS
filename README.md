@@ -303,3 +303,8 @@ Start development server:
 
 npm run next:dev
 
+
+
+# License
+
+MIT License
