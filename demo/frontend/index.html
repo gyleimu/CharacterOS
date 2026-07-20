@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A standalone Hackathon presentation of one CharacterOS character-evolution story."
+    />
+    <title>CharacterOS | Alex Evolution Demo</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow"><span class="pulse-dot"></span> CHARACTEROS · HACKATHON DEMO</p>
+          <h1>One experience.<br /><em>A visible evolution.</em></h1>
+          <p class="engine-statement">CharacterOS demonstrates how experiences can influence memory, personality state, and future behavior.</p>
+          <p class="accumulation-statement">CharacterOS models personality evolution through accumulated experiences. A single event creates small changes, while repeated experiences shape long-term behavior.</p>
+        </div>
+        <div id="connection-status" class="boundary-badge">CONNECTING TO LOCAL CORE</div>
+      </header>
+
+      <section class="character-card panel" aria-labelledby="character-heading">
+        <div class="avatar" aria-hidden="true">A</div>
+        <div class="character-identity">
+          <p class="section-kicker">Character</p>
+          <h2 id="character-heading">Alex</h2>
+          <p class="muted">Live local CharacterOS core session</p>
+        </div>
+        <div class="memory-counter">
+          <span>Memory Count</span>
+          <strong><b id="memory-count">12</b><small id="memory-delta"></small></strong>
+        </div>
+        <div class="initial-state" aria-label="Alex initial personality state">
+          <p class="section-kicker">Current Core Coordinate</p>
+          <div class="state-pills">
+            <span><b>Trust</b> <i id="initial-trust">—</i></span>
+            <span><b>Fear</b> <i id="initial-fear">—</i></span>
+            <span><b>Control</b> <i id="initial-control">—</i></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="event-panel panel" aria-labelledby="event-heading">
+        <div class="event-head">
+          <div>
+            <p class="section-kicker">Experience Input</p>
+            <h2 id="event-heading">What happened to Alex?</h2>
+          </div>
+          <span class="scenario-chip">Rule parser · live core result</span>
+        </div>
+        <label for="event-input">Input Event</label>
+        <textarea id="event-input" rows="2">Alex's best friend betrayed him.</textarea>
+        <div class="example-events" aria-labelledby="examples-heading">
+          <p id="examples-heading" class="example-label">Example Experiences</p>
+          <div class="example-actions">
+            <button class="example-button" type="button" data-example="Alex's best friend betrayed him.">Friend Betrayal</button>
+            <button class="example-button" type="button" data-example="Alex completed a major achievement and received recognition.">Major Achievement</button>
+            <button class="example-button" type="button" data-example="Alex lost an important relationship and feels abandoned.">Important Loss</button>
+          </div>
+        </div>
+        <div class="event-actions">
+          <p id="event-help" class="event-help">Loading the local CharacterOS core session…</p>
+          <button id="process-button" class="primary-button" type="button">
+            <span>Process Event</span><i aria-hidden="true">→</i>
+          </button>
+        </div>
+      </section>
+
+      <section class="history panel" aria-labelledby="history-heading">
+        <div class="history-head">
+          <div>
+            <p class="section-kicker">Accumulated Context</p>
+            <h2 id="history-heading">Experience Timeline · Life History</h2>
+          </div>
+          <span class="history-note">Memory history, in processing order</span>
+          <div class="timeline-stats">
+            <span>Current Experience Count: <b id="experience-count">0</b></span>
+            <small><b>Accumulated Personality Drift:</b> shows how repeated experiences gradually influence the character.</small>
+          </div>
+        </div>
+        <p class="history-intro">Personality evolves through accumulated experiences, not a single event. Each processed event below is a live MemoryNode.</p>
+        <ul id="history-list" class="history-list" aria-live="polite"></ul>
+      </section>
+
+      <section class="pipeline panel" aria-labelledby="pipeline-heading">
+        <div class="pipeline-head">
+          <div>
+            <p class="section-kicker">Causal Trace</p>
+            <h2 id="pipeline-heading">Experience becomes a behavioral signal</h2>
+          </div>
+          <span id="pipeline-status" class="pipeline-status">Ready</span>
+        </div>
+        <ol class="pipeline-steps" aria-label="Event processing stages">
+          <li data-step="1"><span>01</span><strong>Event</strong><small id="event-kind">waiting for input</small></li>
+          <li data-step="2"><span>02</span><strong>Memory Creation</strong><small>encoded experience</small></li>
+          <li data-step="3"><span>03</span><strong>Impact Analysis</strong><small>relevant pressure</small></li>
+          <li data-step="4"><span>04</span><strong>Personality Update</strong><small>state shift</small></li>
+          <li data-step="5"><span>05</span><strong>Behavior Change</strong><small>new tendency</small></li>
+        </ol>
+      </section>
+
+      <section id="result" class="result-grid" aria-live="polite">
+        <article class="memory-result panel result-card">
+          <p class="section-kicker">New Memory</p>
+          <div class="memory-orb" aria-hidden="true"></div>
+          <h2 id="memory-title">Memory pending</h2>
+          <p id="memory-summary">Process an event to create a real MemoryNode in the local core session.</p>
+          <div class="impact-readout" aria-live="polite">
+            <span>Impact Analysis</span>
+            <p class="impact-label">Experience Impact</p>
+            <dl class="impact-details">
+              <div><dt>Level</dt><dd id="impact-level">Awaiting result</dd></div>
+              <div><dt>Core Score</dt><dd id="impact-score">—</dd></div>
+              <div><dt>Cluster Mass</dt><dd id="impact-cluster">—</dd></div>
+              <div><dt>Boundary Phase</dt><dd id="impact-boundary">—</dd></div>
+            </dl>
+            <p><b>Description:</b> <span id="impact-copy">Impact level is calculated from the core-generated impact magnitude.</span></p>
+          </div>
+        </article>
+
+        <article class="state-result panel result-card">
+          <p class="section-kicker">Personality Change · Before → After</p>
+          <div class="metric-list">
+            <div class="metric trust">
+              <div><span>Trust</span><strong><b id="trust-before">—</b><i>→</i><b id="trust-after">—</b></strong></div>
+              <div class="bar"><span style="--before: 0%; --after: 0%"></span></div>
+              <p id="trust-impact" class="metric-impact">Awaiting a core-generated coordinate delta.</p>
+              <div class="trend-copy"><b id="trust-trend">Trend: awaiting result</b><span id="trust-meaning">Meaning: awaiting a core-generated direction.</span></div>
+            </div>
+            <div class="metric fear">
+              <div><span>Fear</span><strong><b id="fear-before">—</b><i>→</i><b id="fear-after">—</b></strong></div>
+              <div class="bar"><span style="--before: 0%; --after: 0%"></span></div>
+              <p id="fear-impact" class="metric-impact">Awaiting a core-generated coordinate delta.</p>
+              <div class="trend-copy"><b id="fear-trend">Trend: awaiting result</b><span id="fear-meaning">Meaning: awaiting a core-generated direction.</span></div>
+            </div>
+            <div class="metric control">
+              <div><span>Control</span><strong><b id="control-before">—</b><i>→</i><b id="control-after">—</b></strong></div>
+              <div class="bar"><span style="--before: 0%; --after: 0%"></span></div>
+              <p id="control-impact" class="metric-impact">Awaiting a core-generated coordinate delta.</p>
+              <div class="trend-copy"><b id="control-trend">Trend: awaiting result</b><span id="control-meaning">Meaning: awaiting a core-generated direction.</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="behavior-result panel result-card">
+          <p class="section-kicker">Behavior Change</p>
+          <div class="behavior-copy before"><span>Before</span><p id="behavior-before">Awaiting the initial derived decision.</p></div>
+          <div class="behavior-arrow" aria-hidden="true">↓</div>
+          <div class="behavior-copy after"><span>After</span><p id="behavior-after">Process an event to receive the updated derived decision.</p></div>
+        </article>
+      </section>
+
+      <footer class="demo-footer">
+        <p><b>Demo boundary:</b> this page calls a local, in-memory demo adapter that executes existing CharacterOS core modules. It never calls the persistent CharacterOS write routes.</p>
+        <button id="reset-button" class="secondary-button" type="button">Reset demo</button>
+      </footer>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>
