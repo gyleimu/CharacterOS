@@ -301,10 +301,10 @@ npm test
 
 Start development server:
 
+```bash
 npm run next:dev
 
-
----
+```
 
 # Project Information
 
