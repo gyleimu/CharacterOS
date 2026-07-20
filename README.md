@@ -303,3 +303,27 @@ Start development server:
 
 npm run next:dev
 
+
+---
+
+# Project Information
+
+## Release Status
+
+CharacterOS has reached **V10 RC (Release Candidate)** status.
+
+Current milestone:
+- V10 RC Core Reality Gate: PASS
+- Unified Quality Gate: PASS
+
+Current implementation:
+- Single-character simulation engine
+- 单角色内核
+
+Testing:
+- 2163 tests
+- 170 files
+
+Future roadmap:
+- V11 focuses on further platform and SDK improvements.
+- V20 multi-character system: V20 未开始
