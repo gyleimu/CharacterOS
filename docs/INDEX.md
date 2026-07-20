@@ -1,5 +1,14 @@
 # CharacterOS Documentation Index
 
+## Hackathon entry point
+
+| Doc | Description |
+|-----|-------------|
+| [Hackathon Demo Guide](../demo/README.md) | Two-minute local demo, safety boundary, and recording run-of-show |
+| [Historical Root README](archive/README_history.md) | Preserved legacy project log; not the active product entry point |
+
+# CharacterOS Documentation Index
+
 ## V12 Agent SDK (Design Phase)
 
 | Doc | Description |

@@ -6,6 +6,11 @@ node_modules/
 tsconfig.tsbuildinfo
 data/physics_states.json
 data/physics_states.json.tmp-*
+# Durable JSON repositories create local recovery snapshots and same-directory
+# atomic-write temporaries. They are runtime state, not source artifacts.
+data/*.json.bak
+data/*.json.tmp-*
+data/*.json.bak.tmp-*
 prisma/dev.db
 prisma/dev.db-journal
 

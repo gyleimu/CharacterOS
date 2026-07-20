@@ -15,7 +15,8 @@
     "demo:physics": "tsx src/core/demo/physicsDemo.ts",
     "demo:simulation": "tsx src/core/demo/simulationDemo.ts",
     "demo:trace": "tsx src/core/demo/traceReplayDemo.ts",
-    "demo:service": "tsx src/services/demo/characterPhysicsServiceDemo.ts"
+    "demo:service": "tsx src/services/demo/characterPhysicsServiceDemo.ts",
+    "demo:hackathon": "tsx demo/server.ts"
   },
   "devDependencies": {
     "@prisma/client": "^6.19.3",

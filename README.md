@@ -1,329 +1,85 @@
 # CharacterOS
 
-## AI Characters That Remember, Learn, and Evolve
+> **Simulate people, not stories.**
 
-CharacterOS is an event-driven AI character engine that enables AI characters to form memories, evolve personalities, and adapt their behaviors through experiences.
+CharacterOS is a deterministic, single-character psychological simulation engine. An experience is parsed into a calibrated impact, accumulated through memory and belief, and then projected into needs, desires, and a decision surface. It is not a chatbot, does not diagnose people, and does not let an LLM write character state.
 
-Unlike traditional prompt-based AI characters that only generate responses from the current conversation, CharacterOS explores how experiences can create lasting changes in memory, beliefs, personality states, and future decisions.
+This repository is prepared for a hackathon demo: the fastest path is the isolated local experience in [`demo/`](demo/README.md).
 
----
+![CharacterOS Hackathon demo](demo/screenshots/alex-evolution-complete.png)
 
-## Inspiration
+## Hackathon quick start
 
-Current AI characters can have impressive conversations, but they usually lack true continuity.
+Prerequisites: Node.js 22 and npm.
 
-They often forget previous experiences and behave the same way regardless of what happened before.
-
-We wanted to explore a different question:
-
-**What if AI characters could actually remember, learn, and evolve like living beings?**
-
-This idea inspired CharacterOS — a system designed to move AI characters from static prompt responses toward experience-driven intelligence.
-
----
-
-# Core Concept
-
-Traditional AI Character:
-User Input
-↓
-LLM
-↓
-Response
-
-
-CharacterOS:
-
-
-Experience Event
-↓
-Experience Understanding
-↓
-Memory Formation
-↓
-Impact Analysis
-↓
-Personality Evolution
-↓
-Behavior Adaptation
-
-
-Important experiences are not simply stored as chat history.
-
-They become structured memories that can influence:
-
-- Personality tendencies
-- Belief systems
-- Emotional responses
-- Future decision patterns
-
----
-
-# What CharacterOS Does
-
-CharacterOS provides a simulation framework for AI characters with persistent internal states.
-
-The current system includes:
-
-## Memory System
-
-Experiences are transformed into structured memories instead of simple conversation history.
-
-Memories can:
-
-- Gain importance over time
-- Influence personality changes
-- Affect future decisions
-
----
-
-## Personality Evolution
-
-CharacterOS models personality as a dynamic system.
-
-Instead of fixed personality values, traits can gradually change based on accumulated experiences.
-
-For example:
-
-A meaningful betrayal event
-
-Trust ↓
-Fear ↑
-Caution ↑
-
-Future behavior becomes more defensive
-
-
----
-
-## Belief and Behavior Modeling
-
-Past experiences influence internal beliefs and behavioral tendencies.
-
-The system connects:
-
-
-Memory
-↓
-Belief
-↓
-Need
-↓
-Desire
-↓
-Behavior Bias
-↓
-Decision
-
-
----
-
-# Architecture
-
-CharacterOS uses an event-driven architecture.
-
-Core pipeline:
-
-
-Event
-↓
-Emotion / Impact Analysis
-↓
-Memory Node
-↓
-Impact Cluster
-↓
-Personality Drift
-↓
-Belief Update
-↓
-Behavior Decision
-
-
-
-The goal is not to create fixed character templates, but to build characters whose internal state can continuously evolve.
-
----
-
-# How We Built It
-
-CharacterOS is built with:
-
-- TypeScript
-- Node.js
-- OpenAI-compatible LLM interfaces
-- Event-driven architecture
-- Simulation-based testing
-
-Engineering principles:
-
-- Domain-driven core design
-- Persistent character state
-- Deterministic simulation
-- Automated validation
-- Extensive testing
-
----
-
-# Current Implementation
-
-The current prototype includes:
-
-✅ Event-driven memory processing
-
-✅ Personality evolution pipeline
-
-✅ Belief and behavior modeling
-
-✅ Character state simulation
-
-✅ Experience replay system
-
-✅ API-based character interaction
-
-✅ Automated test framework
-
-Current quality:
-
-- 2000+ automated tests
-- Multiple validation gates
-- Single-character simulation engine
-
----
-
-# Example
-
-Input:
-Alex experienced betrayal from a close friend.
-
-
-CharacterOS processes:
-
-
-Event
-↓
-Memory Created
-↓
-Impact Evaluated
-↓
-Personality Updated
-
-
-Result:
-
-Before:
-
-
-Trust: High
-Caution: Low
-
-
-After:
-
-
-Trust: Reduced
-Caution: Increased
-
-
-The character does not simply answer differently.
-
-The character has changed because of experience.
-
----
-
-# Challenges
-
-The biggest challenge was balancing stability and adaptation.
-
-A character should not randomly change after every interaction.
-
-However, meaningful experiences should leave lasting influence.
-
-CharacterOS explores how to create a balance between:
-
-- Personality consistency
-- Learning from experience
-- Long-term adaptation
-
----
-
-# Accomplishments
-
-We built a working prototype capable of:
-
-- Creating structured memories from experiences
-- Tracking internal character states
-- Simulating personality changes
-- Connecting past experiences with future behaviors
-
----
-
-# Future Development
-
-Future directions include:
-
-- Multi-character relationships
-- Long-term life simulation
-- More complex emotional systems
-- Developer SDK for building persistent AI characters
-
----
-
-# Project Status
-
-CharacterOS is currently focused on the core AI character engine.
-
-The project intentionally prioritizes:
-
-- Internal simulation
-- Memory architecture
-- Personality evolution
-- Decision modeling
-
-over UI complexity.
-
----
-
-# Running Locally
-
-Install dependencies:
-
-```bash
-npm install
-
-Build:
-
-npm run build
-
-Run tests:
-
-npm test
-
-Start development server:
-
-```bash
-npm run next:dev
-
+```powershell
+npm ci
+npm run demo:hackathon
 ```
 
-# Project Information
+Open [http://127.0.0.1:4174](http://127.0.0.1:4174). No API key, database, login, or persistent character data is required. Press `Ctrl+C` to stop the demo.
 
-## Release Status
+The demo starts Alex from a fresh in-memory state, lets you submit an experience, then makes the causal chain visible:
 
-CharacterOS has reached **V10 RC (Release Candidate)** status.
+```text
+Experience
+-> deterministic parser
+-> impact particle
+-> memory and impact cluster
+-> bounded personality-state transition
+-> derived decision view
+```
 
-Current milestone:
-- V10 RC Core Reality Gate: PASS
-- Unified Quality Gate: PASS
+The UI is a presentation surface only. It invokes the real existing Core modules but never calls persistent repository or Next.js write routes. See the [demo run-of-show](demo/README.md#video-run-of-show-about-2-minutes) for a two-minute recording plan.
 
-Current implementation:
-- Single-character simulation engine
-- 单角色内核
+## What makes it different
 
-Testing:
-- 2163 tests
-- 170 files
+- **Causal instead of prompt-only:** experiences flow through structured, inspectable state transitions.
+- **Deterministic first:** identical input, logical event time, and engine version are designed to replay identically.
+- **Bounded personality change:** a single event cannot directly overwrite long-term personality.
+- **Safe product boundary:** UI and LLM adapters observe or propose language; the Core owns accepted state transitions.
+- **Single-character focus:** no relationship graph, world simulation, or autonomous agent loop is presented as implemented.
 
-Future roadmap:
-- V11 focuses on further platform and SDK improvements.
-- V20 multi-character system: V20 未开始
+## Repository map
+
+| Path | Purpose |
+| --- | --- |
+| [`demo/`](demo/README.md) | Standalone in-memory hackathon demo and recording guide |
+| [`src/core/`](src/core) | Headless deterministic simulation kernel |
+| [`src/services/`](src/services) | Explicit application and persistence boundaries |
+| [`src/app/`](src/app) | Next.js API and read-only product surfaces |
+| [`tests/`](tests) | Unit, regression, replay, audit, and boundary tests |
+| [`docs/INDEX.md`](docs/INDEX.md) | Curated architecture, roadmap, and release documentation |
+| [`docs/archive/README_history.md`](docs/archive/README_history.md) | Preserved historical root README and version log |
+
+## Development and verification
+
+```powershell
+npm run build       # TypeScript type check
+npm test            # Vitest suite
+npm run next:build  # Next.js production build
+npm run rc:verify   # Release-quality gates
+```
+
+运行 npm test 全量单元与审计测试。当前封存基线为 **V10.78 RC** 与 V11 RC：Core Reality Gate **PASS**、Unified Quality Gate **PASS**、active warnings 为 0。
+
+The V10.78 RC sealed baseline records **2163 tests** across **170 files**.
+
+当前范围保持**单角色内核**：不做多角色，**V20 未开始**。
+
+The active engineering direction is [Core Calibration & Durability](docs/core_calibration_durability_roadmap.md): durable event/state storage and replay come before new visual features. The current physics core, Explorer, MindSpace, Agent SDK, and LLM boundary all have deliberately separate responsibilities; see the [latest development flow](docs/latest_development_flow.md).
+
+## Safety and scope
+
+- CharacterOS is a simulation, not a psychological or medical diagnosis.
+- The Core remains headless: it does not depend on React, Next.js, Three.js, provider SDKs, or routes.
+- LLM/provider output has no mutation or writeback authority.
+- Durable writes require explicit service boundaries; the hackathon demo performs no durable write.
+- Secrets belong in `.env`; never commit API keys.
+
+## Further reading
+
+- [Hackathon demo guide](demo/README.md)
+- [Documentation index](docs/INDEX.md)
+- [Contributing and quality gates](CONTRIBUTING.md)
+- [Change log](CHANGELOG.md)
